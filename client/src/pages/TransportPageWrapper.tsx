@@ -1,0 +1,28 @@
+import { useApp } from '@/context/AppContext';
+import { useLocation } from 'wouter';
+import TransportPage from '@/components/TransportPage';
+import { useTranslation } from '@/lib/i18n';
+import { useEffect } from 'react';
+
+export default function TransportPageWrapper() {
+  const { language, apartment } = useApp();
+  const [, setLocation] = useLocation();
+  const t = useTranslation(language);
+
+  useEffect(() => {
+    if (!apartment) {
+      setLocation('/apartment');
+    }
+  }, [apartment, setLocation]);
+
+  if (!apartment) return null;
+
+  return (
+    <TransportPage
+      apartment={apartment}
+      t={t}
+      onBack={() => setLocation('/menu')}
+      onHome={() => setLocation('/menu')}
+    />
+  );
+}
