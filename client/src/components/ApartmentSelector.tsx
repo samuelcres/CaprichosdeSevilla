@@ -1,47 +1,85 @@
-import { Apartment } from '@/lib/i18n';
+import { Apartment, languages, Language } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ArrowLeft } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
+import sevilleBgUrl from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 interface ApartmentSelectorProps {
   onSelect: (apartment: Apartment) => void;
-  onBack: () => void;
   title: string;
   ibarraName: string;
   quevedoName: string;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
+  t: any;
 }
 
 export default function ApartmentSelector({
   onSelect,
-  onBack,
   title,
   ibarraName,
   quevedoName,
+  currentLanguage,
+  onLanguageChange,
+  t,
 }: ApartmentSelectorProps) {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <header className="p-4 border-b border-border">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onBack}
-          data-testid="button-back"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Button>
+    <div className="min-h-screen bg-background flex flex-col relative">
+      <div 
+        className="fixed inset-0 bg-cover bg-center opacity-[0.05] pointer-events-none blur-sm"
+        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+      />
+
+      <header className="relative z-10 p-4 border-b border-border flex items-center justify-between">
+        <div className="w-10" />
+        
+        <img
+          src={logoUrl}
+          alt="Caprichos de Sevilla"
+          className="h-12 md:h-14 object-contain"
+        />
+        
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              data-testid="button-language-selector"
+              aria-label={t.common.changeLanguage}
+              title={t.common.changeLanguage}
+            >
+              <Globe className="w-5 h-5" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {languages.map((lang) => (
+              <DropdownMenuItem
+                key={lang.code}
+                onClick={() => onLanguageChange(lang.code)}
+                className="cursor-pointer"
+                data-testid={`menuitem-language-${lang.code}`}
+              >
+                <span className="mr-2">{lang.flag}</span>
+                <span>{lang.name}</span>
+                {lang.code === currentLanguage && <span className="ml-2">✓</span>}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </header>
 
-      <div className="flex-1 flex flex-col items-center justify-center p-4">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-2xl space-y-8">
           <div className="text-center space-y-4">
-            <img
-              src={logoUrl}
-              alt="Caprichos de Sevilla"
-              className="h-16 md:h-20 mx-auto object-contain"
-            />
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
               {title}
             </h1>

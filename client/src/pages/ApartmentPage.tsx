@@ -4,7 +4,7 @@ import ApartmentSelector from '@/components/ApartmentSelector';
 import { useTranslation, Apartment } from '@/lib/i18n';
 
 export default function ApartmentPage() {
-  const { language, setApartment } = useApp();
+  const { language, setApartment, setLanguage } = useApp();
   const [, setLocation] = useLocation();
   const t = useTranslation(language);
 
@@ -13,8 +13,8 @@ export default function ApartmentPage() {
     setLocation('/menu');
   };
 
-  const handleBack = () => {
-    setLocation('/');
+  const handleLanguageChange = (lang: typeof language) => {
+    setLanguage(lang);
   };
 
   return (
@@ -23,7 +23,9 @@ export default function ApartmentPage() {
       ibarraName={t.apartment.ibarra}
       quevedoName={t.apartment.quevedo}
       onSelect={handleApartmentSelect}
-      onBack={handleBack}
+      currentLanguage={language}
+      onLanguageChange={handleLanguageChange}
+      t={t}
     />
   );
 }
