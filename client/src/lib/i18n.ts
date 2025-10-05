@@ -161,6 +161,8 @@ export const translations = {
     common: {
       back: 'Volver',
       home: 'Inicio',
+      changeLanguage: 'Cambiar idioma',
+      contactWhatsApp: 'Contactar por WhatsApp',
     },
   },
   en: {
@@ -313,6 +315,8 @@ export const translations = {
     common: {
       back: 'Back',
       home: 'Home',
+      changeLanguage: 'Change language',
+      contactWhatsApp: 'Contact via WhatsApp',
     },
   },
   fr: {
@@ -465,6 +469,8 @@ export const translations = {
     common: {
       back: 'Retour',
       home: 'Accueil',
+      changeLanguage: 'Changer de langue',
+      contactWhatsApp: 'Contacter via WhatsApp',
     },
   },
   de: {
@@ -617,6 +623,8 @@ export const translations = {
     common: {
       back: 'Zurück',
       home: 'Startseite',
+      changeLanguage: 'Sprache ändern',
+      contactWhatsApp: 'Kontakt über WhatsApp',
     },
   },
   it: {
@@ -769,6 +777,8 @@ export const translations = {
     common: {
       back: 'Indietro',
       home: 'Home',
+      changeLanguage: 'Cambia lingua',
+      contactWhatsApp: 'Contatta via WhatsApp',
     },
   },
   zh: {
@@ -921,6 +931,8 @@ export const translations = {
     common: {
       back: '返回',
       home: '首页',
+      changeLanguage: '更改语言',
+      contactWhatsApp: '通过WhatsApp联系',
     },
   },
 };

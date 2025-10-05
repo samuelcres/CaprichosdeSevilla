@@ -1,14 +1,17 @@
 import { useApp } from '@/context/AppContext';
+import { useLocation } from 'wouter';
 import LanguageSelector from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 
 export default function WelcomePage() {
   const { language, setLanguage } = useApp();
+  const [, setLocation] = useLocation();
   const t = useTranslation(language);
 
   const handleLanguageSelect = (lang: typeof language) => {
     setLanguage(lang);
+    setLocation('/apartment');
   };
 
   return (

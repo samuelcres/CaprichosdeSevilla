@@ -5,7 +5,7 @@ import { useTranslation } from '@/lib/i18n';
 import { useEffect } from 'react';
 
 export default function MenuPage() {
-  const { language, apartment, setApartment } = useApp();
+  const { language, apartment, setApartment, setLanguage } = useApp();
   const [, setLocation] = useLocation();
   const t = useTranslation(language);
 
@@ -38,12 +38,19 @@ export default function MenuPage() {
     setLocation('/apartment');
   };
 
+  const handleLanguageChange = (lang: typeof language) => {
+    setLanguage(lang);
+  };
+
   return (
     <MainMenu
       options={options}
       apartmentName={apartmentName}
       onSelect={handleSelect}
       onBack={handleBack}
+      currentLanguage={language}
+      onLanguageChange={handleLanguageChange}
+      t={t}
     />
   );
 }

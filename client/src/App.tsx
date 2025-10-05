@@ -16,18 +16,6 @@ import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
 
 function AppRoutes() {
-  const { language } = useApp();
-  const [location, setLocation] = useLocation();
-
-  useEffect(() => {
-    if (location === '/' && language !== 'es') {
-      return;
-    }
-    if (location === '/' && language === 'es') {
-      setLocation('/apartment');
-    }
-  }, [language, location, setLocation]);
-
   return (
     <Switch>
       <Route path="/" component={WelcomePage} />
