@@ -1,0 +1,260 @@
+1. Objetivo General
+
+Desarrolla una aplicación web completa y optimizada que sirva como guía y anfitrión virtual para los huéspedes de los dos apartamentos turísticos "Caprichos de Sevilla". La aplicación debe ser intuitiva, fácil de usar y proporcionar toda la información necesaria para una estancia agradable.
+
+2. Estructura y Flujo de Navegación
+
+La aplicación seguirá el siguiente flujo:
+
+1.
+Página de Bienvenida: El usuario elige su idioma preferido. Opciones mínimas: Español, Inglés, Francés, Alemán e Italiano.
+
+2.
+Selección de Apartamento: Tras elegir el idioma, se presentan dos opciones claras:
+
+•
+Capricho de Ibarra
+
+•
+Capricho de Quevedo
+
+
+
+3.
+Menú Principal: Una vez seleccionado el apartamento, se muestra un menú principal con 5 secciones. La información mostrada en las secciones 2, 3 y 4 debe ser específica para el apartamento elegido.
+
+3. Contenido Detallado de las Secciones
+
+Menú Principal
+
+Crea un menú de navegación claro y visualmente atractivo con las siguientes 5 opciones:
+
+1.
+Transporte
+
+2.
+Check-in
+
+3.
+Wi-Fi
+
+4.
+Turismo y Recomendaciones
+
+5.
+Contacto y Ayuda
+
+
+
+
+Sección 1: Transporte
+
+Esta sección se divide en "Llegada" y "Salida".
+
+1.1. Transporte para la Llegada
+
+Ofrece información detallada sobre cómo llegar al apartamento seleccionado desde el Aeropuerto de Sevilla (San Pablo - SVQ):
+
+•
+Autobús (Línea EA): Proporciona información sobre la línea "Especial Aeropuerto". Incluye:
+
+•
+Parada más cercana a cada apartamento.
+
+•
+Precio del billete.
+
+•
+Horarios aproximados.
+
+•
+Enlace a la web oficial de TUSSAM para consulta.
+
+
+
+•
+Taxi: Muestra información sobre la tarifa fija oficial del aeropuerto al centro de la ciudad. Indica la dirección exacta de cada apartamento para dársela al taxista:
+
+•
+Capricho de Ibarra: Calle Conde de Ibarra, 11-13, 41004 Sevilla.
+
+•
+Capricho de Quevedo: Calle Quevedo, 11, 41001 Sevilla.
+
+
+
+•
+VTC (Uber/Cabify): Informa que estas compañías operan en el aeropuerto y enlaza a sus respectivas webs o apps para que el usuario pueda estimar tarifas y reservar.
+
+•
+Transfer Privado: Añade un botón/enlace para reservar un transfer con el siguiente enlace: https://www.book-online-transfers.com/es/baintex-airport-taxi.
+
+•
+Parking: Para quienes lleguen en coche, añade un botón/enlace para reservar parking cercano con este enlace de afiliado: https://parclick.es/?affiliate=670e528a.
+
+1.2. Transporte para la Salida
+
+Replica la información de la llegada, pero enfocada en el trayecto desde el apartamento hacia el aeropuerto.
+
+
+
+
+Sección 2: Check-in
+
+Esta sección es crucial. Muestra instrucciones claras y paso a paso, específicas para cada apartamento. Utiliza una combinación de texto e imágenes (puedes usar iconos o placeholders si no tienes las imágenes exactas).
+
+Check-in para "Capricho de Ibarra"
+
+1.
+Dirección: Llegar a la Calle Conde de Ibarra, 11-13.
+
+2.
+Acceso Remoto: "Recibirás un enlace por Email o WhatsApp para la apertura de puertas."
+
+3.
+Abrir Portal: "Pulsa el botón 'Portal calle' en el enlace para abrir la puerta principal del edificio. Este botón se activará a las 15:00h del día de tu llegada."
+
+4.
+Localizar Apartamento: "El apartamento es el número 14. Se encuentra en la misma planta baja, al fondo a la izquierda."
+
+5.
+Abrir Apartamento: "Una vez frente a la puerta, pulsa el botón 'Home door nº 14' en el mismo enlace."
+
+6.
+Salida: "Dentro, encontrarás un botón para abrir la puerta manualmente al salir."
+
+7.
+Aviso Importante: "El enlace de apertura es válido hasta las 11:00h del día de tu salida. Por seguridad, no pulses el botón de abrir si no estás físicamente en la puerta."
+
+Check-in para "Capricho de Quevedo"
+
+1.
+Dirección: Llegar a la Calle Quevedo, 11.
+
+2.
+Acceso Remoto: "Recibirás un enlace por Email o WhatsApp para la apertura de puertas."
+
+3.
+Abrir Portal: "Pulsa el botón 'Portal Calle' en el enlace para abrir la puerta principal del edificio. Este botón se activará a las 15:00h del día de tu llegada."
+
+4.
+Localizar Apartamento: "Al entrar, gira a la derecha. El apartamento está en la planta baja, es la puerta de la derecha."
+
+5.
+Abrir Apartamento: "Una vez frente a la puerta, pulsa el botón 'Home door Low R' en el mismo enlace."
+
+6.
+Salida: "Dentro, encontrarás un botón para abrir la puerta manualmente al salir."
+
+7.
+Aviso Importante: "El enlace de apertura es válido hasta las 11:00h del día de tu salida. Por seguridad, no pulses el botón de abrir si no estás físicamente en la puerta. Recuerda cerrar la puerta del portal al entrar/salir."
+
+
+
+
+Sección 3: Wi-Fi
+
+Presenta la información de la red Wi-Fi de forma clara para el apartamento seleccionado. Incluye un botón para "Copiar contraseña".
+
+Wi-Fi para "Capricho de Ibarra"
+
+•
+Red (SSID): CaprichoIbarra
+
+•
+Contraseña: 1113Ibarra1113
+
+•
+QR Code: Incrusta la imagen QRIbarra.png.
+
+Wi-Fi para "Capricho de Quevedo"
+
+•
+Red (SSID): vodafoneBA3017
+
+•
+Contraseña: KRNPAX7FXAXS55A5
+
+•
+QR Code: Incrusta la imagen QRQuevedo.png.
+
+
+
+
+Sección 4: Turismo y Recomendaciones
+
+Esta sección debe ser una guía curada de Sevilla.
+
+4.1. Visitas Recomendadas en Sevilla
+
+Incrusta un widget interactivo de Civitatis usando el siguiente código HTML. Asegúrate de que sea responsive y se visualice correctamente en todos los dispositivos.
+
+HTML
+
+
+<div style="text-align:center;"><iframe class="civitatis-iframe" data-maxwidth="100%" frameborder="0" height="700px" id="iFrameResizer1" scrolling="no" src="https://www.civitatis.com/widget-activities/?agencyId=40972&agencyUserId=44118&display=cosy&cant=6&lang=es&currency=EUR&destination=57&transfer=0&cmp=Widget_Sevilla_ES&width=100%&height=700px&hideButton=0&centerContent=1&typeSelection=all&color=325bdf&typography=Montserrat&removeBackground=1&showShadow=1&roundedButtons=1" style="max-width: 100%; overflow: hidden;" width="100%"></iframe></div>
+
+
+4.2. Mapa con Recomendaciones
+
+Crea o incrusta un mapa interactivo (Google Maps o similar) que muestre la ubicación del apartamento seleccionado y varios marcadores con recomendaciones de hostelería (bares de tapas, restaurantes, etc.).
+
+4.3. Recomendaciones Gastronómicas
+
+Crea una lista de lugares recomendados para desayunar, comer y cenar cerca del apartamento seleccionado. Para cada recomendación, incluye:
+
+•
+Nombre del lugar
+
+•
+Breve descripción (ej. "Tapas tradicionales con un toque moderno")
+
+•
+Distancia a pie desde el apartamento (ej. "5 min a pie")
+
+•
+Enlace a su web o perfil en redes sociales.
+
+•
+Ubicación GPS (enlace a Google Maps).
+
+•
+Valoración (ej. "4.5/5 ⭐")
+
+
+
+
+Sección 5: Contacto y Ayuda
+
+Proporciona medios de contacto directo.
+
+•
+WhatsApp: Un botón que abra una conversación con el número +34661610794.
+
+•
+Email: Un enlace que abra el cliente de correo para enviar un email a info@caprichosdesevilla.com.
+
+4. Requisitos Técnicos y de Diseño
+
+•
+Tecnologías: Utiliza HTML5, CSS3 y JavaScript. No es necesario un backend complejo, puede ser una Single Page Application (SPA) o un sitio estático.
+
+•
+Diseño: El diseño debe ser limpio, moderno y responsive (mobile-first). Utiliza una paleta de colores cálidos que evoquen a Sevilla. La tipografía debe ser legible (ej. Montserrat, como en el widget).
+
+•
+Optimización: La webapp debe cargar rápido y ser eficiente. Optimiza las imágenes y el código.
+
+•
+Usabilidad: La navegación debe ser intuitiva. Incluye botones de "Volver" y un acceso fácil al menú principal desde cualquier sección.
+
+5. Archivos a Utilizar
+
+•
+QRIbarra.png: Para la sección de Wi-Fi de Ibarra.
+
+•
+QRQuevedo.png: Para la sección de Wi-Fi de Quevedo.
+
+Genera el código completo y estructurado para esta aplicación web.
+
