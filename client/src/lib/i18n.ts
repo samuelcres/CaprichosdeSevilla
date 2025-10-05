@@ -1,4 +1,4 @@
-export type Language = 'es' | 'en' | 'fr' | 'de' | 'it';
+export type Language = 'es' | 'en' | 'fr' | 'de' | 'it' | 'zh';
 export type Apartment = 'ibarra' | 'quevedo';
 
 export const languages: { code: Language; name: string; flag: string }[] = [
@@ -7,6 +7,7 @@ export const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'fr', name: 'Français', flag: '🇫🇷' },
   { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
   { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'zh', name: '中文', flag: '🇨🇳' },
 ];
 
 export const translations = {
@@ -768,6 +769,158 @@ export const translations = {
     common: {
       back: 'Indietro',
       home: 'Home',
+    },
+  },
+  zh: {
+    welcome: {
+      title: '欢迎来到',
+      subtitle: '选择您的首选语言',
+      continue: '继续',
+    },
+    apartment: {
+      title: '选择您的公寓',
+      ibarra: 'Capricho de Ibarra',
+      quevedo: 'Capricho de Quevedo',
+    },
+    menu: {
+      transport: '交通',
+      checkin: '入住',
+      wifi: 'Wi-Fi',
+      tourism: '旅游',
+      contact: '联系我们',
+    },
+    transport: {
+      title: '交通',
+      arrival: '到达',
+      departure: '出发',
+      fromAirport: '从塞维利亚机场 (SVQ)',
+      toAirport: '到塞维利亚机场 (SVQ)',
+      bus: {
+        title: 'EA线巴士',
+        price: '价格: 4€',
+        schedule: '每30分钟一班',
+        stopIbarra: '站点: Puerta Jerez',
+        stopQuevedo: '站点: Plaza Nueva',
+        link: '更多信息 TUSSAM',
+      },
+      taxi: {
+        title: '出租车',
+        price: '固定价格: 22-25€',
+        addressIbarra: '地址: Calle Conde de Ibarra, 11-13, 41004 塞维利亚',
+        addressQuevedo: '地址: Calle Quevedo, 11, 41001 塞维利亚',
+      },
+      vtc: {
+        title: 'VTC (Uber/Cabify)',
+        description: '机场提供服务',
+        uber: '打开 Uber',
+        cabify: '打开 Cabify',
+      },
+      transfer: {
+        title: '私人接送',
+        description: '预订私人接送',
+        button: '预订接送',
+      },
+      parking: {
+        title: '停车场',
+        description: '预订附近停车场',
+        button: '预订停车位',
+      },
+    },
+    checkin: {
+      title: '入住说明',
+      step: '步骤',
+      ibarra: {
+        step1: {
+          title: '到达地址',
+          description: 'Calle Conde de Ibarra, 11-13, 塞维利亚',
+        },
+        step2: {
+          title: '远程访问',
+          description: '您将通过电子邮件或WhatsApp收到开门链接。',
+        },
+        step3: {
+          title: '打开主门',
+          description: "点击链接中的'Portal calle'按钮。入住当天下午3点起可用。",
+        },
+        step4: {
+          title: '找到公寓',
+          description: '14号公寓，一楼，后面左侧。',
+        },
+        step5: {
+          title: '打开公寓门',
+          description: "在门前，点击链接中的'Home door nº 14'。",
+        },
+        step6: {
+          title: '退出',
+          description: '里面有一个手动开门按钮。',
+        },
+      },
+      quevedo: {
+        step1: {
+          title: '到达地址',
+          description: 'Calle Quevedo, 11, 塞维利亚',
+        },
+        step2: {
+          title: '远程访问',
+          description: '您将通过电子邮件或WhatsApp收到开门链接。',
+        },
+        step3: {
+          title: '打开主门',
+          description: "点击链接中的'Portal Calle'按钮。入住当天下午3点起可用。",
+        },
+        step4: {
+          title: '找到公寓',
+          description: '进门后右转。一楼，右侧门。',
+        },
+        step5: {
+          title: '打开公寓门',
+          description: "在门前，点击链接中的'Home door Low R'。",
+        },
+        step6: {
+          title: '退出',
+          description: '里面有一个手动开门按钮。记得关闭主门。',
+        },
+      },
+      warning: {
+        title: '重要提示',
+        description: '链接在退房当天上午11点前有效。如果您不在门前，请勿按按钮。',
+      },
+    },
+    wifi: {
+      title: 'Wi-Fi连接',
+      network: '网络',
+      password: '密码',
+      copy: '复制',
+      copied: '已复制',
+      scanQR: '或扫描二维码',
+      ibarra: {
+        ssid: 'CaprichoIbarra',
+        password: '1113Ibarra1113',
+      },
+      quevedo: {
+        ssid: 'vodafoneBA3017',
+        password: 'KRNPAX7FXAXS55A5',
+      },
+    },
+    tourism: {
+      title: '旅游和建议',
+      activities: '推荐活动',
+      map: '推荐地图',
+      restaurants: '美食推荐',
+      distance: '分钟步行',
+      viewMap: '在地图上查看',
+    },
+    contact: {
+      title: '联系和帮助',
+      description: '需要帮助？我们随时为您服务',
+      whatsapp: 'WhatsApp',
+      email: '电子邮件',
+      whatsappText: '通过WhatsApp联系',
+      emailText: '发送电子邮件',
+    },
+    common: {
+      back: '返回',
+      home: '首页',
     },
   },
 };

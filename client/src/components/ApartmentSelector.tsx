@@ -1,8 +1,10 @@
 import { Apartment } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Building2, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
+import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
 
 interface ApartmentSelectorProps {
   onSelect: (apartment: Apartment) => void;
@@ -47,14 +49,18 @@ export default function ApartmentSelector({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card
-              className="hover-elevate active-elevate-2 cursor-pointer overflow-visible"
+              className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden"
               onClick={() => onSelect('ibarra')}
               data-testid="card-apartment-ibarra"
             >
-              <CardHeader className="text-center p-8">
-                <div className="mx-auto mb-4 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Building2 className="w-8 h-8 text-primary" />
-                </div>
+              <div className="aspect-video w-full overflow-hidden">
+                <img
+                  src={ibarraPhotoUrl}
+                  alt={ibarraName}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardHeader className="text-center p-6">
                 <CardTitle className="text-xl">{ibarraName}</CardTitle>
                 <CardDescription className="text-sm">
                   Calle Conde de Ibarra, 11-13
@@ -63,14 +69,18 @@ export default function ApartmentSelector({
             </Card>
 
             <Card
-              className="hover-elevate active-elevate-2 cursor-pointer overflow-visible"
+              className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden"
               onClick={() => onSelect('quevedo')}
               data-testid="card-apartment-quevedo"
             >
-              <CardHeader className="text-center p-8">
-                <div className="mx-auto mb-4 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Building2 className="w-8 h-8 text-primary" />
-                </div>
+              <div className="aspect-video w-full overflow-hidden">
+                <img
+                  src={quevedoPhotoUrl}
+                  alt={quevedoName}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardHeader className="text-center p-6">
                 <CardTitle className="text-xl">{quevedoName}</CardTitle>
                 <CardDescription className="text-sm">
                   Calle Quevedo, 11

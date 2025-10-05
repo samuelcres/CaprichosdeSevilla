@@ -2,6 +2,11 @@ import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/ca
 import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, Home } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
+import transportBgUrl from '@assets/stock_images/airport_bus_public_t_f8c6b930.jpg';
+import checkinBgUrl from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
+import wifiBgUrl from '@assets/stock_images/wifi_wireless_intern_d64534a5.jpg';
+import tourismBgUrl from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
+import contactBgUrl from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
 
 interface MenuOption {
   id: string;
@@ -16,6 +21,14 @@ interface MainMenuProps {
   onBack: () => void;
   apartmentName: string;
 }
+
+const backgroundImages: Record<string, string> = {
+  transport: transportBgUrl,
+  checkin: checkinBgUrl,
+  wifi: wifiBgUrl,
+  tourism: tourismBgUrl,
+  contact: contactBgUrl,
+};
 
 export default function MainMenu({ options, onSelect, onBack, apartmentName }: MainMenuProps) {
   return (
@@ -50,17 +63,23 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName }: M
             {options.map((option) => (
               <Card
                 key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-visible"
+                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden relative min-h-40"
                 onClick={() => onSelect(option.id)}
                 data-testid={`card-menu-${option.id}`}
               >
-                <CardHeader className="p-6">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                    <div className="text-primary">{option.icon}</div>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${backgroundImages[option.id]})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
+                
+                <CardHeader className="relative z-10 p-6">
+                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+                    <div className="text-white">{option.icon}</div>
                   </div>
-                  <CardTitle className="text-lg">{option.title}</CardTitle>
+                  <CardTitle className="text-lg text-white">{option.title}</CardTitle>
                   {option.description && (
-                    <CardDescription className="text-sm">
+                    <CardDescription className="text-sm text-white/90">
                       {option.description}
                     </CardDescription>
                   )}
