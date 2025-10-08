@@ -4,7 +4,14 @@
 
 Caprichos de Sevilla is a multilingual guest information web application for two tourist apartments in Seville, Spain (Capricho de Ibarra and Capricho de Quevedo). The app serves as a virtual host, providing guests with essential information about transportation, check-in procedures, WiFi access, tourism recommendations, and contact support in six languages (Spanish, English, French, German, Italian, and Chinese).
 
-The application follows a simple navigation flow: language selection → apartment selection → main menu with five key sections. Each section provides apartment-specific information tailored to the guest's chosen property.
+The application follows a simple navigation flow: apartment selection (main page) → main menu with five key sections. Language can be changed at any time via a globe icon dropdown available on all pages. Each section provides apartment-specific information tailored to the guest's chosen property.
+
+**Recent Updates (October 2025):**
+- Apartment selection is now the main landing page (/) - guests see apartment options immediately
+- Language selector with globe icon added to both apartment selector and main menu pages
+- WhatsApp direct contact button (+34 661 610 794) integrated in main menu header
+- Seville watermark background images added to main screens (8% opacity with blur for subtle effect)
+- Logo sizing optimized: h-12 md:h-14 on apartment page, h-14 md:h-16 on menu page
 
 ## User Preferences
 
