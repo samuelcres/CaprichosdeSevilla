@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
+import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
 import { languages, Language } from '@/lib/i18n';
 import {
   DropdownMenu,
@@ -39,7 +39,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 

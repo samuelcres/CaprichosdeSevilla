@@ -7,7 +7,7 @@ import { Apartment } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
 import qrQuevedoUrl from '@assets/QR Quevedo_1759701422985.png';
-import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
+import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
 
 interface WifiPageProps {
   onBack: () => void;
@@ -40,7 +40,7 @@ export default function WifiPage({ onBack, onHome, apartment, t }: WifiPageProps
   return (
     <div className="min-h-screen bg-background relative">
       <div 
-        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
       <PageHeader onBack={onBack} onHome={onHome} title={t.wifi.title} />

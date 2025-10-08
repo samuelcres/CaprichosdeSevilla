@@ -5,7 +5,7 @@ import { Globe } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
+import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +37,7 @@ export default function ApartmentSelector({
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 

@@ -11,7 +11,7 @@ The application follows a simple navigation flow: apartment selection (main page
 - White headers (bg-white) across all pages for clean, bright appearance
 - Visual language selector: displays current language flag and name (e.g., 🇪🇸 Español, 🇬🇧 English) instead of simple globe icon
 - WhatsApp direct contact button (+34 661 610 794) integrated in main menu header
-- Plaza de España with orange trees background image now used consistently across ALL pages at 30% opacity without blur for clarity
+- Plaza de España with orange trees background image now used consistently across ALL pages at 30% opacity, covering the full screen (bg-cover bg-center)
 - Logo sizing and positioning: h-20 md:h-24 centered in main content on apartment page with rounded corners, h-14 md:h-16 in header on menu page
 - Main menu redesigned: 2-column grid layout (instead of 3), larger cards (min-h-48), bigger icons (w-9 h-9), enhanced visual hierarchy with larger icon containers (w-16 h-16)
 - Menu option cards simplified: removed stock photo backgrounds, now display clean design with only meaningful icons (bg-primary/10 backgrounds, text-primary icons)

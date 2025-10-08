@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bus, Car, Plane, ParkingCircle, ExternalLink } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
-import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
+import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
 
 interface TransportPageProps {
   onBack: () => void;
@@ -25,7 +25,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
   return (
     <div className="min-h-screen bg-background relative">
       <div 
-        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
       <PageHeader onBack={onBack} onHome={onHome} title={t.transport.title} />
