@@ -33,18 +33,41 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
       <PageHeader onBack={onBack} onHome={onHome} title={t.tourism.title} />
 
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="activities" data-testid="tab-activities">
-              {t.tourism.activities}
-            </TabsTrigger>
-            <TabsTrigger value="map" data-testid="tab-map">
-              {t.tourism.map}
-            </TabsTrigger>
-            <TabsTrigger value="restaurants" data-testid="tab-restaurants">
-              {t.tourism.restaurants}
-            </TabsTrigger>
-          </TabsList>
+        <div className="flex flex-col sm:flex-row gap-2 p-1 bg-muted rounded-md">
+          <Button
+            variant={activeTab === 'activities' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('activities')}
+            data-testid="tab-activities"
+          >
+            {t.tourism.activities}
+          </Button>
+          <Button
+            variant={activeTab === 'map' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('map')}
+            data-testid="tab-map"
+          >
+            {t.tourism.map}
+          </Button>
+          <Button
+            variant={activeTab === 'restaurants' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('restaurants')}
+            data-testid="tab-restaurants"
+          >
+            {t.tourism.restaurants}
+          </Button>
+        </div>
+
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
+          <div className="hidden">
+            <TabsList>
+              <TabsTrigger value="activities">Activities</TabsTrigger>
+              <TabsTrigger value="map">Map</TabsTrigger>
+              <TabsTrigger value="restaurants">Restaurants</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="activities" className="mt-6">
             <Card>

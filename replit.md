@@ -18,6 +18,7 @@ The application follows a simple navigation flow: apartment selection (main page
 - Larger, more prominent icons (w-11 h-11) in rounded containers (w-20 h-20) with shadow and hover scale effects
 - Navigation system fixed: all routes now correctly navigate between Apartment Selector (/) → Menu (/menu) → Detail Pages, back arrow properly returns to previous page
 - Fully translated menu subtitle ("Select an option") in all 6 supported languages
+- Tourism page tabs redesigned for mobile: custom button-based tabs stack vertically on mobile devices, preventing overlap and text truncation issues
 
 ## User Preferences
 
