@@ -39,17 +39,18 @@ export default function ApartmentSelector({
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
-      <header className="relative z-10 p-4 border-b border-border flex items-center justify-end">
+      <header className="relative z-10 p-6 border-b border-border flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button 
               variant="ghost" 
-              size="icon"
+              size="default"
+              className="gap-2"
               data-testid="button-language-selector"
               aria-label={t.common.changeLanguage}
               title={t.common.changeLanguage}
             >
-              <Globe className="w-5 h-5" />
+              <Globe className="w-6 h-6" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
