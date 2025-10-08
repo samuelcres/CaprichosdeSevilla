@@ -120,27 +120,44 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
             <p className="text-muted-foreground">{t.menu.subtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {options.map((option) => (
-              <Card
-                key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-visible min-h-48"
-                onClick={() => onSelect(option.id)}
-                data-testid={`card-menu-${option.id}`}
-              >
-                <CardHeader className="p-8">
-                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <div className="text-primary">{option.icon}</div>
-                  </div>
-                  <CardTitle className="text-xl font-semibold">{option.title}</CardTitle>
-                  {option.description && (
-                    <CardDescription className="text-sm mt-1">
-                      {option.description}
-                    </CardDescription>
-                  )}
-                </CardHeader>
-              </Card>
-            ))}
+          <div className="space-y-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {options.slice(0, 3).map((option) => (
+                <Card
+                  key={option.id}
+                  className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group"
+                  onClick={() => onSelect(option.id)}
+                  data-testid={`card-menu-${option.id}`}
+                >
+                  <CardHeader className="p-6 flex flex-col items-center text-center space-y-4">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+                      <div className="text-emerald-700">{option.icon}</div>
+                    </div>
+                    <CardTitle className="text-lg font-semibold">{option.title}</CardTitle>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+            
+            {options.length > 3 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
+                {options.slice(3).map((option) => (
+                  <Card
+                    key={option.id}
+                    className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group"
+                    onClick={() => onSelect(option.id)}
+                    data-testid={`card-menu-${option.id}`}
+                  >
+                    <CardHeader className="p-6 flex flex-col items-center text-center space-y-4">
+                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+                        <div className="text-emerald-700">{option.icon}</div>
+                      </div>
+                      <CardTitle className="text-lg font-semibold">{option.title}</CardTitle>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -150,10 +167,10 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
 
 export function getMenuIcons() {
   return {
-    transport: <Bus className="w-9 h-9" />,
-    checkin: <Key className="w-9 h-9" />,
-    wifi: <Wifi className="w-9 h-9" />,
-    tourism: <MapPin className="w-9 h-9" />,
-    contact: <Phone className="w-9 h-9" />,
+    transport: <Bus className="w-11 h-11" />,
+    checkin: <Key className="w-11 h-11" />,
+    wifi: <Wifi className="w-11 h-11" />,
+    tourism: <MapPin className="w-11 h-11" />,
+    contact: <Phone className="w-11 h-11" />,
   };
 }
