@@ -35,7 +35,7 @@ export default function ApartmentSelector({
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-contain bg-center bg-no-repeat opacity-20 pointer-events-none blur-sm"
+        className="fixed inset-0 bg-contain bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
