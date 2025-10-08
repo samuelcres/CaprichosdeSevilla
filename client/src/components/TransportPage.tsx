@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bus, Car, Plane, ParkingCircle, ExternalLink } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
+import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
 
 interface TransportPageProps {
   onBack: () => void;
@@ -22,10 +23,14 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
     : t.transport.taxi.addressQuevedo;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <div 
+        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+      />
       <PageHeader onBack={onBack} onHome={onHome} title={t.transport.title} />
 
-      <div className="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+      <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="arrival" data-testid="tab-arrival">

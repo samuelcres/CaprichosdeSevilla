@@ -8,7 +8,7 @@ import checkinBgUrl from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg
 import wifiBgUrl from '@assets/stock_images/wifi_wireless_intern_d64534a5.jpg';
 import tourismBgUrl from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
 import contactBgUrl from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
-import sevilleBgUrl from '@assets/stock_images/seville_spain_citysc_d2607192.jpg';
+import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
 import { languages, Language } from '@/lib/i18n';
 import {
   DropdownMenu,
@@ -52,7 +52,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-cover bg-center opacity-[0.03] pointer-events-none blur-sm"
+        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
@@ -131,11 +131,11 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
             <p className="text-muted-foreground">Selecciona una opción</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {options.map((option) => (
               <Card
                 key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden relative min-h-40"
+                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden relative min-h-48"
                 onClick={() => onSelect(option.id)}
                 data-testid={`card-menu-${option.id}`}
               >
@@ -145,13 +145,13 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
                 
-                <CardHeader className="relative z-10 p-6">
-                  <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3">
+                <CardHeader className="relative z-10 p-8">
+                  <div className="w-16 h-16 rounded-xl bg-white/25 backdrop-blur-md flex items-center justify-center mb-4">
                     <div className="text-white">{option.icon}</div>
                   </div>
-                  <CardTitle className="text-lg text-white">{option.title}</CardTitle>
+                  <CardTitle className="text-xl text-white font-semibold">{option.title}</CardTitle>
                   {option.description && (
-                    <CardDescription className="text-sm text-white/90">
+                    <CardDescription className="text-sm text-white/90 mt-1">
                       {option.description}
                     </CardDescription>
                   )}
@@ -167,10 +167,10 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
 
 export function getMenuIcons() {
   return {
-    transport: <Bus className="w-6 h-6" />,
-    checkin: <Key className="w-6 h-6" />,
-    wifi: <Wifi className="w-6 h-6" />,
-    tourism: <MapPin className="w-6 h-6" />,
-    contact: <Phone className="w-6 h-6" />,
+    transport: <Bus className="w-9 h-9" />,
+    checkin: <Key className="w-9 h-9" />,
+    wifi: <Wifi className="w-9 h-9" />,
+    tourism: <MapPin className="w-9 h-9" />,
+    contact: <Phone className="w-9 h-9" />,
   };
 }

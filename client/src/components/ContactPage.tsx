@@ -2,6 +2,7 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone } from 'lucide-react';
+import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
 
 interface ContactPageProps {
   onBack: () => void;
@@ -19,10 +20,14 @@ export default function ContactPage({ onBack, onHome, t }: ContactPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <div 
+        className="fixed inset-0 bg-contain bg-left bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+      />
       <PageHeader onBack={onBack} onHome={onHome} title={t.contact.title} />
 
-      <div className="max-w-2xl mx-auto p-4 md:p-6 space-y-6">
+      <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-6">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto mb-4">
             <Phone className="w-8 h-8 text-primary" />
