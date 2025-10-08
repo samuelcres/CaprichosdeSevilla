@@ -13,6 +13,8 @@ The application follows a simple navigation flow: apartment selection (main page
 - Plaza de España background image (from attached asset) now used consistently across ALL pages at 30% opacity without blur for clarity
 - Logo sizing and positioning: h-20 md:h-24 centered in main content on apartment page with rounded corners, h-14 md:h-16 in header on menu page
 - Main menu redesigned: 2-column grid layout (instead of 3), larger cards (min-h-48), bigger icons (w-9 h-9), enhanced visual hierarchy with larger icon containers (w-16 h-16)
+- Menu option cards simplified: removed stock photo backgrounds, now display clean design with only meaningful icons (bg-primary/10 backgrounds, text-primary icons)
+- Navigation system fixed: all routes now correctly navigate between Apartment Selector (/) → Menu (/menu) → Detail Pages, back arrow properly returns to previous page
 
 ## User Preferences
 
