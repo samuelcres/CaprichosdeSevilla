@@ -78,7 +78,7 @@ export default function ApartmentSelector({
               alt="Caprichos de Sevilla"
               className="h-20 md:h-24 mx-auto object-contain rounded-lg"
             />
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               {title}
             </h1>
           </div>
