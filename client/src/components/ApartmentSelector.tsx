@@ -5,7 +5,7 @@ import { Globe } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import sevilleBgUrl from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
+import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
 import {
   DropdownMenu,
   DropdownMenuContent,
