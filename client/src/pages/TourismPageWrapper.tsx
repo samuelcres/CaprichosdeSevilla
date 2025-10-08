@@ -11,7 +11,7 @@ export default function TourismPageWrapper() {
 
   useEffect(() => {
     if (!apartment) {
-      setLocation('/apartment');
+      setLocation('/');
     }
   }, [apartment, setLocation]);
 

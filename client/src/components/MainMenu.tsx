@@ -1,13 +1,8 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, MessageCircle } from 'lucide-react';
+import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import transportBgUrl from '@assets/stock_images/airport_bus_public_t_f8c6b930.jpg';
-import checkinBgUrl from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
-import wifiBgUrl from '@assets/stock_images/wifi_wireless_intern_d64534a5.jpg';
-import tourismBgUrl from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
-import contactBgUrl from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
 import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
 import { languages, Language } from '@/lib/i18n';
 import {
@@ -34,14 +29,6 @@ interface MainMenuProps {
   onLanguageChange: (lang: Language) => void;
   t: any;
 }
-
-const backgroundImages: Record<string, string> = {
-  transport: transportBgUrl,
-  checkin: checkinBgUrl,
-  wifi: wifiBgUrl,
-  tourism: tourismBgUrl,
-  contact: contactBgUrl,
-};
 
 export default function MainMenu({ options, onSelect, onBack, apartmentName, currentLanguage, onLanguageChange, t }: MainMenuProps) {
   const whatsappNumber = '+34661610794';
@@ -135,23 +122,17 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
             {options.map((option) => (
               <Card
                 key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden relative min-h-48"
+                className="hover-elevate active-elevate-2 cursor-pointer overflow-visible min-h-48"
                 onClick={() => onSelect(option.id)}
                 data-testid={`card-menu-${option.id}`}
               >
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${backgroundImages[option.id]})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/30" />
-                
-                <CardHeader className="relative z-10 p-8">
-                  <div className="w-16 h-16 rounded-xl bg-white/25 backdrop-blur-md flex items-center justify-center mb-4">
-                    <div className="text-white">{option.icon}</div>
+                <CardHeader className="p-8">
+                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <div className="text-primary">{option.icon}</div>
                   </div>
-                  <CardTitle className="text-xl text-white font-semibold">{option.title}</CardTitle>
+                  <CardTitle className="text-xl font-semibold">{option.title}</CardTitle>
                   {option.description && (
-                    <CardDescription className="text-sm text-white/90 mt-1">
+                    <CardDescription className="text-sm mt-1">
                       {option.description}
                     </CardDescription>
                   )}

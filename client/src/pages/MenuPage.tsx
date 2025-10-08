@@ -11,7 +11,7 @@ export default function MenuPage() {
 
   useEffect(() => {
     if (!apartment) {
-      setLocation('/apartment');
+      setLocation('/');
     }
   }, [apartment, setLocation]);
 
@@ -35,7 +35,7 @@ export default function MenuPage() {
 
   const handleBack = () => {
     setApartment(null);
-    setLocation('/apartment');
+    setLocation('/');
   };
 
   const handleLanguageChange = (lang: typeof language) => {

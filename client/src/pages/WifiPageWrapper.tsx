@@ -11,7 +11,7 @@ export default function WifiPageWrapper() {
 
   useEffect(() => {
     if (!apartment) {
-      setLocation('/apartment');
+      setLocation('/');
     }
   }, [apartment, setLocation]);
 
