@@ -7,7 +7,7 @@ import { Apartment } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
 import qrQuevedoUrl from '@assets/QR Quevedo_1759701422985.png';
-import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
+import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
 
 interface WifiPageProps {
   onBack: () => void;

@@ -2,7 +2,7 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone } from 'lucide-react';
-import sevilleBgUrl from '@assets/istockphoto-576913134-1024x1024_1759914381883.jpg';
+import sevilleBgUrl from '@assets/0cdb654f-f852-4361-85d9-6ec92b4cab58 (1)_1759923922905.png';
 
 interface ContactPageProps {
   onBack: () => void;
