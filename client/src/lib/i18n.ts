@@ -23,6 +23,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: 'Selecciona una opción',
       transport: 'Transporte',
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
@@ -177,6 +178,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: 'Select an option',
       transport: 'Transport',
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
@@ -331,6 +333,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: 'Sélectionnez une option',
       transport: 'Transport',
       checkin: 'Enregistrement',
       wifi: 'Wi-Fi',
@@ -485,6 +488,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: 'Wählen Sie eine Option',
       transport: 'Transport',
       checkin: 'Check-in',
       wifi: 'WLAN',
@@ -639,6 +643,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: 'Seleziona un\'opzione',
       transport: 'Trasporto',
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
@@ -793,6 +798,7 @@ export const translations = {
       quevedo: 'Capricho de Quevedo',
     },
     menu: {
+      subtitle: '选择一个选项',
       transport: '交通',
       checkin: '入住',
       wifi: 'Wi-Fi',

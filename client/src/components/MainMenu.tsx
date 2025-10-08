@@ -43,7 +43,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
-      <header className="relative z-10 p-4 border-b border-border flex items-center justify-between gap-2">
+      <header className="relative z-10 p-4 border-b border-border flex items-center justify-between gap-2 bg-white">
         <Button
           variant="ghost"
           size="icon"
@@ -65,13 +65,15 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button 
-                variant="ghost" 
-                size="icon" 
+                variant="outline" 
+                size="default"
+                className="gap-2"
                 data-testid="button-language-selector"
                 aria-label={t.common.changeLanguage}
                 title={t.common.changeLanguage}
               >
-                <Globe className="w-5 h-5" />
+                <span className="text-xl">{currentLang?.flag}</span>
+                <span className="hidden sm:inline">{currentLang?.name}</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -115,7 +117,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
               {apartmentName}
             </h1>
-            <p className="text-muted-foreground">Selecciona una opción</p>
+            <p className="text-muted-foreground">{t.menu.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">

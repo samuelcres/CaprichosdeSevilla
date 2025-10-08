@@ -32,6 +32,8 @@ export default function ApartmentSelector({
   onLanguageChange,
   t,
 }: ApartmentSelectorProps) {
+  const currentLang = languages.find(l => l.code === currentLanguage);
+
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
@@ -39,18 +41,19 @@ export default function ApartmentSelector({
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
-      <header className="relative z-10 p-6 border-b border-border flex items-center justify-end">
+      <header className="relative z-10 p-6 border-b border-border flex items-center justify-end bg-white">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button 
-              variant="ghost" 
+              variant="outline" 
               size="default"
               className="gap-2"
               data-testid="button-language-selector"
               aria-label={t.common.changeLanguage}
               title={t.common.changeLanguage}
             >
-              <Globe className="w-6 h-6" />
+              <span className="text-xl">{currentLang?.flag}</span>
+              <span className="hidden sm:inline">{currentLang?.name}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
