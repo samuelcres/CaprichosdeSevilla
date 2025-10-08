@@ -39,15 +39,7 @@ export default function ApartmentSelector({
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
 
-      <header className="relative z-10 p-4 border-b border-border flex items-center justify-between">
-        <div className="w-10" />
-        
-        <img
-          src={logoUrl}
-          alt="Caprichos de Sevilla"
-          className="h-12 md:h-14 object-contain"
-        />
-        
+      <header className="relative z-10 p-4 border-b border-border flex items-center justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button 
@@ -79,7 +71,12 @@ export default function ApartmentSelector({
 
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-2xl space-y-8">
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-6">
+            <img
+              src={logoUrl}
+              alt="Caprichos de Sevilla"
+              className="h-20 md:h-24 mx-auto object-contain"
+            />
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">
               {title}
             </h1>

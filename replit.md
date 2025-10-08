@@ -11,7 +11,7 @@ The application follows a simple navigation flow: apartment selection (main page
 - Language selector with globe icon added to both apartment selector and main menu pages
 - WhatsApp direct contact button (+34 661 610 794) integrated in main menu header
 - Seville watermark background images added to main screens (8% opacity with blur for subtle effect)
-- Logo sizing optimized: h-12 md:h-14 on apartment page, h-14 md:h-16 on menu page
+- Logo sizing and positioning: h-20 md:h-24 centered in main content on apartment page, h-14 md:h-16 in header on menu page
 
 ## User Preferences
 
