@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 import { languages, Language } from '@/lib/i18n';
 import {
   DropdownMenu,

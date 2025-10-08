@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface CheckinPageProps {
   onBack: () => void;

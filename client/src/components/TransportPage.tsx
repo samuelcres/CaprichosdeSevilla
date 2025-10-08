@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bus, Car, Plane, ParkingCircle, ExternalLink } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface TransportPageProps {
   onBack: () => void;

@@ -5,7 +5,7 @@ import { Globe } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 import {
   DropdownMenu,
   DropdownMenuContent,

@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, ExternalLink, Navigation } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface TourismPageProps {
   onBack: () => void;

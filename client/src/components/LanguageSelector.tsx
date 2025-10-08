@@ -1,7 +1,7 @@
 import { languages, Language } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import sevilleBgUrl from '@assets/plaza-espana-oranges.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface LanguageSelectorProps {
   onSelect: (language: Language) => void;
