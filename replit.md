@@ -88,6 +88,11 @@ Preferred communication style: Simple, everyday language.
 
 ### October 9, 2025
 
+**Scroll to Top Navigation:**
+- All page wrappers now automatically scroll to top when navigating to a new page
+- Ensures users always see content from the beginning when clicking menu buttons
+- Applied to Tourism, Transport, Check-in, WiFi, and Contact pages
+
 **Language Selector Globally Available:**
 - Language selector implemented globally across all pages via PageHeader component
 - DropdownMenu shows current language flag and name (e.g., 🇪🇸 Español, 🇬🇧 English)

@@ -15,6 +15,10 @@ export default function WifiPageWrapper() {
     }
   }, [apartment, setLocation]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!apartment) return null;
 
   return (
