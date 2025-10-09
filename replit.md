@@ -23,6 +23,7 @@ The application follows a simple navigation flow: apartment selection (main page
 - Accessible tab pattern implemented across Tourism and Transport pages: custom visual buttons + hidden TabsList/TabsTrigger for keyboard navigation and ARIA semantics
 - Restaurant recommendations reorganized into three categories: Desayunos (Breakfast), Almuerzos/Comidas (Lunch), and Cenas (Dinner) with 7 curated real locations per category for each apartment (21 total recommendations per apartment)
 - Added introductory text to restaurant section translated across all 6 languages: "A continuación les presentamos las mejores recomendaciones gastronómicas con salida desde el propio apartamento"
+- Added web buttons in "Moverse por Sevilla" section: direct links to Sevici website (https://www.sevici.es) and VOI scooters website (https://www.voi.com) with language-specific URLs adapting to current interface language
 
 ## User Preferences
 
