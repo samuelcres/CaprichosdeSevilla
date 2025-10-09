@@ -673,6 +673,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                                         Web
                                       </Button>
                                     )}
+                                    {visitData.phone && (
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => window.open(`tel:${visitData.phone}`, '_self')}
+                                        data-testid={`button-phone-visit-${categoryId}-${index}`}
+                                      >
+                                        <Phone className="w-4 h-4 mr-2" />
+                                        {visitData.phone}
+                                      </Button>
+                                    )}
                                   </div>
                                 </div>
                               </div>
