@@ -486,7 +486,7 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
               <AccordionItem value="cafeterias" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafeterias">
                   <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.cafes}</h3>
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.cafeterias}</h3>
                     <Badge variant="secondary">{restaurants.filter(r => r.category === 'cafeterias').length}</Badge>
                   </div>
                 </AccordionTrigger>
