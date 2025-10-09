@@ -34,6 +34,7 @@ export const translations = {
       title: 'Transporte',
       arrival: 'Llegada',
       departure: 'Salida',
+      moveAround: 'Moverse por Sevilla',
       fromAirport: 'Desde el Aeropuerto de Sevilla (SVQ)',
       toAirport: 'Al Aeropuerto de Sevilla (SVQ)',
       bus: {
@@ -65,6 +66,16 @@ export const translations = {
         title: 'Parking',
         description: 'Reserve parking cercano',
         button: 'Reservar Parking',
+      },
+      localTransport: {
+        title: 'Transporte Público Cercano',
+        description: 'Paradas y estaciones cerca del apartamento',
+        busStops: 'Paradas de Autobús',
+        bikeStations: 'Estaciones de Bicicletas (Sevici)',
+        scooters: 'Patinetes Eléctricos',
+        viewOnMap: 'Ver en Mapa',
+        ibarraInfo: 'Cerca de Puerta Jerez, con múltiples líneas de autobús y estaciones Sevici disponibles.',
+        quevedoInfo: 'Cerca de Plaza Nueva, con excelente conexión de autobuses y bicis públicas.',
       },
     },
     checkin: {
@@ -189,6 +200,7 @@ export const translations = {
       title: 'Transport',
       arrival: 'Arrival',
       departure: 'Departure',
+      moveAround: 'Getting Around Seville',
       fromAirport: 'From Seville Airport (SVQ)',
       toAirport: 'To Seville Airport (SVQ)',
       bus: {
@@ -220,6 +232,16 @@ export const translations = {
         title: 'Parking',
         description: 'Book nearby parking',
         button: 'Book Parking',
+      },
+      localTransport: {
+        title: 'Nearby Public Transport',
+        description: 'Stops and stations near the apartment',
+        busStops: 'Bus Stops',
+        bikeStations: 'Bike Stations (Sevici)',
+        scooters: 'Electric Scooters',
+        viewOnMap: 'View on Map',
+        ibarraInfo: 'Near Puerta Jerez, with multiple bus lines and Sevici stations available.',
+        quevedoInfo: 'Near Plaza Nueva, with excellent bus and public bike connections.',
       },
     },
     checkin: {
@@ -344,6 +366,7 @@ export const translations = {
       title: 'Transport',
       arrival: 'Arrivée',
       departure: 'Départ',
+      moveAround: 'Se déplacer à Séville',
       fromAirport: "Depuis l'aéroport de Séville (SVQ)",
       toAirport: "Vers l'aéroport de Séville (SVQ)",
       bus: {
@@ -375,6 +398,16 @@ export const translations = {
         title: 'Parking',
         description: 'Réserver un parking proche',
         button: 'Réserver Parking',
+      },
+      localTransport: {
+        title: 'Transports Publics à Proximité',
+        description: 'Arrêts et stations près de l\'appartement',
+        busStops: 'Arrêts de Bus',
+        bikeStations: 'Stations de Vélos (Sevici)',
+        scooters: 'Trottinettes Électriques',
+        viewOnMap: 'Voir sur la Carte',
+        ibarraInfo: 'Près de Puerta Jerez, avec plusieurs lignes de bus et stations Sevici disponibles.',
+        quevedoInfo: 'Près de Plaza Nueva, avec excellentes connexions bus et vélos publics.',
       },
     },
     checkin: {
@@ -499,6 +532,7 @@ export const translations = {
       title: 'Transport',
       arrival: 'Ankunft',
       departure: 'Abreise',
+      moveAround: 'In Sevilla unterwegs',
       fromAirport: 'Vom Flughafen Sevilla (SVQ)',
       toAirport: 'Zum Flughafen Sevilla (SVQ)',
       bus: {
@@ -530,6 +564,16 @@ export const translations = {
         title: 'Parkplatz',
         description: 'Parkplatz in der Nähe buchen',
         button: 'Parkplatz buchen',
+      },
+      localTransport: {
+        title: 'Nahverkehr in der Nähe',
+        description: 'Haltestellen und Stationen in der Nähe der Wohnung',
+        busStops: 'Bushaltestellen',
+        bikeStations: 'Fahrradstationen (Sevici)',
+        scooters: 'Elektroroller',
+        viewOnMap: 'Auf Karte ansehen',
+        ibarraInfo: 'In der Nähe von Puerta Jerez, mit mehreren Buslinien und Sevici-Stationen.',
+        quevedoInfo: 'In der Nähe von Plaza Nueva, mit ausgezeichneter Bus- und Fahrradanbindung.',
       },
     },
     checkin: {
@@ -654,6 +698,7 @@ export const translations = {
       title: 'Trasporto',
       arrival: 'Arrivo',
       departure: 'Partenza',
+      moveAround: 'Muoversi a Siviglia',
       fromAirport: 'Dall\'aeroporto di Siviglia (SVQ)',
       toAirport: 'All\'aeroporto di Siviglia (SVQ)',
       bus: {
@@ -685,6 +730,16 @@ export const translations = {
         title: 'Parcheggio',
         description: 'Prenota un parcheggio vicino',
         button: 'Prenota Parcheggio',
+      },
+      localTransport: {
+        title: 'Trasporto Pubblico Vicino',
+        description: 'Fermate e stazioni vicino all\'appartamento',
+        busStops: 'Fermate Autobus',
+        bikeStations: 'Stazioni Biciclette (Sevici)',
+        scooters: 'Monopattini Elettrici',
+        viewOnMap: 'Visualizza sulla Mappa',
+        ibarraInfo: 'Vicino a Puerta Jerez, con diverse linee di autobus e stazioni Sevici disponibili.',
+        quevedoInfo: 'Vicino a Plaza Nueva, con ottimi collegamenti di autobus e biciclette pubbliche.',
       },
     },
     checkin: {
@@ -809,6 +864,7 @@ export const translations = {
       title: '交通',
       arrival: '到达',
       departure: '出发',
+      moveAround: '塞维利亚市内交通',
       fromAirport: '从塞维利亚机场 (SVQ)',
       toAirport: '到塞维利亚机场 (SVQ)',
       bus: {
@@ -840,6 +896,16 @@ export const translations = {
         title: '停车场',
         description: '预订附近停车场',
         button: '预订停车位',
+      },
+      localTransport: {
+        title: '附近公共交通',
+        description: '公寓附近的站点和车站',
+        busStops: '公交车站',
+        bikeStations: '自行车站 (Sevici)',
+        scooters: '电动滑板车',
+        viewOnMap: '在地图上查看',
+        ibarraInfo: 'Puerta Jerez附近，有多条公交线路和Sevici自行车站。',
+        quevedoInfo: 'Plaza Nueva附近，公交和公共自行车连接便利。',
       },
     },
     checkin: {
