@@ -23,6 +23,7 @@ export interface Visit {
   photo?: string;          // Photo path
   mapsUrl?: string;        // Google Maps link
   website?: string;        // Official website
+  phone?: string;          // Phone number for reservations
 }
 
 // Visit data with practical information - names and descriptions are in i18n.ts
