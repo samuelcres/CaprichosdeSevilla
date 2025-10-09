@@ -141,23 +141,25 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
               {options.slice(0, 3).map((option) => (
                 <Card
                   key={option.id}
-                  className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative"
+                  className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
                   onClick={() => onSelect(option.id)}
                   data-testid={`card-menu-${option.id}`}
                 >
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-[0.15] pointer-events-none"
-                    style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                  />
-                  <CardHeader className="p-8 flex flex-col items-center text-center space-y-5 relative z-10">
-                    <div className="relative">
-                      <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40 group-hover:ring-4 group-hover:ring-primary/30">
-                        <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                  <div className="flex h-full">
+                    <div 
+                      className="w-1/2 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
+                    />
+                    <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-4">
+                      <div className="relative">
+                        <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
+                          <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                        </div>
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <CardTitle className="text-lg font-bold text-foreground text-center">{option.title}</CardTitle>
                     </div>
-                    <CardTitle className="text-xl font-bold text-foreground">{option.title}</CardTitle>
-                  </CardHeader>
+                  </div>
                 </Card>
               ))}
             </div>
@@ -167,23 +169,25 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
                 {options.slice(3).map((option) => (
                   <Card
                     key={option.id}
-                    className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative"
+                    className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
                     onClick={() => onSelect(option.id)}
                     data-testid={`card-menu-${option.id}`}
                   >
-                    <div 
-                      className="absolute inset-0 bg-cover bg-center opacity-[0.15] pointer-events-none"
-                      style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                    />
-                    <CardHeader className="p-8 flex flex-col items-center text-center space-y-5 relative z-10">
-                      <div className="relative">
-                        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40 group-hover:ring-4 group-hover:ring-primary/30">
-                          <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                    <div className="flex h-full">
+                      <div 
+                        className="w-1/2 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
+                      />
+                      <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-4">
+                        <div className="relative">
+                          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
+                            <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                          </div>
+                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <CardTitle className="text-lg font-bold text-foreground text-center">{option.title}</CardTitle>
                       </div>
-                      <CardTitle className="text-xl font-bold text-foreground">{option.title}</CardTitle>
-                    </CardHeader>
+                    </div>
                   </Card>
                 ))}
               </div>
