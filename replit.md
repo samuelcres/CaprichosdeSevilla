@@ -24,6 +24,12 @@ The application follows a simple navigation flow: apartment selection (main page
 - Restaurant recommendations reorganized into three categories: Desayunos (Breakfast), Almuerzos/Comidas (Lunch), and Cenas (Dinner) with 7 curated real locations per category for each apartment (21 total recommendations per apartment)
 - Added introductory text to restaurant section translated across all 6 languages: "A continuación les presentamos las mejores recomendaciones gastronómicas con salida desde el propio apartamento"
 - Added web buttons in "Moverse por Sevilla" section: direct links to Sevici website (https://www.sevici.es) and VOI scooters website (https://www.voi.com) with language-specific URLs adapting to current interface language
+- Tourism page now has 4 tabs: Actividades (Civitatis), Mapa, Restaurantes (accordion-based), and Visitas Recomendadas (accordion-based)
+- Implemented collapsible/expandable Accordion components for restaurant recommendations (breakfast, lunch, dinner sections) for better mobile UX
+- New fourth tourism tab "Visitas Recomendadas" (Recommended Visits) with 9 accordion categories: monuments, museums, nature, neighborhoods, culture, churches, tours, modern spaces, and gastronomy tourism
+- Comprehensive visit database with 44 visit items fully translated across all 6 languages (Spanish, English, French, German, Italian, Chinese)
+- Refactored tourism data structure: visit content (names and descriptions) now stored in i18n.ts for complete multilingual support and maintainability
+- visitData.ts simplified to only category IDs, all translatable content moved to centralized i18n translation system
 
 ## User Preferences
 
