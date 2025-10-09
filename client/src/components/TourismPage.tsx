@@ -107,53 +107,163 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
             </p>
           </TabsContent>
 
-          <TabsContent value="restaurants" className="mt-6 space-y-4">
-            {restaurants.map((restaurant, index) => (
-              <Card key={index} data-testid={`card-restaurant-${index}`}>
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                      <CardDescription className="mt-1">
-                        {restaurant.description}
-                      </CardDescription>
+          <TabsContent value="restaurants" className="mt-6 space-y-6">
+            <p className="text-muted-foreground text-center mb-6">
+              {t.tourism.restaurantsIntro}
+            </p>
+
+            {/* Desayunos */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">{t.tourism.breakfast}</h3>
+              {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
+                <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`}>
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                        <CardDescription className="mt-1">
+                          {restaurant.description}
+                        </CardDescription>
+                      </div>
+                      <Badge variant="secondary" className="flex-shrink-0">
+                        <Star className="w-3 h-3 mr-1 fill-current" />
+                        {restaurant.rating}
+                      </Badge>
                     </div>
-                    <Badge variant="secondary" className="flex-shrink-0">
-                      <Star className="w-3 h-3 mr-1 fill-current" />
-                      {restaurant.rating}
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Navigation className="w-4 h-4" />
-                    <span>{restaurant.distance} {t.tourism.distance}</span>
-                  </div>
-                  <div className="flex gap-2 flex-wrap">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                      data-testid={`button-map-${index}`}
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {t.tourism.viewMap}
-                    </Button>
-                    {restaurant.website && (
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Navigation className="w-4 h-4" />
+                      <span>{restaurant.distance} {t.tourism.distance}</span>
+                    </div>
+                    <div className="flex gap-2 flex-wrap">
                       <Button
                         variant="outline"
                         size="sm"
-                        onClick={() => window.open(restaurant.website, '_blank')}
-                        data-testid={`button-website-${index}`}
+                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                        data-testid={`button-map-breakfast-${index}`}
                       >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Web
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {t.tourism.viewMap}
                       </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                      {restaurant.website && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => window.open(restaurant.website, '_blank')}
+                          data-testid={`button-website-breakfast-${index}`}
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Web
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Almuerzos / Comidas */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">{t.tourism.lunch}</h3>
+              {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
+                <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`}>
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                        <CardDescription className="mt-1">
+                          {restaurant.description}
+                        </CardDescription>
+                      </div>
+                      <Badge variant="secondary" className="flex-shrink-0">
+                        <Star className="w-3 h-3 mr-1 fill-current" />
+                        {restaurant.rating}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Navigation className="w-4 h-4" />
+                      <span>{restaurant.distance} {t.tourism.distance}</span>
+                    </div>
+                    <div className="flex gap-2 flex-wrap">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                        data-testid={`button-map-lunch-${index}`}
+                      >
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {t.tourism.viewMap}
+                      </Button>
+                      {restaurant.website && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => window.open(restaurant.website, '_blank')}
+                          data-testid={`button-website-lunch-${index}`}
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Web
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Cenas */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">{t.tourism.dinner}</h3>
+              {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
+                <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`}>
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                        <CardDescription className="mt-1">
+                          {restaurant.description}
+                        </CardDescription>
+                      </div>
+                      <Badge variant="secondary" className="flex-shrink-0">
+                        <Star className="w-3 h-3 mr-1 fill-current" />
+                        {restaurant.rating}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Navigation className="w-4 h-4" />
+                      <span>{restaurant.distance} {t.tourism.distance}</span>
+                    </div>
+                    <div className="flex gap-2 flex-wrap">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                        data-testid={`button-map-dinner-${index}`}
+                      >
+                        <MapPin className="w-4 h-4 mr-2" />
+                        {t.tourism.viewMap}
+                      </Button>
+                      {restaurant.website && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => window.open(restaurant.website, '_blank')}
+                          data-testid={`button-website-dinner-${index}`}
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Web
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
