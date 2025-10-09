@@ -37,10 +37,11 @@ export default function ApartmentSelector({
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-cover bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-no-repeat opacity-30 pointer-events-none"
         style={{ 
           backgroundImage: `url(${sevilleBgUrl})`,
-          backgroundPosition: 'center 30%'
+          backgroundPosition: 'center 30%',
+          backgroundSize: '120%'
         }}
       />
 

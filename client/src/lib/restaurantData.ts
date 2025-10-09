@@ -6,6 +6,8 @@ export interface Restaurant {
   website?: string;
   mapsUrl: string;
   category: 'breakfast' | 'lunch' | 'dinner';
+  photo?: string;
+  dishesKey?: string; // Key to look up recommended dishes in i18n
 }
 
 export const ibarraRestaurants: Restaurant[] = [
@@ -18,6 +20,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.lacampanasevilla.com',
     mapsUrl: 'https://maps.google.com/?q=Confiteria+La+Campana+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/traditional_spanish__a8531ed5.jpg',
+    dishesKey: 'lacampana',
   },
   {
     name: 'La Cacharrería',
@@ -26,6 +30,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=La+Cacharreria+Regina+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
+    dishesKey: 'lacacharreria',
   },
   {
     name: 'Otto Café',
@@ -34,6 +40,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Otto+Cafe+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
+    dishesKey: 'ottocafe',
   },
   {
     name: 'Casa Moreno',
@@ -42,6 +50,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.3,
     mapsUrl: 'https://maps.google.com/?q=Casa+Moreno+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
+    dishesKey: 'casamoreno',
   },
   {
     name: 'Parcería Café',
@@ -50,6 +60,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Parceria+Cafe+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
+    dishesKey: 'parceriacafe',
   },
   {
     name: 'Bar Alfalfa',
@@ -58,6 +70,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.2,
     mapsUrl: 'https://maps.google.com/?q=Bar+Alfalfa+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/spanish_traditional__60fd4f05.jpg',
+    dishesKey: 'baralfalfa',
   },
   {
     name: 'Café Mamá Inés',
@@ -66,6 +80,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.3,
     mapsUrl: 'https://maps.google.com/?q=Cafe+Mama+Ines+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
+    dishesKey: 'cafemamaines',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -76,6 +92,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.labrunilda.com',
     mapsUrl: 'https://maps.google.com/?q=La+Brunilda+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
+    dishesKey: 'labrunilda',
   },
   {
     name: 'Bartolomea',
@@ -84,6 +102,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Bartolomea+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
+    dishesKey: 'bartolomea',
   },
   {
     name: 'Duo Tapas',
@@ -92,6 +112,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Duo+Tapas+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
+    dishesKey: 'duotapas',
   },
   {
     name: 'Contenedor',
@@ -100,6 +122,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Contenedor+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
+    dishesKey: 'contenedor',
   },
   {
     name: 'Il Pesciolino',
@@ -108,6 +132,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=Il+Pesciolino+Mateos+Gago+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
+    dishesKey: 'ilpesciolino',
   },
   {
     name: 'Cañabota',
@@ -116,6 +142,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Canabota+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_paella_seafo_e3d9edb9.jpg',
+    dishesKey: 'canabota',
   },
   {
     name: 'Eslava',
@@ -125,6 +153,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.espacioeslava.com',
     mapsUrl: 'https://maps.google.com/?q=Eslava+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
+    dishesKey: 'eslava',
   },
   // CENAS
   {
@@ -135,6 +165,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.abantalrestaurante.es',
     mapsUrl: 'https://maps.google.com/?q=Abantal+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
+    dishesKey: 'abantal',
   },
   {
     name: 'Espacio Eslava',
@@ -144,6 +176,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.espacioeslava.com',
     mapsUrl: 'https://maps.google.com/?q=Espacio+Eslava+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
+    dishesKey: 'espacioeslava',
   },
   {
     name: 'Az-Zait',
@@ -152,6 +186,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Az-Zait+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
+    dishesKey: 'azzait',
   },
   {
     name: 'El Pintón',
@@ -160,6 +196,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=El+Pinton+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
+    dishesKey: 'elpinton',
   },
   {
     name: 'Casa Morales',
@@ -168,6 +206,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Casa+Morales+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
+    dishesKey: 'casamorales',
   },
   {
     name: 'Mamarracha',
@@ -176,6 +216,8 @@ export const ibarraRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Mamarracha+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
+    dishesKey: 'mamarracha',
   },
   {
     name: 'Oriza',
@@ -185,6 +227,8 @@ export const ibarraRestaurants: Restaurant[] = [
     website: 'https://www.restauranteoriza.com',
     mapsUrl: 'https://maps.google.com/?q=Oriza+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
+    dishesKey: 'oriza',
   },
 ];
 
@@ -197,6 +241,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Horno+San+Buenaventura+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/traditional_spanish__f9018bb3.jpg',
+    dishesKey: 'hornosanbuenaventura',
   },
   {
     name: 'La Campana',
@@ -205,6 +251,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=La+Campana+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
+    dishesKey: 'lacampanaquevedo',
   },
   {
     name: 'Ochoa Café',
@@ -213,6 +261,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Ochoa+Cafe+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
+    dishesKey: 'ochoacafe',
   },
   {
     name: 'Bar Levíes',
@@ -221,6 +271,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.3,
     mapsUrl: 'https://maps.google.com/?q=Bar+Levies+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
+    dishesKey: 'barlevies',
   },
   {
     name: 'Café de Indias',
@@ -229,6 +281,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Cafe+de+Indias+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
+    dishesKey: 'cafedeindias',
   },
   {
     name: 'La Rollerie',
@@ -237,6 +291,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=La+Rollerie+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
+    dishesKey: 'larollerie',
   },
   {
     name: 'Maná Cafetería',
@@ -245,6 +301,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Mana+Cafeteria+Sevilla',
     category: 'breakfast',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
+    dishesKey: 'manacafeteria',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -254,6 +312,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Bodeguita+Romero+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
+    dishesKey: 'bodeguitaromero',
   },
   {
     name: 'El Rinconcillo',
@@ -262,6 +322,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.3,
     mapsUrl: 'https://maps.google.com/?q=El+Rinconcillo+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
+    dishesKey: 'elrinconcillo',
   },
   {
     name: 'Café Bar Las Teresas',
@@ -270,6 +332,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Las+Teresas+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
+    dishesKey: 'lasteresas',
   },
   {
     name: 'Ovejas Negras',
@@ -278,6 +342,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=Ovejas+Negras+Plaza+Nueva+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
+    dishesKey: 'ovejasnegras',
   },
   {
     name: 'Casa Plácido',
@@ -286,6 +352,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.4,
     mapsUrl: 'https://maps.google.com/?q=Casa+Placido+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_paella_seafo_2e59c319.jpg',
+    dishesKey: 'casaplacido',
   },
   {
     name: 'Taberna Coloniales',
@@ -294,6 +362,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.3,
     mapsUrl: 'https://maps.google.com/?q=Taberna+Coloniales+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
+    dishesKey: 'tabernacoloniales',
   },
   {
     name: 'Antigua Abacería',
@@ -302,6 +372,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Antigua+Abaceria+Sevilla',
     category: 'lunch',
+    photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
+    dishesKey: 'antiguaabaceria',
   },
   // CENAS
   {
@@ -311,6 +383,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=Vineria+San+Telmo+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
+    dishesKey: 'vineriasantelmo',
   },
   {
     name: 'Catalina',
@@ -320,6 +394,8 @@ export const quevedoRestaurants: Restaurant[] = [
     website: 'https://www.restaurantecatalina.com',
     mapsUrl: 'https://maps.google.com/?q=Catalina+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
+    dishesKey: 'catalina',
   },
   {
     name: 'Seis',
@@ -328,6 +404,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.6,
     mapsUrl: 'https://maps.google.com/?q=Seis+Plaza+Nueva+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
+    dishesKey: 'seis',
   },
   {
     name: 'Torres y García',
@@ -336,6 +414,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Torres+y+Garcia+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
+    dishesKey: 'torresygarcia',
   },
   {
     name: 'MOKAMBO Plaza Nueva',
@@ -344,6 +424,8 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Mokambo+Plaza+Nueva+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
+    dishesKey: 'mokamboplazanueva',
   },
   {
     name: 'Becerrita',
@@ -353,6 +435,8 @@ export const quevedoRestaurants: Restaurant[] = [
     website: 'https://www.becerrita.com',
     mapsUrl: 'https://maps.google.com/?q=Becerrita+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
+    dishesKey: 'becerrita',
   },
   {
     name: 'Donaire Azabache',
@@ -361,5 +445,7 @@ export const quevedoRestaurants: Restaurant[] = [
     rating: 4.5,
     mapsUrl: 'https://maps.google.com/?q=Donaire+Azabache+Sevilla',
     category: 'dinner',
+    photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
+    dishesKey: 'donaireazabache',
   },
 ];

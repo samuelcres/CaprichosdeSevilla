@@ -11,6 +11,59 @@ import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds } from '@/lib/visitData';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
+// Import stock images for restaurants
+import img1 from '@assets/stock_images/traditional_spanish__a8531ed5.jpg';
+import img2 from '@assets/stock_images/traditional_spanish__70149acc.jpg';
+import img3 from '@assets/stock_images/traditional_spanish__f9018bb3.jpg';
+import img4 from '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg';
+import img5 from '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg';
+import img6 from '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg';
+import img7 from '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg';
+import img8 from '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg';
+import img9 from '@assets/stock_images/spanish_tapas_modern_fa802452.jpg';
+import img10 from '@assets/stock_images/spanish_paella_seafo_53beca91.jpg';
+import img11 from '@assets/stock_images/spanish_paella_seafo_e3d9edb9.jpg';
+import img12 from '@assets/stock_images/spanish_paella_seafo_2e59c319.jpg';
+import img13 from '@assets/stock_images/spanish_traditional__0221f1ec.jpg';
+import img14 from '@assets/stock_images/spanish_traditional__b4291a21.jpg';
+import img15 from '@assets/stock_images/spanish_traditional__5f2425d0.jpg';
+import img16 from '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg';
+import img17 from '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg';
+import img18 from '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg';
+import img19 from '@assets/stock_images/spanish_traditional__310230e0.jpg';
+import img20 from '@assets/stock_images/spanish_traditional__60fd4f05.jpg';
+
+// Map image filenames to imported images
+const imageMap: Record<string, string> = {
+  'traditional_spanish__a8531ed5.jpg': img1,
+  'traditional_spanish__70149acc.jpg': img2,
+  'traditional_spanish__f9018bb3.jpg': img3,
+  'modern_brunch_cafe_a_e64d5442.jpg': img4,
+  'modern_brunch_cafe_a_2fe8dd51.jpg': img5,
+  'modern_brunch_cafe_a_e727f275.jpg': img6,
+  'spanish_tapas_modern_a2f41932.jpg': img7,
+  'spanish_tapas_modern_346e78d7.jpg': img8,
+  'spanish_tapas_modern_fa802452.jpg': img9,
+  'spanish_paella_seafo_53beca91.jpg': img10,
+  'spanish_paella_seafo_e3d9edb9.jpg': img11,
+  'spanish_paella_seafo_2e59c319.jpg': img12,
+  'spanish_traditional__0221f1ec.jpg': img13,
+  'spanish_traditional__b4291a21.jpg': img14,
+  'spanish_traditional__5f2425d0.jpg': img15,
+  'elegant_restaurant_f_f15dec49.jpg': img16,
+  'elegant_restaurant_f_5086cc55.jpg': img17,
+  'elegant_restaurant_f_95b165b2.jpg': img18,
+  'spanish_traditional__310230e0.jpg': img19,
+  'spanish_traditional__60fd4f05.jpg': img20,
+};
+
+// Helper function to get image from photo path
+const getImage = (photoPath?: string) => {
+  if (!photoPath) return undefined;
+  const filename = photoPath.split('/').pop() || '';
+  return imageMap[filename];
+};
+
 interface TourismPageProps {
   onBack: () => void;
   onHome: () => void;
@@ -133,15 +186,33 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
-                    <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`}>
-                      <CardHeader>
+                  {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => {
+                    const imageUrl = getImage(restaurant.photo);
+                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+                    
+                    return (
+                    <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`} className="flex flex-row overflow-hidden">
+                      {imageUrl && (
+                        <div className="w-32 h-32 flex-shrink-0">
+                          <img 
+                            src={imageUrl} 
+                            alt={restaurant.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <CardHeader className="flex-1">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <CardTitle className="text-lg">{restaurant.name}</CardTitle>
                             <CardDescription className="mt-1">
                               {restaurant.description}
                             </CardDescription>
+                            {dishes && (
+                              <p className="mt-2 text-sm text-emerald-700 font-medium">
+                                ✨ {dishes}
+                              </p>
+                            )}
                           </div>
                           <Badge variant="secondary" className="flex-shrink-0">
                             <Star className="w-3 h-3 mr-1 fill-current" />
@@ -178,7 +249,8 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                         </div>
                       </CardContent>
                     </Card>
-                  ))}
+                    );
+                  })}
                 </AccordionContent>
               </AccordionItem>
 
@@ -191,15 +263,33 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
-                    <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`}>
-                      <CardHeader>
+                  {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => {
+                    const imageUrl = getImage(restaurant.photo);
+                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+                    
+                    return (
+                    <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`} className="flex flex-row overflow-hidden">
+                      {imageUrl && (
+                        <div className="w-32 h-32 flex-shrink-0">
+                          <img 
+                            src={imageUrl} 
+                            alt={restaurant.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <CardHeader className="flex-1">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <CardTitle className="text-lg">{restaurant.name}</CardTitle>
                             <CardDescription className="mt-1">
                               {restaurant.description}
                             </CardDescription>
+                            {dishes && (
+                              <p className="mt-2 text-sm text-emerald-700 font-medium">
+                                ✨ {dishes}
+                              </p>
+                            )}
                           </div>
                           <Badge variant="secondary" className="flex-shrink-0">
                             <Star className="w-3 h-3 mr-1 fill-current" />
@@ -236,7 +326,8 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                         </div>
                       </CardContent>
                     </Card>
-                  ))}
+                    );
+                  })}
                 </AccordionContent>
               </AccordionItem>
 
@@ -249,15 +340,33 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
-                    <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`}>
-                      <CardHeader>
+                  {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => {
+                    const imageUrl = getImage(restaurant.photo);
+                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+                    
+                    return (
+                    <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`} className="flex flex-row overflow-hidden">
+                      {imageUrl && (
+                        <div className="w-32 h-32 flex-shrink-0">
+                          <img 
+                            src={imageUrl} 
+                            alt={restaurant.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <CardHeader className="flex-1">
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <CardTitle className="text-lg">{restaurant.name}</CardTitle>
                             <CardDescription className="mt-1">
                               {restaurant.description}
                             </CardDescription>
+                            {dishes && (
+                              <p className="mt-2 text-sm text-emerald-700 font-medium">
+                                ✨ {dishes}
+                              </p>
+                            )}
                           </div>
                           <Badge variant="secondary" className="flex-shrink-0">
                             <Star className="w-3 h-3 mr-1 fill-current" />
@@ -294,7 +403,8 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                         </div>
                       </CardContent>
                     </Card>
-                  ))}
+                    );
+                  })}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
