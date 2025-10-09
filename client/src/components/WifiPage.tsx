@@ -6,7 +6,7 @@ import { Copy, Check } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
-import qrQuevedoUrl from '@assets/QR Quevedo_1759701422985.png';
+import qrQuevedoUrl from '@assets/Captura de pantalla 2025-10-09 a las 10.26.39_1759998407884.png';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface WifiPageProps {
@@ -100,7 +100,7 @@ export default function WifiPage({ onBack, onHome, apartment, t }: WifiPageProps
                     <img
                       src={qrCode}
                       alt="WiFi QR Code"
-                      className="w-48 h-48 md:w-56 md:h-56"
+                      className="w-48 h-auto md:w-56 object-contain max-h-96"
                       data-testid="img-qr-code"
                     />
                   </div>
