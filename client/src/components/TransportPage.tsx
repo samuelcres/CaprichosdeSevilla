@@ -3,7 +3,8 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Bus, Car, Plane, ParkingCircle, ExternalLink, Bike, Navigation } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Bus, Car, Plane, ParkingCircle, ExternalLink, Bike, Navigation, Train } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
@@ -70,12 +71,16 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
             </TabsList>
           </div>
 
-          <TabsContent value="arrival" className="space-y-4 mt-6">
-            <h2 className="text-xl font-semibold text-foreground mb-4">
-              {t.transport.fromAirport}
-            </h2>
-
-            <Card>
+          <TabsContent value="arrival" className="mt-6">
+            <Accordion type="multiple" className="space-y-4">
+              <AccordionItem value="airport" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-arrival">
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t.transport.fromAirport}
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <Card>
               <CardHeader>
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -211,14 +216,105 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                 </Button>
               </CardContent>
             </Card>
-          </TabsContent>
+                </AccordionContent>
+              </AccordionItem>
 
-          <TabsContent value="departure" className="space-y-4 mt-6">
-            <h2 className="text-xl font-semibold text-foreground mb-4">
-              {t.transport.toAirport}
-            </h2>
+              <AccordionItem value="trainstation" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-arrival">
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t.transport.trainStation.fromStation}
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Bus className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.busTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.busLine}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">{t.transport.trainStation.busPrice} • {t.transport.trainStation.busSchedule}</p>
+                <p className="text-sm text-foreground">
+                  {apartment === 'ibarra' ? t.transport.trainStation.busStopIbarra : t.transport.trainStation.busStopQuevedo}
+                </p>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => window.open('https://www.tussam.es', '_blank')}
+                  data-testid="button-train-bus"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  {t.transport.bus.link}
+                </Button>
+              </CardContent>
+            </Card>
 
             <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Train className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.tramTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.tramLine}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">{t.transport.trainStation.tramPrice} • {t.transport.trainStation.tramSchedule}</p>
+                <p className="text-sm text-foreground">
+                  {apartment === 'ibarra' ? t.transport.trainStation.tramStopIbarra : t.transport.trainStation.tramStopQuevedo}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Car className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.taxiTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.taxiPrice}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-foreground">{t.transport.trainStation.taxiDuration}</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {apartment === 'ibarra' ? t.transport.trainStation.walkingIbarra : t.transport.trainStation.walkingQuevedo}
+                </p>
+              </CardContent>
+            </Card>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </TabsContent>
+
+          <TabsContent value="departure" className="mt-6">
+            <Accordion type="multiple" className="space-y-4">
+              <AccordionItem value="airport" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-departure">
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t.transport.toAirport}
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <Card>
               <CardHeader>
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -324,6 +420,93 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                 </Button>
               </CardContent>
             </Card>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="trainstation" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-departure">
+                  <h2 className="text-xl font-semibold text-foreground">
+                    {t.transport.trainStation.toStation}
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Bus className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.busTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.busLine}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">{t.transport.trainStation.busPrice} • {t.transport.trainStation.busSchedule}</p>
+                <p className="text-sm text-foreground">
+                  {apartment === 'ibarra' ? t.transport.trainStation.busStopIbarra : t.transport.trainStation.busStopQuevedo}
+                </p>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => window.open('https://www.tussam.es', '_blank')}
+                  data-testid="button-train-bus-departure"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  {t.transport.bus.link}
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Train className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.tramTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.tramLine}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">{t.transport.trainStation.tramPrice} • {t.transport.trainStation.tramSchedule}</p>
+                <p className="text-sm text-foreground">
+                  {apartment === 'ibarra' ? t.transport.trainStation.tramStopIbarra : t.transport.trainStation.tramStopQuevedo}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Car className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <CardTitle className="text-lg">{t.transport.trainStation.taxiTitle}</CardTitle>
+                    <CardDescription className="mt-1">
+                      {t.transport.trainStation.taxiPrice}
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-foreground">{t.transport.trainStation.taxiDuration}</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {apartment === 'ibarra' ? t.transport.trainStation.walkingIbarra : t.transport.trainStation.walkingQuevedo}
+                </p>
+              </CardContent>
+            </Card>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </TabsContent>
 
           <TabsContent value="movearound" className="space-y-4 mt-6">
