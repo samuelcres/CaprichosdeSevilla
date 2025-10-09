@@ -331,6 +331,83 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                 </AccordionContent>
               </AccordionItem>
 
+              {/* Cafeterías */}
+              <AccordionItem value="cafes" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafes">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.cafes}</h3>
+                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'cafes').length}</Badge>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  {restaurants.filter(r => r.category === 'cafes').map((restaurant, index) => {
+                    const imageUrl = getImage(restaurant.photo);
+                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+                    
+                    return (
+                    <Card key={`cafes-${index}`} data-testid={`card-restaurant-cafes-${index}`} className="flex flex-row overflow-hidden">
+                      {imageUrl && (
+                        <div className="w-32 h-32 flex-shrink-0">
+                          <img 
+                            src={imageUrl} 
+                            alt={restaurant.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <CardHeader className="flex-1">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                            <CardDescription className="mt-1">
+                              {restaurant.description}
+                            </CardDescription>
+                            {dishes && (
+                              <p className="mt-2 text-sm text-emerald-700 font-medium">
+                                ✨ {dishes}
+                              </p>
+                            )}
+                          </div>
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            <Star className="w-3 h-3 mr-1 fill-current" />
+                            {restaurant.rating}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Navigation className="w-4 h-4" />
+                          <span>{restaurant.distance} {t.tourism.distance}</span>
+                        </div>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                            data-testid={`button-map-cafes-${index}`}
+                          >
+                            <MapPin className="w-4 h-4 mr-2" />
+                            {t.tourism.viewMap}
+                          </Button>
+                          {restaurant.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(restaurant.website, '_blank')}
+                              data-testid={`button-website-cafes-${index}`}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Web
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                    );
+                  })}
+                </AccordionContent>
+              </AccordionItem>
+
               {/* Cenas */}
               <AccordionItem value="dinner" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-dinner">
