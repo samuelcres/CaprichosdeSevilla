@@ -160,13 +160,13 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
           <TabsContent value="activities" className="mt-6">
             <Card>
               <CardContent className="p-0">
-                <div className="aspect-video w-full">
+                <div className="w-full">
                   <iframe
-                    className="w-full h-full rounded-lg"
+                    className="w-full rounded-lg"
                     frameBorder="0"
-                    scrolling="no"
+                    scrolling="yes"
                     src="https://www.civitatis.com/widget-activities/?agencyId=40972&agencyUserId=44118&display=cosy&cant=6&lang=es&currency=EUR&destination=57&transfer=0&cmp=Widget_Sevilla_ES&width=100%&height=700px&hideButton=0&centerContent=1&typeSelection=all&color=325bdf&typography=Montserrat&removeBackground=1&showShadow=1&roundedButtons=1"
-                    style={{ minHeight: '700px', maxWidth: '100%', overflow: 'hidden' }}
+                    style={{ minHeight: '700px', maxWidth: '100%', height: '700px' }}
                     data-testid="iframe-civitatis"
                   />
                 </div>
