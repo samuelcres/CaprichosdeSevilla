@@ -8,6 +8,7 @@ export interface Restaurant {
   category: 'breakfast' | 'lunch' | 'cafeterias' | 'dinner';
   photo?: string;
   dishesKey?: string; // Key to look up recommended dishes in i18n
+  priceLevel: 'low' | 'medium' | 'high'; // Price level: low (€), medium (€€), high (€€€)
 }
 
 export const ibarraRestaurants: Restaurant[] = [
@@ -22,6 +23,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/traditional_spanish__a8531ed5.jpg',
     dishesKey: 'lacampana',
+    priceLevel: 'low',
   },
   {
     name: 'La Cacharrería',
@@ -32,6 +34,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'lacacharreria',
+    priceLevel: 'medium',
   },
   {
     name: 'Otto Café',
@@ -42,6 +45,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'ottocafe',
+    priceLevel: 'low',
   },
   {
     name: 'Casa Moreno',
@@ -52,6 +56,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'casamoreno',
+    priceLevel: 'low',
   },
   {
     name: 'Parcería Café',
@@ -62,6 +67,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'parceriacafe',
+    priceLevel: 'medium',
   },
   {
     name: 'Bar Alfalfa',
@@ -72,6 +78,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/spanish_traditional__60fd4f05.jpg',
     dishesKey: 'baralfalfa',
+    priceLevel: 'low',
   },
   {
     name: 'Café Mamá Inés',
@@ -82,6 +89,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'cafemamaines',
+    priceLevel: 'low',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -94,6 +102,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'labrunilda',
+    priceLevel: 'medium',
   },
   {
     name: 'Bartolomea',
@@ -104,6 +113,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'bartolomea',
+    priceLevel: 'medium',
   },
   {
     name: 'Duo Tapas',
@@ -114,6 +124,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'duotapas',
+    priceLevel: 'medium',
   },
   {
     name: 'Contenedor',
@@ -124,6 +135,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
     dishesKey: 'contenedor',
+    priceLevel: 'medium',
   },
   {
     name: 'Il Pesciolino',
@@ -134,6 +146,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
     dishesKey: 'ilpesciolino',
+    priceLevel: 'medium',
   },
   {
     name: 'Cañabota',
@@ -144,6 +157,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_paella_seafo_e3d9edb9.jpg',
     dishesKey: 'canabota',
+    priceLevel: 'medium',
   },
   {
     name: 'Eslava',
@@ -155,6 +169,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
     dishesKey: 'eslava',
+    priceLevel: 'medium',
   },
   // CAFETERÍAS
   {
@@ -166,6 +181,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'laparceria',
+    priceLevel: 'medium',
   },
   {
     name: 'Virgin Coffee',
@@ -176,6 +192,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'virgincoffee',
+    priceLevel: 'medium',
   },
   {
     name: 'Syra Coffee',
@@ -186,6 +203,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/traditional_spanish__a8531ed5.jpg',
     dishesKey: 'syracoffee',
+    priceLevel: 'medium',
   },
   {
     name: 'Café Isolde',
@@ -196,6 +214,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'cafeisolde',
+    priceLevel: 'low',
   },
   {
     name: 'Caótica Café',
@@ -206,6 +225,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'caoticacafe',
+    priceLevel: 'low',
   },
   {
     name: 'Café de Indias',
@@ -216,6 +236,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_traditional__60fd4f05.jpg',
     dishesKey: 'cafedeindias',
+    priceLevel: 'low',
   },
   {
     name: 'La Crème de la Crème',
@@ -226,6 +247,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/traditional_spanish__b4291a21.jpg',
     dishesKey: 'lacreme',
+    priceLevel: 'medium',
   },
   // CENAS
   {
@@ -238,6 +260,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'abantal',
+    priceLevel: 'high',
   },
   {
     name: 'Espacio Eslava',
@@ -249,6 +272,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
     dishesKey: 'espacioeslava',
+    priceLevel: 'high',
   },
   {
     name: 'Az-Zait',
@@ -259,6 +283,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
     dishesKey: 'azzait',
+    priceLevel: 'high',
   },
   {
     name: 'El Pintón',
@@ -269,6 +294,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'elpinton',
+    priceLevel: 'medium',
   },
   {
     name: 'Casa Morales',
@@ -279,6 +305,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'casamorales',
+    priceLevel: 'medium',
   },
   {
     name: 'Mamarracha',
@@ -289,6 +316,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'mamarracha',
+    priceLevel: 'medium',
   },
   {
     name: 'Oriza',
@@ -300,6 +328,7 @@ export const ibarraRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'oriza',
+    priceLevel: 'high',
   },
 ];
 
@@ -314,6 +343,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/traditional_spanish__f9018bb3.jpg',
     dishesKey: 'hornosanbuenaventura',
+    priceLevel: 'low',
   },
   {
     name: 'La Campana',
@@ -324,6 +354,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'lacampanaquevedo',
+    priceLevel: 'low',
   },
   {
     name: 'Ochoa Café',
@@ -334,6 +365,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'ochoacafe',
+    priceLevel: 'medium',
   },
   {
     name: 'Bar Levíes',
@@ -344,6 +376,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'barlevies',
+    priceLevel: 'low',
   },
   {
     name: 'Café de Indias',
@@ -354,6 +387,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'cafedeindias',
+    priceLevel: 'low',
   },
   {
     name: 'La Rollerie',
@@ -364,6 +398,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'larollerie',
+    priceLevel: 'medium',
   },
   {
     name: 'Maná Cafetería',
@@ -374,6 +409,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'breakfast',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'manacafeteria',
+    priceLevel: 'medium',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -385,6 +421,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
     dishesKey: 'bodeguitaromero',
+    priceLevel: 'low',
   },
   {
     name: 'El Rinconcillo',
@@ -395,6 +432,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'elrinconcillo',
+    priceLevel: 'low',
   },
   {
     name: 'Café Bar Las Teresas',
@@ -405,6 +443,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'lasteresas',
+    priceLevel: 'medium',
   },
   {
     name: 'Ovejas Negras',
@@ -415,6 +454,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'ovejasnegras',
+    priceLevel: 'medium',
   },
   {
     name: 'Casa Plácido',
@@ -425,6 +465,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_paella_seafo_2e59c319.jpg',
     dishesKey: 'casaplacido',
+    priceLevel: 'medium',
   },
   {
     name: 'Taberna Coloniales',
@@ -435,6 +476,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'tabernacoloniales',
+    priceLevel: 'low',
   },
   {
     name: 'Antigua Abacería',
@@ -445,6 +487,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'lunch',
     photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
     dishesKey: 'antiguaabaceria',
+    priceLevel: 'medium',
   },
   // CAFETERÍAS
   {
@@ -456,6 +499,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'recoveco',
+    priceLevel: 'medium',
   },
   {
     name: 'Avenida Constitución',
@@ -466,6 +510,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'avenidaconstitucion',
+    priceLevel: 'low',
   },
   {
     name: 'Bocafloja',
@@ -476,6 +521,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'bocafloja',
+    priceLevel: 'medium',
   },
   {
     name: 'Panem',
@@ -486,6 +532,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'panem',
+    priceLevel: 'medium',
   },
   {
     name: 'Yellow Couch',
@@ -496,6 +543,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'yellowcouch',
+    priceLevel: 'low',
   },
   {
     name: 'La Fresquita',
@@ -506,6 +554,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'lafresquita',
+    priceLevel: 'low',
   },
   {
     name: 'Picnic',
@@ -516,6 +565,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'cafeterias',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'picnic',
+    priceLevel: 'medium',
   },
   // CENAS
   {
@@ -527,6 +577,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'vineriasantelmo',
+    priceLevel: 'high',
   },
   {
     name: 'Catalina',
@@ -538,6 +589,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
     dishesKey: 'catalina',
+    priceLevel: 'high',
   },
   {
     name: 'Seis',
@@ -548,6 +600,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
     dishesKey: 'seis',
+    priceLevel: 'high',
   },
   {
     name: 'Torres y García',
@@ -558,6 +611,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
     dishesKey: 'torresygarcia',
+    priceLevel: 'medium',
   },
   {
     name: 'MOKAMBO Plaza Nueva',
@@ -568,6 +622,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'mokamboplazanueva',
+    priceLevel: 'medium',
   },
   {
     name: 'Becerrita',
@@ -579,6 +634,7 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'becerrita',
+    priceLevel: 'high',
   },
   {
     name: 'Donaire Azabache',
@@ -589,5 +645,6 @@ export const quevedoRestaurants: Restaurant[] = [
     category: 'dinner',
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'donaireazabache',
+    priceLevel: 'high',
   },
 ];
