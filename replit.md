@@ -40,6 +40,12 @@ The application follows a simple navigation flow: apartment selection (main page
 - Price level system implemented across all 70 restaurants (breakfast, lunch, cafeterias, dinner): visual indicators (€, €€, €€€) displayed in emerald green
 - Restaurant data structure enhanced with `priceLevel` field ('low', 'medium', 'high') for budget-conscious decision-making
 - Cafetería specialties fully translated in all 6 languages: café de especialidad, tostadas gourmet, bollería artesanal, etc.
+- **Tourist visit cards fully enhanced** (October 9, 2025): All 44 tourist visit recommendations now display with detailed information including photos, schedules, prices, apartment-specific walking distances, and direct links to Google Maps and official websites
+- Visit data structure expanded with comprehensive fields: photo, schedule, price, distanceIbarra, distanceQuevedo, mapsUrl, website
+- Visit cards follow same compact horizontal layout as restaurants: 128x128px square image on left, content on right with badges and action buttons
+- Apartment-specific distances displayed correctly (e.g., Catedral shows 8 min for Ibarra, 7 min for Quevedo)
+- Price badges for visits displayed in emerald-700 color matching restaurant price indicators
+- All visit practical information (44 locations across 9 categories) fully integrated and tested
 
 ## User Preferences
 
