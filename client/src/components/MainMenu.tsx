@@ -125,15 +125,18 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
               {options.slice(0, 3).map((option) => (
                 <Card
                   key={option.id}
-                  className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group"
+                  className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300"
                   onClick={() => onSelect(option.id)}
                   data-testid={`card-menu-${option.id}`}
                 >
-                  <CardHeader className="p-6 flex flex-col items-center text-center space-y-4">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
-                      <div className="text-emerald-700">{option.icon}</div>
+                  <CardHeader className="p-8 flex flex-col items-center text-center space-y-5">
+                    <div className="relative">
+                      <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40 group-hover:ring-4 group-hover:ring-primary/30">
+                        <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                      </div>
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <CardTitle className="text-lg font-semibold">{option.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold text-foreground">{option.title}</CardTitle>
                   </CardHeader>
                 </Card>
               ))}
@@ -144,15 +147,18 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
                 {options.slice(3).map((option) => (
                   <Card
                     key={option.id}
-                    className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group"
+                    className="hover-elevate active-elevate-2 cursor-pointer overflow-visible group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300"
                     onClick={() => onSelect(option.id)}
                     data-testid={`card-menu-${option.id}`}
                   >
-                    <CardHeader className="p-6 flex flex-col items-center text-center space-y-4">
-                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
-                        <div className="text-emerald-700">{option.icon}</div>
+                    <CardHeader className="p-8 flex flex-col items-center text-center space-y-5">
+                      <div className="relative">
+                        <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40 group-hover:ring-4 group-hover:ring-primary/30">
+                          <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
+                        </div>
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                       </div>
-                      <CardTitle className="text-lg font-semibold">{option.title}</CardTitle>
+                      <CardTitle className="text-xl font-bold text-foreground">{option.title}</CardTitle>
                     </CardHeader>
                   </Card>
                 ))}
@@ -167,10 +173,10 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
 
 export function getMenuIcons() {
   return {
-    transport: <Bus className="w-11 h-11" />,
-    checkin: <Key className="w-11 h-11" />,
-    wifi: <Wifi className="w-11 h-11" />,
-    tourism: <MapPin className="w-11 h-11" />,
-    contact: <Phone className="w-11 h-11" />,
+    transport: <Bus className="w-12 h-12" />,
+    checkin: <Key className="w-12 h-12" />,
+    wifi: <Wifi className="w-12 h-12" />,
+    tourism: <MapPin className="w-12 h-12" />,
+    contact: <Phone className="w-12 h-12" />,
   };
 }

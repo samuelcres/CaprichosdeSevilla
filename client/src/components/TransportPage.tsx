@@ -76,7 +76,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
               <AccordionItem value="airport" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-arrival">
                   <div className="flex items-center gap-3">
-                    <Plane className="w-6 h-6 text-primary" />
+                    <Plane className="w-6 h-6 text-foreground" />
                     <h2 className="text-xl font-semibold text-foreground">
                       {t.transport.fromAirport}
                     </h2>
@@ -225,7 +225,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
               <AccordionItem value="trainstation" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-arrival">
                   <div className="flex items-center gap-3">
-                    <Train className="w-6 h-6 text-primary" />
+                    <Train className="w-6 h-6 text-foreground" />
                     <h2 className="text-xl font-semibold text-foreground">
                       {t.transport.trainStation.fromStation}
                     </h2>
@@ -316,7 +316,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
               <AccordionItem value="airport" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-departure">
                   <div className="flex items-center gap-3">
-                    <Plane className="w-6 h-6 text-primary" />
+                    <Plane className="w-6 h-6 text-foreground" />
                     <h2 className="text-xl font-semibold text-foreground">
                       {t.transport.toAirport}
                     </h2>
@@ -435,7 +435,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
               <AccordionItem value="trainstation" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-departure">
                   <div className="flex items-center gap-3">
-                    <Train className="w-6 h-6 text-primary" />
+                    <Train className="w-6 h-6 text-foreground" />
                     <h2 className="text-xl font-semibold text-foreground">
                       {t.transport.trainStation.toStation}
                     </h2>
