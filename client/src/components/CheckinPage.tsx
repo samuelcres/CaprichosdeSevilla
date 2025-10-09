@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge';
 import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
-import checkinDoorUrl from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -128,17 +127,6 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
             </div>
           </CardContent>
         </Card>
-
-        {apartment === 'quevedo' && (
-          <div className="mt-6">
-            <img 
-              src={checkinDoorUrl} 
-              alt="Check-in door access" 
-              className="w-full h-64 object-cover rounded-lg shadow-lg"
-              data-testid="img-checkin-door"
-            />
-          </div>
-        )}
       </div>
     </div>
   );

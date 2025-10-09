@@ -116,5 +116,4 @@ Preferred communication style: Simple, everyday language.
   6. Exit instructions with interior button location
 - New schedule information card showing link availability (check-in 15:00h to check-out 11:00h)
 - Enhanced warning message about not pressing door opening remotely
-- Check-in door image added for visual reference (Quevedo apartment only)
 - All improvements translated across 6 languages maintaining technical terms consistency
