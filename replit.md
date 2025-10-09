@@ -8,9 +8,14 @@ The application follows a simple navigation flow: apartment selection (main page
 
 **Recent Updates (October 2025):**
 - Apartment selection is now the main landing page (/) - guests see apartment options immediately
-- Updated apartment addresses to show street name without numbers + ". Sevilla" and neighborhood information:
-  - Capricho de Ibarra: "Calle Conde de Ibarra. Sevilla" / "Centro histórico. Barrio Arenal."
-  - Capricho de Quevedo: "Calle Quevedo. Sevilla" / "Centro histórico. Barrio Encarnación."
+- Apartment addresses and neighborhood information fully translated across all 6 languages:
+  - Spanish: "Calle Conde de Ibarra. Sevilla" / "Centro histórico. Barrio Arenal."
+  - English: "Conde de Ibarra Street. Seville" / "Historic center. Arenal District."
+  - French: "Rue Conde de Ibarra. Séville" / "Centre historique. Quartier Arenal."
+  - German: "Conde de Ibarra Straße. Sevilla" / "Historisches Zentrum. Viertel Arenal."
+  - Italian: "Via Conde de Ibarra. Siviglia" / "Centro storico. Quartiere Arenal."
+  - Chinese: "Conde de Ibarra街. 塞维利亚" / "历史中心. Arenal区."
+- Apartment selector texts dynamically change when language is switched
 - White headers (bg-white) across all pages for clean, bright appearance
 - Visual language selector: displays current language flag and name (e.g., 🇪🇸 Español, 🇬🇧 English) instead of simple globe icon
 - WhatsApp direct contact button (+34 661 610 794) integrated in main menu header

@@ -106,8 +106,8 @@ export default function ApartmentSelector({
               <CardHeader className="text-center p-6">
                 <CardTitle className="text-xl">{ibarraName}</CardTitle>
                 <CardDescription className="text-sm">
-                  <div>Calle Conde de Ibarra. Sevilla</div>
-                  <div>Centro histórico. Barrio Arenal.</div>
+                  <div>{t.apartment.ibarraAddress}</div>
+                  <div>{t.apartment.ibarraNeighborhood}</div>
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -127,8 +127,8 @@ export default function ApartmentSelector({
               <CardHeader className="text-center p-6">
                 <CardTitle className="text-xl">{quevedoName}</CardTitle>
                 <CardDescription className="text-sm">
-                  <div>Calle Quevedo. Sevilla</div>
-                  <div>Centro histórico. Barrio Encarnación.</div>
+                  <div>{t.apartment.quevedoAddress}</div>
+                  <div>{t.apartment.quevedoNeighborhood}</div>
                 </CardDescription>
               </CardHeader>
             </Card>
