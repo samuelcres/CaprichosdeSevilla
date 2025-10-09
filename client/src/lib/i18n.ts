@@ -139,33 +139,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: 'Llegar a la dirección',
-          description: 'Calle Quevedo, 11, Sevilla',
+          title: 'Entrada al apartamento',
+          description: 'Llegar al apartamento situado en C/ Quevedo, 11 (Sevilla)',
         },
         step2: {
-          title: 'Acceso remoto',
-          description: 'Recibirás un enlace por Email o WhatsApp para la apertura de puertas.',
+          title: 'Acceder al enlace de apertura',
+          description: 'Una vez físicamente allí, acceda al enlace que deberá tener en su E-mail, mensajería de Booking o WhatsApp.',
         },
         step3: {
-          title: 'Abrir portal',
-          description: "Pulsa el botón 'Portal Calle' en el enlace. Se activará a las 15:00h del día de llegada.",
+          title: 'Abrir portal principal',
+          description: 'Tras acceder al enlace, verá la interfaz de control. Pulse en "Portal Calle" para abrir la entrada principal del edificio.',
         },
         step4: {
-          title: 'Localizar apartamento',
-          description: 'Al entrar, gira a la derecha. Planta baja, puerta derecha.',
+          title: 'Localizar el apartamento',
+          description: 'Una vez dentro, simplemente gire a su derecha. El apartamento está en la misma planta baja, en la puerta derecha.',
         },
         step5: {
-          title: 'Abrir apartamento',
-          description: "Frente a la puerta, pulsa 'Home door Low R' en el enlace.",
+          title: 'Abrir puerta del apartamento',
+          description: 'Una vez aquí, presione el botón indicado "Home door Low R" (puerta bajo derecha) en el enlace de control.',
         },
         step6: {
-          title: 'Salida',
-          description: 'Dentro encontrarás un botón para abrir la puerta manualmente. Recuerda cerrar la puerta del portal.',
+          title: 'Para salir del apartamento',
+          description: 'Eso es todo. Una vez dentro, si quisiera abrir la puerta para salir, sólo tendría que pulsar el botón de salida que encontrará junto a la puerta.',
         },
       },
       warning: {
-        title: 'Importante',
-        description: 'El enlace es válido hasta las 11:00h del día de salida. No pulses el botón si no estás físicamente en la puerta.',
+        title: 'Importante - Lea atentamente',
+        description: 'Durante su estancia le aconsejamos no presionar la apertura de la puerta del apartamento si no se encuentra físicamente allí, ya que una vez abierta sólo se podrá cerrar manualmente.',
+      },
+      schedule: {
+        title: 'Horarios y disponibilidad',
+        description: 'Recuerde que el enlace de apertura y cierre automático en su WhatsApp estará disponible desde el check-in del día de su llegada (15:00h) hasta el día de su salida hasta las 11:00h. ¡Muchas gracias por todo y que disfrute del apartamento!',
       },
     },
     wifi: {
@@ -506,33 +510,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: 'Arrive at address',
-          description: 'Calle Quevedo, 11, Seville',
+          title: 'Entering the apartment',
+          description: 'Arrive at the apartment located at C/ Quevedo, 11 (Seville)',
         },
         step2: {
-          title: 'Remote access',
-          description: 'You will receive a link via Email or WhatsApp for door access.',
+          title: 'Access the door link',
+          description: 'Once physically there, access the link you should have in your Email, Booking messaging or WhatsApp.',
         },
         step3: {
-          title: 'Open main door',
-          description: "Press 'Portal Calle' button in the link. Available from 3:00 PM on arrival day.",
+          title: 'Open main entrance',
+          description: 'After accessing the link, you will see the control interface. Press "Portal Calle" to open the main building entrance.',
         },
         step4: {
-          title: 'Locate apartment',
-          description: 'Turn right after entering. Ground floor, right door.',
+          title: 'Locate the apartment',
+          description: 'Once inside, simply turn right. The apartment is on the same ground floor, on the right door.',
         },
         step5: {
-          title: 'Open apartment',
-          description: "At the door, press 'Home door Low R' in the link.",
+          title: 'Open apartment door',
+          description: 'Once here, press the indicated button "Home door Low R" (low right door) in the control link.',
         },
         step6: {
-          title: 'Exit',
-          description: 'Inside you will find a button to open the door manually. Remember to close the main door.',
+          title: 'To exit the apartment',
+          description: 'That\'s it. Once inside, if you want to open the door to leave, you just have to press the exit button you will find next to the door.',
         },
       },
       warning: {
-        title: 'Important',
-        description: 'The link is valid until 11:00 AM on departure day. Do not press the button if you are not physically at the door.',
+        title: 'Important - Please read carefully',
+        description: 'During your stay we advise you not to press the apartment door opening if you are not physically there, as once opened it can only be closed manually.',
+      },
+      schedule: {
+        title: 'Schedule and availability',
+        description: 'Remember that the automatic opening and closing link on your WhatsApp will be available from check-in on your arrival day (3:00 PM) until your departure day until 11:00 AM. Thank you very much and enjoy the apartment!',
       },
     },
     wifi: {
@@ -863,33 +871,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: 'Arriver à l\'adresse',
-          description: 'Calle Quevedo, 11, Séville',
+          title: 'Entrée dans l\'appartement',
+          description: 'Arriver à l\'appartement situé C/ Quevedo, 11 (Séville)',
         },
         step2: {
-          title: 'Accès à distance',
-          description: 'Vous recevrez un lien par email ou WhatsApp pour l\'ouverture des portes.',
+          title: 'Accéder au lien d\'ouverture',
+          description: 'Une fois physiquement sur place, accédez au lien que vous devez avoir dans votre e-mail, messagerie Booking ou WhatsApp.',
         },
         step3: {
-          title: 'Ouvrir le portail',
-          description: "Appuyez sur 'Portal Calle' dans le lien. Disponible à partir de 15h le jour d'arrivée.",
+          title: 'Ouvrir le portail principal',
+          description: 'Après avoir accédé au lien, vous verrez l\'interface de contrôle. Appuyez sur "Portal Calle" pour ouvrir l\'entrée principale du bâtiment.',
         },
         step4: {
           title: 'Localiser l\'appartement',
-          description: 'Tournez à droite en entrant. Rez-de-chaussée, porte de droite.',
+          description: 'Une fois à l\'intérieur, tournez simplement à droite. L\'appartement est au même rez-de-chaussée, porte de droite.',
         },
         step5: {
-          title: 'Ouvrir l\'appartement',
-          description: "Devant la porte, appuyez sur 'Home door Low R' dans le lien.",
+          title: 'Ouvrir la porte de l\'appartement',
+          description: 'Une fois ici, appuyez sur le bouton indiqué "Home door Low R" (porte basse droite) dans le lien de contrôle.',
         },
         step6: {
-          title: 'Sortie',
-          description: 'À l\'intérieur, vous trouverez un bouton pour ouvrir la porte manuellement. N\'oubliez pas de fermer le portail.',
+          title: 'Pour sortir de l\'appartement',
+          description: 'C\'est tout. Une fois à l\'intérieur, si vous voulez ouvrir la porte pour sortir, il vous suffit d\'appuyer sur le bouton de sortie que vous trouverez près de la porte.',
         },
       },
       warning: {
-        title: 'Important',
-        description: 'Le lien est valide jusqu\'à 11h le jour du départ. N\'appuyez pas sur le bouton si vous n\'êtes pas physiquement à la porte.',
+        title: 'Important - Veuillez lire attentivement',
+        description: 'Pendant votre séjour, nous vous conseillons de ne pas appuyer sur l\'ouverture de la porte de l\'appartement si vous n\'êtes pas physiquement sur place, car une fois ouverte, elle ne peut être fermée que manuellement.',
+      },
+      schedule: {
+        title: 'Horaires et disponibilité',
+        description: 'N\'oubliez pas que le lien d\'ouverture et de fermeture automatique sur votre WhatsApp sera disponible à partir du check-in le jour de votre arrivée (15h00) jusqu\'au jour de votre départ à 11h00. Merci beaucoup et profitez de l\'appartement !',
       },
     },
     wifi: {
@@ -1220,33 +1232,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: 'Zur Adresse kommen',
-          description: 'Calle Quevedo, 11, Sevilla',
+          title: 'Eintritt in die Wohnung',
+          description: 'Kommen Sie zur Wohnung in C/ Quevedo, 11 (Sevilla)',
         },
         step2: {
-          title: 'Fernzugang',
-          description: 'Sie erhalten einen Link per E-Mail oder WhatsApp für den Türzugang.',
+          title: 'Zugang zum Öffnungslink',
+          description: 'Sobald Sie physisch dort sind, greifen Sie auf den Link zu, den Sie in Ihrer E-Mail, Booking-Nachricht oder WhatsApp haben sollten.',
         },
         step3: {
-          title: 'Haupttür öffnen',
-          description: "Drücken Sie 'Portal Calle' im Link. Verfügbar ab 15:00 Uhr am Anreisetag.",
+          title: 'Haupteingang öffnen',
+          description: 'Nach dem Zugriff auf den Link sehen Sie die Steuerungsoberfläche. Drücken Sie "Portal Calle", um den Haupteingang des Gebäudes zu öffnen.',
         },
         step4: {
-          title: 'Wohnung finden',
-          description: 'Nach dem Eingang rechts abbiegen. Erdgeschoss, rechte Tür.',
+          title: 'Die Wohnung lokalisieren',
+          description: 'Sobald Sie drinnen sind, biegen Sie einfach rechts ab. Die Wohnung befindet sich im selben Erdgeschoss, rechte Tür.',
         },
         step5: {
-          title: 'Wohnung öffnen',
-          description: "Vor der Tür drücken Sie 'Home door Low R' im Link.",
+          title: 'Wohnungstür öffnen',
+          description: 'Sobald Sie hier sind, drücken Sie die angegebene Taste "Home door Low R" (niedrige rechte Tür) im Steuerungslink.',
         },
         step6: {
-          title: 'Ausgang',
-          description: 'Innen finden Sie einen Knopf zum manuellen Öffnen der Tür. Vergessen Sie nicht, die Haupttür zu schließen.',
+          title: 'Um die Wohnung zu verlassen',
+          description: 'Das ist alles. Sobald Sie drinnen sind und die Tür zum Verlassen öffnen möchten, müssen Sie nur den Ausgangsknopf drücken, den Sie neben der Tür finden.',
         },
       },
       warning: {
-        title: 'Wichtig',
-        description: 'Der Link ist bis 11:00 Uhr am Abreisetag gültig. Drücken Sie den Knopf nicht, wenn Sie nicht physisch an der Tür sind.',
+        title: 'Wichtig - Bitte sorgfältig lesen',
+        description: 'Während Ihres Aufenthalts raten wir Ihnen, die Wohnungstür nicht zu öffnen, wenn Sie nicht physisch dort sind, da sie nach dem Öffnen nur manuell geschlossen werden kann.',
+      },
+      schedule: {
+        title: 'Zeiten und Verfügbarkeit',
+        description: 'Denken Sie daran, dass der automatische Öffnungs- und Schließungslink auf Ihrem WhatsApp vom Check-in am Tag Ihrer Ankunft (15:00 Uhr) bis zum Tag Ihrer Abreise bis 11:00 Uhr verfügbar ist. Vielen Dank und genießen Sie die Wohnung!',
       },
     },
     wifi: {
@@ -1577,33 +1593,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: 'Arrivare all\'indirizzo',
-          description: 'Calle Quevedo, 11, Siviglia',
+          title: 'Ingresso nell\'appartamento',
+          description: 'Arrivare all\'appartamento situato in C/ Quevedo, 11 (Siviglia)',
         },
         step2: {
-          title: 'Accesso remoto',
-          description: 'Riceverai un link via email o WhatsApp per l\'apertura delle porte.',
+          title: 'Accedere al link di apertura',
+          description: 'Una volta fisicamente lì, accedere al link che dovreste avere nella vostra email, messaggistica di Booking o WhatsApp.',
         },
         step3: {
-          title: 'Aprire il portone',
-          description: "Premere 'Portal Calle' nel link. Disponibile dalle 15:00 del giorno di arrivo.",
+          title: 'Aprire l\'ingresso principale',
+          description: 'Dopo aver acceduto al link, vedrete l\'interfaccia di controllo. Premere "Portal Calle" per aprire l\'ingresso principale dell\'edificio.',
         },
         step4: {
-          title: 'Trovare l\'appartamento',
-          description: 'Dopo l\'ingresso, girare a destra. Piano terra, porta destra.',
+          title: 'Localizzare l\'appartamento',
+          description: 'Una volta dentro, semplicemente girare a destra. L\'appartamento è sullo stesso piano terra, porta destra.',
         },
         step5: {
-          title: 'Aprire l\'appartamento',
-          description: "Davanti alla porta, premere 'Home door Low R' nel link.",
+          title: 'Aprire la porta dell\'appartamento',
+          description: 'Una volta qui, premere il pulsante indicato "Home door Low R" (porta bassa destra) nel link di controllo.',
         },
         step6: {
-          title: 'Uscita',
-          description: 'All\'interno troverai un pulsante per aprire la porta manualmente. Ricorda di chiudere il portone.',
+          title: 'Per uscire dall\'appartamento',
+          description: 'È tutto. Una volta dentro, se voleste aprire la porta per uscire, dovrete solo premere il pulsante di uscita che troverete accanto alla porta.',
         },
       },
       warning: {
-        title: 'Importante',
-        description: 'Il link è valido fino alle 11:00 del giorno di partenza. Non premere il pulsante se non sei fisicamente alla porta.',
+        title: 'Importante - Leggere attentamente',
+        description: 'Durante il vostro soggiorno vi consigliamo di non premere l\'apertura della porta dell\'appartamento se non siete fisicamente lì, poiché una volta aperta può essere chiusa solo manualmente.',
+      },
+      schedule: {
+        title: 'Orari e disponibilità',
+        description: 'Ricordate che il link di apertura e chiusura automatica sul vostro WhatsApp sarà disponibile dal check-in del giorno del vostro arrivo (15:00) fino al giorno della vostra partenza alle 11:00. Grazie mille e godetevi l\'appartamento!',
       },
     },
     wifi: {
@@ -1934,33 +1954,37 @@ export const translations = {
       },
       quevedo: {
         step1: {
-          title: '到达地址',
-          description: 'Calle Quevedo, 11, 塞维利亚',
+          title: '进入公寓',
+          description: '到达位于 C/ Quevedo, 11 (塞维利亚) 的公寓',
         },
         step2: {
-          title: '远程访问',
-          description: '您将通过电子邮件或WhatsApp收到开门链接。',
+          title: '访问开门链接',
+          description: '到达现场后，访问您在电子邮件、Booking消息或WhatsApp中收到的链接。',
         },
         step3: {
-          title: '打开主门',
-          description: "点击链接中的'Portal Calle'按钮。入住当天下午3点起可用。",
+          title: '打开主入口',
+          description: '访问链接后，您将看到控制界面。点击"Portal Calle"打开建筑物主入口。',
         },
         step4: {
-          title: '找到公寓',
-          description: '进门后右转。一楼，右侧门。',
+          title: '定位公寓',
+          description: '进入后，只需向右转。公寓在同一层一楼，右侧门。',
         },
         step5: {
           title: '打开公寓门',
-          description: "在门前，点击链接中的'Home door Low R'。",
+          description: '到达后，在控制链接中按指示的"Home door Low R"（右下门）按钮。',
         },
         step6: {
-          title: '退出',
-          description: '里面有一个手动开门按钮。记得关闭主门。',
+          title: '离开公寓',
+          description: '就这样。进入后，如果想开门离开，只需按门旁边的出口按钮即可。',
         },
       },
       warning: {
-        title: '重要提示',
-        description: '链接在退房当天上午11点前有效。如果您不在门前，请勿按按钮。',
+        title: '重要提示 - 请仔细阅读',
+        description: '在您入住期间，我们建议您不在现场时不要按公寓门开启按钮，因为一旦打开只能手动关闭。',
+      },
+      schedule: {
+        title: '时间和可用性',
+        description: '请记住，您WhatsApp上的自动开关链接将从入住当天（15:00）开始到退房当天上午11:00可用。非常感谢，祝您享受公寓！',
       },
     },
     wifi: {
