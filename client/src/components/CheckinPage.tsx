@@ -1,9 +1,10 @@
 import PageHeader from './PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle } from 'lucide-react';
+import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import checkinDoorUrl from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -94,6 +95,24 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
           </CardContent>
         </Card>
 
+        {t.checkin.schedule && (
+          <Card className="border-blue-500/50 bg-blue-50 dark:bg-blue-950/20" data-testid="card-schedule-info">
+            <CardContent className="p-6">
+              <div className="flex gap-3">
+                <Clock className="w-5 h-5 text-blue-600 dark:text-blue-500 flex-shrink-0 mt-0.5" />
+                <div className="space-y-2">
+                  <h3 className="font-semibold text-blue-900 dark:text-blue-300">
+                    {t.checkin.schedule.title}
+                  </h3>
+                  <p className="text-sm text-blue-800 dark:text-blue-400 leading-relaxed">
+                    {t.checkin.schedule.description}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         <Card className="border-green-500/50 bg-green-50 dark:bg-green-950/20">
           <CardContent className="p-6">
             <div className="flex gap-3">
@@ -109,6 +128,17 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
             </div>
           </CardContent>
         </Card>
+
+        {apartment === 'quevedo' && (
+          <div className="mt-6">
+            <img 
+              src={checkinDoorUrl} 
+              alt="Check-in door access" 
+              className="w-full h-64 object-cover rounded-lg shadow-lg"
+              data-testid="img-checkin-door"
+            />
+          </div>
+        )}
       </div>
     </div>
   );
