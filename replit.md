@@ -33,6 +33,9 @@ The application follows a simple navigation flow: apartment selection (main page
 - Comprehensive visit database with 44 visit items fully translated across all 6 languages (Spanish, English, French, German, Italian, Chinese)
 - Refactored tourism data structure: visit content (names and descriptions) now stored in i18n.ts for complete multilingual support and maintainability
 - visitData.ts simplified to only category IDs, all translatable content moved to centralized i18n translation system
+- Restaurant cards redesigned with compact horizontal layout: small square images (128x128px) on left, content on right for better space efficiency
+- Each restaurant now displays representative photos of the venue and recommended dishes fully translated in all 6 languages
+- Compact restaurant card design allows approximately 3 recommendations visible on screen simultaneously for easier browsing
 
 ## User Preferences
 
