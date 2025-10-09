@@ -4,6 +4,11 @@ import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import transportBg from '@assets/stock_images/seville_transportati_6cb94a1d.jpg';
+import checkinBg from '@assets/stock_images/hotel_apartment_key__f8c5ac84.jpg';
+import wifiBg from '@assets/stock_images/wifi_internet_connec_dc76a8b4.jpg';
+import tourismBg from '@assets/stock_images/seville_cathedral_al_69643ac9.jpg';
+import contactBg from '@assets/stock_images/customer_service_con_5e1eb47a.jpg';
 import { languages, Language } from '@/lib/i18n';
 import {
   DropdownMenu,
@@ -35,6 +40,17 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
 
   const currentLang = languages.find(l => l.code === currentLanguage);
+
+  const getBackgroundImage = (optionId: string) => {
+    const backgrounds: Record<string, string> = {
+      'transport': transportBg,
+      'checkin': checkinBg,
+      'wifi': wifiBg,
+      'tourism': tourismBg,
+      'contact': contactBg,
+    };
+    return backgrounds[optionId] || sevilleBgUrl;
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
@@ -131,7 +147,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
                 >
                   <div 
                     className="absolute inset-0 bg-cover bg-center opacity-[0.15] pointer-events-none"
-                    style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+                    style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
                   />
                   <CardHeader className="p-8 flex flex-col items-center text-center space-y-5 relative z-10">
                     <div className="relative">
@@ -157,7 +173,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
                   >
                     <div 
                       className="absolute inset-0 bg-cover bg-center opacity-[0.15] pointer-events-none"
-                      style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+                      style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
                     />
                     <CardHeader className="p-8 flex flex-col items-center text-center space-y-5 relative z-10">
                       <div className="relative">
