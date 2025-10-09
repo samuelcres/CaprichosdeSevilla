@@ -3,10 +3,12 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, ExternalLink, Navigation } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
+import { visitCategoryIds } from '@/lib/visitData';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface TourismPageProps {
@@ -58,6 +60,14 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
           >
             {t.tourism.restaurants}
           </Button>
+          <Button
+            variant={activeTab === 'visits' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('visits')}
+            data-testid="tab-visits"
+          >
+            {t.tourism.visits}
+          </Button>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
@@ -66,6 +76,7 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
               <TabsTrigger value="activities">Activities</TabsTrigger>
               <TabsTrigger value="map">Map</TabsTrigger>
               <TabsTrigger value="restaurants">Restaurants</TabsTrigger>
+              <TabsTrigger value="visits">Visits</TabsTrigger>
             </TabsList>
           </div>
 
@@ -112,158 +123,213 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
               {t.tourism.restaurantsIntro}
             </p>
 
-            {/* Desayunos */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">{t.tourism.breakfast}</h3>
-              {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
-                <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                        <CardDescription className="mt-1">
-                          {restaurant.description}
-                        </CardDescription>
-                      </div>
-                      <Badge variant="secondary" className="flex-shrink-0">
-                        <Star className="w-3 h-3 mr-1 fill-current" />
-                        {restaurant.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Navigation className="w-4 h-4" />
-                      <span>{restaurant.distance} {t.tourism.distance}</span>
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                        data-testid={`button-map-breakfast-${index}`}
-                      >
-                        <MapPin className="w-4 h-4 mr-2" />
-                        {t.tourism.viewMap}
-                      </Button>
-                      {restaurant.website && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => window.open(restaurant.website, '_blank')}
-                          data-testid={`button-website-breakfast-${index}`}
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Web
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <Accordion type="multiple" className="space-y-4">
+              {/* Desayunos */}
+              <AccordionItem value="breakfast" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-breakfast">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.breakfast}</h3>
+                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'breakfast').length}</Badge>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
+                    <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`}>
+                      <CardHeader>
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                            <CardDescription className="mt-1">
+                              {restaurant.description}
+                            </CardDescription>
+                          </div>
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            <Star className="w-3 h-3 mr-1 fill-current" />
+                            {restaurant.rating}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Navigation className="w-4 h-4" />
+                          <span>{restaurant.distance} {t.tourism.distance}</span>
+                        </div>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                            data-testid={`button-map-breakfast-${index}`}
+                          >
+                            <MapPin className="w-4 h-4 mr-2" />
+                            {t.tourism.viewMap}
+                          </Button>
+                          {restaurant.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(restaurant.website, '_blank')}
+                              data-testid={`button-website-breakfast-${index}`}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Web
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
 
-            {/* Almuerzos / Comidas */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">{t.tourism.lunch}</h3>
-              {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
-                <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                        <CardDescription className="mt-1">
-                          {restaurant.description}
-                        </CardDescription>
-                      </div>
-                      <Badge variant="secondary" className="flex-shrink-0">
-                        <Star className="w-3 h-3 mr-1 fill-current" />
-                        {restaurant.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Navigation className="w-4 h-4" />
-                      <span>{restaurant.distance} {t.tourism.distance}</span>
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                        data-testid={`button-map-lunch-${index}`}
-                      >
-                        <MapPin className="w-4 h-4 mr-2" />
-                        {t.tourism.viewMap}
-                      </Button>
-                      {restaurant.website && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => window.open(restaurant.website, '_blank')}
-                          data-testid={`button-website-lunch-${index}`}
-                        >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Web
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+              {/* Almuerzos / Comidas */}
+              <AccordionItem value="lunch" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-lunch">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.lunch}</h3>
+                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'lunch').length}</Badge>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
+                    <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`}>
+                      <CardHeader>
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                            <CardDescription className="mt-1">
+                              {restaurant.description}
+                            </CardDescription>
+                          </div>
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            <Star className="w-3 h-3 mr-1 fill-current" />
+                            {restaurant.rating}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Navigation className="w-4 h-4" />
+                          <span>{restaurant.distance} {t.tourism.distance}</span>
+                        </div>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                            data-testid={`button-map-lunch-${index}`}
+                          >
+                            <MapPin className="w-4 h-4 mr-2" />
+                            {t.tourism.viewMap}
+                          </Button>
+                          {restaurant.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(restaurant.website, '_blank')}
+                              data-testid={`button-website-lunch-${index}`}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Web
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
 
-            {/* Cenas */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">{t.tourism.dinner}</h3>
-              {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
-                <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                        <CardDescription className="mt-1">
-                          {restaurant.description}
-                        </CardDescription>
+              {/* Cenas */}
+              <AccordionItem value="dinner" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-dinner">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.dinner}</h3>
+                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'dinner').length}</Badge>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
+                    <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`}>
+                      <CardHeader>
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
+                            <CardDescription className="mt-1">
+                              {restaurant.description}
+                            </CardDescription>
+                          </div>
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            <Star className="w-3 h-3 mr-1 fill-current" />
+                            {restaurant.rating}
+                          </Badge>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Navigation className="w-4 h-4" />
+                          <span>{restaurant.distance} {t.tourism.distance}</span>
+                        </div>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                            data-testid={`button-map-dinner-${index}`}
+                          >
+                            <MapPin className="w-4 h-4 mr-2" />
+                            {t.tourism.viewMap}
+                          </Button>
+                          {restaurant.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(restaurant.website, '_blank')}
+                              data-testid={`button-website-dinner-${index}`}
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Web
+                            </Button>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </TabsContent>
+
+          <TabsContent value="visits" className="mt-6">
+            <Accordion type="multiple" className="space-y-4">
+              {visitCategoryIds.map((categoryId) => {
+                const items = t.tourism.visitItems[categoryId];
+                return (
+                  <AccordionItem key={categoryId} value={categoryId} className="border rounded-lg px-6">
+                    <AccordionTrigger className="hover:no-underline" data-testid={`accordion-visit-${categoryId}`}>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg font-semibold text-foreground">
+                          {t.tourism.visitCategories[categoryId]}
+                        </h3>
+                        <Badge variant="secondary">{items.length}</Badge>
                       </div>
-                      <Badge variant="secondary" className="flex-shrink-0">
-                        <Star className="w-3 h-3 mr-1 fill-current" />
-                        {restaurant.rating}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Navigation className="w-4 h-4" />
-                      <span>{restaurant.distance} {t.tourism.distance}</span>
-                    </div>
-                    <div className="flex gap-2 flex-wrap">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                        data-testid={`button-map-dinner-${index}`}
-                      >
-                        <MapPin className="w-4 h-4 mr-2" />
-                        {t.tourism.viewMap}
-                      </Button>
-                      {restaurant.website && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => window.open(restaurant.website, '_blank')}
-                          data-testid={`button-website-dinner-${index}`}
+                    </AccordionTrigger>
+                    <AccordionContent className="space-y-3 pt-4">
+                      {items.map((item: { name: string; description: string }, index: number) => (
+                        <div 
+                          key={`${categoryId}-${index}`} 
+                          className="p-4 bg-muted/30 rounded-lg border border-border"
+                          data-testid={`visit-item-${categoryId}-${index}`}
                         >
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          Web
-                        </Button>
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                          <h4 className="font-semibold text-foreground mb-1">{item.name}</h4>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      ))}
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
           </TabsContent>
         </Tabs>
       </div>
