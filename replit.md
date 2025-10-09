@@ -22,13 +22,15 @@ The application follows a simple navigation flow: apartment selection (main page
 - Plaza de España background image with orange trees now used consistently across ALL pages with transparency (30% opacity), covering the full screen (bg-cover bg-center)
 - Logo sizing and positioning: h-20 md:h-24 centered in main content on apartment page with rounded corners, h-14 md:h-16 in header on menu page
 - Main menu redesigned with elegant visual layout: 3 cards in first row, 2 centered in second row for better distribution
-- Menu option cards feature modern professional styling with intensified terracotta/orange gradient backgrounds (HSL 20 85% 55%) for high visual impact
-- Icon containers use vibrant three-stop terracotta gradients (40%/30%/20% opacity) that intensify on hover (60%/50%/40%)
-- Enhanced hover effects: ring-4 ring-primary/30, shadow escalation (xl to 2xl), icon scaling (110%), and prominent glow effects
-- Large icons (w-12 h-12 / 48px) in spacious rounded containers (w-24 h-24 / 96px) with drop shadows for depth
-- Card styling enforced with !important modifiers: !rounded-2xl, !border-2, !shadow-xl to override defaults and ensure visibility
-- Accessible design: card titles remain text-foreground in all states for proper contrast on white backgrounds
-- Each menu card displays unique thematic watermark image at 15% opacity: Seville transportation (transport), hotel key (check-in), WiFi network (WiFi), Seville cathedral (tourism), customer service (contact)
+- Menu option cards feature split-panel design: thematic image on left half, icon and title on clean white background on right half
+- Fixed card height (h-48 / 192px) ensures uniform sizing across all menu buttons
+- Each card displays unique full-opacity thematic image: Seville transportation (transport), hotel key (check-in), WiFi network (WiFi), Seville cathedral (tourism), customer service (contact)
+- Icon containers use vibrant three-stop terracotta/orange gradients (40%/30%/20% opacity) that intensify on hover (60%/50%/40%)
+- Enhanced hover effects: shadow escalation (lg to xl), icon scaling (110%), and prominent glow effects
+- Icons (w-12 h-12 / 48px) centered in rounded gradient containers (w-20 h-20 / 80px) with drop shadows for depth
+- Card styling enforced with !important modifiers: !rounded-2xl, !border-2, !shadow-xl to override defaults
+- Clean visual separation: full-color thematic images on left, icons and text on white/light background on right
+- Dark mode support with automatic background adjustment (dark:bg-card) for icon panel
 - Navigation system fixed: all routes now correctly navigate between Apartment Selector (/) → Menu (/menu) → Detail Pages, back arrow properly returns to previous page
 - Fully translated menu subtitle ("Select an option") in all 6 supported languages
 - Tourism page tabs redesigned for mobile: custom button-based tabs stack vertically on mobile devices, preventing overlap and text truncation issues
