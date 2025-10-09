@@ -36,6 +36,10 @@ The application follows a simple navigation flow: apartment selection (main page
 - Restaurant cards redesigned with compact horizontal layout: small square images (128x128px) on left, content on right for better space efficiency
 - Each restaurant now displays representative photos of the venue and recommended dishes fully translated in all 6 languages
 - Compact restaurant card design allows approximately 3 recommendations visible on screen simultaneously for easier browsing
+- **New Cafeterías category added** (October 9, 2025): 14 authentic Seville cafés (7 per apartment) integrated as fourth accordion section between Lunch and Dinner
+- Price level system implemented across all 70 restaurants (breakfast, lunch, cafeterias, dinner): visual indicators (€, €€, €€€) displayed in emerald green
+- Restaurant data structure enhanced with `priceLevel` field ('low', 'medium', 'high') for budget-conscious decision-making
+- Cafetería specialties fully translated in all 6 languages: café de especialidad, tostadas gourmet, bollería artesanal, etc.
 
 ## User Preferences
 
