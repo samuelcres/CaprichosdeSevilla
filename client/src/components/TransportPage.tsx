@@ -381,7 +381,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-2">
                 <Button
                   variant="outline"
                   className="w-full"
@@ -395,6 +395,15 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   {t.transport.localTransport.viewOnMap}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => window.open(t.transport.localTransport.seviciUrl, '_blank')}
+                  data-testid="button-sevici-web"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  {t.transport.localTransport.seviciWebButton}
                 </Button>
               </CardContent>
             </Card>
@@ -413,7 +422,7 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-2">
                 <Button
                   variant="outline"
                   className="w-full"
@@ -427,6 +436,15 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   {t.transport.localTransport.viewOnMap}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => window.open(t.transport.localTransport.scooterUrl, '_blank')}
+                  data-testid="button-scooter-web"
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  {t.transport.localTransport.scooterWebButton}
                 </Button>
               </CardContent>
             </Card>
