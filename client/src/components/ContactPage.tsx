@@ -2,15 +2,18 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone } from 'lucide-react';
+import { Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface ContactPageProps {
   onBack: () => void;
   onHome: () => void;
   t: any;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-export default function ContactPage({ onBack, onHome, t }: ContactPageProps) {
+export default function ContactPage({ onBack, onHome, t, currentLanguage, onLanguageChange }: ContactPageProps) {
   const openWhatsApp = () => {
     window.open('https://wa.me/34661610794', '_blank');
   };
@@ -25,7 +28,14 @@ export default function ContactPage({ onBack, onHome, t }: ContactPageProps) {
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
-      <PageHeader onBack={onBack} onHome={onHome} title={t.contact.title} />
+      <PageHeader 
+        onBack={onBack} 
+        onHome={onHome} 
+        title={t.contact.title}
+        currentLanguage={currentLanguage}
+        onLanguageChange={onLanguageChange}
+        changeLanguageLabel={t.common.changeLanguage}
+      />
 
       <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-6">
         <div className="text-center space-y-2">

@@ -2,7 +2,7 @@ import PageHeader from './PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle } from 'lucide-react';
-import { Apartment } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface CheckinPageProps {
@@ -10,9 +10,11 @@ interface CheckinPageProps {
   onHome: () => void;
   apartment: Apartment;
   t: any;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-export default function CheckinPage({ onBack, onHome, apartment, t }: CheckinPageProps) {
+export default function CheckinPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: CheckinPageProps) {
   const steps = apartment === 'ibarra' ? t.checkin.ibarra : t.checkin.quevedo;
 
   const stepIcons = [
@@ -39,7 +41,14 @@ export default function CheckinPage({ onBack, onHome, apartment, t }: CheckinPag
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
-      <PageHeader onBack={onBack} onHome={onHome} title={t.checkin.title} />
+      <PageHeader 
+        onBack={onBack} 
+        onHome={onHome} 
+        title={t.checkin.title}
+        currentLanguage={currentLanguage}
+        onLanguageChange={onLanguageChange}
+        changeLanguageLabel={t.common.changeLanguage}
+      />
 
       <div className="relative z-10 max-w-3xl mx-auto p-4 md:p-6 space-y-6">
         <div className="space-y-4">

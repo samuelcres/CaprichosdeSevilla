@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Bus, Car, Plane, ParkingCircle, ExternalLink, Bike, Navigation, Train } from 'lucide-react';
-import { Apartment } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface TransportPageProps {
@@ -13,9 +13,11 @@ interface TransportPageProps {
   onHome: () => void;
   apartment: Apartment;
   t: any;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-export default function TransportPage({ onBack, onHome, apartment, t }: TransportPageProps) {
+export default function TransportPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: TransportPageProps) {
   const [activeTab, setActiveTab] = useState('arrival');
 
   const busStop = apartment === 'ibarra' ? t.transport.bus.stopIbarra : t.transport.bus.stopQuevedo;
@@ -29,7 +31,14 @@ export default function TransportPage({ onBack, onHome, apartment, t }: Transpor
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
-      <PageHeader onBack={onBack} onHome={onHome} title={t.transport.title} />
+      <PageHeader 
+        onBack={onBack} 
+        onHome={onHome} 
+        title={t.transport.title}
+        currentLanguage={currentLanguage}
+        onLanguageChange={onLanguageChange}
+        changeLanguageLabel={t.common.changeLanguage}
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
         <div className="flex flex-col md:flex-row gap-2 md:gap-3">

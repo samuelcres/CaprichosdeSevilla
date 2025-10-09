@@ -3,7 +3,7 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Copy, Check } from 'lucide-react';
-import { Apartment } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
 import qrQuevedoUrl from '@assets/Captura de pantalla 2025-10-09 a las 10.26.39_1759998407884.png';
@@ -14,9 +14,11 @@ interface WifiPageProps {
   onHome: () => void;
   apartment: Apartment;
   t: any;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-export default function WifiPage({ onBack, onHome, apartment, t }: WifiPageProps) {
+export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: WifiPageProps) {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
 
@@ -43,7 +45,14 @@ export default function WifiPage({ onBack, onHome, apartment, t }: WifiPageProps
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
-      <PageHeader onBack={onBack} onHome={onHome} title={t.wifi.title} />
+      <PageHeader 
+        onBack={onBack} 
+        onHome={onHome} 
+        title={t.wifi.title}
+        currentLanguage={currentLanguage}
+        onLanguageChange={onLanguageChange}
+        changeLanguageLabel={t.common.changeLanguage}
+      />
 
       <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-6">
         <Card>

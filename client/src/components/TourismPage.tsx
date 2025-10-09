@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, ExternalLink, Navigation, Phone } from 'lucide-react';
-import { Apartment } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
@@ -184,9 +184,11 @@ interface TourismPageProps {
   onHome: () => void;
   apartment: Apartment;
   t: any;
+  currentLanguage: Language;
+  onLanguageChange: (lang: Language) => void;
 }
 
-export default function TourismPage({ onBack, onHome, apartment, t }: TourismPageProps) {
+export default function TourismPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: TourismPageProps) {
   const [activeTab, setActiveTab] = useState('activities');
 
   const restaurants = apartment === 'ibarra' ? ibarraRestaurants : quevedoRestaurants;
@@ -200,7 +202,14 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${sevilleBgUrl})` }}
       />
-      <PageHeader onBack={onBack} onHome={onHome} title={t.tourism.title} />
+      <PageHeader 
+        onBack={onBack} 
+        onHome={onHome} 
+        title={t.tourism.title}
+        currentLanguage={currentLanguage}
+        onLanguageChange={onLanguageChange}
+        changeLanguageLabel={t.common.changeLanguage}
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row gap-2 p-1 bg-muted rounded-md">

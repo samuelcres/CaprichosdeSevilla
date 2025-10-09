@@ -5,7 +5,7 @@ import { useTranslation } from '@/lib/i18n';
 import { useEffect } from 'react';
 
 export default function TourismPageWrapper() {
-  const { language, apartment } = useApp();
+  const { language, apartment, setLanguage } = useApp();
   const [, setLocation] = useLocation();
   const t = useTranslation(language);
 
@@ -23,6 +23,8 @@ export default function TourismPageWrapper() {
       t={t}
       onBack={() => setLocation('/menu')}
       onHome={() => setLocation('/menu')}
+      currentLanguage={language}
+      onLanguageChange={setLanguage}
     />
   );
 }
