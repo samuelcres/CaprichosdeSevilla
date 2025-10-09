@@ -19,6 +19,8 @@ The application follows a simple navigation flow: apartment selection (main page
 - Navigation system fixed: all routes now correctly navigate between Apartment Selector (/) → Menu (/menu) → Detail Pages, back arrow properly returns to previous page
 - Fully translated menu subtitle ("Select an option") in all 6 supported languages
 - Tourism page tabs redesigned for mobile: custom button-based tabs stack vertically on mobile devices, preventing overlap and text truncation issues
+- Transport page expanded with third section "Moverse por Sevilla" (Move Around Seville): includes local public transport information with interactive maps for bus stops, Sevici bike stations, and electric scooters near each apartment
+- Accessible tab pattern implemented across Tourism and Transport pages: custom visual buttons + hidden TabsList/TabsTrigger for keyboard navigation and ARIA semantics
 
 ## User Preferences
 
