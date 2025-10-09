@@ -59,6 +59,10 @@ The application follows a simple navigation flow: apartment selection (main page
 - Each tab contains two AccordionItems: one for airport transport options and one for train station options
 - All transport cards (bus, taxi, VTC, transfer, tram) properly nested within accordion content sections
 - Data test IDs added to accordion triggers for testing: accordion-airport-arrival, accordion-train-arrival, accordion-airport-departure, accordion-train-departure
+- **Transport page visual enhancements** (October 9, 2025): Removed airport code "(SVQ)" from all transport titles across all 6 languages for cleaner presentation
+- Added intuitive visual icons to accordion headers: plane icon (w-6 h-6) for airport sections and train icon (w-6 h-6) for train station sections
+- Icons displayed in primary color (text-primary) with proper spacing (gap-3) for professional appearance
+- Visual improvements applied to both Arrival and Departure tabs for consistent user experience across all languages
 
 ## User Preferences
 
