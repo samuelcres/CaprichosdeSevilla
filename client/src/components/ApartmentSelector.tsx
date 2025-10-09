@@ -37,8 +37,11 @@ export default function ApartmentSelector({
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
-        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+        className="fixed inset-0 bg-cover bg-no-repeat opacity-30 pointer-events-none"
+        style={{ 
+          backgroundImage: `url(${sevilleBgUrl})`,
+          backgroundPosition: 'center 30%'
+        }}
       />
 
       <header className="relative z-10 p-6 border-b border-border flex items-center justify-end bg-white">
