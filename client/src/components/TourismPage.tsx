@@ -64,6 +64,20 @@ const getImage = (photoPath?: string) => {
   return imageMap[filename];
 };
 
+// Helper function to get price indicator
+const getPriceIndicator = (priceLevel?: 'low' | 'medium' | 'high') => {
+  switch (priceLevel) {
+    case 'low':
+      return '€';
+    case 'medium':
+      return '€€';
+    case 'high':
+      return '€€€';
+    default:
+      return '';
+  }
+};
+
 interface TourismPageProps {
   onBack: () => void;
   onHome: () => void;
@@ -214,10 +228,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               </p>
                             )}
                           </div>
-                          <Badge variant="secondary" className="flex-shrink-0">
-                            <Star className="w-3 h-3 mr-1 fill-current" />
-                            {restaurant.rating}
-                          </Badge>
+                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
+                            <Badge variant="secondary">
+                              <Star className="w-3 h-3 mr-1 fill-current" />
+                              {restaurant.rating}
+                            </Badge>
+                            {restaurant.priceLevel && (
+                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-breakfast-${index}`}>
+                                {getPriceIndicator(restaurant.priceLevel)}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
@@ -291,10 +312,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               </p>
                             )}
                           </div>
-                          <Badge variant="secondary" className="flex-shrink-0">
-                            <Star className="w-3 h-3 mr-1 fill-current" />
-                            {restaurant.rating}
-                          </Badge>
+                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
+                            <Badge variant="secondary">
+                              <Star className="w-3 h-3 mr-1 fill-current" />
+                              {restaurant.rating}
+                            </Badge>
+                            {restaurant.priceLevel && (
+                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-lunch-${index}`}>
+                                {getPriceIndicator(restaurant.priceLevel)}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
@@ -332,15 +360,15 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
               </AccordionItem>
 
               {/* Cafeterías */}
-              <AccordionItem value="cafes" className="border rounded-lg px-6">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafes">
+              <AccordionItem value="cafeterias" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafeterias">
                   <div className="flex items-center gap-2">
                     <h3 className="text-xl font-semibold text-foreground">{t.tourism.cafes}</h3>
-                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'cafes').length}</Badge>
+                    <Badge variant="secondary">{restaurants.filter(r => r.category === 'cafeterias').length}</Badge>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'cafes').map((restaurant, index) => {
+                  {restaurants.filter(r => r.category === 'cafeterias').map((restaurant, index) => {
                     const imageUrl = getImage(restaurant.photo);
                     const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
                     
@@ -368,10 +396,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               </p>
                             )}
                           </div>
-                          <Badge variant="secondary" className="flex-shrink-0">
-                            <Star className="w-3 h-3 mr-1 fill-current" />
-                            {restaurant.rating}
-                          </Badge>
+                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
+                            <Badge variant="secondary">
+                              <Star className="w-3 h-3 mr-1 fill-current" />
+                              {restaurant.rating}
+                            </Badge>
+                            {restaurant.priceLevel && (
+                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-cafes-${index}`}>
+                                {getPriceIndicator(restaurant.priceLevel)}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
@@ -445,10 +480,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               </p>
                             )}
                           </div>
-                          <Badge variant="secondary" className="flex-shrink-0">
-                            <Star className="w-3 h-3 mr-1 fill-current" />
-                            {restaurant.rating}
-                          </Badge>
+                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
+                            <Badge variant="secondary">
+                              <Star className="w-3 h-3 mr-1 fill-current" />
+                              {restaurant.rating}
+                            </Badge>
+                            {restaurant.priceLevel && (
+                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-dinner-${index}`}>
+                                {getPriceIndicator(restaurant.priceLevel)}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </CardHeader>
                       <CardContent className="space-y-3">
