@@ -51,6 +51,9 @@ The application follows a simple navigation flow: apartment selection (main page
 - Apartment-specific distances displayed correctly (e.g., Catedral shows 8 min for Ibarra, 7 min for Quevedo)
 - Price badges for visits displayed in emerald-700 color matching restaurant price indicators
 - All visit practical information (44 locations across 9 categories) fully integrated and tested
+- **Real location photographs** (October 9, 2025): All 44 tourist visit recommendations now display authentic photographs of actual Seville locations instead of generic placeholders
+- Visit images sourced from stock library and properly integrated: Cathedral with Giralda, Real Alcázar gardens, museums, parks, neighborhoods, churches, tour activities, modern architecture, gastronomic venues
+- All 44 visit images imported in TourismPage.tsx and mapped via imageMap for proper rendering in both apartments
 
 ## User Preferences
 
