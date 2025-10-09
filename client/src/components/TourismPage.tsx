@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, ExternalLink, Navigation } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
-import { visitCategoryIds } from '@/lib/visitData';
+import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 // Import stock images for restaurants
@@ -32,6 +32,11 @@ import img17 from '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg';
 import img18 from '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg';
 import img19 from '@assets/stock_images/spanish_traditional__310230e0.jpg';
 import img20 from '@assets/stock_images/spanish_traditional__60fd4f05.jpg';
+import img21 from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
+import img22 from '@assets/stock_images/seville_spain_citysc_d2607192.jpg';
+import img23 from '@assets/stock_images/airport_bus_public_t_f8c6b930.jpg';
+import img24 from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
+import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 // Map image filenames to imported images
 const imageMap: Record<string, string> = {
@@ -55,6 +60,11 @@ const imageMap: Record<string, string> = {
   'elegant_restaurant_f_95b165b2.jpg': img18,
   'spanish_traditional__310230e0.jpg': img19,
   'spanish_traditional__60fd4f05.jpg': img20,
+  'seville_spain_touris_9ba3bc69.jpg': img21,
+  'seville_spain_citysc_d2607192.jpg': img22,
+  'airport_bus_public_t_f8c6b930.jpg': img23,
+  'customer_service_sup_53d26c13.jpg': img24,
+  'hotel_check-in_door__08a6987e.jpg': img25,
 };
 
 // Helper function to get image from photo path
@@ -533,6 +543,7 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
             <Accordion type="multiple" className="space-y-4">
               {visitCategoryIds.map((categoryId) => {
                 const items = t.tourism.visitItems[categoryId];
+                
                 return (
                   <AccordionItem key={categoryId} value={categoryId} className="border rounded-lg px-6">
                     <AccordionTrigger className="hover:no-underline" data-testid={`accordion-visit-${categoryId}`}>
@@ -544,16 +555,87 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="space-y-3 pt-4">
-                      {items.map((item: { name: string; description: string }, index: number) => (
-                        <div 
-                          key={`${categoryId}-${index}`} 
-                          className="p-4 bg-muted/30 rounded-lg border border-border"
-                          data-testid={`visit-item-${categoryId}-${index}`}
-                        >
-                          <h4 className="font-semibold text-foreground mb-1">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      ))}
+                      {visitDetails.filter(v => v.category === categoryId).map((visitData, index) => {
+                        const item = items[index];
+                        if (!item) return null;
+                        
+                        const distance = apartment === 'ibarra' ? visitData.distanceIbarra : visitData.distanceQuevedo;
+                        const image = getImage(visitData.photo);
+                        
+                        return (
+                          <Card 
+                            key={visitData.id}
+                            className="overflow-hidden"
+                            data-testid={`visit-item-${categoryId}-${index}`}
+                          >
+                            <CardContent className="p-0">
+                              <div className="flex gap-4 p-4">
+                                {image && (
+                                  <div className="flex-shrink-0">
+                                    <img 
+                                      src={image} 
+                                      alt={item.name}
+                                      className="w-32 h-32 object-cover rounded-md"
+                                      data-testid={`img-visit-${categoryId}-${index}`}
+                                    />
+                                  </div>
+                                )}
+                                <div className="flex-1 min-w-0">
+                                  <h4 className="font-semibold text-foreground mb-1" data-testid={`text-visit-name-${categoryId}-${index}`}>
+                                    {item.name}
+                                  </h4>
+                                  <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                  
+                                  {(visitData.schedule || visitData.price || distance) && (
+                                    <div className="flex flex-wrap gap-2 text-sm mb-3">
+                                      {visitData.schedule && (
+                                        <Badge variant="outline" className="text-xs" data-testid={`badge-schedule-${categoryId}-${index}`}>
+                                          {visitData.schedule}
+                                        </Badge>
+                                      )}
+                                      {visitData.price && (
+                                        <Badge variant="outline" className="text-xs text-emerald-700" data-testid={`badge-price-${categoryId}-${index}`}>
+                                          {visitData.price}
+                                        </Badge>
+                                      )}
+                                      {distance && distance > 0 && (
+                                        <Badge variant="outline" className="text-xs" data-testid={`badge-distance-${categoryId}-${index}`}>
+                                          {distance} {t.tourism.distance}
+                                        </Badge>
+                                      )}
+                                    </div>
+                                  )}
+                                  
+                                  <div className="flex gap-2 flex-wrap">
+                                    {visitData.mapsUrl && (
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => window.open(visitData.mapsUrl, '_blank')}
+                                        data-testid={`button-map-visit-${categoryId}-${index}`}
+                                      >
+                                        <MapPin className="w-4 h-4 mr-2" />
+                                        {t.tourism.viewMap}
+                                      </Button>
+                                    )}
+                                    {visitData.website && (
+                                      <Button
+                                        variant="outline"
+                                        size="sm"
+                                        onClick={() => window.open(visitData.website, '_blank')}
+                                        data-testid={`button-website-visit-${categoryId}-${index}`}
+                                      >
+                                        <ExternalLink className="w-4 h-4 mr-2" />
+                                        Web
+                                      </Button>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
                     </AccordionContent>
                   </AccordionItem>
                 );
