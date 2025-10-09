@@ -83,3 +83,38 @@ Preferred communication style: Simple, everyday language.
 - Tailwind CSS
 - date-fns
 - Embla Carousel
+
+## Recent Changes
+
+### October 9, 2025
+
+**Language Selector Globally Available:**
+- Language selector implemented globally across all pages via PageHeader component
+- DropdownMenu shows current language flag and name (e.g., 🇪🇸 Español, 🇬🇧 English)
+- All page components (Tourism, Transport, Checkin, Wifi, Contact) updated to pass currentLanguage and onLanguageChange props
+- Language changes persist across all pages through AppContext integration
+
+**Emergency Contact Information Added:**
+- New emergency assistance section added to Contact page with critical phone numbers for tourists
+- 5 emergency contact cards fully translated across all 6 languages:
+  - General Emergency: 112 (red theme)
+  - National Police: 091 (blue theme)
+  - Local Police: 092 (blue theme)
+  - Civil Guard: 062 (green theme)
+  - Tourist Police Office: 954 22 88 40 (amber theme, highlighted)
+- Responsive grid layout (2 columns desktop, 1 column mobile)
+- Color-coded icons and service descriptions for quick reference
+
+**Enhanced Check-in Instructions for Quevedo:**
+- Updated Quevedo apartment check-in procedure with detailed step-by-step instructions based on official documentation
+- 6 steps expanded with comprehensive descriptions:
+  1. Entrance to apartment at C/ Quevedo, 11 (Sevilla)
+  2. Access link from Email, Booking, or WhatsApp
+  3. Open main entrance using "Portal Calle" button
+  4. Turn right - ground floor, right door
+  5. Open apartment door using "Home door Low R" button
+  6. Exit instructions with interior button location
+- New schedule information card showing link availability (check-in 15:00h to check-out 11:00h)
+- Enhanced warning message about not pressing door opening remotely
+- Check-in door image added for visual reference (Quevedo apartment only)
+- All improvements translated across 6 languages maintaining technical terms consistency
