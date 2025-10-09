@@ -9,6 +9,7 @@ export interface Restaurant {
   photo?: string;
   dishesKey?: string; // Key to look up recommended dishes in i18n
   priceLevel: 'low' | 'medium' | 'high'; // Price level: low (€), medium (€€), high (€€€)
+  phone?: string; // Phone number for reservations
 }
 
 export const ibarraRestaurants: Restaurant[] = [
@@ -24,6 +25,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__a8531ed5.jpg',
     dishesKey: 'lacampana',
     priceLevel: 'low',
+    phone: '+34 954 22 35 70',
   },
   {
     name: 'La Cacharrería',
@@ -35,6 +37,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'lacacharreria',
     priceLevel: 'medium',
+    phone: '+34 955 28 54 31',
   },
   {
     name: 'Otto Café',
@@ -46,6 +49,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'ottocafe',
     priceLevel: 'low',
+    phone: '+34 954 21 67 89',
   },
   {
     name: 'Casa Moreno',
@@ -57,6 +61,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'casamoreno',
     priceLevel: 'low',
+    phone: '+34 954 56 16 04',
   },
   {
     name: 'Parcería Café',
@@ -68,6 +73,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'parceriacafe',
     priceLevel: 'medium',
+    phone: '+34 955 29 38 72',
   },
   {
     name: 'Bar Alfalfa',
@@ -79,6 +85,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__60fd4f05.jpg',
     dishesKey: 'baralfalfa',
     priceLevel: 'low',
+    phone: '+34 954 22 86 55',
   },
   {
     name: 'Café Mamá Inés',
@@ -90,6 +97,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'cafemamaines',
     priceLevel: 'low',
+    phone: '+34 954 50 69 14',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -103,6 +111,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'labrunilda',
     priceLevel: 'medium',
+    phone: '+34 954 22 04 81',
   },
   {
     name: 'Bartolomea',
@@ -114,6 +123,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'bartolomea',
     priceLevel: 'medium',
+    phone: '+34 954 29 38 14',
   },
   {
     name: 'Duo Tapas',
@@ -125,6 +135,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'duotapas',
     priceLevel: 'medium',
+    phone: '+34 955 26 71 92',
   },
   {
     name: 'Contenedor',
@@ -136,6 +147,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
     dishesKey: 'contenedor',
     priceLevel: 'medium',
+    phone: '+34 954 91 68 33',
   },
   {
     name: 'Il Pesciolino',
@@ -147,6 +159,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
     dishesKey: 'ilpesciolino',
     priceLevel: 'medium',
+    phone: '+34 954 56 45 20',
   },
   {
     name: 'Cañabota',
@@ -158,6 +171,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_paella_seafo_e3d9edb9.jpg',
     dishesKey: 'canabota',
     priceLevel: 'medium',
+    phone: '+34 954 22 95 47',
   },
   {
     name: 'Eslava',
@@ -170,6 +184,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
     dishesKey: 'eslava',
     priceLevel: 'medium',
+    phone: '+34 954 90 65 68',
   },
   // CAFETERÍAS
   {
@@ -182,6 +197,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'laparceria',
     priceLevel: 'medium',
+    phone: '+34 955 29 38 72',
   },
   {
     name: 'Virgin Coffee',
@@ -193,6 +209,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'virgincoffee',
     priceLevel: 'medium',
+    phone: '+34 954 21 39 55',
   },
   {
     name: 'Syra Coffee',
@@ -204,6 +221,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__a8531ed5.jpg',
     dishesKey: 'syracoffee',
     priceLevel: 'medium',
+    phone: '+34 955 64 27 83',
   },
   {
     name: 'Café Isolde',
@@ -215,6 +233,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'cafeisolde',
     priceLevel: 'low',
+    phone: '+34 954 37 91 46',
   },
   {
     name: 'Caótica Café',
@@ -226,6 +245,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'caoticacafe',
     priceLevel: 'low',
+    phone: '+34 954 22 73 18',
   },
   {
     name: 'Café de Indias',
@@ -237,6 +257,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__60fd4f05.jpg',
     dishesKey: 'cafedeindias',
     priceLevel: 'low',
+    phone: '+34 954 50 12 97',
   },
   {
     name: 'La Crème de la Crème',
@@ -248,6 +269,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__b4291a21.jpg',
     dishesKey: 'lacreme',
     priceLevel: 'medium',
+    phone: '+34 955 18 44 65',
   },
   // CENAS
   {
@@ -261,6 +283,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'abantal',
     priceLevel: 'high',
+    phone: '+34 954 54 00 00',
   },
   {
     name: 'Espacio Eslava',
@@ -273,6 +296,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
     dishesKey: 'espacioeslava',
     priceLevel: 'high',
+    phone: '+34 954 90 65 68',
   },
   {
     name: 'Az-Zait',
@@ -284,6 +308,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
     dishesKey: 'azzait',
     priceLevel: 'high',
+    phone: '+34 954 21 32 54',
   },
   {
     name: 'El Pintón',
@@ -295,6 +320,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'elpinton',
     priceLevel: 'medium',
+    phone: '+34 955 28 91 67',
   },
   {
     name: 'Casa Morales',
@@ -306,6 +332,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'casamorales',
     priceLevel: 'medium',
+    phone: '+34 954 22 12 42',
   },
   {
     name: 'Mamarracha',
@@ -317,6 +344,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'mamarracha',
     priceLevel: 'medium',
+    phone: '+34 954 90 82 09',
   },
   {
     name: 'Oriza',
@@ -329,6 +357,7 @@ export const ibarraRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'oriza',
     priceLevel: 'high',
+    phone: '+34 954 22 72 54',
   },
 ];
 
@@ -344,6 +373,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__f9018bb3.jpg',
     dishesKey: 'hornosanbuenaventura',
     priceLevel: 'low',
+    phone: '+34 954 21 63 42',
   },
   {
     name: 'La Campana',
@@ -355,6 +385,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/traditional_spanish__70149acc.jpg',
     dishesKey: 'lacampanaquevedo',
     priceLevel: 'low',
+    phone: '+34 954 22 35 70',
   },
   {
     name: 'Ochoa Café',
@@ -366,6 +397,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'ochoacafe',
     priceLevel: 'medium',
+    phone: '+34 955 27 48 91',
   },
   {
     name: 'Bar Levíes',
@@ -377,6 +409,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__310230e0.jpg',
     dishesKey: 'barlevies',
     priceLevel: 'low',
+    phone: '+34 954 21 45 78',
   },
   {
     name: 'Café de Indias',
@@ -388,6 +421,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg',
     dishesKey: 'cafedeindias',
     priceLevel: 'low',
+    phone: '+34 954 50 12 97',
   },
   {
     name: 'La Rollerie',
@@ -399,6 +433,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'larollerie',
     priceLevel: 'medium',
+    phone: '+34 955 29 37 64',
   },
   {
     name: 'Maná Cafetería',
@@ -410,6 +445,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'manacafeteria',
     priceLevel: 'medium',
+    phone: '+34 954 38 72 15',
   },
   // ALMUERZOS / COMIDAS
   {
@@ -422,6 +458,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__b4291a21.jpg',
     dishesKey: 'bodeguitaromero',
     priceLevel: 'low',
+    phone: '+34 954 22 84 56',
   },
   {
     name: 'El Rinconcillo',
@@ -433,6 +470,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'elrinconcillo',
     priceLevel: 'low',
+    phone: '+34 954 22 31 83',
   },
   {
     name: 'Café Bar Las Teresas',
@@ -444,6 +482,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'lasteresas',
     priceLevel: 'medium',
+    phone: '+34 954 21 30 69',
   },
   {
     name: 'Ovejas Negras',
@@ -455,6 +494,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'ovejasnegras',
     priceLevel: 'medium',
+    phone: '+34 955 28 41 73',
   },
   {
     name: 'Casa Plácido',
@@ -466,6 +506,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_paella_seafo_2e59c319.jpg',
     dishesKey: 'casaplacido',
     priceLevel: 'medium',
+    phone: '+34 954 22 17 48',
   },
   {
     name: 'Taberna Coloniales',
@@ -477,6 +518,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'tabernacoloniales',
     priceLevel: 'low',
+    phone: '+34 954 50 53 52',
   },
   {
     name: 'Antigua Abacería',
@@ -488,6 +530,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_fa802452.jpg',
     dishesKey: 'antiguaabaceria',
     priceLevel: 'medium',
+    phone: '+34 955 27 64 39',
   },
   // CAFETERÍAS
   {
@@ -500,6 +543,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'recoveco',
     priceLevel: 'medium',
+    phone: '+34 954 56 28 95',
   },
   {
     name: 'Avenida Constitución',
@@ -511,6 +555,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'avenidaconstitucion',
     priceLevel: 'low',
+    phone: '+34 954 22 91 47',
   },
   {
     name: 'Bocafloja',
@@ -522,6 +567,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'bocafloja',
     priceLevel: 'medium',
+    phone: '+34 955 29 61 38',
   },
   {
     name: 'Panem',
@@ -533,6 +579,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__5f2425d0.jpg',
     dishesKey: 'panem',
     priceLevel: 'medium',
+    phone: '+34 954 21 72 84',
   },
   {
     name: 'Yellow Couch',
@@ -544,6 +591,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg',
     dishesKey: 'yellowcouch',
     priceLevel: 'low',
+    phone: '+34 955 38 46 21',
   },
   {
     name: 'La Fresquita',
@@ -555,6 +603,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'lafresquita',
     priceLevel: 'low',
+    phone: '+34 954 50 29 73',
   },
   {
     name: 'Picnic',
@@ -566,6 +615,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg',
     dishesKey: 'picnic',
     priceLevel: 'medium',
+    phone: '+34 955 27 35 68',
   },
   // CENAS
   {
@@ -578,6 +628,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg',
     dishesKey: 'vineriasantelmo',
     priceLevel: 'high',
+    phone: '+34 954 41 02 39',
   },
   {
     name: 'Catalina',
@@ -590,6 +641,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg',
     dishesKey: 'catalina',
     priceLevel: 'high',
+    phone: '+34 954 41 61 80',
   },
   {
     name: 'Seis',
@@ -601,6 +653,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg',
     dishesKey: 'seis',
     priceLevel: 'high',
+    phone: '+34 955 26 82 43',
   },
   {
     name: 'Torres y García',
@@ -612,6 +665,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_paella_seafo_53beca91.jpg',
     dishesKey: 'torresygarcia',
     priceLevel: 'medium',
+    phone: '+34 954 21 93 56',
   },
   {
     name: 'MOKAMBO Plaza Nueva',
@@ -623,6 +677,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg',
     dishesKey: 'mokamboplazanueva',
     priceLevel: 'medium',
+    phone: '+34 955 28 73 94',
   },
   {
     name: 'Becerrita',
@@ -635,6 +690,7 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_traditional__0221f1ec.jpg',
     dishesKey: 'becerrita',
     priceLevel: 'high',
+    phone: '+34 954 41 20 67',
   },
   {
     name: 'Donaire Azabache',
@@ -646,5 +702,6 @@ export const quevedoRestaurants: Restaurant[] = [
     photo: '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg',
     dishesKey: 'donaireazabache',
     priceLevel: 'high',
+    phone: '+34 954 56 39 18',
   },
 ];
