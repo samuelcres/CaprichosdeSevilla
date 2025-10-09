@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone } from 'lucide-react';
 import { Apartment } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
@@ -277,6 +277,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               Web
                             </Button>
                           )}
+                          {restaurant.phone && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                              data-testid={`button-phone-breakfast-${index}`}
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              {restaurant.phone}
+                            </Button>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -359,6 +370,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Web
+                            </Button>
+                          )}
+                          {restaurant.phone && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                              data-testid={`button-phone-lunch-${index}`}
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              {restaurant.phone}
                             </Button>
                           )}
                         </div>
@@ -445,6 +467,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                               Web
                             </Button>
                           )}
+                          {restaurant.phone && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                              data-testid={`button-phone-cafes-${index}`}
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              {restaurant.phone}
+                            </Button>
+                          )}
                         </div>
                       </CardContent>
                     </Card>
@@ -527,6 +560,17 @@ export default function TourismPage({ onBack, onHome, apartment, t }: TourismPag
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Web
+                            </Button>
+                          )}
+                          {restaurant.phone && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                              data-testid={`button-phone-dinner-${index}`}
+                            >
+                              <Phone className="w-4 h-4 mr-2" />
+                              {restaurant.phone}
                             </Button>
                           )}
                         </div>
