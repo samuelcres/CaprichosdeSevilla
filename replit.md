@@ -54,6 +54,11 @@ The application follows a simple navigation flow: apartment selection (main page
 - **Real location photographs** (October 9, 2025): All 44 tourist visit recommendations now display authentic photographs of actual Seville locations instead of generic placeholders
 - Visit images sourced from stock library and properly integrated: Cathedral with Giralda, Real Alcázar gardens, museums, parks, neighborhoods, churches, tour activities, modern architecture, gastronomic venues
 - All 44 visit images imported in TourismPage.tsx and mapped via imageMap for proper rendering in both apartments
+- **Transport page accordion implementation** (October 9, 2025): Airport and train station sections in both Arrival (Llegada) and Departure (Salida) tabs converted to collapsible accordions for better content organization
+- Accordion structure allows multiple sections to be open simultaneously (type="multiple") for flexible browsing
+- Each tab contains two AccordionItems: one for airport transport options and one for train station options
+- All transport cards (bus, taxi, VTC, transfer, tram) properly nested within accordion content sections
+- Data test IDs added to accordion triggers for testing: accordion-airport-arrival, accordion-train-arrival, accordion-airport-departure, accordion-train-departure
 
 ## User Preferences
 
