@@ -1,7 +1,7 @@
 import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Mail, Phone } from 'lucide-react';
+import { MessageCircle, Mail, Phone, AlertCircle, Shield } from 'lucide-react';
 import { Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
@@ -104,6 +104,93 @@ export default function ContactPage({ onBack, onHome, t, currentLanguage, onLang
                 <Mail className="w-4 h-4 mr-2" />
                 info@caprichosdesevilla.com
               </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 space-y-4">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 mx-auto mb-4">
+              <AlertCircle className="w-8 h-8 text-red-600" />
+            </div>
+            <h2 className="text-2xl font-bold text-foreground">{t.contact.emergencyTitle}</h2>
+            <p className="text-muted-foreground">{t.contact.emergencyDescription}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Card data-testid="card-emergency-112">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground">{t.contact.emergency}</h3>
+                    <p className="text-2xl font-bold text-red-600 mt-1">{t.contact.emergencyNumber}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t.contact.emergencyDesc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card data-testid="card-national-police">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground">{t.contact.nationalPolice}</h3>
+                    <p className="text-2xl font-bold text-blue-600 mt-1">{t.contact.nationalPoliceNumber}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t.contact.nationalPoliceDesc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card data-testid="card-local-police">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground">{t.contact.localPolice}</h3>
+                    <p className="text-2xl font-bold text-blue-600 mt-1">{t.contact.localPoliceNumber}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t.contact.localPoliceDesc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card data-testid="card-civil-guard">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-foreground">{t.contact.civilGuard}</h3>
+                    <p className="text-2xl font-bold text-green-600 mt-1">{t.contact.civilGuardNumber}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{t.contact.civilGuardDesc}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card className="bg-amber-50 dark:bg-amber-950/20 border-amber-500/50" data-testid="card-tourist-police">
+            <CardContent className="p-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-5 h-5 text-amber-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground">{t.contact.touristPolice}</h3>
+                  <p className="text-2xl font-bold text-amber-600 mt-1">{t.contact.touristPoliceNumber}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t.contact.touristPoliceDesc}</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>
