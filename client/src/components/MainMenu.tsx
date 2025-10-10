@@ -11,6 +11,7 @@ import contactBg from '@assets/stock_images/customer_service_con_5e1eb47a.jpg';
 import { languages, Language, Apartment } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
+import quevedoCheckinBg from '@assets/Captura de pantalla 2025-10-10 a las 12.57.25_1760093862113.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -47,7 +48,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
   const getBackgroundImage = (optionId: string) => {
     const backgrounds: Record<string, string> = {
       'transport': transportBg,
-      'checkin': checkinBg,
+      'checkin': apartment === 'quevedo' ? quevedoCheckinBg : checkinBg,
       'wifi': wifiBg,
       'tourism': tourismBg,
       'events': apartmentBgUrl,
