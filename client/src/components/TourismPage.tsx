@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
@@ -305,6 +305,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               <AccordionItem value="breakfast" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-breakfast">
                   <div className="flex items-center gap-2">
+                    <Coffee className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-foreground">{t.tourism.breakfast}</h3>
                     <Badge variant="secondary">{restaurants.filter(r => r.category === 'breakfast').length}</Badge>
                   </div>
@@ -400,6 +401,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               <AccordionItem value="lunch" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-lunch">
                   <div className="flex items-center gap-2">
+                    <UtensilsCrossed className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-foreground">{t.tourism.lunch}</h3>
                     <Badge variant="secondary">{restaurants.filter(r => r.category === 'lunch').length}</Badge>
                   </div>
@@ -495,6 +497,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               <AccordionItem value="cafeterias" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafeterias">
                   <div className="flex items-center gap-2">
+                    <CupSoda className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-foreground">{t.tourism.cafeterias}</h3>
                     <Badge variant="secondary">{restaurants.filter(r => r.category === 'cafeterias').length}</Badge>
                   </div>
@@ -590,6 +593,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               <AccordionItem value="dinner" className="border rounded-lg px-6">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-dinner">
                   <div className="flex items-center gap-2">
+                    <Moon className="w-5 h-5 text-primary" />
                     <h3 className="text-xl font-semibold text-foreground">{t.tourism.dinner}</h3>
                     <Badge variant="secondary">{restaurants.filter(r => r.category === 'dinner').length}</Badge>
                   </div>

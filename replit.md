@@ -86,6 +86,17 @@ Preferred communication style: Simple, everyday language.
 
 ## Recent Changes
 
+### October 10, 2025
+
+**Restaurant Category Icons:**
+- Added visual icons to all restaurant categories in Tourism page
+- Breakfast (Desayunos): Coffee icon ☕
+- Lunch (Almuerzos): UtensilsCrossed icon 🍴
+- Cafeterias (Cafeterías): CupSoda icon 🥤
+- Dinner (Cenas): Moon icon 🌙
+- Icons are displayed in primary color for consistent visual hierarchy
+- Applied to both Ibarra and Quevedo apartments
+
 ### October 9, 2025
 
 **Scroll to Top Navigation:**
