@@ -88,6 +88,14 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
+**Apartment Name Display in Headers:**
+- Added apartment name badge to all section pages (Transport, Check-in, WiFi, Tourism, Events, Contact)
+- Badge displays "Capricho de Ibarra" or "Capricho de Quevedo" based on selected apartment
+- Positioned above page title in PageHeader component for consistent visibility
+- Styled with outline variant and small text size for subtle, non-intrusive display
+- Apartment name persists across language changes (names don't translate)
+- All page wrappers enforce apartment selection before rendering content
+
 **Updated Ibarra Parking Configuration:**
 - Ibarra apartment parking options reduced from 3 to 2 parkings as per user requirements
 - New parking configuration for Ibarra:
