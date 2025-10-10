@@ -194,7 +194,7 @@ export const translations = {
         },
         step4: {
           title: 'Localizar el apartamento',
-          description: 'Una vez dentro, simplemente gire a su derecha. El apartamento está en la misma planta baja, en la puerta derecha.',
+          description: 'Una vez dentro, simplemente gire a su derecha. Por favor, cierre la puerta principal del edificio que quedará a su derecha. El apartamento está en la misma planta baja, en la puerta derecha.',
         },
         step5: {
           title: 'Abrir puerta del apartamento',
@@ -651,7 +651,7 @@ export const translations = {
         },
         step4: {
           title: 'Locate the apartment',
-          description: 'Once inside, simply turn right. The apartment is on the same ground floor, on the right door.',
+          description: 'Once inside, simply turn right. Please close the main building door behind you (it will be on your right). The apartment is on the same ground floor, on the right door.',
         },
         step5: {
           title: 'Open apartment door',
@@ -1098,7 +1098,7 @@ export const translations = {
         },
         step4: {
           title: 'Localiser l\'appartement',
-          description: 'Une fois à l\'intérieur, tournez simplement à droite. L\'appartement est au même rez-de-chaussée, porte de droite.',
+          description: 'Une fois à l\'intérieur, tournez simplement à droite. Veuillez fermer la porte principale du bâtiment derrière vous (elle sera sur votre droite). L\'appartement est au même rez-de-chaussée, porte de droite.',
         },
         step5: {
           title: 'Ouvrir la porte de l\'appartement',
@@ -1545,7 +1545,7 @@ export const translations = {
         },
         step4: {
           title: 'Die Wohnung lokalisieren',
-          description: 'Sobald Sie drinnen sind, biegen Sie einfach rechts ab. Die Wohnung befindet sich im selben Erdgeschoss, rechte Tür.',
+          description: 'Sobald Sie drinnen sind, biegen Sie einfach rechts ab. Bitte schließen Sie die Haupttür des Gebäudes hinter sich (sie wird rechts von Ihnen sein). Die Wohnung befindet sich im selben Erdgeschoss, rechte Tür.',
         },
         step5: {
           title: 'Wohnungstür öffnen',
@@ -1992,7 +1992,7 @@ export const translations = {
         },
         step4: {
           title: 'Localizzare l\'appartamento',
-          description: 'Una volta dentro, semplicemente girare a destra. L\'appartamento è sullo stesso piano terra, porta destra.',
+          description: 'Una volta dentro, semplicemente girare a destra. Per favore, chiudere la porta principale dell\'edificio dietro di voi (sarà alla vostra destra). L\'appartamento è sullo stesso piano terra, porta destra.',
         },
         step5: {
           title: 'Aprire la porta dell\'appartamento',
@@ -2439,7 +2439,7 @@ export const translations = {
         },
         step4: {
           title: '定位公寓',
-          description: '进入后，只需向右转。公寓在同一层一楼，右侧门。',
+          description: '进入后，只需向右转。请关闭您身后的建筑主门（它将在您的右侧）。公寓在同一层一楼，右侧门。',
         },
         step5: {
           title: '打开公寓门',

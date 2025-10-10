@@ -11,6 +11,12 @@ import ibarraStep3 from '@assets/3puerta_1760088503553.png';
 import ibarraStep4 from '@assets/4apartamento_1760088503552.png';
 import ibarraStep5 from '@assets/6apertura_1760088503551.png';
 import ibarraStep6 from '@assets/7aperturainterior_1760088503550.png';
+import quevedoStep1 from '@assets/1puerta_1760093251206.png';
+import quevedoStep2 from '@assets/3enlace_1760093251206.png';
+import quevedoStep3 from '@assets/4botonportal_1760093251206.png';
+import quevedoStep4 from '@assets/6puertabajo_1760093251205.png';
+import quevedoStep5 from '@assets/7enlaceapartamento_1760093251205.png';
+import quevedoStep6 from '@assets/8salida_1760093251204.png';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -42,14 +48,21 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
     steps.step6,
   ];
 
-  const ibarraStepImages = apartment === 'ibarra' ? [
+  const stepImages = apartment === 'ibarra' ? [
     ibarraStep1,
     ibarraStep2,
     ibarraStep3,
     ibarraStep4,
     ibarraStep5,
     ibarraStep6,
-  ] : [];
+  ] : [
+    quevedoStep1,
+    quevedoStep2,
+    quevedoStep3,
+    quevedoStep4,
+    quevedoStep5,
+    quevedoStep6,
+  ];
 
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
   const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
@@ -100,10 +113,10 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                       </p>
                     </div>
                   </div>
-                  {apartment === 'ibarra' && ibarraStepImages[index] && (
+                  {stepImages[index] && (
                     <div className="flex-shrink-0 w-full md:w-64">
                       <img
-                        src={ibarraStepImages[index]}
+                        src={stepImages[index]}
                         alt={`${t.checkin.step} ${index + 1}`}
                         className="w-full h-auto rounded-lg object-contain max-h-80 md:max-h-64"
                         data-testid={`img-step-${index + 1}`}

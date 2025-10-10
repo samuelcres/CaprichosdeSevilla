@@ -215,25 +215,32 @@ Preferred communication style: Simple, everyday language.
   1. Entrance to apartment at C/ Quevedo, 11 (Sevilla)
   2. Access link from Email, Booking, or WhatsApp
   3. Open main entrance using "Portal Calle" button
-  4. Turn right - ground floor, right door
+  4. Turn right - close main building door behind you (on your right) - ground floor, right door
   5. Open apartment door using "Home door Low R" button
   6. Exit instructions with interior button location
 - New schedule information card showing link availability (check-in 15:00h to check-out 11:00h)
 - Enhanced warning message about not pressing door opening remotely
+- Step 4 includes important reminder to close the main building door for security
 - All improvements translated across 6 languages maintaining technical terms consistency
 
-**Visual Check-in Instructions for Ibarra:**
-- Added step-specific images to Ibarra check-in page for enhanced guest guidance
+**Visual Check-in Instructions for Both Apartments:**
+- Added step-specific images to both Ibarra and Quevedo check-in pages for enhanced guest guidance
 - 6 visual aids positioned to the right of each step (desktop) or below text (mobile)
 - Responsive layout: flex-column on mobile, flex-row on desktop with images at 256px width
-- Image mapping for each step:
+- **Ibarra Image mapping:**
   - Step 1: Entrance door photo (1puerta_1760088503543.jpeg)
   - Step 2: WhatsApp link interface (2enlace_1760088503553.png)
   - Step 3: "Portal Calle" button interface (3puerta_1760088503553.png)
   - Step 4: Interior courtyard with directional arrow (4apartamento_1760088503552.png)
   - Step 5: Apartment door control screen (6apertura_1760088503551.png)
   - Step 6: Interior exit button (7aperturainterior_1760088503550.png)
-- Images styled with rounded corners, object-cover, max height constraints for visual consistency
-- Container expanded to max-w-6xl to accommodate the new two-column layout
-- Images exclusive to Ibarra apartment (Quevedo check-in remains text-only)
+- **Quevedo Image mapping:**
+  - Step 1: Building entrance on street (1puerta_1760093251206.png)
+  - Step 2: WhatsApp link with building door (3enlace_1760093251206.png)
+  - Step 3: Portal Calle button interface (4botonportal_1760093251206.png)
+  - Step 4: Ground floor right door (6puertabajo_1760093251205.png)
+  - Step 5: Apartment door control interface (7enlaceapartamento_1760093251205.png)
+  - Step 6: Interior exit button (8salida_1760093251204.png)
+- Images styled with rounded corners, object-contain for full visibility, max height constraints
+- Container expanded to max-w-6xl to accommodate the two-column layout
 - All images have proper data-testid attributes for testing (img-step-1 through img-step-6)
