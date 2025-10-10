@@ -5,6 +5,12 @@ import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Cl
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
+import quevedoStep1 from '@assets/1puerta_1760088503543.jpeg';
+import quevedoStep2 from '@assets/2enlace_1760088503553.png';
+import quevedoStep3 from '@assets/3puerta_1760088503553.png';
+import quevedoStep4 from '@assets/4apartamento_1760088503552.png';
+import quevedoStep5 from '@assets/6apertura_1760088503551.png';
+import quevedoStep6 from '@assets/7aperturainterior_1760088503550.png';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -36,6 +42,15 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
     steps.step6,
   ];
 
+  const quevedoStepImages = apartment === 'quevedo' ? [
+    quevedoStep1,
+    quevedoStep2,
+    quevedoStep3,
+    quevedoStep4,
+    quevedoStep5,
+    quevedoStep6,
+  ] : [];
+
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
   const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
 
@@ -61,28 +76,40 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
         apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
-      <div className="relative z-10 max-w-3xl mx-auto p-4 md:p-6 space-y-6">
+      <div className="relative z-10 max-w-6xl mx-auto p-4 md:p-6 space-y-6">
         <div className="space-y-4">
           {allSteps.map((step, index) => (
             <Card key={index} data-testid={`card-step-${index + 1}`}>
               <CardContent className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-semibold">
-                      {index + 1}
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex gap-4 flex-1">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-semibold">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="text-primary">{stepIcons[index]}</div>
+                        <h3 className="font-semibold text-foreground">
+                          {t.checkin.step} {index + 1}: {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center gap-2">
-                      <div className="text-primary">{stepIcons[index]}</div>
-                      <h3 className="font-semibold text-foreground">
-                        {t.checkin.step} {index + 1}: {step.title}
-                      </h3>
+                  {apartment === 'quevedo' && quevedoStepImages[index] && (
+                    <div className="flex-shrink-0 w-full md:w-64">
+                      <img
+                        src={quevedoStepImages[index]}
+                        alt={`${t.checkin.step} ${index + 1}`}
+                        className="w-full h-auto rounded-lg object-cover max-h-64 md:max-h-48"
+                        data-testid={`img-step-${index + 1}`}
+                      />
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
