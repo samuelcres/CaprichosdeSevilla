@@ -82,25 +82,18 @@ export const translations = {
         walkingRoute: 'Itinerario a pie',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 Sevilla',
-            phone: '+34 954 225 288',
-            price: '€2.50/hora - €25/día',
-            distance: '350m (4 min a pie)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 Sevilla',
-            phone: '+34 954 213 285',
-            price: '€2.20/hora - €22/día',
-            distance: '450m (6 min a pie)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 Sevilla',
             phone: '+34 954 216 632',
             price: '€2.00/hora - €20/día',
             distance: '550m (7 min a pie)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 Sevilla',
+            phone: '+34 954 221 027',
+            price: '€2.20/hora - €22/día',
+            distance: '400m (5 min a pie)',
           },
         },
         quevedo: {
@@ -553,25 +546,18 @@ export const translations = {
         walkingRoute: 'Walking Directions',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 Seville',
-            phone: '+34 954 225 288',
-            price: '€2.50/hour - €25/day',
-            distance: '350m (4 min walk)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 Seville',
-            phone: '+34 954 213 285',
-            price: '€2.20/hour - €22/day',
-            distance: '450m (6 min walk)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 Seville',
             phone: '+34 954 216 632',
             price: '€2.00/hour - €20/day',
             distance: '550m (7 min walk)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 Seville',
+            phone: '+34 954 221 027',
+            price: '€2.20/hour - €22/day',
+            distance: '400m (5 min walk)',
           },
         },
         quevedo: {
@@ -1014,25 +1000,18 @@ export const translations = {
         walkingRoute: 'Itinéraire à pied',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 Séville',
-            phone: '+34 954 225 288',
-            price: '€2.50/heure - €25/jour',
-            distance: '350m (4 min à pied)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 Séville',
-            phone: '+34 954 213 285',
-            price: '€2.20/heure - €22/jour',
-            distance: '450m (6 min à pied)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 Séville',
             phone: '+34 954 216 632',
             price: '€2.00/heure - €20/jour',
             distance: '550m (7 min à pied)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 Séville',
+            phone: '+34 954 221 027',
+            price: '€2.20/heure - €22/jour',
+            distance: '400m (5 min à pied)',
           },
         },
         quevedo: {
@@ -1475,25 +1454,18 @@ export const translations = {
         walkingRoute: 'Fußweg-Route',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 Sevilla',
-            phone: '+34 954 225 288',
-            price: '€2.50/Std. - €25/Tag',
-            distance: '350m (4 Min. zu Fuß)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 Sevilla',
-            phone: '+34 954 213 285',
-            price: '€2.20/Std. - €22/Tag',
-            distance: '450m (6 Min. zu Fuß)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 Sevilla',
             phone: '+34 954 216 632',
             price: '€2.00/Std. - €20/Tag',
             distance: '550m (7 Min. zu Fuß)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 Sevilla',
+            phone: '+34 954 221 027',
+            price: '€2.20/Std. - €22/Tag',
+            distance: '400m (5 Min. zu Fuß)',
           },
         },
         quevedo: {
@@ -1936,25 +1908,18 @@ export const translations = {
         walkingRoute: 'Itinerario a piedi',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 Siviglia',
-            phone: '+34 954 225 288',
-            price: '€2.50/ora - €25/giorno',
-            distance: '350m (4 min a piedi)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 Siviglia',
-            phone: '+34 954 213 285',
-            price: '€2.20/ora - €22/giorno',
-            distance: '450m (6 min a piedi)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 Siviglia',
             phone: '+34 954 216 632',
             price: '€2.00/ora - €20/giorno',
             distance: '550m (7 min a piedi)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 Siviglia',
+            phone: '+34 954 221 027',
+            price: '€2.20/ora - €22/giorno',
+            distance: '400m (5 min a piedi)',
           },
         },
         quevedo: {
@@ -2397,25 +2362,18 @@ export const translations = {
         walkingRoute: '步行路线',
         ibarra: {
           parking1: {
-            name: 'Parking Plaza Nueva',
-            address: 'Plaza Nueva, s/n, 41001 塞维利亚',
-            phone: '+34 954 225 288',
-            price: '€2.50/小时 - €25/天',
-            distance: '350米 (步行4分钟)',
-          },
-          parking2: {
-            name: 'Parking Jardines del Valle',
-            address: 'Paseo de Cristóbal Colón, 22, 41001 塞维利亚',
-            phone: '+34 954 213 285',
-            price: '€2.20/小时 - €22/天',
-            distance: '450米 (步行6分钟)',
-          },
-          parking3: {
             name: 'Parking Cano y Cueto',
             address: 'Calle Cano y Cueto, 1, 41004 塞维利亚',
             phone: '+34 954 216 632',
             price: '€2.00/小时 - €20/天',
             distance: '550米 (步行7分钟)',
+          },
+          parking2: {
+            name: 'Aparcamiento Sevilla S.L.',
+            address: 'Calle Cuesta del Rosario, 8, 41004 塞维利亚',
+            phone: '+34 954 221 027',
+            price: '€2.20/小时 - €22/天',
+            distance: '400米 (步行5分钟)',
           },
         },
         quevedo: {
