@@ -95,6 +95,10 @@ Preferred communication style: Simple, everyday language.
 - Styled with outline variant and small text size for subtle, non-intrusive display
 - Apartment name persists across language changes (names don't translate)
 - All page wrappers enforce apartment selection before rendering content
+- **Apartment Image in Navigation:** Added circular thumbnail image of the apartment alongside the name in the badge
+  - Ibarra displays FotoIbarra image, Quevedo displays FotoQuevedo image
+  - Image styled as small circular avatar (5x5, rounded-full) with proper spacing
+  - Provides visual identification of selected apartment throughout navigation
 
 **Updated Parking Configuration:**
 - Both apartments now have exactly 2 parking options each for simplified guest experience
