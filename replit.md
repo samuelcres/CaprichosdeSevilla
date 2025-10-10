@@ -221,3 +221,19 @@ Preferred communication style: Simple, everyday language.
 - New schedule information card showing link availability (check-in 15:00h to check-out 11:00h)
 - Enhanced warning message about not pressing door opening remotely
 - All improvements translated across 6 languages maintaining technical terms consistency
+
+**Visual Check-in Instructions for Quevedo:**
+- Added step-specific images to Quevedo check-in page for enhanced guest guidance
+- 6 visual aids positioned to the right of each step (desktop) or below text (mobile)
+- Responsive layout: flex-column on mobile, flex-row on desktop with images at 256px width
+- Image mapping for each step:
+  - Step 1: Entrance door photo (1puerta_1760088503543.jpeg)
+  - Step 2: WhatsApp link interface (2enlace_1760088503553.png)
+  - Step 3: "Portal Calle" button interface (3puerta_1760088503553.png)
+  - Step 4: Interior courtyard with directional arrow (4apartamento_1760088503552.png)
+  - Step 5: Apartment door control screen (6apertura_1760088503551.png)
+  - Step 6: Interior exit button (7aperturainterior_1760088503550.png)
+- Images styled with rounded corners, object-cover, max height constraints for visual consistency
+- Container expanded to max-w-6xl to accommodate the new two-column layout
+- Images exclusive to Quevedo apartment (Ibarra check-in remains text-only)
+- All images have proper data-testid attributes for testing (img-step-1 through img-step-6)
