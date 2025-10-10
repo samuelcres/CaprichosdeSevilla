@@ -317,6 +317,218 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
             </Card>
                 </AccordionContent>
               </AccordionItem>
+
+              <AccordionItem value="car" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-arrival">
+                  <div className="flex items-center gap-3">
+                    <Car className="w-6 h-6 text-foreground" />
+                    <h2 className="text-xl font-semibold text-foreground">
+                      {t.transport.byCar.title}
+                    </h2>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <p className="text-sm text-muted-foreground mb-4">{t.transport.byCar.subtitle}</p>
+                  
+                  {apartment === 'ibarra' ? (
+                    <>
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking1.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking1.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking1.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
+                            data-testid="button-parking1-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking2.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking2.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking2.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
+                            data-testid="button-parking2-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking3.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking3.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking3.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
+                            data-testid="button-parking3-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </>
+                  ) : (
+                    <>
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking1.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking1.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking1.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
+                            data-testid="button-parking1-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking2.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking2.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking2.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
+                            data-testid="button-parking2-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking3.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking3.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking3.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking3.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking3.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
+                            data-testid="button-parking3-map"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </TabsContent>
 
@@ -525,6 +737,218 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                 </p>
               </CardContent>
             </Card>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="car" className="border rounded-lg px-6">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-departure">
+                  <div className="flex items-center gap-3">
+                    <Car className="w-6 h-6 text-foreground" />
+                    <h2 className="text-xl font-semibold text-foreground">
+                      {t.transport.byCar.title}
+                    </h2>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <p className="text-sm text-muted-foreground mb-4">{t.transport.byCar.subtitle}</p>
+                  
+                  {apartment === 'ibarra' ? (
+                    <>
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking1.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking1.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking1.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
+                            data-testid="button-parking1-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking2.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking2.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking2.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
+                            data-testid="button-parking2-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking3.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.ibarra.parking3.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking3.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
+                            data-testid="button-parking3-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </>
+                  ) : (
+                    <>
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking1.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking1.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking1.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
+                            data-testid="button-parking1-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking2.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking2.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking2.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
+                            data-testid="button-parking2-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <div className="flex items-start gap-3">
+                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                              <ParkingCircle className="w-5 h-5 text-primary" />
+                            </div>
+                            <div className="flex-1">
+                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking3.name}</CardTitle>
+                              <CardDescription className="mt-1">
+                                {t.transport.byCar.quevedo.parking3.distance}
+                              </CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking3.address}</p>
+                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking3.phone}</p>
+                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking3.price}</p>
+                          </div>
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
+                            data-testid="button-parking3-map-departure"
+                          >
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {t.transport.byCar.openMap}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
