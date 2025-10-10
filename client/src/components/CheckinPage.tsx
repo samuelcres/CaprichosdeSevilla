@@ -105,7 +105,7 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                       <img
                         src={ibarraStepImages[index]}
                         alt={`${t.checkin.step} ${index + 1}`}
-                        className="w-full h-auto rounded-lg object-contain max-h-64 md:max-h-48"
+                        className="w-full h-auto rounded-lg object-contain max-h-80 md:max-h-64"
                         data-testid={`img-step-${index + 1}`}
                       />
                     </div>
