@@ -88,6 +88,16 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
+**Updated Ibarra Parking Configuration:**
+- Ibarra apartment parking options reduced from 3 to 2 parkings as per user requirements
+- New parking configuration for Ibarra:
+  - Parking 1: Parking Cano y Cueto (Calle Cano y Cueto, 1, 41004 Sevilla) - 550m, €2.00/hour - €20/day
+  - Parking 2: Aparcamiento Sevilla S.L. (Calle Cuesta del Rosario, 8, 41004 Sevilla) - 400m, €2.20/hour - €22/day
+- Previous parking3 (Plaza Nueva/Jardines del Valle) removed from both Arrival and Departure sections
+- All 6 languages updated with new parking information
+- Quevedo apartment maintains 3 parking options unchanged
+- Walking directions and map buttons work correctly with updated addresses
+
 **Improved Menu Button Distribution:**
 - Optimized menu grid layout for better visual balance and user experience
 - New responsive distribution:
