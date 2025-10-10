@@ -417,49 +417,6 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                           </div>
                         </CardContent>
                       </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking3.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking3.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking3.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
-                              data-testid="button-parking3-map"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking3-route"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
                     </>
                   ) : (
                     <>
@@ -898,49 +855,6 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                               className="w-full"
                               onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}&travelmode=walking`, '_blank')}
                               data-testid="button-parking2-route-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking3.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking3.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking3.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
-                              data-testid="button-parking3-map-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking3-route-departure"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               {t.transport.byCar.walkingRoute}

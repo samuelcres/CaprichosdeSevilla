@@ -130,9 +130,9 @@ Preferred communication style: Simple, everyday language.
 **Parking Recommendations Feature:**
 - New "By Car" section added to Transport page with parking recommendations for guests arriving by car
 - Implemented in both Arrival and Departure tabs as accordion sections
-- 3 parking options per apartment with complete details:
-  - Ibarra apartment parkings: Plaza Nueva, Jardines del Valle, Cano y Cueto
-  - Quevedo apartment parkings: Plaza del Duque, Concordia, San Francisco
+- Parking options per apartment with complete details:
+  - Ibarra apartment parkings (2): Cano y Cueto, Aparcamiento Sevilla S.L. (Cuesta del Rosario)
+  - Quevedo apartment parkings (3): Plaza del Duque, Concordia, San Francisco
 - Each parking card displays: name, address, phone number, approximate price (hourly/daily), and walking distance
 - Dual Google Maps integration:
   - "View on Map" button: Opens parking location in Google Maps (outline variant)
