@@ -37,9 +37,10 @@ interface MainMenuProps {
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
   t: any;
+  showBackButton?: boolean;
 }
 
-export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t }: MainMenuProps) {
+export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t, showBackButton = true }: MainMenuProps) {
   const whatsappNumber = '+34661610794';
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
 
@@ -78,16 +79,20 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
       </div>
 
       <header className="relative z-10 p-4 border-b border-border flex items-center justify-between gap-2 bg-white">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onBack}
-          data-testid="button-back"
-          aria-label={t.common.back}
-          title={t.common.back}
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Button>
+        {showBackButton ? (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onBack}
+            data-testid="button-back"
+            aria-label={t.common.back}
+            title={t.common.back}
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </Button>
+        ) : (
+          <div className="w-10" />
+        )}
         
         <img
           src={logoUrl}

@@ -13,12 +13,15 @@ import TourismPageWrapper from "@/pages/TourismPageWrapper";
 import EventsPageWrapper from "@/pages/EventsPageWrapper";
 import ContactPageWrapper from "@/pages/ContactPageWrapper";
 import NotFound from "@/pages/not-found";
-import { useEffect } from "react";
 
 function AppRoutes() {
+  const { isConfiguredApartment } = useApp();
+
   return (
     <Switch>
-      <Route path="/" component={ApartmentPage} />
+      <Route path="/">
+        {isConfiguredApartment ? <Redirect to="/menu" /> : <ApartmentPage />}
+      </Route>
       <Route path="/menu" component={MenuPage} />
       <Route path="/transport" component={TransportPageWrapper} />
       <Route path="/checkin" component={CheckinPageWrapper} />

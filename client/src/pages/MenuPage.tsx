@@ -5,7 +5,7 @@ import { useTranslation } from '@/lib/i18n';
 import { useEffect } from 'react';
 
 export default function MenuPage() {
-  const { language, apartment, setApartment, setLanguage } = useApp();
+  const { language, apartment, setApartment, setLanguage, isConfiguredApartment } = useApp();
   const [, setLocation] = useLocation();
   const t = useTranslation(language);
 
@@ -53,6 +53,7 @@ export default function MenuPage() {
       currentLanguage={language}
       onLanguageChange={handleLanguageChange}
       t={t}
+      showBackButton={!isConfiguredApartment}
     />
   );
 }
