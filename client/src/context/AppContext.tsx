@@ -22,7 +22,7 @@ function getConfiguredApartment(): Apartment | null {
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const configuredApartment = getConfiguredApartment();
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguage] = useState<Language>('en');
   const [apartment, setApartment] = useState<Apartment | null>(configuredApartment);
 
   return (
