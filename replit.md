@@ -100,6 +100,24 @@ Preferred communication style: Simple, everyday language.
   - Image styled as small circular avatar (5x5, rounded-full) with proper spacing
   - Provides visual identification of selected apartment throughout navigation
 
+**Apartment-Specific Backgrounds with Watermark:**
+- Replaced Plaza de España background with apartment-specific photos once inside each apartment
+- All section pages (Menu, Transport, Check-in, WiFi, Tourism, Events, Contact) now display the selected apartment's photo as background
+- Background implementation:
+  - Fixed positioning covering full screen (inset-0)
+  - Apartment photo displayed at 30% opacity for subtle effect
+  - Background uses bg-cover bg-center bg-no-repeat for proper image display
+- Watermark overlay:
+  - Apartment name displayed diagonally (rotated -45 degrees)
+  - Very subtle opacity (5%) to not interfere with content
+  - Centered on screen using flexbox
+  - Text size: text-9xl for large, readable watermark
+- Image assets:
+  - Ibarra: FotoIbarra_1759702831594.webp
+  - Quevedo: FotoQuevedo_1759702831586.webp
+- Consistent z-index layering: background layer → watermark layer → content layer (z-10)
+- All pages follow the same pattern for visual consistency and maintainability
+
 **Updated Parking Configuration:**
 - Both apartments now have exactly 2 parking options each for simplified guest experience
 - Ibarra parking configuration:
