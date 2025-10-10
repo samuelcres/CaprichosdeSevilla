@@ -96,14 +96,16 @@ Preferred communication style: Simple, everyday language.
 - Apartment name persists across language changes (names don't translate)
 - All page wrappers enforce apartment selection before rendering content
 
-**Updated Ibarra Parking Configuration:**
-- Ibarra apartment parking options reduced from 3 to 2 parkings as per user requirements
-- New parking configuration for Ibarra:
+**Updated Parking Configuration:**
+- Both apartments now have exactly 2 parking options each for simplified guest experience
+- Ibarra parking configuration:
   - Parking 1: Parking Cano y Cueto (Calle Cano y Cueto, 1, 41004 Sevilla) - 550m, €2.00/hour - €20/day
   - Parking 2: Aparcamiento Sevilla S.L. (Calle Cuesta del Rosario, 8, 41004 Sevilla) - 400m, €2.20/hour - €22/day
-- Previous parking3 (Plaza Nueva/Jardines del Valle) removed from both Arrival and Departure sections
-- All 6 languages updated with new parking information
-- Quevedo apartment maintains 3 parking options unchanged
+- Quevedo parking configuration (updated):
+  - Parking 1: Parking Saba Plaza Concordia (Calle Concordia, 1, 41003 Sevilla) - 400m, €2.30/hour - €23/day
+  - Parking 2: Parking Imagen (C. Sta. Angela de la Cruz, 2, Casco Antiguo, 41003 Sevilla) - 350m, €2.40/hour - €24/day
+- Previous parking3 removed from both apartments in all tabs (Arrival and Departure)
+- All 6 languages updated with new parking information across the application
 - Walking directions and map buttons work correctly with updated addresses
 
 **Improved Menu Button Distribution:**
@@ -150,7 +152,7 @@ Preferred communication style: Simple, everyday language.
 - Implemented in both Arrival and Departure tabs as accordion sections
 - Parking options per apartment with complete details:
   - Ibarra apartment parkings (2): Cano y Cueto, Aparcamiento Sevilla S.L. (Cuesta del Rosario)
-  - Quevedo apartment parkings (3): Plaza del Duque, Concordia, San Francisco
+  - Quevedo apartment parkings (2): Parking Saba Plaza Concordia, Parking Imagen (C. Sta. Angela de la Cruz)
 - Each parking card displays: name, address, phone number, approximate price (hourly/daily), and walking distance
 - Dual Google Maps integration:
   - "View on Map" button: Opens parking location in Google Maps (outline variant)
