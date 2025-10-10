@@ -9,7 +9,8 @@ import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed,
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
-import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 
 // Import stock images for restaurants
 import img1 from '@assets/stock_images/traditional_spanish__a8531ed5.jpg';
@@ -195,13 +196,20 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
   const apartmentCoords = apartment === 'ibarra'
     ? '37.3878,-5.9932'
     : '37.3897,-5.9942';
+  const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
+  const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
 
   return (
     <div className="min-h-screen bg-background relative">
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
-        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+        style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+        <p className="text-9xl font-bold text-foreground transform -rotate-45">
+          {apartmentName}
+        </p>
+      </div>
       <PageHeader 
         onBack={onBack} 
         onHome={onHome} 

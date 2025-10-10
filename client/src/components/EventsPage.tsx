@@ -9,7 +9,8 @@ import { CalendarIcon, MapPin, ExternalLink, PartyPopper } from 'lucide-react';
 import { getEventsForDate, getEventsForMonth, categoryColors } from '@/lib/eventsData';
 import { format } from 'date-fns';
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
-import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 
 // Map language codes to date-fns locales
 const getLocale = (lang: Language) => {
@@ -64,9 +65,21 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
     }
   };
 
+  const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
+  const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
+
   return (
-    <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${sevilleBgUrl})` }}>
-      <div className="min-h-screen bg-background/95">
+    <div className="min-h-screen bg-background relative">
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        style={{ backgroundImage: `url(${apartmentBgUrl})` }}
+      />
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+        <p className="text-9xl font-bold text-foreground transform -rotate-45">
+          {apartmentName}
+        </p>
+      </div>
+      <div className="relative z-10">
         <PageHeader
           title={t.events.title}
           onBack={onBack}

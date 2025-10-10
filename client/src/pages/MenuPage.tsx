@@ -46,6 +46,7 @@ export default function MenuPage() {
   return (
     <MainMenu
       options={options}
+      apartment={apartment}
       apartmentName={apartmentName}
       onSelect={handleSelect}
       onBack={handleBack}

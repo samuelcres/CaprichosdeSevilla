@@ -3,13 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 import transportBg from '@assets/stock_images/seville_transportati_6cb94a1d.jpg';
 import checkinBg from '@assets/stock_images/hotel_apartment_key__f8c5ac84.jpg';
 import wifiBg from '@assets/stock_images/wifi_internet_connec_dc76a8b4.jpg';
 import tourismBg from '@assets/stock_images/seville_cathedral_al_69643ac9.jpg';
 import contactBg from '@assets/stock_images/customer_service_con_5e1eb47a.jpg';
-import { languages, Language } from '@/lib/i18n';
+import { languages, Language, Apartment } from '@/lib/i18n';
+import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,17 +30,19 @@ interface MainMenuProps {
   options: MenuOption[];
   onSelect: (id: string) => void;
   onBack: () => void;
+  apartment: Apartment;
   apartmentName: string;
   currentLanguage: Language;
   onLanguageChange: (lang: Language) => void;
   t: any;
 }
 
-export default function MainMenu({ options, onSelect, onBack, apartmentName, currentLanguage, onLanguageChange, t }: MainMenuProps) {
+export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t }: MainMenuProps) {
   const whatsappNumber = '+34661610794';
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
 
   const currentLang = languages.find(l => l.code === currentLanguage);
+  const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
 
   const getBackgroundImage = (optionId: string) => {
     const backgrounds: Record<string, string> = {
@@ -47,18 +50,23 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
       'checkin': checkinBg,
       'wifi': wifiBg,
       'tourism': tourismBg,
-      'events': sevilleBgUrl,
+      'events': apartmentBgUrl,
       'contact': contactBg,
     };
-    return backgrounds[optionId] || sevilleBgUrl;
+    return backgrounds[optionId] || apartmentBgUrl;
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
-        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+        style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+        <p className="text-9xl font-bold text-foreground transform -rotate-45">
+          {apartmentName}
+        </p>
+      </div>
 
       <header className="relative z-10 p-4 border-b border-border flex items-center justify-between gap-2 bg-white">
         <Button

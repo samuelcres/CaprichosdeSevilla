@@ -6,7 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Bus, Car, Plane, ParkingCircle, ExternalLink, Bike, Navigation, Train } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
-import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 
 interface TransportPageProps {
   onBack: () => void;
@@ -25,12 +26,20 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
     ? t.transport.taxi.addressIbarra
     : t.transport.taxi.addressQuevedo;
 
+  const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
+  const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
+
   return (
     <div className="min-h-screen bg-background relative">
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
-        style={{ backgroundImage: `url(${sevilleBgUrl})` }}
+        style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+        <p className="text-9xl font-bold text-foreground transform -rotate-45">
+          {apartmentName}
+        </p>
+      </div>
       <PageHeader 
         onBack={onBack} 
         onHome={onHome} 
