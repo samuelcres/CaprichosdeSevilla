@@ -79,6 +79,7 @@ export const translations = {
         phone: 'Teléfono',
         price: 'Precio aproximado',
         openMap: 'Ver en Mapa',
+        walkingRoute: 'Itinerario a pie',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
@@ -549,6 +550,7 @@ export const translations = {
         phone: 'Phone',
         price: 'Approximate price',
         openMap: 'View on Map',
+        walkingRoute: 'Walking Directions',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
@@ -1009,6 +1011,7 @@ export const translations = {
         phone: 'Téléphone',
         price: 'Prix approximatif',
         openMap: 'Voir sur la Carte',
+        walkingRoute: 'Itinéraire à pied',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
@@ -1469,6 +1472,7 @@ export const translations = {
         phone: 'Telefon',
         price: 'Ungefährer Preis',
         openMap: 'Auf Karte ansehen',
+        walkingRoute: 'Fußweg-Route',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
@@ -1929,6 +1933,7 @@ export const translations = {
         phone: 'Telefono',
         price: 'Prezzo approssimativo',
         openMap: 'Visualizza sulla Mappa',
+        walkingRoute: 'Itinerario a piedi',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
@@ -2389,6 +2394,7 @@ export const translations = {
         phone: '电话',
         price: '大致价格',
         openMap: '在地图上查看',
+        walkingRoute: '步行路线',
         ibarra: {
           parking1: {
             name: 'Parking Plaza Nueva',
