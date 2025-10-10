@@ -5,12 +5,12 @@ import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Cl
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import quevedoStep1 from '@assets/1puerta_1760088503543.jpeg';
-import quevedoStep2 from '@assets/2enlace_1760088503553.png';
-import quevedoStep3 from '@assets/3puerta_1760088503553.png';
-import quevedoStep4 from '@assets/4apartamento_1760088503552.png';
-import quevedoStep5 from '@assets/6apertura_1760088503551.png';
-import quevedoStep6 from '@assets/7aperturainterior_1760088503550.png';
+import ibarraStep1 from '@assets/1puerta_1760088503543.jpeg';
+import ibarraStep2 from '@assets/2enlace_1760088503553.png';
+import ibarraStep3 from '@assets/3puerta_1760088503553.png';
+import ibarraStep4 from '@assets/4apartamento_1760088503552.png';
+import ibarraStep5 from '@assets/6apertura_1760088503551.png';
+import ibarraStep6 from '@assets/7aperturainterior_1760088503550.png';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -42,13 +42,13 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
     steps.step6,
   ];
 
-  const quevedoStepImages = apartment === 'quevedo' ? [
-    quevedoStep1,
-    quevedoStep2,
-    quevedoStep3,
-    quevedoStep4,
-    quevedoStep5,
-    quevedoStep6,
+  const ibarraStepImages = apartment === 'ibarra' ? [
+    ibarraStep1,
+    ibarraStep2,
+    ibarraStep3,
+    ibarraStep4,
+    ibarraStep5,
+    ibarraStep6,
   ] : [];
 
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
@@ -100,10 +100,10 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                       </p>
                     </div>
                   </div>
-                  {apartment === 'quevedo' && quevedoStepImages[index] && (
+                  {apartment === 'ibarra' && ibarraStepImages[index] && (
                     <div className="flex-shrink-0 w-full md:w-64">
                       <img
-                        src={quevedoStepImages[index]}
+                        src={ibarraStepImages[index]}
                         alt={`${t.checkin.step} ${index + 1}`}
                         className="w-full h-auto rounded-lg object-cover max-h-64 md:max-h-48"
                         data-testid={`img-step-${index + 1}`}
