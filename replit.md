@@ -102,6 +102,10 @@ Preferred communication style: Simple, everyday language.
 - Menu order updated: Transport → Check-in → Wi-Fi → Tourism → Events → Contact
 - PartyPopper icon used for Events button
 - Plaza de España background consistent with other pages
+- Localization enhancements:
+  - date-fns locale integration for all 6 languages (es, enUS, fr, de, it, zhCN)
+  - Event count translations (singular/plural) for all languages
+  - All dates render in the appropriate language based on user selection
 
 **Restaurant Category Icons:**
 - Added visual icons to all restaurant categories in Tourism page
