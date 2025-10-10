@@ -88,6 +88,17 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
+**Improved Menu Button Distribution:**
+- Optimized menu grid layout for better visual balance and user experience
+- New responsive distribution:
+  - Mobile (1 column): All 6 buttons in vertical layout
+  - Tablet (2 columns): 3 rows with 2 buttons each
+  - Desktop (3 columns): 2 rows with 3 buttons each (symmetric 2×3 grid)
+- Previous layout had uneven distribution (3 buttons in first row, 3 in second row with different widths)
+- Simplified code from two separate grids to single unified responsive grid
+- Menu order preserved: Transport → Check-in → Wi-Fi → Tourism → Events → Contact
+- All cards maintain same styling, hover effects, and navigation functionality
+
 **Events Calendar Feature Added:**
 - New Events section with interactive calendar showing cultural events in Seville
 - Features include:

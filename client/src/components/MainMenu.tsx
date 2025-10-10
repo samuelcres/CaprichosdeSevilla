@@ -137,62 +137,31 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
             <p className="text-muted-foreground">{t.menu.subtitle}</p>
           </div>
 
-          <div className="space-y-6 max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {options.slice(0, 3).map((option) => (
-                <Card
-                  key={option.id}
-                  className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
-                  onClick={() => onSelect(option.id)}
-                  data-testid={`card-menu-${option.id}`}
-                >
-                  <div className="flex h-full">
-                    <div 
-                      className="w-1/2 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                    />
-                    <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-4">
-                      <div className="relative">
-                        <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
-                          <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
-                        </div>
-                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+            {options.map((option) => (
+              <Card
+                key={option.id}
+                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
+                onClick={() => onSelect(option.id)}
+                data-testid={`card-menu-${option.id}`}
+              >
+                <div className="flex h-full">
+                  <div 
+                    className="w-1/2 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
+                  />
+                  <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-4">
+                    <div className="relative">
+                      <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
+                        <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
                       </div>
-                      <CardTitle className="text-lg font-bold text-foreground text-center">{option.title}</CardTitle>
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
+                    <CardTitle className="text-lg font-bold text-foreground text-center">{option.title}</CardTitle>
                   </div>
-                </Card>
-              ))}
-            </div>
-            
-            {options.length > 3 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-xl mx-auto">
-                {options.slice(3).map((option) => (
-                  <Card
-                    key={option.id}
-                    className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
-                    onClick={() => onSelect(option.id)}
-                    data-testid={`card-menu-${option.id}`}
-                  >
-                    <div className="flex h-full">
-                      <div 
-                        className="w-1/2 bg-cover bg-center"
-                        style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                      />
-                      <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-4">
-                        <div className="relative">
-                          <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
-                            <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
-                          </div>
-                          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        </div>
-                        <CardTitle className="text-lg font-bold text-foreground text-center">{option.title}</CardTitle>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            )}
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
