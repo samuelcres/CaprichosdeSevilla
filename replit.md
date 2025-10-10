@@ -127,6 +127,18 @@ Preferred communication style: Simple, everyday language.
 - Icons are displayed in primary color for consistent visual hierarchy
 - Applied to both Ibarra and Quevedo apartments
 
+**Parking Recommendations Feature:**
+- New "By Car" section added to Transport page with parking recommendations for guests arriving by car
+- Implemented in both Arrival and Departure tabs as accordion sections
+- 3 parking options per apartment with complete details:
+  - Ibarra apartment parkings: Plaza Nueva, Jardines del Valle, Cano y Cueto
+  - Quevedo apartment parkings: Plaza del Duque, Concordia, San Francisco
+- Each parking card displays: name, address, phone number, approximate price (hourly/daily), and walking distance
+- Google Maps integration: "View on Map" button opens location in Google Maps in new tab
+- Full translations in all 6 languages including parking names, addresses, and pricing information
+- Consistent UI design with other transport options using Cards and ParkingCircle icons
+- Test coverage: verified parking display for both apartments and Google Maps integration
+
 ### October 9, 2025
 
 **Scroll to Top Navigation:**
