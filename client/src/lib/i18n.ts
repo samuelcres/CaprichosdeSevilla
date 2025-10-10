@@ -32,6 +32,7 @@ export const translations = {
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
       tourism: 'Turismo',
+      events: 'Eventos',
       contact: 'Contacto',
     },
     transport: {
@@ -350,6 +351,48 @@ export const translations = {
         picnic: 'Pancakes americanos, huevos benedictinos, brunch completo',
       },
     },
+    events: {
+      title: 'Eventos Culturales',
+      subtitle: 'Descubre los eventos en Sevilla',
+      selectDate: 'Selecciona una fecha',
+      noEvents: 'No hay eventos programados para esta fecha',
+      viewWebsite: 'Ver sitio web',
+      free: 'Gratis',
+      paid: 'De pago',
+      categoryLabels: {
+        festival: 'Festival',
+        religious: 'Religioso',
+        cultural: 'Cultural',
+        sports: 'Deportes',
+        music: 'Música',
+        theater: 'Teatro',
+        art: 'Arte'
+      },
+      eventNames: {
+        semanaSanta: 'Semana Santa',
+        feriaAbril: 'Feria de Abril',
+        copaRey: 'Final Copa del Rey',
+        corpusChristi: 'Corpus Christi',
+        bienalFlamenco: 'Bienal de Flamenco',
+        festivalTeatro: 'Festival Internacional de Teatro',
+        nocheBlanco: 'Noche en Blanco',
+        diaAndalucia: 'Día de Andalucía',
+        veladaSantaAna: 'Velá de Santa Ana',
+        fiestasVela: 'Fiestas de la Vela'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: 'Procesiones religiosas espectaculares con 71 hermandades y pasos ornamentados por toda la ciudad. Una experiencia única de fe y tradición andaluza.',
+        feriaAbrilDesc: 'La fiesta más emblemática de Sevilla con más de 1.000 casetas, baile flamenco, trajes tradicionales y paseos de caballos. Una semana de alegría y tradición.',
+        copaReyDesc: 'Final del torneo de Copa del Rey de fútbol en el Estadio La Cartuja. El evento deportivo más importante de la primavera sevillana.',
+        corpusChristiDesc: 'Procesión religiosa solemne por las calles principales de la ciudad con la Custodia de plata de Juan de Arfe.',
+        bienalFlamencoDesc: 'El festival de flamenco más importante del mundo con artistas consagrados y emergentes. Cuatro semanas de arte y duende en diversos teatros.',
+        festivalTeatroDesc: 'Festival internacional de teatro y artes escénicas con compañías de todo el mundo. Teatro, danza, circo y performance.',
+        nocheBlancoDesc: 'Noche cultural gratuita con museos abiertos, conciertos, exposiciones y actividades artísticas por toda la ciudad hasta la madrugada.',
+        diaAndaluciaDesc: 'Celebración del Día de Andalucía con actos institucionales, actividades culturales y gastronómicas en toda la ciudad.',
+        veladaSantaAnaDesc: 'Fiesta tradicional del barrio de Triana con casetas, música en directo, baile y gastronomía local en honor a Santa Ana.',
+        fiestasVelaDesc: 'Fiestas religiosas en el barrio de Triana en honor a la Virgen del Carmen, con procesión marítima por el Guadalquivir.'
+      }
+    },
     contact: {
       title: 'Contacto y Ayuda',
       description: '¿Necesitas ayuda? Estamos aquí para ti',
@@ -403,6 +446,7 @@ export const translations = {
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
       tourism: 'Tourism',
+      events: 'Events',
       contact: 'Contact',
     },
     transport: {
@@ -711,6 +755,48 @@ export const translations = {
         picnic: 'American pancakes, eggs benedict, full brunch',
       },
     },
+    events: {
+      title: 'Cultural Events',
+      subtitle: 'Discover events in Seville',
+      selectDate: 'Select a date',
+      noEvents: 'No events scheduled for this date',
+      viewWebsite: 'View website',
+      free: 'Free',
+      paid: 'Paid',
+      categoryLabels: {
+        festival: 'Festival',
+        religious: 'Religious',
+        cultural: 'Cultural',
+        sports: 'Sports',
+        music: 'Music',
+        theater: 'Theater',
+        art: 'Art'
+      },
+      eventNames: {
+        semanaSanta: 'Holy Week',
+        feriaAbril: 'April Fair',
+        copaRey: 'King\'s Cup Final',
+        corpusChristi: 'Corpus Christi',
+        bienalFlamenco: 'Flamenco Biennial',
+        festivalTeatro: 'International Theatre Festival',
+        nocheBlanco: 'White Night',
+        diaAndalucia: 'Andalusia Day',
+        veladaSantaAna: 'Santa Ana Festival',
+        fiestasVela: 'Vela Festivities'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: 'Spectacular religious processions with 71 brotherhoods and ornate floats throughout the city. A unique experience of Andalusian faith and tradition.',
+        feriaAbrilDesc: 'Seville\'s most emblematic festival with over 1,000 casetas, flamenco dancing, traditional dress and horse parades. A week of joy and tradition.',
+        copaReyDesc: 'King\'s Cup football tournament final at La Cartuja Stadium. The most important sporting event of Seville\'s spring.',
+        corpusChristiDesc: 'Solemn religious procession through the city\'s main streets with Juan de Arfe\'s silver monstrance.',
+        bienalFlamencoDesc: 'The world\'s most important flamenco festival with established and emerging artists. Four weeks of art and spirit in various theaters.',
+        festivalTeatroDesc: 'International theatre and performing arts festival with companies from around the world. Theatre, dance, circus and performance.',
+        nocheBlancoDesc: 'Free cultural night with open museums, concerts, exhibitions and artistic activities throughout the city until dawn.',
+        diaAndaluciaDesc: 'Celebration of Andalusia Day with institutional events, cultural and gastronomic activities throughout the city.',
+        veladaSantaAnaDesc: 'Traditional Triana neighborhood festival with casetas, live music, dancing and local gastronomy in honor of Santa Ana.',
+        fiestasVelaDesc: 'Religious festivities in Triana neighborhood in honor of the Virgin of Carmen, with maritime procession on the Guadalquivir.'
+      }
+    },
     contact: {
       title: 'Contact & Help',
       description: 'Need help? We are here for you',
@@ -764,6 +850,7 @@ export const translations = {
       checkin: 'Enregistrement',
       wifi: 'Wi-Fi',
       tourism: 'Tourisme',
+      events: 'Événements',
       contact: 'Contact',
     },
     transport: {
@@ -1072,6 +1159,48 @@ export const translations = {
         picnic: 'Pancakes américains, œufs bénédicte, brunch complet',
       },
     },
+    events: {
+      title: 'Événements Culturels',
+      subtitle: 'Découvrez les événements à Séville',
+      selectDate: 'Sélectionnez une date',
+      noEvents: 'Aucun événement programmé pour cette date',
+      viewWebsite: 'Voir le site web',
+      free: 'Gratuit',
+      paid: 'Payant',
+      categoryLabels: {
+        festival: 'Festival',
+        religious: 'Religieux',
+        cultural: 'Culturel',
+        sports: 'Sports',
+        music: 'Musique',
+        theater: 'Théâtre',
+        art: 'Art'
+      },
+      eventNames: {
+        semanaSanta: 'Semaine Sainte',
+        feriaAbril: 'Foire d\'Avril',
+        copaRey: 'Finale Coupe du Roi',
+        corpusChristi: 'Corpus Christi',
+        bienalFlamenco: 'Biennale de Flamenco',
+        festivalTeatro: 'Festival International de Théâtre',
+        nocheBlanco: 'Nuit Blanche',
+        diaAndalucia: 'Jour de l\'Andalousie',
+        veladaSantaAna: 'Fête de Santa Ana',
+        fiestasVela: 'Fêtes de la Vela'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: 'Processions religieuses spectaculaires avec 71 confréries et chars ornés dans toute la ville. Une expérience unique de foi et tradition andalouse.',
+        feriaAbrilDesc: 'La fête la plus emblématique de Séville avec plus de 1000 casetas, danse flamenco, costumes traditionnels et défilés de chevaux. Une semaine de joie et tradition.',
+        copaReyDesc: 'Finale du tournoi de la Coupe du Roi au Stade La Cartuja. L\'événement sportif le plus important du printemps sévillan.',
+        corpusChristiDesc: 'Procession religieuse solennelle dans les rues principales de la ville avec l\'ostensoir en argent de Juan de Arfe.',
+        bienalFlamencoDesc: 'Le festival de flamenco le plus important du monde avec des artistes consacrés et émergents. Quatre semaines d\'art et de duende dans divers théâtres.',
+        festivalTeatroDesc: 'Festival international de théâtre et arts scéniques avec des compagnies du monde entier. Théâtre, danse, cirque et performance.',
+        nocheBlancoDesc: 'Nuit culturelle gratuite avec musées ouverts, concerts, expositions et activités artistiques dans toute la ville jusqu\'à l\'aube.',
+        diaAndaluciaDesc: 'Célébration du Jour de l\'Andalousie avec événements institutionnels, activités culturelles et gastronomiques dans toute la ville.',
+        veladaSantaAnaDesc: 'Fête traditionnelle du quartier de Triana avec casetas, musique live, danse et gastronomie locale en l\'honneur de Santa Ana.',
+        fiestasVelaDesc: 'Fêtes religieuses dans le quartier de Triana en l\'honneur de la Vierge del Carmen, avec procession maritime sur le Guadalquivir.'
+      }
+    },
     contact: {
       title: 'Contact et Aide',
       description: 'Besoin d\'aide? Nous sommes là pour vous',
@@ -1125,6 +1254,7 @@ export const translations = {
       checkin: 'Check-in',
       wifi: 'WLAN',
       tourism: 'Tourismus',
+      events: 'Veranstaltungen',
       contact: 'Kontakt',
     },
     transport: {
@@ -1433,6 +1563,48 @@ export const translations = {
         picnic: 'Amerikanische Pancakes, Eggs Benedict, vollständiger Brunch',
       },
     },
+    events: {
+      title: 'Kulturelle Veranstaltungen',
+      subtitle: 'Entdecken Sie Veranstaltungen in Sevilla',
+      selectDate: 'Wählen Sie ein Datum',
+      noEvents: 'Keine Veranstaltungen für dieses Datum geplant',
+      viewWebsite: 'Website ansehen',
+      free: 'Kostenlos',
+      paid: 'Kostenpflichtig',
+      categoryLabels: {
+        festival: 'Festival',
+        religious: 'Religiös',
+        cultural: 'Kulturell',
+        sports: 'Sport',
+        music: 'Musik',
+        theater: 'Theater',
+        art: 'Kunst'
+      },
+      eventNames: {
+        semanaSanta: 'Karwoche',
+        feriaAbril: 'Aprilmesse',
+        copaRey: 'Königspokal-Finale',
+        corpusChristi: 'Fronleichnam',
+        bienalFlamenco: 'Flamenco-Biennale',
+        festivalTeatro: 'Internationales Theaterfestival',
+        nocheBlanco: 'Weiße Nacht',
+        diaAndalucia: 'Tag Andalusiens',
+        veladaSantaAna: 'Santa Ana Fest',
+        fiestasVela: 'Vela-Festlichkeiten'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: 'Spektakuläre religiöse Prozessionen mit 71 Bruderschaften und verzierten Prozessionswagen durch die ganze Stadt. Ein einzigartiges Erlebnis andalusischen Glaubens und Tradition.',
+        feriaAbrilDesc: 'Sevillas emblematischstes Fest mit über 1000 Casetas, Flamenco-Tanz, traditioneller Kleidung und Pferdeparaden. Eine Woche voller Freude und Tradition.',
+        copaReyDesc: 'Finale des Königspokal-Turniers im La Cartuja Stadion. Das wichtigste Sportereignis des Sevillaner Frühlings.',
+        corpusChristiDesc: 'Feierliche religiöse Prozession durch die Hauptstraßen der Stadt mit der silbernen Monstranz von Juan de Arfe.',
+        bienalFlamencoDesc: 'Das wichtigste Flamenco-Festival der Welt mit etablierten und aufstrebenden Künstlern. Vier Wochen Kunst und Duende in verschiedenen Theatern.',
+        festivalTeatroDesc: 'Internationales Theater- und darstellende Künste Festival mit Kompanien aus der ganzen Welt. Theater, Tanz, Zirkus und Performance.',
+        nocheBlancoDesc: 'Kostenlose Kulturnacht mit geöffneten Museen, Konzerten, Ausstellungen und künstlerischen Aktivitäten in der ganzen Stadt bis zum Morgengrauen.',
+        diaAndaluciaDesc: 'Feier des Tages Andalusiens mit institutionellen Veranstaltungen, kulturellen und gastronomischen Aktivitäten in der ganzen Stadt.',
+        veladaSantaAnaDesc: 'Traditionelles Fest im Viertel Triana mit Casetas, Live-Musik, Tanz und lokaler Gastronomie zu Ehren von Santa Ana.',
+        fiestasVelaDesc: 'Religiöse Festlichkeiten im Viertel Triana zu Ehren der Jungfrau del Carmen, mit maritimer Prozession auf dem Guadalquivir.'
+      }
+    },
     contact: {
       title: 'Kontakt & Hilfe',
       description: 'Brauchen Sie Hilfe? Wir sind für Sie da',
@@ -1486,6 +1658,7 @@ export const translations = {
       checkin: 'Check-in',
       wifi: 'Wi-Fi',
       tourism: 'Turismo',
+      events: 'Eventi',
       contact: 'Contatto',
     },
     transport: {
@@ -1794,6 +1967,48 @@ export const translations = {
         picnic: 'Pancake americani, uova alla benedict, brunch completo',
       },
     },
+    events: {
+      title: 'Eventi Culturali',
+      subtitle: 'Scopri gli eventi a Siviglia',
+      selectDate: 'Seleziona una data',
+      noEvents: 'Nessun evento programmato per questa data',
+      viewWebsite: 'Vedi sito web',
+      free: 'Gratuito',
+      paid: 'A pagamento',
+      categoryLabels: {
+        festival: 'Festival',
+        religious: 'Religioso',
+        cultural: 'Culturale',
+        sports: 'Sport',
+        music: 'Musica',
+        theater: 'Teatro',
+        art: 'Arte'
+      },
+      eventNames: {
+        semanaSanta: 'Settimana Santa',
+        feriaAbril: 'Fiera di Aprile',
+        copaRey: 'Finale Coppa del Re',
+        corpusChristi: 'Corpus Christi',
+        bienalFlamenco: 'Biennale di Flamenco',
+        festivalTeatro: 'Festival Internazionale di Teatro',
+        nocheBlanco: 'Notte Bianca',
+        diaAndalucia: 'Giorno dell\'Andalusia',
+        veladaSantaAna: 'Festa di Santa Ana',
+        fiestasVela: 'Feste della Vela'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: 'Spettacolari processioni religiose con 71 confraternite e carri ornati in tutta la città. Un\'esperienza unica di fede e tradizione andalusa.',
+        feriaAbrilDesc: 'La festa più emblematica di Siviglia con oltre 1000 casetas, danza flamenca, abiti tradizionali e sfilate di cavalli. Una settimana di gioia e tradizione.',
+        copaReyDesc: 'Finale del torneo della Coppa del Re allo Stadio La Cartuja. L\'evento sportivo più importante della primavera sivigliana.',
+        corpusChristiDesc: 'Solenne processione religiosa per le strade principali della città con l\'ostensorio d\'argento di Juan de Arfe.',
+        bienalFlamencoDesc: 'Il festival di flamenco più importante al mondo con artisti affermati ed emergenti. Quattro settimane di arte e duende in vari teatri.',
+        festivalTeatroDesc: 'Festival internazionale di teatro e arti sceniche con compagnie da tutto il mondo. Teatro, danza, circo e performance.',
+        nocheBlancoDesc: 'Notte culturale gratuita con musei aperti, concerti, mostre e attività artistiche in tutta la città fino all\'alba.',
+        diaAndaluciaDesc: 'Celebrazione del Giorno dell\'Andalusia con eventi istituzionali, attività culturali e gastronomiche in tutta la città.',
+        veladaSantaAnaDesc: 'Festa tradizionale del quartiere di Triana con casetas, musica dal vivo, ballo e gastronomia locale in onore di Santa Ana.',
+        fiestasVelaDesc: 'Festività religiose nel quartiere di Triana in onore della Vergine del Carmen, con processione marittima sul Guadalquivir.'
+      }
+    },
     contact: {
       title: 'Contatto e Aiuto',
       description: 'Hai bisogno di aiuto? Siamo qui per te',
@@ -1847,6 +2062,7 @@ export const translations = {
       checkin: '入住',
       wifi: 'Wi-Fi',
       tourism: '旅游',
+      events: '活动',
       contact: '联系我们',
     },
     transport: {
@@ -2154,6 +2370,48 @@ export const translations = {
         lafresquita: '天然果汁，排毒冰沙，纯素选择',
         picnic: '美式松饼，班尼迪克蛋，完整早午餐',
       },
+    },
+    events: {
+      title: '文化活动',
+      subtitle: '探索塞维利亚的活动',
+      selectDate: '选择日期',
+      noEvents: '此日期没有安排活动',
+      viewWebsite: '查看网站',
+      free: '免费',
+      paid: '付费',
+      categoryLabels: {
+        festival: '节日',
+        religious: '宗教',
+        cultural: '文化',
+        sports: '体育',
+        music: '音乐',
+        theater: '戏剧',
+        art: '艺术'
+      },
+      eventNames: {
+        semanaSanta: '圣周',
+        feriaAbril: '四月节',
+        copaRey: '国王杯决赛',
+        corpusChristi: '圣体节',
+        bienalFlamenco: '弗拉门戈双年展',
+        festivalTeatro: '国际戏剧节',
+        nocheBlanco: '白夜',
+        diaAndalucia: '安达卢西亚日',
+        veladaSantaAna: '圣安娜节',
+        fiestasVela: '帆船节'
+      },
+      eventDescriptions: {
+        semanaSantaDesc: '壮观的宗教游行，71个兄弟会和装饰华丽的花车遍布全城。安达卢西亚信仰和传统的独特体验。',
+        feriaAbrilDesc: '塞维利亚最具标志性的节日，超过1000个小屋、弗拉门戈舞蹈、传统服装和马匹游行。一周的欢乐和传统。',
+        copaReyDesc: '拉卡尔图哈球场举行的国王杯足球锦标赛决赛。塞维利亚春季最重要的体育赛事。',
+        corpusChristiDesc: '庄严的宗教游行，穿过城市主要街道，展示胡安·德·阿尔费的银质圣体匣。',
+        bienalFlamencoDesc: '世界上最重要的弗拉门戈节，汇集成名和新兴艺术家。在各个剧院进行四周的艺术和灵魂表演。',
+        festivalTeatroDesc: '国际戏剧和表演艺术节，来自世界各地的团体。戏剧、舞蹈、马戏和表演。',
+        nocheBlancoDesc: '免费文化之夜，博物馆开放、音乐会、展览和艺术活动遍布全城直到黎明。',
+        diaAndaluciaDesc: '庆祝安达卢西亚日，全城举行体制活动、文化和美食活动。',
+        veladaSantaAnaDesc: '特里亚纳区的传统节日，有小屋、现场音乐、舞蹈和当地美食，纪念圣安娜。',
+        fiestasVelaDesc: '特里亚纳区纪念卡门圣母的宗教节日，瓜达尔基维尔河上的海上游行。'
+      }
     },
     contact: {
       title: '联系和帮助',
