@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Language } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import PageHeader from './PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar } from '@/components/ui/calendar';
@@ -25,6 +25,7 @@ const getLocale = (lang: Language) => {
 };
 
 interface EventsPageProps {
+  apartment: Apartment;
   onBack: () => void;
   onHome: () => void;
   t: any;
@@ -32,7 +33,7 @@ interface EventsPageProps {
   onLanguageChange: (lang: Language) => void;
 }
 
-export default function EventsPage({ onBack, onHome, t, currentLanguage, onLanguageChange }: EventsPageProps) {
+export default function EventsPage({ apartment, onBack, onHome, t, currentLanguage, onLanguageChange }: EventsPageProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const locale = getLocale(currentLanguage);
@@ -73,6 +74,8 @@ export default function EventsPage({ onBack, onHome, t, currentLanguage, onLangu
           currentLanguage={currentLanguage}
           onLanguageChange={onLanguageChange}
           changeLanguageLabel={t.common.changeLanguage}
+          apartment={apartment}
+          apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
         />
         <div className="container mx-auto px-4 py-8 max-w-7xl">
           <div className="mb-8">

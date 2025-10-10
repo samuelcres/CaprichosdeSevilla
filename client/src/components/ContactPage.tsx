@@ -2,10 +2,11 @@ import PageHeader from './PageHeader';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone, AlertCircle, Shield } from 'lucide-react';
-import { Language } from '@/lib/i18n';
+import { Apartment, Language } from '@/lib/i18n';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
 
 interface ContactPageProps {
+  apartment: Apartment;
   onBack: () => void;
   onHome: () => void;
   t: any;
@@ -13,7 +14,7 @@ interface ContactPageProps {
   onLanguageChange: (lang: Language) => void;
 }
 
-export default function ContactPage({ onBack, onHome, t, currentLanguage, onLanguageChange }: ContactPageProps) {
+export default function ContactPage({ apartment, onBack, onHome, t, currentLanguage, onLanguageChange }: ContactPageProps) {
   const openWhatsApp = () => {
     window.open('https://wa.me/34661610794', '_blank');
   };
@@ -35,6 +36,8 @@ export default function ContactPage({ onBack, onHome, t, currentLanguage, onLang
         currentLanguage={currentLanguage}
         onLanguageChange={onLanguageChange}
         changeLanguageLabel={t.common.changeLanguage}
+        apartment={apartment}
+        apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
       <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-6">

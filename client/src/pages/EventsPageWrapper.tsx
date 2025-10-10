@@ -23,6 +23,7 @@ export default function EventsPageWrapper() {
 
   return (
     <EventsPage
+      apartment={apartment}
       t={t}
       onBack={() => setLocation('/menu')}
       onHome={() => setLocation('/menu')}

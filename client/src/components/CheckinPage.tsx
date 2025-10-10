@@ -48,6 +48,8 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
         currentLanguage={currentLanguage}
         onLanguageChange={onLanguageChange}
         changeLanguageLabel={t.common.changeLanguage}
+        apartment={apartment}
+        apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
       <div className="relative z-10 max-w-3xl mx-auto p-4 md:p-6 space-y-6">
