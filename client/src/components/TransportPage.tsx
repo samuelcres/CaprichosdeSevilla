@@ -352,15 +352,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
-                            data-testid="button-parking1-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
+                              data-testid="button-parking1-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking1-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -384,15 +395,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
-                            data-testid="button-parking2-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
+                              data-testid="button-parking2-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking2-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -416,15 +438,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
-                            data-testid="button-parking3-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
+                              data-testid="button-parking3-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking3-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
                     </>
@@ -450,15 +483,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
-                            data-testid="button-parking1-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
+                              data-testid="button-parking1-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking1-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -482,15 +526,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
-                            data-testid="button-parking2-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
+                              data-testid="button-parking2-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking2-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -514,15 +569,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking3.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking3.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
-                            data-testid="button-parking3-map"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
+                              data-testid="button-parking3-map"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking3-route"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
                     </>
@@ -774,15 +840,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
-                            data-testid="button-parking1-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
+                              data-testid="button-parking1-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking1-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -806,15 +883,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
-                            data-testid="button-parking2-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
+                              data-testid="button-parking2-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking2-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -838,15 +926,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking3.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking3.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
-                            data-testid="button-parking3-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}`, '_blank')}
+                              data-testid="button-parking3-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking3.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking3-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
                     </>
@@ -872,15 +971,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
-                            data-testid="button-parking1-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
+                              data-testid="button-parking1-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking1-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -904,15 +1014,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
-                            data-testid="button-parking2-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
+                              data-testid="button-parking2-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking2-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
 
@@ -936,15 +1057,26 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking3.phone}</p>
                             <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking3.price}</p>
                           </div>
-                          <Button
-                            variant="outline"
-                            className="w-full"
-                            onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
-                            data-testid="button-parking3-map-departure"
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            {t.transport.byCar.openMap}
-                          </Button>
+                          <div className="space-y-2">
+                            <Button
+                              variant="outline"
+                              className="w-full"
+                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}`, '_blank')}
+                              data-testid="button-parking3-map-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.openMap}
+                            </Button>
+                            <Button
+                              variant="default"
+                              className="w-full"
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking3.address)}&travelmode=walking`, '_blank')}
+                              data-testid="button-parking3-route-departure"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {t.transport.byCar.walkingRoute}
+                            </Button>
+                          </div>
                         </CardContent>
                       </Card>
                     </>
