@@ -24,6 +24,7 @@ export default function MenuPage() {
     { id: 'checkin', icon: icons.checkin, title: t.menu.checkin },
     { id: 'wifi', icon: icons.wifi, title: t.menu.wifi },
     { id: 'tourism', icon: icons.tourism, title: t.menu.tourism },
+    { id: 'events', icon: icons.events, title: t.menu.events },
     { id: 'contact', icon: icons.contact, title: t.menu.contact },
   ];
 

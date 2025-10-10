@@ -10,6 +10,7 @@ import TransportPageWrapper from "@/pages/TransportPageWrapper";
 import CheckinPageWrapper from "@/pages/CheckinPageWrapper";
 import WifiPageWrapper from "@/pages/WifiPageWrapper";
 import TourismPageWrapper from "@/pages/TourismPageWrapper";
+import EventsPageWrapper from "@/pages/EventsPageWrapper";
 import ContactPageWrapper from "@/pages/ContactPageWrapper";
 import NotFound from "@/pages/not-found";
 import { useEffect } from "react";
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Route path="/checkin" component={CheckinPageWrapper} />
       <Route path="/wifi" component={WifiPageWrapper} />
       <Route path="/tourism" component={TourismPageWrapper} />
+      <Route path="/events" component={EventsPageWrapper} />
       <Route path="/contact" component={ContactPageWrapper} />
       <Route component={NotFound} />
     </Switch>

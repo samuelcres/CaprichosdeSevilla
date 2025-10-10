@@ -88,6 +88,21 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
+**Events Calendar Feature Added:**
+- New Events section with interactive calendar showing cultural events in Seville
+- Features include:
+  - Interactive date picker highlighting days with events
+  - Events database with 10+ major Seville cultural events for 2025
+  - Event categories: Festival, Religious, Cultural, Sports, Music, Theater, Art
+  - Color-coded badges for event type and pricing (free/paid)
+  - Detailed event cards with descriptions, dates, locations, and website links
+  - Monthly view showing all events for selected month
+- Events data stored locally in eventsData.ts (Semana Santa, Feria de Abril, Bienal de Flamenco, etc.)
+- Full translations in all 6 languages for event names, descriptions, and UI
+- Menu order updated: Transport → Check-in → Wi-Fi → Tourism → Events → Contact
+- PartyPopper icon used for Events button
+- Plaza de España background consistent with other pages
+
 **Restaurant Category Icons:**
 - Added visual icons to all restaurant categories in Tourism page
 - Breakfast (Desayunos): Coffee icon ☕

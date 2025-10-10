@@ -1,6 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft } from 'lucide-react';
+import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import sevilleBgUrl from '@assets/plaza-espana-bg.png';
@@ -47,6 +47,7 @@ export default function MainMenu({ options, onSelect, onBack, apartmentName, cur
       'checkin': checkinBg,
       'wifi': wifiBg,
       'tourism': tourismBg,
+      'events': sevilleBgUrl,
       'contact': contactBg,
     };
     return backgrounds[optionId] || sevilleBgUrl;
@@ -205,6 +206,7 @@ export function getMenuIcons() {
     checkin: <Key className="w-12 h-12" />,
     wifi: <Wifi className="w-12 h-12" />,
     tourism: <MapPin className="w-12 h-12" />,
+    events: <PartyPopper className="w-12 h-12" />,
     contact: <Phone className="w-12 h-12" />,
   };
 }

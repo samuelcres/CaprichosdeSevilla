@@ -359,6 +359,8 @@ export const translations = {
       viewWebsite: 'Ver sitio web',
       free: 'Gratis',
       paid: 'De pago',
+      eventCount: 'evento',
+      eventsCount: 'eventos',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religioso',
@@ -763,6 +765,8 @@ export const translations = {
       viewWebsite: 'View website',
       free: 'Free',
       paid: 'Paid',
+      eventCount: 'event',
+      eventsCount: 'events',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religious',
@@ -1167,6 +1171,8 @@ export const translations = {
       viewWebsite: 'Voir le site web',
       free: 'Gratuit',
       paid: 'Payant',
+      eventCount: 'événement',
+      eventsCount: 'événements',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religieux',
@@ -1571,6 +1577,8 @@ export const translations = {
       viewWebsite: 'Website ansehen',
       free: 'Kostenlos',
       paid: 'Kostenpflichtig',
+      eventCount: 'Veranstaltung',
+      eventsCount: 'Veranstaltungen',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religiös',
@@ -1975,6 +1983,8 @@ export const translations = {
       viewWebsite: 'Vedi sito web',
       free: 'Gratuito',
       paid: 'A pagamento',
+      eventCount: 'evento',
+      eventsCount: 'eventi',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religioso',
@@ -2379,6 +2389,8 @@ export const translations = {
       viewWebsite: '查看网站',
       free: '免费',
       paid: '付费',
+      eventCount: '个活动',
+      eventsCount: '个活动',
       categoryLabels: {
         festival: '节日',
         religious: '宗教',
