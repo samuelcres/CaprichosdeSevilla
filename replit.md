@@ -88,6 +88,14 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
+**Check-in Location Button:**
+- Added location button below step 1 in check-in instructions for both apartments
+- Button opens Google Maps with apartment address in new tab
+- Ibarra: Links to Calle Conde de Ibarra, 11-13, 41004 Sevilla
+- Quevedo: Links to Calle Quevedo, 11, 41001 Sevilla
+- Fully translated in all 6 languages
+- Helps guests navigate to apartment before arrival
+
 **Apartment-Specific Check-in Button Backgrounds:**
 - Both apartments now display their own street photos on Check-in menu buttons
 - Capricho de Quevedo: Shows Calle Quevedo street view image

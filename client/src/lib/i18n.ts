@@ -153,6 +153,7 @@ export const translations = {
     checkin: {
       title: 'Instrucciones de Check-in',
       step: 'Paso',
+      viewLocation: 'Ver ubicación en el mapa',
       ibarra: {
         step1: {
           title: 'Llegar a la dirección',
@@ -610,6 +611,7 @@ export const translations = {
     checkin: {
       title: 'Check-in Instructions',
       step: 'Step',
+      viewLocation: 'View location on map',
       ibarra: {
         step1: {
           title: 'Arrive at address',
@@ -1057,6 +1059,7 @@ export const translations = {
     checkin: {
       title: 'Instructions d\'enregistrement',
       step: 'Étape',
+      viewLocation: 'Voir l\'emplacement sur la carte',
       ibarra: {
         step1: {
           title: 'Arriver à l\'adresse',
@@ -1504,6 +1507,7 @@ export const translations = {
     checkin: {
       title: 'Check-in Anweisungen',
       step: 'Schritt',
+      viewLocation: 'Standort auf Karte anzeigen',
       ibarra: {
         step1: {
           title: 'Zur Adresse kommen',
@@ -1951,6 +1955,7 @@ export const translations = {
     checkin: {
       title: 'Istruzioni Check-in',
       step: 'Passo',
+      viewLocation: 'Visualizza posizione sulla mappa',
       ibarra: {
         step1: {
           title: 'Arrivare all\'indirizzo',
@@ -2398,6 +2403,7 @@ export const translations = {
     checkin: {
       title: '入住说明',
       step: '步骤',
+      viewLocation: '在地图上查看位置',
       ibarra: {
         step1: {
           title: '到达地址',

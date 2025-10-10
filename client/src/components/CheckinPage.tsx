@@ -1,6 +1,7 @@
 import PageHeader from './PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
@@ -38,6 +39,12 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
     <DoorOpen className="w-5 h-5" />,
     <LogOut className="w-5 h-5" />,
   ];
+
+  const apartmentAddress = apartment === 'ibarra' 
+    ? 'Calle Conde de Ibarra, 11-13, 41004 Sevilla' 
+    : 'Calle Quevedo, 11, 41001 Sevilla';
+  
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(apartmentAddress)}`;
 
   const allSteps = [
     steps.step1,
@@ -111,6 +118,25 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {step.description}
                       </p>
+                      {index === 0 && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="mt-3"
+                          asChild
+                          data-testid="button-view-location"
+                        >
+                          <a 
+                            href={googleMapsUrl} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2"
+                          >
+                            <MapPin className="w-4 h-4" />
+                            {t.checkin.viewLocation}
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                   {stepImages[index] && (
