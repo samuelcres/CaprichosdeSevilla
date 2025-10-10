@@ -88,12 +88,13 @@ Preferred communication style: Simple, everyday language.
 
 ### October 10, 2025
 
-**Quevedo Check-in Button Custom Background:**
-- Check-in menu button for Capricho de Quevedo now displays apartment-specific street photo
-- Shows Calle Quevedo street view image as button background (replaces generic hotel key image)
-- Ibarra apartment continues using generic check-in image
-- Image displayed on left half of the Check-in menu card for visual identification
-- Conditional logic ensures correct image per apartment selection
+**Apartment-Specific Check-in Button Backgrounds:**
+- Both apartments now display their own street photos on Check-in menu buttons
+- Capricho de Quevedo: Shows Calle Quevedo street view image
+- Capricho de Ibarra: Shows Calle Conde de Ibarra street view image
+- Images displayed on left half of Check-in menu card for visual identification
+- Scalable implementation with map-based logic and fallback to generic image
+- Helps guests visually identify their apartment location before arrival
 
 **Apartment Name Display in Headers:**
 - Added apartment name badge to all section pages (Transport, Check-in, WiFi, Tourism, Events, Contact)

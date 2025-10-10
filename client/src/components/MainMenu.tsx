@@ -12,6 +12,7 @@ import { languages, Language, Apartment } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import quevedoCheckinBg from '@assets/Captura de pantalla 2025-10-10 a las 12.57.25_1760093862113.png';
+import ibarraCheckinBg from '@assets/Captura de pantalla 2025-10-10 a las 12.56.38_1760094231886.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,9 +47,16 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
 
   const getBackgroundImage = (optionId: string) => {
+    // Apartment-specific check-in images with fallback to generic
+    const checkinImages: Partial<Record<Apartment, string>> & { default: string } = {
+      'ibarra': ibarraCheckinBg,
+      'quevedo': quevedoCheckinBg,
+      'default': checkinBg,
+    };
+    
     const backgrounds: Record<string, string> = {
       'transport': transportBg,
-      'checkin': apartment === 'quevedo' ? quevedoCheckinBg : checkinBg,
+      'checkin': checkinImages[apartment] ?? checkinImages.default,
       'wifi': wifiBg,
       'tourism': tourismBg,
       'events': apartmentBgUrl,
