@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Home } from 'lucide-react';
 import logoUrl from '@assets/logoCS_1759701422984.png';
+import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
+import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -40,10 +42,15 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
           {apartment && apartmentLabel && (
             <Badge 
               variant="outline" 
-              className="mb-1 text-xs"
+              className="mb-1 text-xs flex items-center gap-1.5 px-2 py-1"
               data-testid="badge-apartment"
             >
-              {apartmentLabel}
+              <img 
+                src={apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl}
+                alt={apartmentLabel}
+                className="w-5 h-5 rounded-full object-cover"
+              />
+              <span>{apartmentLabel}</span>
             </Badge>
           )}
           {title ? (
