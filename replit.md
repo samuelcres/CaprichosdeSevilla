@@ -8,6 +8,7 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 
 **October 12, 2025:**
 - Updated luggage storage options for Capricho de Ibarra apartment. Removed Naturanda (Calle Francos) and Safe Luggage. Added LOCK & enjoy! - Luggage Storage in Alfalfa (C. Águilas, 27) with 8 minutes walking distance and prices from €6/day. The Pink Lockers remains as the first option.
+- Updated luggage storage options for Capricho de Quevedo apartment. Removed all Naturanda locations (Trajano, Alfonso XII, Francos). Added Radical Storage Calle Regina (C. Regina, 9, 5 min walk, €5/day) and Radical Storage Setas De Sevilla (Pl. de la Encarnación, 23, 7 min walk, €5/day).
 
 ## User Preferences
 
