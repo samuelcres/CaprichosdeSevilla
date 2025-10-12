@@ -19,6 +19,10 @@ import quevedoStep3 from '@assets/4botonportal_1760093251206.png';
 import quevedoStep4 from '@assets/6puertabajo_1760093251205.png';
 import quevedoStep5 from '@assets/7enlaceapartamento_1760093251205.png';
 import quevedoStep6 from '@assets/8salida_1760093251204.png';
+import ibarraLocker1 from '@assets/stock_images/luggage_storage_lock_eb5d9d6c.jpg';
+import ibarraLocker2 from '@assets/stock_images/luggage_storage_lock_f99a5d73.jpg';
+import quevedoLocker1 from '@assets/stock_images/luggage_storage_lock_56098511.jpg';
+import quevedoLocker2 from '@assets/stock_images/luggage_storage_lock_1296b319.jpg';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -72,6 +76,14 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
     quevedoStep6,
   ];
 
+  const lockerImages = apartment === 'ibarra' ? [
+    ibarraLocker1,
+    ibarraLocker2,
+  ] : [
+    quevedoLocker1,
+    quevedoLocker2,
+  ];
+
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
   const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
 
@@ -114,62 +126,74 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                 {steps.luggage?.map((locker: any, index: number) => (
                   <Card key={index} className="overflow-visible" data-testid={`card-locker-${index}`}>
                     <CardContent className="p-4">
-                      <div className="space-y-3">
-                        <div className="flex items-start justify-between gap-4">
-                          <h4 className="font-semibold text-foreground">{locker.name}</h4>
-                          <Badge variant="secondary" className="flex-shrink-0">
-                            {locker.price}
-                          </Badge>
-                        </div>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex items-start gap-2">
-                            <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                            <div>
-                              <p className="font-medium text-foreground">{t.checkin.luggage.location}:</p>
-                              <p className="text-muted-foreground">{locker.location}</p>
+                      <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex-1 space-y-3">
+                          <div className="flex items-start justify-between gap-4">
+                            <h4 className="font-semibold text-foreground">{locker.name}</h4>
+                            <Badge variant="secondary" className="flex-shrink-0">
+                              {locker.price}
+                            </Badge>
+                          </div>
+                          <div className="space-y-2 text-sm">
+                            <div className="flex items-start gap-2">
+                              <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                              <div>
+                                <p className="font-medium text-foreground">{t.checkin.luggage.location}:</p>
+                                <p className="text-muted-foreground">{locker.location}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                              <Clock className="w-4 h-4 flex-shrink-0" />
+                              <span>{t.checkin.luggage.distance}: {locker.distance}</span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2 text-muted-foreground">
-                            <Clock className="w-4 h-4 flex-shrink-0" />
-                            <span>{t.checkin.luggage.distance}: {locker.distance}</span>
+                          <div className="flex gap-2 pt-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex-1"
+                              asChild
+                              data-testid={`button-locker-map-${index}`}
+                            >
+                              <a
+                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locker.location + ', Sevilla')}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2"
+                              >
+                                <MapPin className="w-4 h-4" />
+                                {t.checkin.luggage.viewMap}
+                              </a>
+                            </Button>
+                            <Button
+                              variant="default"
+                              size="sm"
+                              className="flex-1"
+                              asChild
+                              data-testid={`button-locker-link-${index}`}
+                            >
+                              <a
+                                href={locker.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                                {t.checkin.luggage.link}
+                              </a>
+                            </Button>
                           </div>
                         </div>
-                        <div className="flex gap-2 pt-2">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="flex-1"
-                            asChild
-                            data-testid={`button-locker-map-${index}`}
-                          >
-                            <a
-                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locker.location + ', Sevilla')}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2"
-                            >
-                              <MapPin className="w-4 h-4" />
-                              {t.checkin.luggage.viewMap}
-                            </a>
-                          </Button>
-                          <Button
-                            variant="default"
-                            size="sm"
-                            className="flex-1"
-                            asChild
-                            data-testid={`button-locker-link-${index}`}
-                          >
-                            <a
-                              href={locker.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              {t.checkin.luggage.link}
-                            </a>
-                          </Button>
-                        </div>
+                        {lockerImages[index] && (
+                          <div className="flex-shrink-0 w-full md:w-48 h-48 md:h-auto">
+                            <img 
+                              src={lockerImages[index]} 
+                              alt={locker.name}
+                              className="w-full h-full object-cover rounded-lg"
+                              data-testid={`img-locker-${index}`}
+                            />
+                          </div>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
