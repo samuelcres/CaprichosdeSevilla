@@ -28,7 +28,7 @@ Preferred communication style: Simple, everyday language.
 ### Features
 
 - **Deployment Modes:** Supports multi-apartment (default) and single-apartment modes via `VITE_APARTMENT` environment variable.
-- **Content:** Includes dynamic check-in instructions with visual aids, comprehensive parking recommendations with Google Maps integration, detailed restaurant listings with category icons, and an interactive events calendar.
+- **Content:** Includes dynamic check-in instructions with visual aids, luggage storage recommendations (accordion with nearby locker locations before check-in), comprehensive parking recommendations with Google Maps integration, detailed restaurant listings with category icons, and an interactive events calendar.
 - **Navigation:** Global language selector, "scroll to top" on page navigation, apartment-specific backgrounds, watermarks, and visible apartment name/image in headers.
 - **Emergency Contacts:** Dedicated section with critical local emergency numbers.
 
