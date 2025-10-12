@@ -285,7 +285,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             </Card>
           </TabsContent>
 
-          <TabsContent value="map" className="mt-6 space-y-6">
+          <TabsContent value="map" className="mt-6">
             <Card>
               <CardContent className="p-6">
                 <div className="space-y-4">
@@ -306,34 +306,6 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </div>
               </CardContent>
             </Card>
-            
-            <Card>
-              <CardContent className="p-0">
-                <div className="w-full rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps?q=https://maps.app.goo.gl/vLTVmja9G4RWvX1i8&output=embed"
-                    width="100%"
-                    height="450"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    data-testid="iframe-google-maps"
-                  />
-                </div>
-              </CardContent>
-            </Card>
-            <p className="text-sm text-muted-foreground text-center mt-4">
-              <a 
-                href="https://maps.app.goo.gl/vLTVmja9G4RWvX1i8" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-                data-testid="link-google-maps"
-              >
-                {t.tourism.viewOnGoogleMaps || 'Ver en Google Maps'}
-              </a>
-            </p>
           </TabsContent>
 
           <TabsContent value="restaurants" className="mt-6 space-y-6">
