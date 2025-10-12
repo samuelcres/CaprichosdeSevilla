@@ -11,6 +11,7 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 - Updated luggage storage options for Capricho de Quevedo apartment. Removed all Naturanda locations (Trajano, Alfonso XII, Francos). Added Radical Storage Calle Regina (C. Regina, 9, 5 min walk, €5/day) and Radical Storage Setas De Sevilla (Pl. de la Encarnación, 23, 7 min walk, €5/day).
 - Added visual locker images to Check-in page. Each luggage storage option now displays a photo of lockers on the right side of the card, matching the layout of check-in step images. Images are responsive (full width on mobile, fixed width on desktop).
 - Added external event resource buttons to Events page. Two buttons link to OnSevilla.com and VisitaSevilla.es for additional event information. Section titled "Más eventos en Sevilla" (translated in all 6 languages), buttons open in new tabs with responsive layout (stacked on mobile, side-by-side on desktop).
+- Added Guide button and dialog to apartment selection page. Button positioned in header to the left of language selector. Dialog displays tree structure of all available app sections (Transport, Check-in, Wi-Fi, Tourism, Events, Contact) with color-coded icons and descriptions. Fully translated in all 6 languages.
 
 ## User Preferences
 
