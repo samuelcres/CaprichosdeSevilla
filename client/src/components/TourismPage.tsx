@@ -44,7 +44,7 @@ import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 import imgCatedral from '@assets/Catedral de Sevilla y Giralda _1760287285953.jpeg';
 import imgAlcazar from '@assets/real_alcazar_sevilla_1760287300284.jpeg';
 import imgArchivo from '@assets/archivo_indias_1760287312876.jpg';
-import imgTorre from '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg';
+import imgTorre from '@assets/torre_oro_1760287326895.webp';
 import imgMurallas from '@assets/stock_images/murallas_macarena_wa_31870249.jpg';
 import imgBellasArtes from '@assets/museo_bellas_artes_1760287361564.jpg';
 import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.jpg';
@@ -53,7 +53,7 @@ import imgCostumbres from '@assets/stock_images/museo_artes_costumbr_024a987c.jp
 import imgFlamencoMuseo from '@assets/stock_images/museo_baile_flamenco_a3281216.jpg';
 import imgNaval from '@assets/stock_images/naval_museum_torre_d_0a944c8c.jpg';
 import imgSanJorge from '@assets/stock_images/castillo_san_jorge_s_f02850a8.jpg';
-import imgMariaLuisa from '@assets/stock_images/parque_maria_luisa_s_a5d78d89.jpg';
+import imgMariaLuisa from '@assets/parque_maria_luisa_1760288454408.jpg';
 import imgJardinesMurillo from '@assets/stock_images/jardines_murillo_sev_33432d8d.jpg';
 import imgGuadalquivir from '@assets/stock_images/rio_guadalquivir_sev_f9795354.jpg';
 import imgCartuja from '@assets/stock_images/isla_cartuja_seville_0755dac0.jpg';
@@ -117,7 +117,7 @@ const imageMap: Record<string, string> = {
   'Catedral de Sevilla y Giralda _1760287285953.jpeg': imgCatedral,
   'real_alcazar_sevilla_1760287300284.jpeg': imgAlcazar,
   'archivo_indias_1760287312876.jpg': imgArchivo,
-  'torre_del_oro_golden_65ac2710.jpg': imgTorre,
+  'torre_oro_1760287326895.webp': imgTorre,
   'murallas_macarena_wa_31870249.jpg': imgMurallas,
   'museo_bellas_artes_1760287361564.jpg': imgBellasArtes,
   'caac_monasterio_cart_7595e310.jpg': imgCAAC,
@@ -126,7 +126,7 @@ const imageMap: Record<string, string> = {
   'museo_baile_flamenco_a3281216.jpg': imgFlamencoMuseo,
   'naval_museum_torre_d_0a944c8c.jpg': imgNaval,
   'castillo_san_jorge_s_f02850a8.jpg': imgSanJorge,
-  'parque_maria_luisa_s_a5d78d89.jpg': imgMariaLuisa,
+  'parque_maria_luisa_1760288454408.jpg': imgMariaLuisa,
   'jardines_murillo_sev_33432d8d.jpg': imgJardinesMurillo,
   'rio_guadalquivir_sev_f9795354.jpg': imgGuadalquivir,
   'isla_cartuja_seville_0755dac0.jpg': imgCartuja,

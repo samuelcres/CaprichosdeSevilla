@@ -70,7 +70,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 8, 
     schedule: 'L-V 9:30-18:45, S-D 10:30-18:45', 
     price: '€3', 
-    photo: '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg', 
+    photo: '@assets/torre_oro_1760287326895.webp', 
     mapsUrl: 'https://maps.google.com/?q=Torre+del+Oro+Sevilla', 
     phone: '+34 954 222 419' 
   },
@@ -109,7 +109,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 20, 
     schedule: 'Diario 8:00-22:00', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/parque_maria_luisa_s_a5d78d89.jpg', 
+    photo: '@assets/parque_maria_luisa_1760288454408.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Parque+Maria+Luisa+Sevilla', 
     phone: '+34 954 234 465' 
   },
