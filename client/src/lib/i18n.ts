@@ -209,25 +209,18 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Trajano, 6',
+            name: 'Luggage Storage Calle Regina - Radical Storage',
+            location: 'C. Regina, 9, Casco Antiguo',
             distance: '5 minutos',
-            price: 'Desde €3/día',
-            url: 'https://naturanda.com/en/luggage-storage/',
+            price: '€5/día',
+            url: 'https://radicalstorage.com/es/consigna-equipaje/sevilla/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
           },
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Alfonso XII, 35',
-            distance: '8 minutos',
-            price: 'Desde €3/día',
-            url: 'https://naturanda.com/en/luggage-storage/',
-          },
-          {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '12 minutos',
-            price: 'Desde €2-3/día',
-            url: 'https://naturanda.com/en/luggage-storage/',
+            name: 'Luggage Storage Setas De Sevilla - Radical Storage',
+            location: 'Pl. de la Encarnación, 23, Casco Antiguo',
+            distance: '7 minutos',
+            price: '€5/día',
+            url: 'https://radicalstorage.com/es/consigna-equipaje/sevilla/centro/luggage-storage-setas-de-sevilla',
           },
         ],
         step1: {
@@ -716,25 +709,18 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Trajano, 6',
+            name: 'Luggage Storage Calle Regina - Radical Storage',
+            location: 'C. Regina, 9, Casco Antiguo',
             distance: '5 minutes',
-            price: 'From €3/day',
-            url: 'https://naturanda.com/en/luggage-storage/',
+            price: '€5/day',
+            url: 'https://radicalstorage.com/luggage-storage/seville/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
           },
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Alfonso XII, 35',
-            distance: '8 minutes',
-            price: 'From €3/day',
-            url: 'https://naturanda.com/en/luggage-storage/',
-          },
-          {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '12 minutes',
-            price: 'From €2-3/day',
-            url: 'https://naturanda.com/en/luggage-storage/',
+            name: 'Luggage Storage Setas De Sevilla - Radical Storage',
+            location: 'Pl. de la Encarnación, 23, Casco Antiguo',
+            distance: '7 minutes',
+            price: '€5/day',
+            url: 'https://radicalstorage.com/luggage-storage/seville/centro/luggage-storage-setas-de-sevilla',
           },
         ],
         step1: {
