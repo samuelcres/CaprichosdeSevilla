@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper } from 'lucide-react';
+import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
+import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import transportBg from '@assets/stock_images/seville_transportati_6cb94a1d.jpg';
 import checkinBg from '@assets/stock_images/hotel_apartment_key__f8c5ac84.jpg';
@@ -43,6 +45,7 @@ interface MainMenuProps {
 export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t, showBackButton = true }: MainMenuProps) {
   const whatsappNumber = '+34661610794';
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
+  const [guideOpen, setGuideOpen] = useState(false);
 
   const currentLang = languages.find(l => l.code === currentLanguage);
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
@@ -101,6 +104,19 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         />
         
         <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="default"
+            className="gap-2"
+            onClick={() => setGuideOpen(true)}
+            data-testid="button-guide"
+            aria-label={t.common.guide}
+            title={t.common.guide}
+          >
+            <BookOpen className="h-5 w-5" />
+            <span className="hidden sm:inline">{t.common.guide}</span>
+          </Button>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button 
@@ -187,6 +203,13 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
           </div>
         </div>
       </div>
+
+      <GuideDialog 
+        open={guideOpen} 
+        onOpenChange={setGuideOpen} 
+        t={t} 
+        currentLanguage={currentLanguage}
+      />
     </div>
   );
 }
