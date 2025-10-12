@@ -21,7 +21,7 @@ import quevedoStep5 from '@assets/7enlaceapartamento_1760093251205.png';
 import quevedoStep6 from '@assets/8salida_1760093251204.png';
 import ibarraLocker1 from '@assets/stock_images/luggage_storage_lock_eb5d9d6c.jpg';
 import ibarraLocker2 from '@assets/stock_images/luggage_storage_lock_f99a5d73.jpg';
-import quevedoLocker1 from '@assets/stock_images/luggage_storage_lock_56098511.jpg';
+import quevedoLocker1 from '@assets/Captura de pantalla 2025-10-12 a las 14.00.58_1760270467274.png';
 import quevedoLocker2 from '@assets/stock_images/luggage_storage_lock_1296b319.jpg';
 
 interface CheckinPageProps {

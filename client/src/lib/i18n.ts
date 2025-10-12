@@ -209,11 +209,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5 minutos',
-            price: '€5/día',
-            url: 'https://radicalstorage.com/es/consigna-equipaje/sevilla/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: 'Consultar web',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
@@ -741,11 +741,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5 minutes',
-            price: '€5/day',
-            url: 'https://radicalstorage.com/luggage-storage/seville/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: 'Check website',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
@@ -1263,11 +1263,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5 minutes',
-            price: '5€/jour',
-            url: 'https://radicalstorage.com/fr/consigne-bagage/seville/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: 'Consulter le site web',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
@@ -1785,11 +1785,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5 Minuten',
-            price: '5€/Tag',
-            url: 'https://radicalstorage.com/de/gepackaufbewahrung/sevilla/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: 'Website prüfen',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
@@ -2307,11 +2307,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5 minuti',
-            price: '5€/giorno',
-            url: 'https://radicalstorage.com/it/deposito-bagagli/siviglia/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: 'Consulta il sito web',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
@@ -2829,11 +2829,11 @@ export const translations = {
       quevedo: {
         luggage: [
           {
-            name: 'Luggage Storage Calle Regina - Radical Storage',
-            location: 'C. Regina, 9, Casco Antiguo',
+            name: 'Lockers Sevilla',
+            location: 'C. Regina, 13, Casco Antiguo',
             distance: '5分钟',
-            price: '5欧元/天',
-            url: 'https://radicalstorage.com/luggage-storage/seville/jeronimo-de-cordoba-supermercado/luggage-storage-calle-regina-setas-de-sevilla',
+            price: '查看网站',
+            url: 'https://lockersevilla.com/regina/',
           },
           {
             name: 'Luggage Storage Setas De Sevilla - Radical Storage',
