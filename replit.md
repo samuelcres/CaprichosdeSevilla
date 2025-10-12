@@ -4,6 +4,11 @@
 
 Caprichos de Sevilla is a multilingual web application designed to serve as a virtual host for guests staying at two tourist apartments in Seville, Spain (Capricho de Ibarra and Capricho de Quevedo). It provides essential information on transportation, check-in procedures, WiFi access, local tourism recommendations, and emergency contacts in six languages (Spanish, English, French, German, Italian, and Chinese). The application features an apartment selection landing page (default multi-apartment mode) or can be configured for a single apartment. Key capabilities include interactive maps, detailed restaurant and tourist recommendations, and comprehensive check-in instructions. The project aims to enhance the guest experience by providing a centralized, accessible information hub, reducing the need for direct staff interaction for common queries.
 
+## Recent Changes
+
+**October 12, 2025:**
+- Updated luggage storage options for Capricho de Ibarra apartment. Removed Naturanda (Calle Francos) and Safe Luggage. Added LOCK & enjoy! - Luggage Storage in Alfalfa (C. Águilas, 27) with 8 minutes walking distance and prices from €6/day. The Pink Lockers remains as the first option.
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
