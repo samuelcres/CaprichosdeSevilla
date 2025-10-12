@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
@@ -703,7 +703,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
           <TabsContent value="visits" className="mt-6">
             <Accordion type="multiple" className="space-y-4">
               {visitCategoryIds.map((categoryId) => {
-                const items = t.tourism.visitItems[categoryId];
+                const visitsInCategory = visitDetails.filter(v => v.category === categoryId);
                 
                 return (
                   <AccordionItem key={categoryId} value={categoryId} className="border rounded-lg px-6">
@@ -712,13 +712,13 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                         <h3 className="text-lg font-semibold text-foreground">
                           {t.tourism.visitCategories[categoryId]}
                         </h3>
-                        <Badge variant="secondary">{items.length}</Badge>
+                        <Badge variant="secondary">{visitsInCategory.length}</Badge>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="space-y-3 pt-4">
-                      {visitDetails.filter(v => v.category === categoryId).map((visitData, index) => {
-                        const item = items[index];
-                        if (!item) return null;
+                      {visitsInCategory.map((visitData, index) => {
+                        const visitInfo = t.tourism.visitItems[visitData.id];
+                        if (!visitInfo) return null;
                         
                         const distance = apartment === 'ibarra' ? visitData.distanceIbarra : visitData.distanceQuevedo;
                         const image = getImage(visitData.photo);
@@ -730,75 +730,85 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                             data-testid={`visit-item-${categoryId}-${index}`}
                           >
                             <CardContent className="p-0">
-                              <div className="flex gap-4 p-4">
+                              <div className="flex flex-col md:flex-row gap-4 p-4">
                                 {image && (
-                                  <div className="flex-shrink-0">
+                                  <div className="flex-shrink-0 w-full md:w-48">
                                     <img 
                                       src={image} 
-                                      alt={item.name}
-                                      className="w-32 h-32 object-cover rounded-md"
+                                      alt={visitInfo.name}
+                                      className="w-full h-48 md:h-full object-cover rounded-md"
                                       data-testid={`img-visit-${categoryId}-${index}`}
                                     />
                                   </div>
                                 )}
-                                <div className="flex-1 min-w-0">
-                                  <h4 className="font-semibold text-foreground mb-1" data-testid={`text-visit-name-${categoryId}-${index}`}>
-                                    {item.name}
-                                  </h4>
-                                  <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
+                                <div className="flex-1 min-w-0 space-y-3">
+                                  <div>
+                                    <h4 className="font-semibold text-lg text-foreground mb-1" data-testid={`text-visit-name-${categoryId}-${index}`}>
+                                      {visitInfo.name}
+                                    </h4>
+                                    <p className="text-sm text-muted-foreground">{visitInfo.description}</p>
+                                  </div>
                                   
-                                  {(visitData.schedule || visitData.price || distance) && (
-                                    <div className="flex flex-wrap gap-2 text-sm mb-3">
-                                      {visitData.schedule && (
-                                        <Badge variant="outline" className="text-xs" data-testid={`badge-schedule-${categoryId}-${index}`}>
-                                          {visitData.schedule}
-                                        </Badge>
-                                      )}
-                                      {visitData.price && (
-                                        <Badge variant="outline" className="text-xs text-emerald-700" data-testid={`badge-price-${categoryId}-${index}`}>
-                                          {visitData.price}
-                                        </Badge>
-                                      )}
-                                      {distance && distance > 0 && (
-                                        <Badge variant="outline" className="text-xs" data-testid={`badge-distance-${categoryId}-${index}`}>
-                                          {distance} {t.tourism.distance}
-                                        </Badge>
-                                      )}
-                                    </div>
-                                  )}
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                    {visitData.schedule && (
+                                      <div className="flex items-start gap-2">
+                                        <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                        <div>
+                                          <span className="font-medium">{t.tourism.schedule}:</span>
+                                          <span className="ml-1">{visitData.schedule}</span>
+                                        </div>
+                                      </div>
+                                    )}
+                                    {visitData.price && (
+                                      <div className="flex items-start gap-2">
+                                        <Euro className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                                        <div>
+                                          <span className="font-medium">{t.tourism.price}:</span>
+                                          <span className="ml-1 text-emerald-700 font-semibold">{visitData.price}</span>
+                                        </div>
+                                      </div>
+                                    )}
+                                    {distance && distance > 0 && (
+                                      <div className="flex items-start gap-2">
+                                        <Navigation className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                        <div>
+                                          <span className="font-medium">{t.tourism.distance}:</span>
+                                          <span className="ml-1">{distance} min</span>
+                                        </div>
+                                      </div>
+                                    )}
+                                    {visitData.phone && (
+                                      <div className="flex items-start gap-2">
+                                        <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                        <div>
+                                          <span className="font-medium">{t.tourism.phone}:</span>
+                                          <a href={`tel:${visitData.phone}`} className="ml-1 hover:underline">{visitData.phone}</a>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
                                   
-                                  <div className="flex gap-2 flex-wrap">
+                                  <div className="flex gap-2 flex-wrap pt-2">
                                     {visitData.mapsUrl && (
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={() => window.open(visitData.mapsUrl, '_blank')}
+                                        onClick={() => window.open(visitData.mapsUrl, '_blank', 'noopener,noreferrer')}
                                         data-testid={`button-map-visit-${categoryId}-${index}`}
                                       >
                                         <MapPin className="w-4 h-4 mr-2" />
-                                        {t.tourism.viewMap}
+                                        {t.tourism.location}
                                       </Button>
                                     )}
                                     {visitData.website && (
                                       <Button
                                         variant="outline"
                                         size="sm"
-                                        onClick={() => window.open(visitData.website, '_blank')}
+                                        onClick={() => window.open(visitData.website, '_blank', 'noopener,noreferrer')}
                                         data-testid={`button-website-visit-${categoryId}-${index}`}
                                       >
                                         <ExternalLink className="w-4 h-4 mr-2" />
                                         Web
-                                      </Button>
-                                    )}
-                                    {visitData.phone && (
-                                      <Button
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => window.open(`tel:${visitData.phone}`, '_self')}
-                                        data-testid={`button-phone-visit-${categoryId}-${index}`}
-                                      >
-                                        <Phone className="w-4 h-4 mr-2" />
-                                        {visitData.phone}
                                       </Button>
                                     )}
                                   </div>
