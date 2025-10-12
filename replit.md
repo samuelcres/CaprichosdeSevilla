@@ -12,6 +12,7 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 - Added visual locker images to Check-in page. Each luggage storage option now displays a photo of lockers on the right side of the card, matching the layout of check-in step images. Images are responsive (full width on mobile, fixed width on desktop).
 - Added external event resource buttons to Events page. Two buttons link to OnSevilla.com and VisitaSevilla.es for additional event information. Section titled "Más eventos en Sevilla" (translated in all 6 languages), buttons open in new tabs with responsive layout (stacked on mobile, side-by-side on desktop).
 - Added Guide button and dialog to apartment selection page. Button positioned in header to the left of language selector. Dialog displays tree structure of all available app sections (Transport, Check-in, Wi-Fi, Tourism, Events, Contact) with color-coded icons and descriptions. Fully translated in all 6 languages.
+- Updated Google Maps iframe in Tourism page with new embed URL (https://www.google.com/maps?q=https://maps.app.goo.gl/vLTVmja9G4RWvX1i8&output=embed). Set fixed height to 450px with lazy loading. Added fallback link below map ("Ver en Google Maps" / "View on Google Maps" / etc.) that opens in new tab, fully translated in all 6 languages.
 
 ## User Preferences
 

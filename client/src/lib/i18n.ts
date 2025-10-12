@@ -286,6 +286,7 @@ export const translations = {
       dinner: 'Cenas',
       distance: 'min a pie',
       viewMap: 'Ver en mapa',
+      viewOnGoogleMaps: 'Ver en Google Maps',
       visitCategories: {
         monuments: 'Monumentos históricos y patrimoniales',
         museums: 'Museos y centros de interpretación',
@@ -818,6 +819,7 @@ export const translations = {
       dinner: 'Dinner',
       distance: 'min walk',
       viewMap: 'View on map',
+      viewOnGoogleMaps: 'View on Google Maps',
       visitCategories: {
         monuments: 'Historical and heritage monuments',
         museums: 'Museums and interpretation centers',
@@ -1340,6 +1342,7 @@ export const translations = {
       dinner: 'Dîner',
       distance: 'min à pied',
       viewMap: 'Voir sur la carte',
+      viewOnGoogleMaps: 'Voir sur Google Maps',
       visitCategories: {
         monuments: 'Monuments historiques et patrimoniaux',
         museums: 'Musées et centres d\'interprétation',
@@ -1862,6 +1865,7 @@ export const translations = {
       dinner: 'Abendessen',
       distance: 'Min zu Fuß',
       viewMap: 'Auf Karte ansehen',
+      viewOnGoogleMaps: 'Auf Google Maps ansehen',
       visitCategories: {
         monuments: 'Historische und patrimoniale Denkmäler',
         museums: 'Museen und Interpretationszentren',
@@ -2384,6 +2388,7 @@ export const translations = {
       dinner: 'Cena',
       distance: 'min a piedi',
       viewMap: 'Vedi sulla mappa',
+      viewOnGoogleMaps: 'Vedi su Google Maps',
       visitCategories: {
         monuments: 'Monumenti storici e patrimoniali',
         museums: 'Musei e centri di interpretazione',
@@ -2906,6 +2911,7 @@ export const translations = {
       dinner: '晚餐',
       distance: '分钟步行',
       viewMap: '在地图上查看',
+      viewOnGoogleMaps: '在谷歌地图上查看',
       visitCategories: {
         monuments: '历史和文化遗产纪念碑',
         museums: '博物馆和展览中心',
