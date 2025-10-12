@@ -19,8 +19,8 @@ import quevedoStep3 from '@assets/4botonportal_1760093251206.png';
 import quevedoStep4 from '@assets/6puertabajo_1760093251205.png';
 import quevedoStep5 from '@assets/7enlaceapartamento_1760093251205.png';
 import quevedoStep6 from '@assets/8salida_1760093251204.png';
-import ibarraLocker1 from '@assets/stock_images/luggage_storage_lock_eb5d9d6c.jpg';
-import ibarraLocker2 from '@assets/stock_images/luggage_storage_lock_f99a5d73.jpg';
+import ibarraLocker1 from '@assets/1-Pincklocker_1760271769125.png';
+import ibarraLocker2 from '@assets/2-Lockandenjoy_1760271589870.png';
 import quevedoLocker1 from '@assets/Captura de pantalla 2025-10-12 a las 14.00.58_1760270467274.png';
 import quevedoLocker2 from '@assets/lockandenjoy_1760271398228.png';
 
