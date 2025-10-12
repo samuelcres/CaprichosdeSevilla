@@ -35,7 +35,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 7, 
     schedule: 'L-S 11:00-17:00, D 14:30-18:00', 
     price: '€12', 
-    photo: '@assets/stock_images/seville_cathedral_gi_c0fa3771.jpg', 
+    photo: '@assets/Catedral de Sevilla y Giralda _1760287285953.jpeg', 
     mapsUrl: 'https://maps.google.com/?q=Catedral+de+Sevilla', 
     website: 'https://www.catedraldesevilla.es', 
     phone: '+34 954 214 971' 

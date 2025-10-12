@@ -41,7 +41,7 @@ import img24 from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
 import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 // Import visit images
-import imgCatedral from '@assets/stock_images/seville_cathedral_gi_c0fa3771.jpg';
+import imgCatedral from '@assets/Catedral de Sevilla y Giralda _1760287285953.jpeg';
 import imgAlcazar from '@assets/stock_images/real_alcazar_seville_d33d2213.jpg';
 import imgArchivo from '@assets/stock_images/archivo_general_de_i_c718f201.jpg';
 import imgTorre from '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg';
@@ -114,7 +114,7 @@ const imageMap: Record<string, string> = {
   'customer_service_sup_53d26c13.jpg': img24,
   'hotel_check-in_door__08a6987e.jpg': img25,
   // Visit images
-  'seville_cathedral_gi_c0fa3771.jpg': imgCatedral,
+  'Catedral de Sevilla y Giralda _1760287285953.jpeg': imgCatedral,
   'real_alcazar_seville_d33d2213.jpg': imgAlcazar,
   'archivo_general_de_i_c718f201.jpg': imgArchivo,
   'torre_del_oro_golden_65ac2710.jpg': imgTorre,
