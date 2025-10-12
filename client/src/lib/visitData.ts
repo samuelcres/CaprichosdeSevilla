@@ -47,7 +47,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 8, 
     schedule: 'L-D 9:30-17:00', 
     price: '€14.50', 
-    photo: '@assets/stock_images/real_alcazar_seville_d33d2213.jpg', 
+    photo: '@assets/real_alcazar_sevilla_1760287300284.jpeg', 
     mapsUrl: 'https://maps.google.com/?q=Real+Alcazar+Sevilla', 
     website: 'https://www.alcazarsevilla.org', 
     phone: '+34 954 502 324' 
@@ -59,7 +59,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 7, 
     schedule: 'M-S 9:30-17:00, D cerrado', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/archivo_general_de_i_c718f201.jpg', 
+    photo: '@assets/archivo_indias_1760287312876.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Archivo+de+Indias+Sevilla', 
     phone: '+34 954 500 528' 
   },
@@ -83,7 +83,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 9, 
     schedule: 'M 15:00-20:00, X-S 9:00-20:00, D 9:00-15:00', 
     price: 'Gratis UE', 
-    photo: '@assets/stock_images/museo_bellas_artes_s_e858bbb3.jpg', 
+    photo: '@assets/museo_bellas_artes_1760287361564.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Museo+Bellas+Artes+Sevilla', 
     website: 'https://www.museosdeandalucia.es/web/museodebellasartesdesevilla', 
     phone: '+34 955 542 942' 
@@ -146,7 +146,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 13, 
     schedule: 'Diario 9:00-14:00 y 17:00-21:00', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/basilica_de_la_macar_929325d7.jpg', 
+    photo: '@assets/basilica_macarena_1760287523847.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Basilica+Macarena+Sevilla', 
     phone: '+34 954 901 800' 
   },
@@ -186,7 +186,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 4, 
     schedule: 'Variable, espectáculos nocturnos', 
     price: 'Desde €25', 
-    photo: '@assets/stock_images/flamenco_tablao_danc_f5a24536.jpg', 
+    photo: '@assets/flamenco_tablao_1760287488007.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Tablaos+Flamencos+Sevilla', 
     phone: '+34 954 216 981' 
   },

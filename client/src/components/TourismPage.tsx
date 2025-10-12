@@ -42,11 +42,11 @@ import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 // Import visit images
 import imgCatedral from '@assets/Catedral de Sevilla y Giralda _1760287285953.jpeg';
-import imgAlcazar from '@assets/stock_images/real_alcazar_seville_d33d2213.jpg';
-import imgArchivo from '@assets/stock_images/archivo_general_de_i_c718f201.jpg';
+import imgAlcazar from '@assets/real_alcazar_sevilla_1760287300284.jpeg';
+import imgArchivo from '@assets/archivo_indias_1760287312876.jpg';
 import imgTorre from '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg';
 import imgMurallas from '@assets/stock_images/murallas_macarena_wa_31870249.jpg';
-import imgBellasArtes from '@assets/stock_images/museo_bellas_artes_s_e858bbb3.jpg';
+import imgBellasArtes from '@assets/museo_bellas_artes_1760287361564.jpg';
 import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.jpg';
 import imgArqueologico from '@assets/stock_images/museo_arqueologico_s_ca9dc2cb.jpg';
 import imgCostumbres from '@assets/stock_images/museo_artes_costumbr_024a987c.jpg';
@@ -65,11 +65,11 @@ import imgPatios from '@assets/stock_images/seville_traditional__6594b4ce.jpg';
 import imgRutaFlamenco from '@assets/stock_images/flamenco_performance_cfe2193e.jpg';
 import imgRutaRomana from '@assets/stock_images/roman_ruins_ancient__bb6583ed.jpg';
 import imgRutaArtistas from '@assets/stock_images/seville_artists_cerv_ac44d679.jpg';
-import imgTablaos from '@assets/stock_images/flamenco_tablao_danc_f5a24536.jpg';
+import imgTablaos from '@assets/flamenco_tablao_1760287488007.jpg';
 import imgTeatros from '@assets/stock_images/teatro_maestranza_se_45f14437.jpg';
 import imgFestivales from '@assets/stock_images/seville_festivals_fe_023c1b1d.jpg';
 import imgExperiencias from '@assets/stock_images/cultural_experiences_24121b88.jpg';
-import imgBasilicaMacarena from '@assets/stock_images/basilica_de_la_macar_929325d7.jpg';
+import imgBasilicaMacarena from '@assets/basilica_macarena_1760287523847.jpg';
 import imgSalvador from '@assets/stock_images/iglesia_salvador_sev_e5e736c6.jpg';
 import imgSantaPaula from '@assets/stock_images/convento_santa_paula_37a86f4a.jpg';
 import imgSanLuis from '@assets/stock_images/san_luis_franceses_c_88cd7e2f.jpg';
@@ -115,11 +115,11 @@ const imageMap: Record<string, string> = {
   'hotel_check-in_door__08a6987e.jpg': img25,
   // Visit images
   'Catedral de Sevilla y Giralda _1760287285953.jpeg': imgCatedral,
-  'real_alcazar_seville_d33d2213.jpg': imgAlcazar,
-  'archivo_general_de_i_c718f201.jpg': imgArchivo,
+  'real_alcazar_sevilla_1760287300284.jpeg': imgAlcazar,
+  'archivo_indias_1760287312876.jpg': imgArchivo,
   'torre_del_oro_golden_65ac2710.jpg': imgTorre,
   'murallas_macarena_wa_31870249.jpg': imgMurallas,
-  'museo_bellas_artes_s_e858bbb3.jpg': imgBellasArtes,
+  'museo_bellas_artes_1760287361564.jpg': imgBellasArtes,
   'caac_monasterio_cart_7595e310.jpg': imgCAAC,
   'museo_arqueologico_s_ca9dc2cb.jpg': imgArqueologico,
   'museo_artes_costumbr_024a987c.jpg': imgCostumbres,
@@ -138,11 +138,11 @@ const imageMap: Record<string, string> = {
   'flamenco_performance_cfe2193e.jpg': imgRutaFlamenco,
   'roman_ruins_ancient__bb6583ed.jpg': imgRutaRomana,
   'seville_artists_cerv_ac44d679.jpg': imgRutaArtistas,
-  'flamenco_tablao_danc_f5a24536.jpg': imgTablaos,
+  'flamenco_tablao_1760287488007.jpg': imgTablaos,
   'teatro_maestranza_se_45f14437.jpg': imgTeatros,
   'seville_festivals_fe_023c1b1d.jpg': imgFestivales,
   'cultural_experiences_24121b88.jpg': imgExperiencias,
-  'basilica_de_la_macar_929325d7.jpg': imgBasilicaMacarena,
+  'basilica_macarena_1760287523847.jpg': imgBasilicaMacarena,
   'iglesia_salvador_sev_e5e736c6.jpg': imgSalvador,
   'convento_santa_paula_37a86f4a.jpg': imgSantaPaula,
   'san_luis_franceses_c_88cd7e2f.jpg': imgSanLuis,
