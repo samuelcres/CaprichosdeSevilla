@@ -41,10 +41,10 @@ import img24 from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
 import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 
 // Import visit images
-import imgCatedral from '@assets/stock_images/seville_cathedral_gi_af05f5f8.jpg';
-import imgAlcazar from '@assets/stock_images/real_alcazar_seville_2ba22877.jpg';
-import imgArchivo from '@assets/stock_images/archivo_general_de_i_b6f773b7.jpg';
-import imgTorre from '@assets/stock_images/torre_del_oro_golden_b85ce120.jpg';
+import imgCatedral from '@assets/stock_images/seville_cathedral_gi_c0fa3771.jpg';
+import imgAlcazar from '@assets/stock_images/real_alcazar_seville_d33d2213.jpg';
+import imgArchivo from '@assets/stock_images/archivo_general_de_i_c718f201.jpg';
+import imgTorre from '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg';
 import imgMurallas from '@assets/stock_images/murallas_macarena_wa_31870249.jpg';
 import imgBellasArtes from '@assets/stock_images/museo_bellas_artes_s_e858bbb3.jpg';
 import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.jpg';
@@ -57,7 +57,7 @@ import imgMariaLuisa from '@assets/stock_images/parque_maria_luisa_s_a5d78d89.jp
 import imgJardinesMurillo from '@assets/stock_images/jardines_murillo_sev_33432d8d.jpg';
 import imgGuadalquivir from '@assets/stock_images/rio_guadalquivir_sev_f9795354.jpg';
 import imgCartuja from '@assets/stock_images/isla_cartuja_seville_0755dac0.jpg';
-import imgSantaCruz from '@assets/stock_images/barrio_santa_cruz_se_31c1be3b.jpg';
+import imgSantaCruz from '@assets/stock_images/santa_cruz_neighborh_fd07e9ae.jpg';
 import imgTriana from '@assets/stock_images/barrio_triana_sevill_22bf8537.jpg';
 import imgMacarenaBarrio from '@assets/stock_images/barrio_macarena_sevi_9174b44a.jpg';
 import imgArenal from '@assets/stock_images/barrio_arenal_sevill_430ab21c.jpg';
@@ -65,11 +65,11 @@ import imgPatios from '@assets/stock_images/seville_traditional__6594b4ce.jpg';
 import imgRutaFlamenco from '@assets/stock_images/flamenco_performance_cfe2193e.jpg';
 import imgRutaRomana from '@assets/stock_images/roman_ruins_ancient__bb6583ed.jpg';
 import imgRutaArtistas from '@assets/stock_images/seville_artists_cerv_ac44d679.jpg';
-import imgTablaos from '@assets/stock_images/flamenco_tablao_show_e674e1c1.jpg';
+import imgTablaos from '@assets/stock_images/flamenco_tablao_danc_f5a24536.jpg';
 import imgTeatros from '@assets/stock_images/teatro_maestranza_se_45f14437.jpg';
 import imgFestivales from '@assets/stock_images/seville_festivals_fe_023c1b1d.jpg';
 import imgExperiencias from '@assets/stock_images/cultural_experiences_24121b88.jpg';
-import imgBasilicaMacarena from '@assets/stock_images/basílica_macarena_se_42e6f2c2.jpg';
+import imgBasilicaMacarena from '@assets/stock_images/basilica_de_la_macar_929325d7.jpg';
 import imgSalvador from '@assets/stock_images/iglesia_salvador_sev_e5e736c6.jpg';
 import imgSantaPaula from '@assets/stock_images/convento_santa_paula_37a86f4a.jpg';
 import imgSanLuis from '@assets/stock_images/san_luis_franceses_c_88cd7e2f.jpg';
@@ -82,7 +82,7 @@ import imgSetas from '@assets/stock_images/metropol_parasol_set_8cd25218.jpg';
 import imgPlazaEspana from '@assets/stock_images/plaza_españa_seville_991d599b.jpg';
 import imgAlamillo from '@assets/stock_images/puente_alamillo_brid_e7b05fc3.jpg';
 import imgEstadios from '@assets/stock_images/ramon_sanchez_pizjua_4adb6587.jpg';
-import imgMercados from '@assets/stock_images/mercado_triana_sevil_b65051c9.jpg';
+import imgMercados from '@assets/stock_images/traditional_spanish__d3ec19eb.jpg';
 import imgTalleres from '@assets/stock_images/cooking_class_worksh_7e4edbf3.jpg';
 import imgBodegas from '@assets/stock_images/jerez_wine_cellar_bo_2687fb83.jpg';
 
@@ -114,10 +114,10 @@ const imageMap: Record<string, string> = {
   'customer_service_sup_53d26c13.jpg': img24,
   'hotel_check-in_door__08a6987e.jpg': img25,
   // Visit images
-  'seville_cathedral_gi_af05f5f8.jpg': imgCatedral,
-  'real_alcazar_seville_2ba22877.jpg': imgAlcazar,
-  'archivo_general_de_i_b6f773b7.jpg': imgArchivo,
-  'torre_del_oro_golden_b85ce120.jpg': imgTorre,
+  'seville_cathedral_gi_c0fa3771.jpg': imgCatedral,
+  'real_alcazar_seville_d33d2213.jpg': imgAlcazar,
+  'archivo_general_de_i_c718f201.jpg': imgArchivo,
+  'torre_del_oro_golden_65ac2710.jpg': imgTorre,
   'murallas_macarena_wa_31870249.jpg': imgMurallas,
   'museo_bellas_artes_s_e858bbb3.jpg': imgBellasArtes,
   'caac_monasterio_cart_7595e310.jpg': imgCAAC,
@@ -130,7 +130,7 @@ const imageMap: Record<string, string> = {
   'jardines_murillo_sev_33432d8d.jpg': imgJardinesMurillo,
   'rio_guadalquivir_sev_f9795354.jpg': imgGuadalquivir,
   'isla_cartuja_seville_0755dac0.jpg': imgCartuja,
-  'barrio_santa_cruz_se_31c1be3b.jpg': imgSantaCruz,
+  'santa_cruz_neighborh_fd07e9ae.jpg': imgSantaCruz,
   'barrio_triana_sevill_22bf8537.jpg': imgTriana,
   'barrio_macarena_sevi_9174b44a.jpg': imgMacarenaBarrio,
   'barrio_arenal_sevill_430ab21c.jpg': imgArenal,
@@ -138,11 +138,11 @@ const imageMap: Record<string, string> = {
   'flamenco_performance_cfe2193e.jpg': imgRutaFlamenco,
   'roman_ruins_ancient__bb6583ed.jpg': imgRutaRomana,
   'seville_artists_cerv_ac44d679.jpg': imgRutaArtistas,
-  'flamenco_tablao_show_e674e1c1.jpg': imgTablaos,
+  'flamenco_tablao_danc_f5a24536.jpg': imgTablaos,
   'teatro_maestranza_se_45f14437.jpg': imgTeatros,
   'seville_festivals_fe_023c1b1d.jpg': imgFestivales,
   'cultural_experiences_24121b88.jpg': imgExperiencias,
-  'basílica_macarena_se_42e6f2c2.jpg': imgBasilicaMacarena,
+  'basilica_de_la_macar_929325d7.jpg': imgBasilicaMacarena,
   'iglesia_salvador_sev_e5e736c6.jpg': imgSalvador,
   'convento_santa_paula_37a86f4a.jpg': imgSantaPaula,
   'san_luis_franceses_c_88cd7e2f.jpg': imgSanLuis,
@@ -155,7 +155,7 @@ const imageMap: Record<string, string> = {
   'plaza_españa_seville_991d599b.jpg': imgPlazaEspana,
   'puente_alamillo_brid_e7b05fc3.jpg': imgAlamillo,
   'ramon_sanchez_pizjua_4adb6587.jpg': imgEstadios,
-  'mercado_triana_sevil_b65051c9.jpg': imgMercados,
+  'traditional_spanish__d3ec19eb.jpg': imgMercados,
   'cooking_class_worksh_7e4edbf3.jpg': imgTalleres,
   'jerez_wine_cellar_bo_2687fb83.jpg': imgBodegas,
 };

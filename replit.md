@@ -20,7 +20,7 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
   - **Complete visit details:** Each location displays photo (responsive layout), name, description, schedule (Clock icon), price (Euro icon), walking distance from apartment (Navigation icon), phone number (clickable tel: link), location button (opens Google Maps), and website button (when available)
   - **Data structure change:** Converted visitItems in i18n.ts from array-based to object-based with visit IDs as keys (e.g., catedral: {name, description}) for consistent multilingual access across all 6 languages
   - **New translation keys:** Added schedule, price, phone, location labels in all 6 languages for consistent UI labeling
-  - Replaced visit images with authentic photographs of Seville landmarks from stock image services
+  - **Updated with specific authentic images:** Replaced generic stock photos with location-specific images: Seville Cathedral with Giralda tower, Real Alcázar royal palace, Archivo General de Indias historic building, Torre del Oro golden tower, Santa Cruz historic quarter plaza, Basílica de la Macarena facade, traditional Spanish market with fresh fruits, and flamenco tablao dance performance
 
 ## User Preferences
 

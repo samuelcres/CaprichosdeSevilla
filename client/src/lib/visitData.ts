@@ -35,7 +35,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 7, 
     schedule: 'L-S 11:00-17:00, D 14:30-18:00', 
     price: '€12', 
-    photo: '@assets/stock_images/seville_cathedral_gi_af05f5f8.jpg', 
+    photo: '@assets/stock_images/seville_cathedral_gi_c0fa3771.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Catedral+de+Sevilla', 
     website: 'https://www.catedraldesevilla.es', 
     phone: '+34 954 214 971' 
@@ -47,7 +47,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 8, 
     schedule: 'L-D 9:30-17:00', 
     price: '€14.50', 
-    photo: '@assets/stock_images/real_alcazar_seville_2ba22877.jpg', 
+    photo: '@assets/stock_images/real_alcazar_seville_d33d2213.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Real+Alcazar+Sevilla', 
     website: 'https://www.alcazarsevilla.org', 
     phone: '+34 954 502 324' 
@@ -59,7 +59,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 7, 
     schedule: 'M-S 9:30-17:00, D cerrado', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/archivo_general_de_i_b6f773b7.jpg', 
+    photo: '@assets/stock_images/archivo_general_de_i_c718f201.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Archivo+de+Indias+Sevilla', 
     phone: '+34 954 500 528' 
   },
@@ -70,7 +70,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 8, 
     schedule: 'L-V 9:30-18:45, S-D 10:30-18:45', 
     price: '€3', 
-    photo: '@assets/stock_images/torre_del_oro_golden_b85ce120.jpg', 
+    photo: '@assets/stock_images/torre_del_oro_golden_65ac2710.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Torre+del+Oro+Sevilla', 
     phone: '+34 954 222 419' 
   },
@@ -122,7 +122,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 6, 
     schedule: 'Acceso libre 24h', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/barrio_santa_cruz_se_31c1be3b.jpg', 
+    photo: '@assets/stock_images/santa_cruz_neighborh_fd07e9ae.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Barrio+Santa+Cruz+Sevilla', 
     phone: '+34 954 210 005' 
   },
@@ -146,7 +146,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 13, 
     schedule: 'Diario 9:00-14:00 y 17:00-21:00', 
     price: 'Gratis', 
-    photo: '@assets/stock_images/basílica_macarena_se_42e6f2c2.jpg', 
+    photo: '@assets/stock_images/basilica_de_la_macar_929325d7.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Basilica+Macarena+Sevilla', 
     phone: '+34 954 901 800' 
   },
@@ -173,7 +173,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 6, 
     schedule: 'L-S 9:00-15:00', 
     price: 'Gratis entrada', 
-    photo: '@assets/stock_images/mercado_triana_sevil_b65051c9.jpg', 
+    photo: '@assets/stock_images/traditional_spanish__d3ec19eb.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Mercado+Triana+Sevilla', 
     phone: '+34 954 334 690' 
   },
@@ -186,7 +186,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 4, 
     schedule: 'Variable, espectáculos nocturnos', 
     price: 'Desde €25', 
-    photo: '@assets/stock_images/flamenco_tablao_show_e674e1c1.jpg', 
+    photo: '@assets/stock_images/flamenco_tablao_danc_f5a24536.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Tablaos+Flamencos+Sevilla', 
     phone: '+34 954 216 981' 
   },
