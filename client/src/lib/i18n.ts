@@ -154,7 +154,40 @@ export const translations = {
       title: 'Instrucciones de Check-in',
       step: 'Paso',
       viewLocation: 'Ver ubicación en el mapa',
+      luggage: {
+        title: 'Guardar equipaje antes del Check-in (15h) o después del Check-out (11h)',
+        subtitle: 'Lockers y guardería de equipajes cercanos',
+        name: 'Nombre',
+        location: 'Ubicación',
+        distance: 'Distancia a pie',
+        price: 'Precio',
+        link: 'Enlace',
+        viewMap: 'Ver en mapa',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7 minutos',
+            price: 'Desde €3/día',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10 minutos',
+            price: 'Consultar web',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20 minutos',
+            price: '€8-16/día',
+            url: 'https://www.safeluggage.net/en/',
+          },
+        ],
         step1: {
           title: 'Llegar a la dirección',
           description: 'Calle Conde de Ibarra, 11-13, Sevilla',
@@ -181,6 +214,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5 minutos',
+            price: 'Desde €3/día',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8 minutos',
+            price: 'Desde €3/día',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12 minutos',
+            price: 'Desde €2-3/día',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+        ],
         step1: {
           title: 'Entrada al apartamento',
           description: 'Llegar al apartamento situado en C/ Quevedo, 11 (Sevilla)',
@@ -612,7 +668,40 @@ export const translations = {
       title: 'Check-in Instructions',
       step: 'Step',
       viewLocation: 'View location on map',
+      luggage: {
+        title: 'Store Luggage Before Check-in (3 PM) or After Check-out (11 AM)',
+        subtitle: 'Nearby lockers and luggage storage',
+        name: 'Name',
+        location: 'Location',
+        distance: 'Walking distance',
+        price: 'Price',
+        link: 'Link',
+        viewMap: 'View on map',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7 minutes',
+            price: 'From €3/day',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10 minutes',
+            price: 'Check website',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20 minutes',
+            price: '€8-16/day',
+            url: 'https://www.safeluggage.net/en/',
+          },
+        ],
         step1: {
           title: 'Arrive at address',
           description: 'Calle Conde de Ibarra, 11-13, Seville',
@@ -639,6 +728,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5 minutes',
+            price: 'From €3/day',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8 minutes',
+            price: 'From €3/day',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12 minutes',
+            price: 'From €2-3/day',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+        ],
         step1: {
           title: 'Entering the apartment',
           description: 'Arrive at the apartment located at C/ Quevedo, 11 (Seville)',
@@ -1060,7 +1172,40 @@ export const translations = {
       title: 'Instructions d\'enregistrement',
       step: 'Étape',
       viewLocation: 'Voir l\'emplacement sur la carte',
+      luggage: {
+        title: 'Déposer les bagages avant l\'enregistrement (15h) ou après le départ (11h)',
+        subtitle: 'Casiers et consignes à bagages à proximité',
+        name: 'Nom',
+        location: 'Emplacement',
+        distance: 'Distance à pied',
+        price: 'Prix',
+        link: 'Lien',
+        viewMap: 'Voir sur la carte',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7 minutes',
+            price: 'À partir de 3€/jour',
+            url: 'https://naturanda.com/fr/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10 minutes',
+            price: 'Consulter le site web',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20 minutes',
+            price: '8-16€/jour',
+            url: 'https://www.safeluggage.net/fr/',
+          },
+        ],
         step1: {
           title: 'Arriver à l\'adresse',
           description: 'Calle Conde de Ibarra, 11-13, Séville',
@@ -1087,6 +1232,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5 minutes',
+            price: 'À partir de 3€/jour',
+            url: 'https://naturanda.com/fr/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8 minutes',
+            price: 'À partir de 3€/jour',
+            url: 'https://naturanda.com/fr/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12 minutes',
+            price: 'À partir de 2-3€/jour',
+            url: 'https://naturanda.com/fr/luggage-storage/',
+          },
+        ],
         step1: {
           title: 'Entrée dans l\'appartement',
           description: 'Arriver à l\'appartement situé C/ Quevedo, 11 (Séville)',
@@ -1508,7 +1676,40 @@ export const translations = {
       title: 'Check-in Anweisungen',
       step: 'Schritt',
       viewLocation: 'Standort auf Karte anzeigen',
+      luggage: {
+        title: 'Gepäck vor dem Check-in (15 Uhr) oder nach dem Check-out (11 Uhr) aufbewahren',
+        subtitle: 'Schließfächer und Gepäckaufbewahrung in der Nähe',
+        name: 'Name',
+        location: 'Standort',
+        distance: 'Fußweg',
+        price: 'Preis',
+        link: 'Link',
+        viewMap: 'Auf Karte ansehen',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7 Minuten',
+            price: 'Ab 3€/Tag',
+            url: 'https://naturanda.com/de/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10 Minuten',
+            price: 'Siehe Website',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20 Minuten',
+            price: '8-16€/Tag',
+            url: 'https://www.safeluggage.net/de/',
+          },
+        ],
         step1: {
           title: 'Zur Adresse kommen',
           description: 'Calle Conde de Ibarra, 11-13, Sevilla',
@@ -1535,6 +1736,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5 Minuten',
+            price: 'Ab 3€/Tag',
+            url: 'https://naturanda.com/de/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8 Minuten',
+            price: 'Ab 3€/Tag',
+            url: 'https://naturanda.com/de/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12 Minuten',
+            price: 'Ab 2-3€/Tag',
+            url: 'https://naturanda.com/de/luggage-storage/',
+          },
+        ],
         step1: {
           title: 'Eintritt in die Wohnung',
           description: 'Kommen Sie zur Wohnung in C/ Quevedo, 11 (Sevilla)',
@@ -1956,7 +2180,40 @@ export const translations = {
       title: 'Istruzioni Check-in',
       step: 'Passo',
       viewLocation: 'Visualizza posizione sulla mappa',
+      luggage: {
+        title: 'Depositare i bagagli prima del Check-in (15:00) o dopo il Check-out (11:00)',
+        subtitle: 'Armadietti e deposito bagagli nelle vicinanze',
+        name: 'Nome',
+        location: 'Posizione',
+        distance: 'Distanza a piedi',
+        price: 'Prezzo',
+        link: 'Link',
+        viewMap: 'Visualizza sulla mappa',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7 minuti',
+            price: 'Da 3€/giorno',
+            url: 'https://naturanda.com/it/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10 minuti',
+            price: 'Consulta il sito web',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20 minuti',
+            price: '8-16€/giorno',
+            url: 'https://www.safeluggage.net/it/',
+          },
+        ],
         step1: {
           title: 'Arrivare all\'indirizzo',
           description: 'Calle Conde de Ibarra, 11-13, Siviglia',
@@ -1983,6 +2240,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5 minuti',
+            price: 'Da 3€/giorno',
+            url: 'https://naturanda.com/it/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8 minuti',
+            price: 'Da 3€/giorno',
+            url: 'https://naturanda.com/it/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12 minuti',
+            price: 'Da 2-3€/giorno',
+            url: 'https://naturanda.com/it/luggage-storage/',
+          },
+        ],
         step1: {
           title: 'Ingresso nell\'appartamento',
           description: 'Arrivare all\'appartamento situato in C/ Quevedo, 11 (Siviglia)',
@@ -2404,7 +2684,40 @@ export const translations = {
       title: '入住说明',
       step: '步骤',
       viewLocation: '在地图上查看位置',
+      luggage: {
+        title: '入住前（下午3点）或退房后（上午11点）寄存行李',
+        subtitle: '附近的储物柜和行李寄存处',
+        name: '名称',
+        location: '位置',
+        distance: '步行距离',
+        price: '价格',
+        link: '链接',
+        viewMap: '在地图上查看',
+      },
       ibarra: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '5-7分钟',
+            price: '3欧元/天起',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'The Pink Lockers',
+            location: 'Calle San José, 15, Barrio Santa Cruz',
+            distance: '10分钟',
+            price: '查看网站',
+            url: 'https://www.thepinklockers.com/',
+          },
+          {
+            name: 'Safe Luggage',
+            location: 'Calle Feria, 129',
+            distance: '15-20分钟',
+            price: '8-16欧元/天',
+            url: 'https://www.safeluggage.net/en/',
+          },
+        ],
         step1: {
           title: '到达地址',
           description: 'Calle Conde de Ibarra, 11-13, 塞维利亚',
@@ -2431,6 +2744,29 @@ export const translations = {
         },
       },
       quevedo: {
+        luggage: [
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Trajano, 6',
+            distance: '5分钟',
+            price: '3欧元/天起',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Alfonso XII, 35',
+            distance: '8分钟',
+            price: '3欧元/天起',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+          {
+            name: 'Naturanda Luggage Storage',
+            location: 'Calle Francos, 19',
+            distance: '12分钟',
+            price: '2-3欧元/天起',
+            url: 'https://naturanda.com/en/luggage-storage/',
+          },
+        ],
         step1: {
           title: '进入公寓',
           description: '到达位于 C/ Quevedo, 11 (塞维利亚) 的公寓',

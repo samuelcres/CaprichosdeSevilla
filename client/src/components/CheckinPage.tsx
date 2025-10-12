@@ -2,7 +2,8 @@ import PageHeader from './PageHeader';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock, Luggage, ExternalLink } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -97,6 +98,87 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
       />
 
       <div className="relative z-10 max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="luggage" className="border rounded-lg bg-card">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline" data-testid="accordion-luggage">
+              <div className="flex items-center gap-3 text-left">
+                <Luggage className="w-5 h-5 text-primary flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold text-foreground">{t.checkin.luggage.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{t.checkin.luggage.subtitle}</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="space-y-3 pt-2">
+                {steps.luggage?.map((locker: any, index: number) => (
+                  <Card key={index} className="overflow-visible" data-testid={`card-locker-${index}`}>
+                    <CardContent className="p-4">
+                      <div className="space-y-3">
+                        <div className="flex items-start justify-between gap-4">
+                          <h4 className="font-semibold text-foreground">{locker.name}</h4>
+                          <Badge variant="secondary" className="flex-shrink-0">
+                            {locker.price}
+                          </Badge>
+                        </div>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-start gap-2">
+                            <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                            <div>
+                              <p className="font-medium text-foreground">{t.checkin.luggage.location}:</p>
+                              <p className="text-muted-foreground">{locker.location}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <Clock className="w-4 h-4 flex-shrink-0" />
+                            <span>{t.checkin.luggage.distance}: {locker.distance}</span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 pt-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1"
+                            asChild
+                            data-testid={`button-locker-map-${index}`}
+                          >
+                            <a
+                              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locker.location + ', Sevilla')}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2"
+                            >
+                              <MapPin className="w-4 h-4" />
+                              {t.checkin.luggage.viewMap}
+                            </a>
+                          </Button>
+                          <Button
+                            variant="default"
+                            size="sm"
+                            className="flex-1"
+                            asChild
+                            data-testid={`button-locker-link-${index}`}
+                          >
+                            <a
+                              href={locker.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-2"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              {t.checkin.luggage.link}
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+
         <div className="space-y-4">
           {allSteps.map((step, index) => (
             <Card key={index} data-testid={`card-step-${index + 1}`}>
