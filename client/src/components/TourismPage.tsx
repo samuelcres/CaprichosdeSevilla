@@ -293,7 +293,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                     height="100%"
                     frameBorder="0"
                     style={{ border: 0, minHeight: '500px' }}
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${apartmentCoords}&zoom=15`}
+                    src="https://www.google.com/maps/d/embed?mid=vuvcpfjV43zi3Kb5YbzxjUR7UhJSyg"
                     allowFullScreen
                     data-testid="iframe-google-maps"
                   />
