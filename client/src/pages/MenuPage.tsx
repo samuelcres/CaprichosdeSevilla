@@ -20,12 +20,12 @@ export default function MenuPage() {
   const icons = getMenuIcons();
 
   const options = [
-    { id: 'transport', icon: icons.transport, title: t.menu.transport },
-    { id: 'checkin', icon: icons.checkin, title: t.menu.checkin },
-    { id: 'wifi', icon: icons.wifi, title: t.menu.wifi },
-    { id: 'tourism', icon: icons.tourism, title: t.menu.tourism },
-    { id: 'events', icon: icons.events, title: t.menu.events },
-    { id: 'contact', icon: icons.contact, title: t.menu.contact },
+    { id: 'transport', icon: icons.transport, title: t.menu.transport, description: t.menu.transportDesc },
+    { id: 'checkin', icon: icons.checkin, title: t.menu.checkin, description: t.menu.checkinDesc },
+    { id: 'wifi', icon: icons.wifi, title: t.menu.wifi, description: t.menu.wifiDesc },
+    { id: 'tourism', icon: icons.tourism, title: t.menu.tourism, description: t.menu.tourismDesc },
+    { id: 'events', icon: icons.events, title: t.menu.events, description: t.menu.eventsDesc },
+    { id: 'contact', icon: icons.contact, title: t.menu.contact, description: t.menu.contactDesc },
   ];
 
   const apartmentName = apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo;
