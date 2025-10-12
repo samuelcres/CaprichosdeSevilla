@@ -1171,13 +1171,6 @@ export const translations = {
       ibarra: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '5-7 minutes',
-            price: 'À partir de 3€/jour',
-            url: 'https://naturanda.com/fr/luggage-storage/',
-          },
-          {
             name: 'The Pink Lockers',
             location: 'Calle San José, 15, Barrio Santa Cruz',
             distance: '10 minutes',
@@ -1185,11 +1178,11 @@ export const translations = {
             url: 'https://www.thepinklockers.com/',
           },
           {
-            name: 'Safe Luggage',
-            location: 'Calle Feria, 129',
-            distance: '15-20 minutes',
-            price: '8-16€/jour',
-            url: 'https://www.safeluggage.net/fr/',
+            name: 'LOCK & enjoy! - Consigne à bagages à Alfalfa',
+            location: 'C. Águilas, 27, Casco Antiguo',
+            distance: '8 minutes',
+            price: 'À partir de 6€/jour',
+            url: 'https://lockandenjoy.com/fr/consigne-bagage/seville-choisir-casier/alfalfa-fr/',
           },
         ],
         step1: {
@@ -1675,13 +1668,6 @@ export const translations = {
       ibarra: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '5-7 Minuten',
-            price: 'Ab 3€/Tag',
-            url: 'https://naturanda.com/de/luggage-storage/',
-          },
-          {
             name: 'The Pink Lockers',
             location: 'Calle San José, 15, Barrio Santa Cruz',
             distance: '10 Minuten',
@@ -1689,11 +1675,11 @@ export const translations = {
             url: 'https://www.thepinklockers.com/',
           },
           {
-            name: 'Safe Luggage',
-            location: 'Calle Feria, 129',
-            distance: '15-20 Minuten',
-            price: '8-16€/Tag',
-            url: 'https://www.safeluggage.net/de/',
+            name: 'LOCK & enjoy! - Gepäckaufbewahrung in Alfalfa',
+            location: 'C. Águilas, 27, Casco Antiguo',
+            distance: '8 Minuten',
+            price: 'Ab 6€/Tag',
+            url: 'https://lockandenjoy.com/de/gepackaufbewahrung/sevilla-spind-wahlen/alfalfa-de/',
           },
         ],
         step1: {
@@ -2179,13 +2165,6 @@ export const translations = {
       ibarra: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '5-7 minuti',
-            price: 'Da 3€/giorno',
-            url: 'https://naturanda.com/it/luggage-storage/',
-          },
-          {
             name: 'The Pink Lockers',
             location: 'Calle San José, 15, Barrio Santa Cruz',
             distance: '10 minuti',
@@ -2193,11 +2172,11 @@ export const translations = {
             url: 'https://www.thepinklockers.com/',
           },
           {
-            name: 'Safe Luggage',
-            location: 'Calle Feria, 129',
-            distance: '15-20 minuti',
-            price: '8-16€/giorno',
-            url: 'https://www.safeluggage.net/it/',
+            name: 'LOCK & enjoy! - Deposito bagagli ad Alfalfa',
+            location: 'C. Águilas, 27, Casco Antiguo',
+            distance: '8 minuti',
+            price: 'Da 6€/giorno',
+            url: 'https://lockandenjoy.com/it/deposito-bagagli/siviglia-scegli-armadietto/alfalfa-it/',
           },
         ],
         step1: {
@@ -2683,13 +2662,6 @@ export const translations = {
       ibarra: {
         luggage: [
           {
-            name: 'Naturanda Luggage Storage',
-            location: 'Calle Francos, 19',
-            distance: '5-7分钟',
-            price: '3欧元/天起',
-            url: 'https://naturanda.com/en/luggage-storage/',
-          },
-          {
             name: 'The Pink Lockers',
             location: 'Calle San José, 15, Barrio Santa Cruz',
             distance: '10分钟',
@@ -2697,11 +2669,11 @@ export const translations = {
             url: 'https://www.thepinklockers.com/',
           },
           {
-            name: 'Safe Luggage',
-            location: 'Calle Feria, 129',
-            distance: '15-20分钟',
-            price: '8-16欧元/天',
-            url: 'https://www.safeluggage.net/en/',
+            name: 'LOCK & enjoy! - Alfalfa行李寄存',
+            location: 'C. Águilas, 27, Casco Antiguo',
+            distance: '8分钟',
+            price: '6欧元/天起',
+            url: 'https://lockandenjoy.com/en/luggage-storage/sevilla-chooselockers/alfalfa-en/',
           },
         ],
         step1: {
