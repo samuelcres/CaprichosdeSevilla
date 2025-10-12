@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Apartment, languages, Language } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Globe } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
+import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -33,6 +35,7 @@ export default function ApartmentSelector({
   t,
 }: ApartmentSelectorProps) {
   const currentLang = languages.find(l => l.code === currentLanguage);
+  const [guideOpen, setGuideOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
@@ -45,7 +48,20 @@ export default function ApartmentSelector({
         }}
       />
 
-      <header className="relative z-10 p-6 border-b border-border flex items-center justify-end bg-white">
+      <header className="relative z-10 p-6 border-b border-border flex items-center justify-between gap-4 bg-white">
+        <Button
+          variant="outline"
+          size="default"
+          className="gap-2"
+          onClick={() => setGuideOpen(true)}
+          data-testid="button-guide"
+          aria-label={t.common.guide}
+          title={t.common.guide}
+        >
+          <BookOpen className="h-5 w-5" />
+          <span className="hidden sm:inline">{t.common.guide}</span>
+        </Button>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button 
@@ -135,6 +151,13 @@ export default function ApartmentSelector({
           </div>
         </div>
       </div>
+
+      <GuideDialog
+        open={guideOpen}
+        onOpenChange={setGuideOpen}
+        t={t}
+        currentLanguage={currentLanguage}
+      />
     </div>
   );
 }
