@@ -512,6 +512,35 @@ export const translations = {
       home: 'Inicio',
       changeLanguage: 'Cambiar idioma',
       contactWhatsApp: 'Contactar por WhatsApp',
+      guide: 'Guía',
+    },
+    guide: {
+      title: 'Guía de la Web App',
+      subtitle: 'Descubre todo lo que puedes encontrar',
+      transport: {
+        title: 'Transporte',
+        description: 'Información sobre cómo llegar desde el aeropuerto, estación de tren y autobús. Incluye tarifas de taxi, rutas de autobús y opciones de transporte.',
+      },
+      checkin: {
+        title: 'Check-in',
+        description: 'Instrucciones detalladas para el check-in, códigos de acceso, ubicación de llaves y opciones de almacenamiento de equipaje cercanas.',
+      },
+      wifi: {
+        title: 'Wi-Fi',
+        description: 'Información de acceso a la red Wi-Fi del apartamento, incluyendo nombre de red y contraseña.',
+      },
+      tourism: {
+        title: 'Turismo',
+        description: 'Recomendaciones de lugares turísticos, restaurantes y bares en Sevilla. Incluye mapas interactivos y descripciones detalladas.',
+      },
+      events: {
+        title: 'Eventos',
+        description: 'Calendario interactivo con eventos culturales, festivales, conciertos y actividades en Sevilla. Enlaces a recursos adicionales.',
+      },
+      contact: {
+        title: 'Contacto',
+        description: 'Números de emergencia, contacto del anfitrión y servicios de asistencia para turistas en Sevilla.',
+      },
     },
   },
   en: {
@@ -1005,6 +1034,35 @@ export const translations = {
       home: 'Home',
       changeLanguage: 'Change language',
       contactWhatsApp: 'Contact via WhatsApp',
+      guide: 'Guide',
+    },
+    guide: {
+      title: 'Web App Guide',
+      subtitle: 'Discover everything you can find',
+      transport: {
+        title: 'Transport',
+        description: 'Information on how to get here from the airport, train and bus stations. Includes taxi fares, bus routes and transport options.',
+      },
+      checkin: {
+        title: 'Check-in',
+        description: 'Detailed check-in instructions, access codes, key locations and nearby luggage storage options.',
+      },
+      wifi: {
+        title: 'Wi-Fi',
+        description: 'Apartment Wi-Fi network access information, including network name and password.',
+      },
+      tourism: {
+        title: 'Tourism',
+        description: 'Recommendations for tourist attractions, restaurants and bars in Seville. Includes interactive maps and detailed descriptions.',
+      },
+      events: {
+        title: 'Events',
+        description: 'Interactive calendar with cultural events, festivals, concerts and activities in Seville. Links to additional resources.',
+      },
+      contact: {
+        title: 'Contact',
+        description: 'Emergency numbers, host contact and tourist assistance services in Seville.',
+      },
     },
   },
   fr: {
@@ -1498,6 +1556,35 @@ export const translations = {
       home: 'Accueil',
       changeLanguage: 'Changer de langue',
       contactWhatsApp: 'Contacter via WhatsApp',
+      guide: 'Guide',
+    },
+    guide: {
+      title: 'Guide de l\'Application',
+      subtitle: 'Découvrez tout ce que vous pouvez trouver',
+      transport: {
+        title: 'Transport',
+        description: 'Informations sur comment arriver depuis l\'aéroport, la gare et la station de bus. Inclut les tarifs de taxi, les lignes de bus et les options de transport.',
+      },
+      checkin: {
+        title: 'Enregistrement',
+        description: 'Instructions détaillées d\'enregistrement, codes d\'accès, emplacement des clés et options de consigne à bagages à proximité.',
+      },
+      wifi: {
+        title: 'Wi-Fi',
+        description: 'Informations d\'accès au réseau Wi-Fi de l\'appartement, y compris le nom du réseau et le mot de passe.',
+      },
+      tourism: {
+        title: 'Tourisme',
+        description: 'Recommandations de lieux touristiques, restaurants et bars à Séville. Inclut des cartes interactives et des descriptions détaillées.',
+      },
+      events: {
+        title: 'Événements',
+        description: 'Calendrier interactif avec événements culturels, festivals, concerts et activités à Séville. Liens vers des ressources supplémentaires.',
+      },
+      contact: {
+        title: 'Contact',
+        description: 'Numéros d\'urgence, contact de l\'hôte et services d\'assistance touristique à Séville.',
+      },
     },
   },
   de: {
@@ -1991,6 +2078,35 @@ export const translations = {
       home: 'Startseite',
       changeLanguage: 'Sprache ändern',
       contactWhatsApp: 'Kontakt über WhatsApp',
+      guide: 'Leitfaden',
+    },
+    guide: {
+      title: 'Web-App-Leitfaden',
+      subtitle: 'Entdecken Sie alles, was Sie finden können',
+      transport: {
+        title: 'Transport',
+        description: 'Informationen zur Anreise vom Flughafen, Bahnhof und Busbahnhof. Enthält Taxipreise, Buslinien und Transportmöglichkeiten.',
+      },
+      checkin: {
+        title: 'Check-in',
+        description: 'Detaillierte Check-in-Anweisungen, Zugangscodes, Schlüsselstandorte und nahegelegene Gepäckaufbewahrungsmöglichkeiten.',
+      },
+      wifi: {
+        title: 'WLAN',
+        description: 'Informationen zum WLAN-Zugang der Wohnung, einschließlich Netzwerkname und Passwort.',
+      },
+      tourism: {
+        title: 'Tourismus',
+        description: 'Empfehlungen für Sehenswürdigkeiten, Restaurants und Bars in Sevilla. Enthält interaktive Karten und detaillierte Beschreibungen.',
+      },
+      events: {
+        title: 'Veranstaltungen',
+        description: 'Interaktiver Kalender mit kulturellen Veranstaltungen, Festivals, Konzerten und Aktivitäten in Sevilla. Links zu zusätzlichen Ressourcen.',
+      },
+      contact: {
+        title: 'Kontakt',
+        description: 'Notrufnummern, Kontakt zum Gastgeber und Touristenbetreuungsdienste in Sevilla.',
+      },
     },
   },
   it: {
@@ -2484,6 +2600,35 @@ export const translations = {
       home: 'Home',
       changeLanguage: 'Cambia lingua',
       contactWhatsApp: 'Contatta via WhatsApp',
+      guide: 'Guida',
+    },
+    guide: {
+      title: 'Guida dell\'App',
+      subtitle: 'Scopri tutto quello che puoi trovare',
+      transport: {
+        title: 'Trasporto',
+        description: 'Informazioni su come arrivare dall\'aeroporto, dalla stazione ferroviaria e degli autobus. Include tariffe dei taxi, linee autobus e opzioni di trasporto.',
+      },
+      checkin: {
+        title: 'Check-in',
+        description: 'Istruzioni dettagliate per il check-in, codici di accesso, posizione delle chiavi e opzioni di deposito bagagli nelle vicinanze.',
+      },
+      wifi: {
+        title: 'Wi-Fi',
+        description: 'Informazioni di accesso alla rete Wi-Fi dell\'appartamento, incluso nome della rete e password.',
+      },
+      tourism: {
+        title: 'Turismo',
+        description: 'Raccomandazioni di luoghi turistici, ristoranti e bar a Siviglia. Include mappe interattive e descrizioni dettagliate.',
+      },
+      events: {
+        title: 'Eventi',
+        description: 'Calendario interattivo con eventi culturali, festival, concerti e attività a Siviglia. Collegamenti a risorse aggiuntive.',
+      },
+      contact: {
+        title: 'Contatto',
+        description: 'Numeri di emergenza, contatto dell\'host e servizi di assistenza turistica a Siviglia.',
+      },
     },
   },
   zh: {
@@ -2977,6 +3122,35 @@ export const translations = {
       home: '首页',
       changeLanguage: '更改语言',
       contactWhatsApp: '通过WhatsApp联系',
+      guide: '指南',
+    },
+    guide: {
+      title: '应用指南',
+      subtitle: '探索您可以找到的所有内容',
+      transport: {
+        title: '交通',
+        description: '从机场、火车站和巴士站到达的信息。包括出租车价格、巴士路线和交通选项。',
+      },
+      checkin: {
+        title: '入住',
+        description: '详细的入住说明、访问代码、钥匙位置和附近的行李寄存选项。',
+      },
+      wifi: {
+        title: 'Wi-Fi',
+        description: '公寓Wi-Fi网络访问信息，包括网络名称和密码。',
+      },
+      tourism: {
+        title: '旅游',
+        description: '塞维利亚旅游景点、餐厅和酒吧推荐。包括互动地图和详细描述。',
+      },
+      events: {
+        title: '活动',
+        description: '互动日历，包含塞维利亚的文化活动、节日、音乐会和活动。链接到其他资源。',
+      },
+      contact: {
+        title: '联系我们',
+        description: '紧急电话号码、房东联系方式和塞维利亚游客援助服务。',
+      },
     },
   },
 };
