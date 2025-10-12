@@ -11,6 +11,7 @@ import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
+import mapsRecommendationsImage from '@assets/Captura de pantalla 2025-10-12 a las 14.42.30_1760272979443.png';
 
 // Import stock images for restaurants
 import img1 from '@assets/stock_images/traditional_spanish__a8531ed5.jpg';
@@ -284,7 +285,28 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             </Card>
           </TabsContent>
 
-          <TabsContent value="map" className="mt-6">
+          <TabsContent value="map" className="mt-6 space-y-6">
+            <Card>
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <img 
+                    src={mapsRecommendationsImage} 
+                    alt="Mapa de recomendaciones"
+                    className="w-full rounded-lg shadow-lg"
+                    data-testid="img-recommendations-map"
+                  />
+                  <Button
+                    className="w-full"
+                    onClick={() => window.open('https://maps.app.goo.gl/vLTVmja9G4RWvX1i8', '_blank', 'noopener,noreferrer')}
+                    data-testid="button-experience-recommendations"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    {t.tourism.experienceRecommendations}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            
             <Card>
               <CardContent className="p-0">
                 <div className="w-full rounded-lg overflow-hidden">

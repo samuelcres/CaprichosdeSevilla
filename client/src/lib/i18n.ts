@@ -287,6 +287,7 @@ export const translations = {
       distance: 'min a pie',
       viewMap: 'Ver en mapa',
       viewOnGoogleMaps: 'Ver en Google Maps',
+      experienceRecommendations: 'Recomendaciones basadas en nuestra propia experiencia',
       visitCategories: {
         monuments: 'Monumentos históricos y patrimoniales',
         museums: 'Museos y centros de interpretación',
@@ -820,6 +821,7 @@ export const translations = {
       distance: 'min walk',
       viewMap: 'View on map',
       viewOnGoogleMaps: 'View on Google Maps',
+      experienceRecommendations: 'Recommendations based on our own experience',
       visitCategories: {
         monuments: 'Historical and heritage monuments',
         museums: 'Museums and interpretation centers',
@@ -1343,6 +1345,7 @@ export const translations = {
       distance: 'min à pied',
       viewMap: 'Voir sur la carte',
       viewOnGoogleMaps: 'Voir sur Google Maps',
+      experienceRecommendations: 'Recommandations basées sur notre propre expérience',
       visitCategories: {
         monuments: 'Monuments historiques et patrimoniaux',
         museums: 'Musées et centres d\'interprétation',
@@ -1866,6 +1869,7 @@ export const translations = {
       distance: 'Min zu Fuß',
       viewMap: 'Auf Karte ansehen',
       viewOnGoogleMaps: 'Auf Google Maps ansehen',
+      experienceRecommendations: 'Empfehlungen basierend auf unserer eigenen Erfahrung',
       visitCategories: {
         monuments: 'Historische und patrimoniale Denkmäler',
         museums: 'Museen und Interpretationszentren',
@@ -2389,6 +2393,7 @@ export const translations = {
       distance: 'min a piedi',
       viewMap: 'Vedi sulla mappa',
       viewOnGoogleMaps: 'Vedi su Google Maps',
+      experienceRecommendations: 'Raccomandazioni basate sulla nostra esperienza',
       visitCategories: {
         monuments: 'Monumenti storici e patrimoniali',
         museums: 'Musei e centri di interpretazione',
@@ -2912,6 +2917,7 @@ export const translations = {
       distance: '分钟步行',
       viewMap: '在地图上查看',
       viewOnGoogleMaps: '在谷歌地图上查看',
+      experienceRecommendations: '基于我们自身经验的推荐',
       visitCategories: {
         monuments: '历史和文化遗产纪念碑',
         museums: '博物馆和展览中心',
