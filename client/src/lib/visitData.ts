@@ -95,7 +95,7 @@ export const visitDetails: Visit[] = [
     distanceQuevedo: 4, 
     schedule: 'Diario 10:00-19:00', 
     price: '€10', 
-    photo: '@assets/stock_images/museo_baile_flamenco_a3281216.jpg', 
+    photo: '@assets/museo_baile_flamenco_1760288572604.jpg', 
     mapsUrl: 'https://maps.google.com/?q=Museo+Baile+Flamenco+Sevilla', 
     website: 'https://www.museoflamenco.com', 
     phone: '+34 954 340 311' 

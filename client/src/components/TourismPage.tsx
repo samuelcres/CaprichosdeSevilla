@@ -50,7 +50,7 @@ import imgBellasArtes from '@assets/museo_bellas_artes_1760287361564.jpg';
 import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.jpg';
 import imgArqueologico from '@assets/stock_images/museo_arqueologico_s_ca9dc2cb.jpg';
 import imgCostumbres from '@assets/stock_images/museo_artes_costumbr_024a987c.jpg';
-import imgFlamencoMuseo from '@assets/stock_images/museo_baile_flamenco_a3281216.jpg';
+import imgFlamencoMuseo from '@assets/museo_baile_flamenco_1760288572604.jpg';
 import imgNaval from '@assets/stock_images/naval_museum_torre_d_0a944c8c.jpg';
 import imgSanJorge from '@assets/stock_images/castillo_san_jorge_s_f02850a8.jpg';
 import imgMariaLuisa from '@assets/parque_maria_luisa_1760288454408.jpg';
@@ -123,7 +123,7 @@ const imageMap: Record<string, string> = {
   'caac_monasterio_cart_7595e310.jpg': imgCAAC,
   'museo_arqueologico_s_ca9dc2cb.jpg': imgArqueologico,
   'museo_artes_costumbr_024a987c.jpg': imgCostumbres,
-  'museo_baile_flamenco_a3281216.jpg': imgFlamencoMuseo,
+  'museo_baile_flamenco_1760288572604.jpg': imgFlamencoMuseo,
   'naval_museum_torre_d_0a944c8c.jpg': imgNaval,
   'castillo_san_jorge_s_f02850a8.jpg': imgSanJorge,
   'parque_maria_luisa_1760288454408.jpg': imgMariaLuisa,
