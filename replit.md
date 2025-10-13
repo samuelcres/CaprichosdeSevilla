@@ -8,6 +8,7 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 
 **October 13, 2025:**
 - Added URL parameter support for direct apartment access. Users can now access a specific apartment directly using URL parameters: `?apartment=ibarra` for Capricho de Ibarra or `?apartment=quevedo` for Capricho de Quevedo. Priority order: URL parameter > environment variable > apartment selector. This allows sharing direct links to specific apartments.
+- Made apartment name badge in header clickable. On all sub-pages (Transport, Check-in, Wi-Fi, Tourism, Events, Contact), clicking the apartment name/image badge in the header now navigates back to the apartment's main menu page. Provides quick navigation back to home menu from any section.
 
 **October 12, 2025:**
 - Added descriptive subtitles to all main menu options. Each menu card now displays a 2-3 word subtitle below the title describing the section's content (e.g., Transport: "Llegadas · Salidas · Movilidad" / "Arrivals · Departures · Mobility"). Subtitles are fully translated in all 6 languages and use muted-foreground color for visual hierarchy.

@@ -39,7 +39,22 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
         </Button>
 
         <div className="flex flex-col items-center flex-1 mx-4 min-w-0">
-          {apartment && apartmentLabel && (
+          {apartment && apartmentLabel && onHome && (
+            <Button 
+              variant="outline" 
+              onClick={onHome}
+              className="mb-1 text-xs flex items-center gap-1.5 px-2 py-1 h-auto hover-elevate"
+              data-testid="button-apartment-home"
+            >
+              <img 
+                src={apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl}
+                alt={apartmentLabel}
+                className="w-5 h-5 rounded-full object-cover"
+              />
+              <span>{apartmentLabel}</span>
+            </Button>
+          )}
+          {apartment && apartmentLabel && !onHome && (
             <Badge 
               variant="outline" 
               className="mb-1 text-xs flex items-center gap-1.5 px-2 py-1"
