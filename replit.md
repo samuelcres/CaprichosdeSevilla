@@ -6,6 +6,9 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 
 ## Recent Changes
 
+**October 13, 2025:**
+- Added URL parameter support for direct apartment access. Users can now access a specific apartment directly using URL parameters: `?apartment=ibarra` for Capricho de Ibarra or `?apartment=quevedo` for Capricho de Quevedo. Priority order: URL parameter > environment variable > apartment selector. This allows sharing direct links to specific apartments.
+
 **October 12, 2025:**
 - Added descriptive subtitles to all main menu options. Each menu card now displays a 2-3 word subtitle below the title describing the section's content (e.g., Transport: "Llegadas · Salidas · Movilidad" / "Arrivals · Departures · Mobility"). Subtitles are fully translated in all 6 languages and use muted-foreground color for visual hierarchy.
 - Updated luggage storage options for Capricho de Ibarra apartment. Removed Naturanda (Calle Francos) and Safe Luggage. Updated The Pink Lockers booking URL to https://www.thepinklockers.com/booking-process/1. Updated LOCK & enjoy! - Luggage Storage in Alfalfa (C. Águilas, 27) booking URL to https://reserva.lockandenjoy.com/reserva/Sevilla/Alfalfa/elegir-fechas with language-specific parameters. Added real locker images for both locations.

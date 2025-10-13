@@ -11,12 +11,22 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Check if apartment is pre-configured via environment variable
+// Check if apartment is pre-configured via URL parameter or environment variable
 function getConfiguredApartment(): Apartment | null {
+  // Priority 1: Check URL parameter (?apartment=ibarra or ?apartment=quevedo)
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlApartment = urlParams.get('apartment');
+  if (urlApartment === 'ibarra' || urlApartment === 'quevedo') {
+    return urlApartment as Apartment;
+  }
+  
+  // Priority 2: Check environment variable
   const configuredApt = import.meta.env.VITE_APARTMENT;
   if (configuredApt === 'ibarra' || configuredApt === 'quevedo') {
     return configuredApt as Apartment;
   }
+  
+  // Priority 3: No configuration, show apartment selector
   return null;
 }
 
