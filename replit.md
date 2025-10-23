@@ -6,6 +6,9 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 
 ## Recent Changes
 
+**October 23, 2025:**
+- Added URL parameter support for language selection. Users can now access the app in a specific language using URL parameters: `?language=es` (Spanish), `?language=en` (English), `?language=fr` (French), `?language=de` (German), `?language=it` (Italian), or `?language=zh` (Chinese). Can be combined with apartment parameter: `?apartment=ibarra&language=en`. Priority order: URL parameter > environment variable VITE_LANGUAGE > default (Spanish). Changed default language from English to Spanish since the app is for Seville apartments.
+
 **October 13, 2025:**
 - Added URL parameter support for direct apartment access. Users can now access a specific apartment directly using URL parameters: `?apartment=ibarra` for Capricho de Ibarra or `?apartment=quevedo` for Capricho de Quevedo. Priority order: URL parameter > environment variable > apartment selector. This allows sharing direct links to specific apartments.
 - Made apartment name badge in header clickable. On all sub-pages (Transport, Check-in, Wi-Fi, Tourism, Events, Contact), clicking the apartment name/image badge in the header now navigates back to the apartment's main menu page. Provides quick navigation back to home menu from any section.
