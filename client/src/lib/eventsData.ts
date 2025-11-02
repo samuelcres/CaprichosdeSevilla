@@ -180,7 +180,7 @@ export const sevilleEvents: CulturalEvent[] = [
   {
     id: 'cascanueces-ballet-2025',
     nameKey: 'cascanueces',
-    descriptionKey: 'cascanueceDesc',
+    descriptionKey: 'cascanuecesDesc',
     startDate: getEventDate(2025, 11, 29),
     endDate: getEventDate(2025, 11, 30),
     category: 'theater',
