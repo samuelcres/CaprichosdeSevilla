@@ -11,14 +11,34 @@ export interface CulturalEvent {
   imageKey?: string;
 }
 
-// Cultural events in Seville for 2025
+// Helper function to get the current year's date for recurring annual events
+function getEventDate(year: number, month: number, day: number): Date {
+  return new Date(year, month - 1, day);
+}
+
+// Get events for current and next year to ensure continuity
+const currentYear = new Date().getFullYear();
+const nextYear = currentYear + 1;
+
+// Cultural events in Seville - Updated with real dates for 2025-2026
 export const sevilleEvents: CulturalEvent[] = [
+  // 2025 Events
+  {
+    id: 'dia-andalucia-2025',
+    nameKey: 'diaAndalucia',
+    descriptionKey: 'diaAndaluciaDesc',
+    startDate: getEventDate(2025, 2, 28),
+    category: 'cultural',
+    location: 'Toda la ciudad',
+    free: true,
+    imageKey: 'dia_andalucia'
+  },
   {
     id: 'semana-santa-2025',
     nameKey: 'semanaSanta',
     descriptionKey: 'semanaSantaDesc',
-    startDate: new Date('2025-04-13'),
-    endDate: new Date('2025-04-20'),
+    startDate: getEventDate(2025, 4, 13),
+    endDate: getEventDate(2025, 4, 20),
     category: 'religious',
     location: 'Centro histórico de Sevilla',
     website: 'https://www.spain.info/en/calendar/easter-week-sevilla/',
@@ -29,8 +49,8 @@ export const sevilleEvents: CulturalEvent[] = [
     id: 'feria-abril-2025',
     nameKey: 'feriaAbril',
     descriptionKey: 'feriaAbrilDesc',
-    startDate: new Date('2025-05-05'),
-    endDate: new Date('2025-05-11'),
+    startDate: getEventDate(2025, 5, 6),
+    endDate: getEventDate(2025, 5, 11),
     category: 'festival',
     location: 'Real de la Feria, Los Remedios',
     website: 'https://www.spain.info/en/calendar/april-fair/',
@@ -38,76 +58,56 @@ export const sevilleEvents: CulturalEvent[] = [
     imageKey: 'feria_abril'
   },
   {
-    id: 'copa-rey-2025',
-    nameKey: 'copaRey',
-    descriptionKey: 'copaReyDesc',
-    startDate: new Date('2025-04-26'),
-    category: 'sports',
-    location: 'Estadio La Cartuja',
-    website: 'https://www.rfef.es/',
+    id: 'festival-interestelar-2025',
+    nameKey: 'festivalInterestelar',
+    descriptionKey: 'festivalInterestelarDesc',
+    startDate: getEventDate(2025, 5, 16),
+    endDate: getEventDate(2025, 5, 17),
+    category: 'music',
+    location: 'Centro Andaluz de Arte Contemporáneo (CAAC)',
+    website: 'https://onsevilla.com/festival-interestelar-sevilla-2025',
     free: false,
-    imageKey: 'copa_rey'
+    imageKey: 'festival_interestelar'
+  },
+  {
+    id: 'iconica-fest-2025',
+    nameKey: 'iconicaFest',
+    descriptionKey: 'iconicaFestDesc',
+    startDate: getEventDate(2025, 5, 30),
+    endDate: getEventDate(2025, 7, 14),
+    category: 'music',
+    location: 'Plaza de España',
+    website: 'https://onsevilla.com/iconica-sevilla-fest-2025-sevilla',
+    free: false,
+    imageKey: 'iconica_fest'
   },
   {
     id: 'corpus-christi-2025',
     nameKey: 'corpusChristi',
     descriptionKey: 'corpusChristiDesc',
-    startDate: new Date('2025-06-19'),
+    startDate: getEventDate(2025, 6, 19),
     category: 'religious',
     location: 'Catedral de Sevilla',
     free: true,
     imageKey: 'corpus_christi'
   },
   {
-    id: 'bienal-flamenco-2025',
-    nameKey: 'bienalFlamenco',
-    descriptionKey: 'bienalFlamencoDesc',
-    startDate: new Date('2025-09-10'),
-    endDate: new Date('2025-10-05'),
+    id: 'puro-latino-2025',
+    nameKey: 'puroLatino',
+    descriptionKey: 'puroLatinoDesc',
+    startDate: getEventDate(2025, 7, 4),
+    endDate: getEventDate(2025, 7, 5),
     category: 'music',
-    location: 'Diversos teatros de Sevilla',
-    website: 'https://www.labienal.com/',
+    location: 'Estadio La Cartuja',
     free: false,
-    imageKey: 'bienal_flamenco'
-  },
-  {
-    id: 'festival-teatro-2025',
-    nameKey: 'festivalTeatro',
-    descriptionKey: 'festivalTeatroDesc',
-    startDate: new Date('2025-03-15'),
-    endDate: new Date('2025-04-15'),
-    category: 'theater',
-    location: 'Teatro de la Maestranza y otros',
-    website: 'https://www.spain.info/en/calendar/international-festival-theatre-performing-arts/',
-    free: false,
-    imageKey: 'festival_teatro'
-  },
-  {
-    id: 'noche-blanco-2025',
-    nameKey: 'nocheBlanco',
-    descriptionKey: 'nocheBlancoDesc',
-    startDate: new Date('2025-10-11'),
-    category: 'cultural',
-    location: 'Centro histórico de Sevilla',
-    free: true,
-    imageKey: 'noche_blanco'
-  },
-  {
-    id: 'dia-andalucia-2025',
-    nameKey: 'diaAndalucia',
-    descriptionKey: 'diaAndaluciaDesc',
-    startDate: new Date('2025-02-28'),
-    category: 'cultural',
-    location: 'Toda la ciudad',
-    free: true,
-    imageKey: 'dia_andalucia'
+    imageKey: 'puro_latino'
   },
   {
     id: 'velada-santa-ana-2025',
     nameKey: 'veladaSantaAna',
     descriptionKey: 'veladaSantaAnaDesc',
-    startDate: new Date('2025-07-25'),
-    endDate: new Date('2025-07-27'),
+    startDate: getEventDate(2025, 7, 25),
+    endDate: getEventDate(2025, 7, 27),
     category: 'festival',
     location: 'Barrio de Triana',
     free: true,
@@ -117,12 +117,144 @@ export const sevilleEvents: CulturalEvent[] = [
     id: 'fiestas-vela-2025',
     nameKey: 'fiestasVela',
     descriptionKey: 'fiestasVelaDesc',
-    startDate: new Date('2025-08-15'),
+    startDate: getEventDate(2025, 8, 15),
     category: 'religious',
     location: 'Barrio de Triana',
     free: true,
     imageKey: 'fiestas_vela'
-  }
+  },
+  {
+    id: 'noches-maestranza-2025',
+    nameKey: 'nochesMaestranza',
+    descriptionKey: 'nochesMaestranzaDesc',
+    startDate: getEventDate(2025, 9, 2),
+    endDate: getEventDate(2025, 9, 13),
+    category: 'music',
+    location: 'Plaza de la Maestranza',
+    free: false,
+    imageKey: 'noches_maestranza'
+  },
+  {
+    id: 'concierto-camilo-2025',
+    nameKey: 'conciertoCamilo',
+    descriptionKey: 'conciertoCamiloDesc',
+    startDate: getEventDate(2025, 9, 9),
+    category: 'music',
+    location: 'Plaza de Toros de la Maestranza',
+    free: false,
+    imageKey: 'concierto_camilo'
+  },
+  {
+    id: 'bienal-flamenco-2025',
+    nameKey: 'bienalFlamenco',
+    descriptionKey: 'bienalFlamencoDesc',
+    startDate: getEventDate(2025, 9, 10),
+    endDate: getEventDate(2025, 10, 5),
+    category: 'music',
+    location: 'Diversos teatros de Sevilla',
+    website: 'https://www.labienal.com/',
+    free: false,
+    imageKey: 'bienal_flamenco'
+  },
+  {
+    id: 'noche-blanco-2025',
+    nameKey: 'nocheBlanco',
+    descriptionKey: 'nocheBlancoDesc',
+    startDate: getEventDate(2025, 10, 11),
+    category: 'cultural',
+    location: 'Centro histórico de Sevilla',
+    free: true,
+    imageKey: 'noche_blanco'
+  },
+  
+  // 2026 Events (for continuity)
+  {
+    id: 'dia-andalucia-2026',
+    nameKey: 'diaAndalucia',
+    descriptionKey: 'diaAndaluciaDesc',
+    startDate: getEventDate(2026, 2, 28),
+    category: 'cultural',
+    location: 'Toda la ciudad',
+    free: true,
+    imageKey: 'dia_andalucia'
+  },
+  {
+    id: 'semana-santa-2026',
+    nameKey: 'semanaSanta',
+    descriptionKey: 'semanaSantaDesc',
+    startDate: getEventDate(2026, 3, 29),
+    endDate: getEventDate(2026, 4, 5),
+    category: 'religious',
+    location: 'Centro histórico de Sevilla',
+    website: 'https://www.spain.info/en/calendar/easter-week-sevilla/',
+    free: true,
+    imageKey: 'semana_santa'
+  },
+  {
+    id: 'feria-abril-2026',
+    nameKey: 'feriaAbril',
+    descriptionKey: 'feriaAbrilDesc',
+    startDate: getEventDate(2026, 4, 21),
+    endDate: getEventDate(2026, 4, 26),
+    category: 'festival',
+    location: 'Real de la Feria, Los Remedios',
+    website: 'https://www.spain.info/en/calendar/april-fair/',
+    free: false,
+    imageKey: 'feria_abril'
+  },
+  {
+    id: 'corpus-christi-2026',
+    nameKey: 'corpusChristi',
+    descriptionKey: 'corpusChristiDesc',
+    startDate: getEventDate(2026, 6, 11),
+    category: 'religious',
+    location: 'Catedral de Sevilla',
+    free: true,
+    imageKey: 'corpus_christi'
+  },
+  {
+    id: 'velada-santa-ana-2026',
+    nameKey: 'veladaSantaAna',
+    descriptionKey: 'veladaSantaAnaDesc',
+    startDate: getEventDate(2026, 7, 25),
+    endDate: getEventDate(2026, 7, 27),
+    category: 'festival',
+    location: 'Barrio de Triana',
+    free: true,
+    imageKey: 'velada_santa_ana'
+  },
+  {
+    id: 'fiestas-vela-2026',
+    nameKey: 'fiestasVela',
+    descriptionKey: 'fiestasVelaDesc',
+    startDate: getEventDate(2026, 8, 15),
+    category: 'religious',
+    location: 'Barrio de Triana',
+    free: true,
+    imageKey: 'fiestas_vela'
+  },
+  {
+    id: 'bienal-flamenco-2026',
+    nameKey: 'bienalFlamenco',
+    descriptionKey: 'bienalFlamencoDesc',
+    startDate: getEventDate(2026, 9, 10),
+    endDate: getEventDate(2026, 10, 5),
+    category: 'music',
+    location: 'Diversos teatros de Sevilla',
+    website: 'https://www.labienal.com/',
+    free: false,
+    imageKey: 'bienal_flamenco'
+  },
+  {
+    id: 'noche-blanco-2026',
+    nameKey: 'nocheBlanco',
+    descriptionKey: 'nocheBlancoDesc',
+    startDate: getEventDate(2026, 10, 10),
+    category: 'cultural',
+    location: 'Centro histórico de Sevilla',
+    free: true,
+    imageKey: 'noche_blanco'
+  },
 ];
 
 // Helper function to get events for a specific date
@@ -153,6 +285,28 @@ export function getEventsForMonth(year: number, month: number): CulturalEvent[] 
       (eventStart < new Date(year, month, 1) && eventEnd > new Date(year, month + 1, 0))
     );
   });
+}
+
+// Get upcoming events (from today onwards) for the current week
+export function getUpcomingEventsThisWeek(): CulturalEvent[] {
+  const today = new Date();
+  const weekFromNow = new Date(today);
+  weekFromNow.setDate(today.getDate() + 7);
+  
+  return sevilleEvents.filter(event => {
+    const eventStart = new Date(event.startDate);
+    const eventEnd = event.endDate ? new Date(event.endDate) : eventStart;
+    
+    // Event is upcoming if it starts within the next week OR is currently ongoing
+    return (eventStart >= today && eventStart <= weekFromNow) || 
+           (eventStart <= today && eventEnd >= today);
+  }).sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+}
+
+// Get events for the current month
+export function getEventsThisMonth(): CulturalEvent[] {
+  const today = new Date();
+  return getEventsForMonth(today.getFullYear(), today.getMonth());
 }
 
 // Category icons mapping

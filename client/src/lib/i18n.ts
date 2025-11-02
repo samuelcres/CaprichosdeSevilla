@@ -429,7 +429,12 @@ export const translations = {
         nocheBlanco: 'Noche en Blanco',
         diaAndalucia: 'Día de Andalucía',
         veladaSantaAna: 'Velá de Santa Ana',
-        fiestasVela: 'Fiestas de la Vela'
+        fiestasVela: 'Fiestas de la Vela',
+        festivalInterestelar: 'Festival Interestelar',
+        iconicaFest: 'Icónica Sevilla Fest',
+        puroLatino: 'Puro Latino Fest',
+        nochesMaestranza: 'Noches de la Maestranza',
+        conciertoCamilo: 'Camilo en Concierto'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Procesiones religiosas espectaculares con 71 hermandades y pasos ornamentados por toda la ciudad. Una experiencia única de fe y tradición andaluza.',
@@ -441,7 +446,12 @@ export const translations = {
         nocheBlancoDesc: 'Noche cultural gratuita con museos abiertos, conciertos, exposiciones y actividades artísticas por toda la ciudad hasta la madrugada.',
         diaAndaluciaDesc: 'Celebración del Día de Andalucía con actos institucionales, actividades culturales y gastronómicas en toda la ciudad.',
         veladaSantaAnaDesc: 'Fiesta tradicional del barrio de Triana con casetas, música en directo, baile y gastronomía local en honor a Santa Ana.',
-        fiestasVelaDesc: 'Fiestas religiosas en el barrio de Triana en honor a la Virgen del Carmen, con procesión marítima por el Guadalquivir.'
+        fiestasVelaDesc: 'Fiestas religiosas en el barrio de Triana en honor a la Virgen del Carmen, con procesión marítima por el Guadalquivir.',
+        festivalInterestelarDesc: 'Festival de música indie y pop alternativo en el CAAC con artistas como Mikel Izal, Viva Suecia, La Casa Azul y María José Llergo.',
+        iconicaFestDesc: 'Serie de grandes conciertos en la Plaza de España con artistas internacionales como Justin Timberlake, Kylie Minogue, Chayanne y Miguel Bosé.',
+        puroLatinoDesc: 'Festival de reggaeton y música urbana latina con artistas como Bad Gyal, Rvfv y Juan Magan en el Estadio La Cartuja.',
+        nochesMaestranzaDesc: 'Ciclo de conciertos al aire libre en la emblemática Plaza de la Maestranza con diversos artistas nacionales e internacionales.',
+        conciertoCamiloDesc: 'El artista colombiano Camilo presenta su tour "Nuestro lugar feliz" en la histórica Plaza de Toros de la Maestranza.'
       }
     },
     contact: {
@@ -913,7 +923,12 @@ export const translations = {
         nocheBlanco: 'White Night',
         diaAndalucia: 'Andalusia Day',
         veladaSantaAna: 'Santa Ana Festival',
-        fiestasVela: 'Vela Festivities'
+        fiestasVela: 'Vela Festivities',
+        festivalInterestelar: 'Interestelar Festival',
+        iconicaFest: 'Icónica Sevilla Fest',
+        puroLatino: 'Puro Latino Fest',
+        nochesMaestranza: 'Maestranza Nights',
+        conciertoCamilo: 'Camilo in Concert'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spectacular religious processions with 71 brotherhoods and ornate floats throughout the city. A unique experience of Andalusian faith and tradition.',
@@ -925,7 +940,12 @@ export const translations = {
         nocheBlancoDesc: 'Free cultural night with open museums, concerts, exhibitions and artistic activities throughout the city until dawn.',
         diaAndaluciaDesc: 'Celebration of Andalusia Day with institutional events, cultural and gastronomic activities throughout the city.',
         veladaSantaAnaDesc: 'Traditional Triana neighborhood festival with casetas, live music, dancing and local gastronomy in honor of Santa Ana.',
-        fiestasVelaDesc: 'Religious festivities in Triana neighborhood in honor of the Virgin of Carmen, with maritime procession on the Guadalquivir.'
+        fiestasVelaDesc: 'Religious festivities in Triana neighborhood in honor of the Virgin of Carmen, with maritime procession on the Guadalquivir.',
+        festivalInterestelarDesc: 'Indie and alternative pop music festival at CAAC featuring artists like Mikel Izal, Viva Suecia, La Casa Azul, and María José Llergo.',
+        iconicaFestDesc: 'Series of major concerts at Plaza de España with international artists like Justin Timberlake, Kylie Minogue, Chayanne, and Miguel Bosé.',
+        puroLatinoDesc: 'Reggaeton and Latin urban music festival featuring artists like Bad Gyal, Rvfv, and Juan Magan at La Cartuja Stadium.',
+        nochesMaestranzaDesc: 'Outdoor concert series at the iconic Plaza de la Maestranza with various national and international artists.',
+        conciertoCamiloDesc: 'Colombian artist Camilo presents his "Nuestro lugar feliz" tour at the historic Plaza de Toros de la Maestranza.'
       }
     },
     contact: {
@@ -1397,7 +1417,12 @@ export const translations = {
         nocheBlanco: 'Nuit Blanche',
         diaAndalucia: 'Jour de l\'Andalousie',
         veladaSantaAna: 'Fête de Santa Ana',
-        fiestasVela: 'Fêtes de la Vela'
+        fiestasVela: 'Fêtes de la Vela',
+        festivalInterestelar: 'Festival Interestelar',
+        iconicaFest: 'Icónica Sevilla Fest',
+        puroLatino: 'Puro Latino Fest',
+        nochesMaestranza: 'Nuits de la Maestranza',
+        conciertoCamilo: 'Camilo en Concert'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Processions religieuses spectaculaires avec 71 confréries et chars ornés dans toute la ville. Une expérience unique de foi et tradition andalouse.',
@@ -1409,7 +1434,12 @@ export const translations = {
         nocheBlancoDesc: 'Nuit culturelle gratuite avec musées ouverts, concerts, expositions et activités artistiques dans toute la ville jusqu\'à l\'aube.',
         diaAndaluciaDesc: 'Célébration du Jour de l\'Andalousie avec événements institutionnels, activités culturelles et gastronomiques dans toute la ville.',
         veladaSantaAnaDesc: 'Fête traditionnelle du quartier de Triana avec casetas, musique live, danse et gastronomie locale en l\'honneur de Santa Ana.',
-        fiestasVelaDesc: 'Fêtes religieuses dans le quartier de Triana en l\'honneur de la Vierge del Carmen, avec procession maritime sur le Guadalquivir.'
+        fiestasVelaDesc: 'Fêtes religieuses dans le quartier de Triana en l\'honneur de la Vierge del Carmen, avec procession maritime sur le Guadalquivir.',
+        festivalInterestelarDesc: 'Festival de musique indie et pop alternatif au CAAC avec des artistes comme Mikel Izal, Viva Suecia, La Casa Azul et María José Llergo.',
+        iconicaFestDesc: 'Série de grands concerts à la Plaza de España avec des artistes internationaux comme Justin Timberlake, Kylie Minogue, Chayanne et Miguel Bosé.',
+        puroLatinoDesc: 'Festival de reggaeton et musique urbaine latine avec des artistes comme Bad Gyal, Rvfv et Juan Magan au Stade La Cartuja.',
+        nochesMaestranzaDesc: 'Cycle de concerts en plein air à l\'emblématique Plaza de la Maestranza avec divers artistes nationaux et internationaux.',
+        conciertoCamiloDesc: 'L\'artiste colombien Camilo présente sa tournée "Nuestro lugar feliz" à l\'historique Plaza de Toros de la Maestranza.'
       }
     },
     contact: {
@@ -1881,7 +1911,12 @@ export const translations = {
         nocheBlanco: 'Weiße Nacht',
         diaAndalucia: 'Tag Andalusiens',
         veladaSantaAna: 'Santa Ana Fest',
-        fiestasVela: 'Vela-Festlichkeiten'
+        fiestasVela: 'Vela-Festlichkeiten',
+        festivalInterestelar: 'Interestelar Festival',
+        iconicaFest: 'Icónica Sevilla Fest',
+        puroLatino: 'Puro Latino Fest',
+        nochesMaestranza: 'Maestranza Nächte',
+        conciertoCamilo: 'Camilo im Konzert'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spektakuläre religiöse Prozessionen mit 71 Bruderschaften und verzierten Prozessionswagen durch die ganze Stadt. Ein einzigartiges Erlebnis andalusischen Glaubens und Tradition.',
@@ -1893,7 +1928,12 @@ export const translations = {
         nocheBlancoDesc: 'Kostenlose Kulturnacht mit geöffneten Museen, Konzerten, Ausstellungen und künstlerischen Aktivitäten in der ganzen Stadt bis zum Morgengrauen.',
         diaAndaluciaDesc: 'Feier des Tages Andalusiens mit institutionellen Veranstaltungen, kulturellen und gastronomischen Aktivitäten in der ganzen Stadt.',
         veladaSantaAnaDesc: 'Traditionelles Fest im Viertel Triana mit Casetas, Live-Musik, Tanz und lokaler Gastronomie zu Ehren von Santa Ana.',
-        fiestasVelaDesc: 'Religiöse Festlichkeiten im Viertel Triana zu Ehren der Jungfrau del Carmen, mit maritimer Prozession auf dem Guadalquivir.'
+        fiestasVelaDesc: 'Religiöse Festlichkeiten im Viertel Triana zu Ehren der Jungfrau del Carmen, mit maritimer Prozession auf dem Guadalquivir.',
+        festivalInterestelarDesc: 'Indie- und Alternative-Pop-Musikfestival im CAAC mit Künstlern wie Mikel Izal, Viva Suecia, La Casa Azul und María José Llergo.',
+        iconicaFestDesc: 'Serie großer Konzerte auf der Plaza de España mit internationalen Künstlern wie Justin Timberlake, Kylie Minogue, Chayanne und Miguel Bosé.',
+        puroLatinoDesc: 'Reggaeton- und lateinamerikanisches Urban-Musikfestival mit Künstlern wie Bad Gyal, Rvfv und Juan Magan im La Cartuja Stadion.',
+        nochesMaestranzaDesc: 'Open-Air-Konzertreihe auf der ikonischen Plaza de la Maestranza mit verschiedenen nationalen und internationalen Künstlern.',
+        conciertoCamiloDesc: 'Der kolumbianische Künstler Camilo präsentiert seine Tour "Nuestro lugar feliz" in der historischen Plaza de Toros de la Maestranza.'
       }
     },
     contact: {
@@ -2365,7 +2405,12 @@ export const translations = {
         nocheBlanco: 'Notte Bianca',
         diaAndalucia: 'Giorno dell\'Andalusia',
         veladaSantaAna: 'Festa di Santa Ana',
-        fiestasVela: 'Feste della Vela'
+        fiestasVela: 'Feste della Vela',
+        festivalInterestelar: 'Festival Interestelar',
+        iconicaFest: 'Icónica Sevilla Fest',
+        puroLatino: 'Puro Latino Fest',
+        nochesMaestranza: 'Notti della Maestranza',
+        conciertoCamilo: 'Camilo in Concerto'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spettacolari processioni religiose con 71 confraternite e carri ornati in tutta la città. Un\'esperienza unica di fede e tradizione andalusa.',
@@ -2377,7 +2422,12 @@ export const translations = {
         nocheBlancoDesc: 'Notte culturale gratuita con musei aperti, concerti, mostre e attività artistiche in tutta la città fino all\'alba.',
         diaAndaluciaDesc: 'Celebrazione del Giorno dell\'Andalusia con eventi istituzionali, attività culturali e gastronomiche in tutta la città.',
         veladaSantaAnaDesc: 'Festa tradizionale del quartiere di Triana con casetas, musica dal vivo, ballo e gastronomia locale in onore di Santa Ana.',
-        fiestasVelaDesc: 'Festività religiose nel quartiere di Triana in onore della Vergine del Carmen, con processione marittima sul Guadalquivir.'
+        fiestasVelaDesc: 'Festività religiose nel quartiere di Triana in onore della Vergine del Carmen, con processione marittima sul Guadalquivir.',
+        festivalInterestelarDesc: 'Festival di musica indie e pop alternativo al CAAC con artisti come Mikel Izal, Viva Suecia, La Casa Azul e María José Llergo.',
+        iconicaFestDesc: 'Serie di grandi concerti nella Plaza de España con artisti internazionali come Justin Timberlake, Kylie Minogue, Chayanne e Miguel Bosé.',
+        puroLatinoDesc: 'Festival di reggaeton e musica urbana latina con artisti come Bad Gyal, Rvfv e Juan Magan allo Stadio La Cartuja.',
+        nochesMaestranzaDesc: 'Ciclo di concerti all\'aperto nell\'emblematica Plaza de la Maestranza con vari artisti nazionali e internazionali.',
+        conciertoCamiloDesc: 'L\'artista colombiano Camilo presenta il suo tour "Nuestro lugar feliz" nella storica Plaza de Toros de la Maestranza.'
       }
     },
     contact: {
@@ -2849,7 +2899,12 @@ export const translations = {
         nocheBlanco: '白夜',
         diaAndalucia: '安达卢西亚日',
         veladaSantaAna: '圣安娜节',
-        fiestasVela: '帆船节'
+        fiestasVela: '帆船节',
+        festivalInterestelar: 'Interestelar音乐节',
+        iconicaFest: 'Icónica塞维利亚音乐节',
+        puroLatino: 'Puro Latino音乐节',
+        nochesMaestranza: '马埃斯特兰萨之夜',
+        conciertoCamilo: 'Camilo演唱会'
       },
       eventDescriptions: {
         semanaSantaDesc: '壮观的宗教游行，71个兄弟会和装饰华丽的花车遍布全城。安达卢西亚信仰和传统的独特体验。',
@@ -2861,7 +2916,12 @@ export const translations = {
         nocheBlancoDesc: '免费文化之夜，博物馆开放、音乐会、展览和艺术活动遍布全城直到黎明。',
         diaAndaluciaDesc: '庆祝安达卢西亚日，全城举行体制活动、文化和美食活动。',
         veladaSantaAnaDesc: '特里亚纳区的传统节日，有小屋、现场音乐、舞蹈和当地美食，纪念圣安娜。',
-        fiestasVelaDesc: '特里亚纳区纪念卡门圣母的宗教节日，瓜达尔基维尔河上的海上游行。'
+        fiestasVelaDesc: '特里亚纳区纪念卡门圣母的宗教节日，瓜达尔基维尔河上的海上游行。',
+        festivalInterestelarDesc: 'CAAC举办的独立和另类流行音乐节，艺术家包括Mikel Izal、Viva Suecia、La Casa Azul和María José Llergo。',
+        iconicaFestDesc: '西班牙广场系列大型音乐会，国际艺术家包括Justin Timberlake、Kylie Minogue、Chayanne和Miguel Bosé。',
+        puroLatinoDesc: '拉卡尔图哈球场举办的雷鬼和拉丁城市音乐节，艺术家包括Bad Gyal、Rvfv和Juan Magan。',
+        nochesMaestranzaDesc: '在标志性马埃斯特兰萨广场举办的户外音乐会系列，各种国内外艺术家。',
+        conciertoCamiloDesc: '哥伦比亚艺术家Camilo在历史悠久的马埃斯特兰萨斗牛场呈现"Nuestro lugar feliz"巡演。'
       }
     },
     contact: {
