@@ -6,6 +6,12 @@ Caprichos de Sevilla is a multilingual web application designed to serve as a vi
 
 ## Recent Changes
 
+**November 2, 2025:**
+- **Updated Events system with real 2025-2026 Seville events.** Added 5 new major events: Festival Interestelar (indie/alternative music at CAAC, May 16-17), Icónica Sevilla Fest (major concert series at Plaza de España, May 30 - Jul 14), Puro Latino Fest (reggaeton/Latin urban music at La Cartuja, Jul 4-5), Noches de Maestranza (outdoor concert series, Sep 2-13), and Camilo concert (Sep 9). Updated existing recurring events with accurate 2025-2026 dates (Semana Santa, Feria de Abril, Corpus Christi, etc.).
+- **Implemented dynamic event filtering with tabs.** Added "This Week" and "This Month" tabs to Events page using helper functions `getUpcomingEventsThisWeek()` and `getEventsThisMonth()` from eventsData.ts. These functions automatically filter events to show only relevant upcoming events based on current date, ensuring guests see current and near-future events without manual date selection.
+- **Added comprehensive event translations in all 6 languages.** All new events (festivalInterestelar, iconicaFest, puroLatino, nochesMaestranza, conciertoCamilo) have complete name and description translations in Spanish, English, French, German, Italian, and Chinese. Added translation keys for week/month tabs (thisWeek, thisMonth) in all languages.
+- **Created curated events database.** Events list now includes both 2025 and 2026 dates for recurring annual events to ensure continuity across years. Each event includes category (festival, religious, cultural, sports, music, theater, art), pricing info (free/paid), location, website links, and date ranges. Database designed to be easily updated with future years.
+
 **October 23, 2025:**
 - Added URL parameter support for language selection. Users can now access the app in a specific language using URL parameters: `?language=es` (Spanish), `?language=en` (English), `?language=fr` (French), `?language=de` (German), `?language=it` (Italian), or `?language=zh` (Chinese). Can be combined with apartment parameter: `?apartment=ibarra&language=en`. Priority order: URL parameter > environment variable VITE_LANGUAGE > default (Spanish). Changed default language from English to Spanish since the app is for Seville apartments.
 
