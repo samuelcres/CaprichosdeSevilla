@@ -436,7 +436,15 @@ export const translations = {
         iconicaFest: 'Icónica Sevilla Fest',
         puroLatino: 'Puro Latino Fest',
         nochesMaestranza: 'Noches de la Maestranza',
-        conciertoCamilo: 'Camilo en Concierto'
+        conciertoCamilo: 'Camilo en Concierto',
+        feriaBelenes: 'Feria de Belenes',
+        cascanueces: 'El Cascanueces',
+        naturalezaEncendida: 'Naturaleza Encendida',
+        mercadoNavideno: 'Mercado Navideño',
+        conciertoNavidad: 'Concierto de Navidad',
+        sanSilvestre: 'San Silvestre Sevillana',
+        cabalgataReyes: 'Cabalgata de Reyes',
+        mediaMaraton: 'Media Maratón de Sevilla'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Procesiones religiosas espectaculares con 71 hermandades y pasos ornamentados por toda la ciudad. Una experiencia única de fe y tradición andaluza.',
@@ -453,7 +461,15 @@ export const translations = {
         iconicaFestDesc: 'Serie de grandes conciertos en la Plaza de España con artistas internacionales como Justin Timberlake, Kylie Minogue, Chayanne y Miguel Bosé.',
         puroLatinoDesc: 'Festival de reggaeton y música urbana latina con artistas como Bad Gyal, Rvfv y Juan Magan en el Estadio La Cartuja.',
         nochesMaestranzaDesc: 'Ciclo de conciertos al aire libre en la emblemática Plaza de la Maestranza con diversos artistas nacionales e internacionales.',
-        conciertoCamiloDesc: 'El artista colombiano Camilo presenta su tour "Nuestro lugar feliz" en la histórica Plaza de Toros de la Maestranza.'
+        conciertoCamiloDesc: 'El artista colombiano Camilo presenta su tour "Nuestro lugar feliz" en la histórica Plaza de Toros de la Maestranza.',
+        feriaBelenesDesc: 'Tradicional feria de belenes y figuras navideñas en la Plaza de San Francisco. Artesanía andaluza y belenes de todos los estilos.',
+        cascanueceDesc: 'El clásico ballet de Chaikovski "El Cascanueces" interpretado por el Ballet Nacional. Una experiencia mágica para toda la familia.',
+        naturalezaEncendidaDesc: 'Espectacular experiencia inmersiva de luces y arte en los jardines del Real Alcázar. Recorrido nocturno con proyecciones luminosas.',
+        mercadoNavidenoDesc: 'Mercado navideño tradicional con artesanía, gastronomía típica, dulces navideños y regalos únicos en el corazón de Sevilla.',
+        conciertoNavidadDesc: 'Concierto especial de Navidad con música clásica y villancicos tradicionales en el Espacio Turina.',
+        sanSilvestreDesc: 'Carrera popular de fin de año por el Parque de María Luisa. Una tradición divertida para despedir el año corriendo.',
+        cabalgataReyesDesc: 'La mágica Cabalgata de Reyes Magos recorre las calles de Sevilla repartiendo ilusión y caramelos. Tradición centenaria.',
+        mediaMaratonDesc: 'Media Maratón de Sevilla Zurich, carrera internacional que recorre los monumentos más emblemáticos de la ciudad.'
       }
     },
     contact: {
@@ -932,7 +948,15 @@ export const translations = {
         iconicaFest: 'Icónica Sevilla Fest',
         puroLatino: 'Puro Latino Fest',
         nochesMaestranza: 'Maestranza Nights',
-        conciertoCamilo: 'Camilo in Concert'
+        conciertoCamilo: 'Camilo in Concert',
+        feriaBelenes: 'Nativity Scenes Fair',
+        cascanueces: 'The Nutcracker',
+        naturalezaEncendida: 'Illuminated Nature',
+        mercadoNavideno: 'Christmas Market',
+        conciertoNavidad: 'Christmas Concert',
+        sanSilvestre: 'Seville New Year\'s Eve Race',
+        cabalgataReyes: 'Three Kings Parade',
+        mediaMaraton: 'Seville Half Marathon'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spectacular religious processions with 71 brotherhoods and ornate floats throughout the city. A unique experience of Andalusian faith and tradition.',
@@ -949,7 +973,15 @@ export const translations = {
         iconicaFestDesc: 'Series of major concerts at Plaza de España with international artists like Justin Timberlake, Kylie Minogue, Chayanne, and Miguel Bosé.',
         puroLatinoDesc: 'Reggaeton and Latin urban music festival featuring artists like Bad Gyal, Rvfv, and Juan Magan at La Cartuja Stadium.',
         nochesMaestranzaDesc: 'Outdoor concert series at the iconic Plaza de la Maestranza with various national and international artists.',
-        conciertoCamiloDesc: 'Colombian artist Camilo presents his "Nuestro lugar feliz" tour at the historic Plaza de Toros de la Maestranza.'
+        conciertoCamiloDesc: 'Colombian artist Camilo presents his "Nuestro lugar feliz" tour at the historic Plaza de Toros de la Maestranza.',
+        feriaBelenesDesc: 'Traditional nativity scenes and Christmas figures fair at Plaza de San Francisco. Andalusian crafts and nativity scenes in all styles.',
+        cascanueceDesc: 'Tchaikovsky\'s classic ballet "The Nutcracker" performed by the National Ballet. A magical experience for the whole family.',
+        naturalezaEncendidaDesc: 'Spectacular immersive light and art experience in the Royal Alcázar gardens. Nighttime tour with light projections.',
+        mercadoNavidenoDesc: 'Traditional Christmas market with crafts, typical gastronomy, Christmas sweets and unique gifts in the heart of Seville.',
+        conciertoNavidadDesc: 'Special Christmas concert with classical music and traditional carols at Espacio Turina.',
+        sanSilvestreDesc: 'Popular New Year\'s Eve race through Parque de María Luisa. A fun tradition to say goodbye to the year while running.',
+        cabalgataReyesDesc: 'The magical Three Kings Parade travels through the streets of Seville spreading joy and candy. Century-old tradition.',
+        mediaMaratonDesc: 'Zurich Seville Half Marathon, international race that tours the city\'s most iconic monuments.'
       }
     },
     contact: {
@@ -1428,7 +1460,15 @@ export const translations = {
         iconicaFest: 'Icónica Sevilla Fest',
         puroLatino: 'Puro Latino Fest',
         nochesMaestranza: 'Nuits de la Maestranza',
-        conciertoCamilo: 'Camilo en Concert'
+        conciertoCamilo: 'Camilo en Concert',
+        feriaBelenes: 'Foire aux Crèches',
+        cascanueces: 'Casse-Noisette',
+        naturalezaEncendida: 'Nature Illuminée',
+        mercadoNavideno: 'Marché de Noël',
+        conciertoNavidad: 'Concert de Noël',
+        sanSilvestre: 'Course de la Saint-Sylvestre',
+        cabalgataReyes: 'Cortège des Rois Mages',
+        mediaMaraton: 'Semi-Marathon de Séville'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Processions religieuses spectaculaires avec 71 confréries et chars ornés dans toute la ville. Une expérience unique de foi et tradition andalouse.',
@@ -1445,7 +1485,15 @@ export const translations = {
         iconicaFestDesc: 'Série de grands concerts à la Plaza de España avec des artistes internationaux comme Justin Timberlake, Kylie Minogue, Chayanne et Miguel Bosé.',
         puroLatinoDesc: 'Festival de reggaeton et musique urbaine latine avec des artistes comme Bad Gyal, Rvfv et Juan Magan au Stade La Cartuja.',
         nochesMaestranzaDesc: 'Cycle de concerts en plein air à l\'emblématique Plaza de la Maestranza avec divers artistes nationaux et internationaux.',
-        conciertoCamiloDesc: 'L\'artiste colombien Camilo présente sa tournée "Nuestro lugar feliz" à l\'historique Plaza de Toros de la Maestranza.'
+        conciertoCamiloDesc: 'L\'artiste colombien Camilo présente sa tournée "Nuestro lugar feliz" à l\'historique Plaza de Toros de la Maestranza.',
+        feriaBelenesDesc: 'Foire traditionnelle de crèches et figurines de Noël à la Plaza de San Francisco. Artisanat andalou et crèches de tous styles.',
+        cascanueceDesc: 'Le ballet classique de Tchaïkovski "Casse-Noisette" interprété par le Ballet National. Une expérience magique pour toute la famille.',
+        naturalezaEncendidaDesc: 'Expérience immersive spectaculaire de lumières et d\'art dans les jardins du Royal Alcázar. Visite nocturne avec projections lumineuses.',
+        mercadoNavidenoDesc: 'Marché de Noël traditionnel avec artisanat, gastronomie typique, douceurs de Noël et cadeaux uniques au cœur de Séville.',
+        conciertoNavidadDesc: 'Concert spécial de Noël avec musique classique et chants traditionnels à l\'Espacio Turina.',
+        sanSilvestreDesc: 'Course populaire du réveillon du Nouvel An à travers le Parque de María Luisa. Une tradition amusante pour dire au revoir à l\'année en courant.',
+        cabalgataReyesDesc: 'Le magique Cortège des Rois Mages parcourt les rues de Séville en distribuant joie et bonbons. Tradition centenaire.',
+        mediaMaratonDesc: 'Semi-Marathon Zurich de Séville, course internationale qui parcourt les monuments les plus emblématiques de la ville.'
       }
     },
     contact: {
@@ -1924,7 +1972,15 @@ export const translations = {
         iconicaFest: 'Icónica Sevilla Fest',
         puroLatino: 'Puro Latino Fest',
         nochesMaestranza: 'Maestranza Nächte',
-        conciertoCamilo: 'Camilo im Konzert'
+        conciertoCamilo: 'Camilo im Konzert',
+        feriaBelenes: 'Krippenmesse',
+        cascanueces: 'Der Nussknacker',
+        naturalezaEncendida: 'Erleuchtete Natur',
+        mercadoNavideno: 'Weihnachtsmarkt',
+        conciertoNavidad: 'Weihnachtskonzert',
+        sanSilvestre: 'Silvesterlauf',
+        cabalgataReyes: 'Dreikönigszug',
+        mediaMaraton: 'Sevilla Halbmarathon'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spektakuläre religiöse Prozessionen mit 71 Bruderschaften und verzierten Prozessionswagen durch die ganze Stadt. Ein einzigartiges Erlebnis andalusischen Glaubens und Tradition.',
@@ -1941,7 +1997,15 @@ export const translations = {
         iconicaFestDesc: 'Serie großer Konzerte auf der Plaza de España mit internationalen Künstlern wie Justin Timberlake, Kylie Minogue, Chayanne und Miguel Bosé.',
         puroLatinoDesc: 'Reggaeton- und lateinamerikanisches Urban-Musikfestival mit Künstlern wie Bad Gyal, Rvfv und Juan Magan im La Cartuja Stadion.',
         nochesMaestranzaDesc: 'Open-Air-Konzertreihe auf der ikonischen Plaza de la Maestranza mit verschiedenen nationalen und internationalen Künstlern.',
-        conciertoCamiloDesc: 'Der kolumbianische Künstler Camilo präsentiert seine Tour "Nuestro lugar feliz" in der historischen Plaza de Toros de la Maestranza.'
+        conciertoCamiloDesc: 'Der kolumbianische Künstler Camilo präsentiert seine Tour "Nuestro lugar feliz" in der historischen Plaza de Toros de la Maestranza.',
+        feriaBelenesDesc: 'Traditionelle Krippenmesse mit Weihnachtsfiguren auf der Plaza de San Francisco. Andalusisches Handwerk und Krippen aller Stile.',
+        cascanueceDesc: 'Das klassische Ballett "Der Nussknacker" von Tschaikowsky aufgeführt vom Nationalballett. Ein magisches Erlebnis für die ganze Familie.',
+        naturalezaEncendidaDesc: 'Spektakuläres immersives Licht- und Kunsterlebnis in den Gärten des Royal Alcázar. Nächtliche Tour mit Lichtprojektionen.',
+        mercadoNavidenoDesc: 'Traditioneller Weihnachtsmarkt mit Handwerk, typischer Gastronomie, Weihnachtssüßigkeiten und einzigartigen Geschenken im Herzen von Sevilla.',
+        conciertoNavidadDesc: 'Spezielles Weihnachtskonzert mit klassischer Musik und traditionellen Weihnachtsliedern im Espacio Turina.',
+        sanSilvestreDesc: 'Beliebter Silvesterlauf durch den Parque de María Luisa. Eine lustige Tradition, um das Jahr laufend zu verabschieden.',
+        cabalgataReyesDesc: 'Der magische Dreikönigszug zieht durch die Straßen von Sevilla und verteilt Freude und Süßigkeiten. Jahrhundertealte Tradition.',
+        mediaMaratonDesc: 'Zurich Sevilla Halbmarathon, internationaler Lauf durch die emblematischsten Monumente der Stadt.'
       }
     },
     contact: {
@@ -2420,7 +2484,15 @@ export const translations = {
         iconicaFest: 'Icónica Sevilla Fest',
         puroLatino: 'Puro Latino Fest',
         nochesMaestranza: 'Notti della Maestranza',
-        conciertoCamilo: 'Camilo in Concerto'
+        conciertoCamilo: 'Camilo in Concerto',
+        feriaBelenes: 'Fiera dei Presepi',
+        cascanueces: 'Lo Schiaccianoci',
+        naturalezaEncendida: 'Natura Illuminata',
+        mercadoNavideno: 'Mercato di Natale',
+        conciertoNavidad: 'Concerto di Natale',
+        sanSilvestre: 'Corsa di San Silvestro',
+        cabalgataReyes: 'Corteo dei Re Magi',
+        mediaMaraton: 'Mezza Maratona di Siviglia'
       },
       eventDescriptions: {
         semanaSantaDesc: 'Spettacolari processioni religiose con 71 confraternite e carri ornati in tutta la città. Un\'esperienza unica di fede e tradizione andalusa.',
@@ -2437,7 +2509,15 @@ export const translations = {
         iconicaFestDesc: 'Serie di grandi concerti nella Plaza de España con artisti internazionali come Justin Timberlake, Kylie Minogue, Chayanne e Miguel Bosé.',
         puroLatinoDesc: 'Festival di reggaeton e musica urbana latina con artisti come Bad Gyal, Rvfv e Juan Magan allo Stadio La Cartuja.',
         nochesMaestranzaDesc: 'Ciclo di concerti all\'aperto nell\'emblematica Plaza de la Maestranza con vari artisti nazionali e internazionali.',
-        conciertoCamiloDesc: 'L\'artista colombiano Camilo presenta il suo tour "Nuestro lugar feliz" nella storica Plaza de Toros de la Maestranza.'
+        conciertoCamiloDesc: 'L\'artista colombiano Camilo presenta il suo tour "Nuestro lugar feliz" nella storica Plaza de Toros de la Maestranza.',
+        feriaBelenesDesc: 'Fiera tradizionale di presepi e figure natalizie in Plaza de San Francisco. Artigianato andaluso e presepi di tutti gli stili.',
+        cascanueceDesc: 'Il balletto classico di Tchaikovsky "Lo Schiaccianoci" interpretato dal Balletto Nazionale. Un\'esperienza magica per tutta la famiglia.',
+        naturalezaEncendidaDesc: 'Spettacolare esperienza immersiva di luci e arte nei giardini del Real Alcázar. Tour notturno con proiezioni luminose.',
+        mercadoNavidenoDesc: 'Mercato di Natale tradizionale con artigianato, gastronomia tipica, dolci natalizi e regali unici nel cuore di Siviglia.',
+        conciertoNavidadDesc: 'Concerto speciale di Natale con musica classica e canti tradizionali all\'Espacio Turina.',
+        sanSilvestreDesc: 'Corsa popolare di fine anno attraverso il Parque de María Luisa. Una tradizione divertente per salutare l\'anno correndo.',
+        cabalgataReyesDesc: 'Il magico Corteo dei Re Magi percorre le strade di Siviglia distribuendo gioia e caramelle. Tradizione centenaria.',
+        mediaMaratonDesc: 'Mezza Maratona Zurich di Siviglia, gara internazionale che percorre i monumenti più emblematici della città.'
       }
     },
     contact: {
@@ -2916,7 +2996,15 @@ export const translations = {
         iconicaFest: 'Icónica塞维利亚音乐节',
         puroLatino: 'Puro Latino音乐节',
         nochesMaestranza: '马埃斯特兰萨之夜',
-        conciertoCamilo: 'Camilo演唱会'
+        conciertoCamilo: 'Camilo演唱会',
+        feriaBelenes: '耶稣诞生场景展',
+        cascanueces: '胡桃夹子',
+        naturalezaEncendida: '光影自然',
+        mercadoNavideno: '圣诞市集',
+        conciertoNavidad: '圣诞音乐会',
+        sanSilvestre: '跨年赛跑',
+        cabalgataReyes: '三王游行',
+        mediaMaraton: '塞维利亚半程马拉松'
       },
       eventDescriptions: {
         semanaSantaDesc: '壮观的宗教游行，71个兄弟会和装饰华丽的花车遍布全城。安达卢西亚信仰和传统的独特体验。',
@@ -2933,7 +3021,15 @@ export const translations = {
         iconicaFestDesc: '西班牙广场系列大型音乐会，国际艺术家包括Justin Timberlake、Kylie Minogue、Chayanne和Miguel Bosé。',
         puroLatinoDesc: '拉卡尔图哈球场举办的雷鬼和拉丁城市音乐节，艺术家包括Bad Gyal、Rvfv和Juan Magan。',
         nochesMaestranzaDesc: '在标志性马埃斯特兰萨广场举办的户外音乐会系列，各种国内外艺术家。',
-        conciertoCamiloDesc: '哥伦比亚艺术家Camilo在历史悠久的马埃斯特兰萨斗牛场呈现"Nuestro lugar feliz"巡演。'
+        conciertoCamiloDesc: '哥伦比亚艺术家Camilo在历史悠久的马埃斯特兰萨斗牛场呈现"Nuestro lugar feliz"巡演。',
+        feriaBelenesDesc: '圣弗朗西斯科广场传统耶稣诞生场景和圣诞人偶展。安达卢西亚工艺品和各种风格的诞生场景。',
+        cascanueceDesc: '国家芭蕾舞团演出柴可夫斯基经典芭蕾舞剧《胡桃夹子》。全家人的魔幻体验。',
+        naturalezaEncendidaDesc: '皇家阿尔卡萨尔花园壮观的沉浸式灯光艺术体验。夜间游览配有灯光投影。',
+        mercadoNavidenoDesc: '塞维利亚市中心的传统圣诞市集，有工艺品、特色美食、圣诞甜点和独特礼品。',
+        conciertoNavidadDesc: '图里纳空间特别圣诞音乐会，古典音乐和传统颂歌。',
+        sanSilvestreDesc: '在玛丽亚·路易莎公园举行的跨年赛跑。有趣的传统，用跑步告别一年。',
+        cabalgataReyesDesc: '神奇的三王游行穿过塞维利亚街道，分发欢乐和糖果。百年传统。',
+        mediaMaratonDesc: '苏黎世塞维利亚半程马拉松，国际赛事穿越城市最具标志性的纪念碑。'
       }
     },
     contact: {
