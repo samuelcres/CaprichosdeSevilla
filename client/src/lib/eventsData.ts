@@ -166,8 +166,95 @@ export const sevilleEvents: CulturalEvent[] = [
     free: true,
     imageKey: 'noche_blanco'
   },
+  {
+    id: 'feria-belenes-2025',
+    nameKey: 'feriaBelenes',
+    descriptionKey: 'feriaBelenesDesc',
+    startDate: getEventDate(2025, 11, 8),
+    endDate: getEventDate(2025, 12, 23),
+    category: 'cultural',
+    location: 'Plaza de San Francisco',
+    free: true,
+    imageKey: 'feria_belenes'
+  },
+  {
+    id: 'cascanueces-ballet-2025',
+    nameKey: 'cascanueces',
+    descriptionKey: 'cascanueceDesc',
+    startDate: getEventDate(2025, 11, 29),
+    endDate: getEventDate(2025, 11, 30),
+    category: 'theater',
+    location: 'Cartuja Center',
+    website: 'https://cartujacenter.com/',
+    free: false,
+    imageKey: 'cascanueces'
+  },
+  {
+    id: 'naturaleza-encendida-2025',
+    nameKey: 'naturalezaEncendida',
+    descriptionKey: 'naturalezaEncendidaDesc',
+    startDate: getEventDate(2025, 10, 30),
+    endDate: getEventDate(2026, 3, 15),
+    category: 'art',
+    location: 'Real Alcázar de Sevilla',
+    website: 'https://www.alcazarsevilla.org/',
+    free: false,
+    imageKey: 'naturaleza_encendida'
+  },
+  {
+    id: 'mercado-navideno-2025',
+    nameKey: 'mercadoNavideno',
+    descriptionKey: 'mercadoNavidenoDesc',
+    startDate: getEventDate(2025, 12, 5),
+    endDate: getEventDate(2026, 1, 5),
+    category: 'cultural',
+    location: 'Plaza Nueva y Av. de la Constitución',
+    free: true,
+    imageKey: 'mercado_navideno'
+  },
+  {
+    id: 'concierto-navidad-2025',
+    nameKey: 'conciertoNavidad',
+    descriptionKey: 'conciertoNavidadDesc',
+    startDate: getEventDate(2025, 12, 19),
+    category: 'music',
+    location: 'Espacio Turina',
+    free: false,
+    imageKey: 'concierto_navidad'
+  },
+  {
+    id: 'san-silvestre-2025',
+    nameKey: 'sanSilvestre',
+    descriptionKey: 'sanSilvestreDesc',
+    startDate: getEventDate(2025, 12, 31),
+    category: 'sports',
+    location: 'Parque de María Luisa',
+    free: false,
+    imageKey: 'san_silvestre'
+  },
   
   // 2026 Events (for continuity)
+  {
+    id: 'cabalgata-reyes-2026',
+    nameKey: 'cabalgataReyes',
+    descriptionKey: 'cabalgataReyesDesc',
+    startDate: getEventDate(2026, 1, 5),
+    category: 'cultural',
+    location: 'Centro de Sevilla',
+    free: true,
+    imageKey: 'cabalgata_reyes'
+  },
+  {
+    id: 'media-maraton-2026',
+    nameKey: 'mediaMaraton',
+    descriptionKey: 'mediaMaratonDesc',
+    startDate: getEventDate(2026, 1, 18),
+    category: 'sports',
+    location: 'Centro de Sevilla',
+    website: 'https://www.zurichmaratonsevilla.es/',
+    free: true,
+    imageKey: 'media_maraton'
+  },
   {
     id: 'dia-andalucia-2026',
     nameKey: 'diaAndalucia',
