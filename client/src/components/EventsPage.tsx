@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Calendar } from '@/components/ui/calendar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CalendarIcon, MapPin, ExternalLink, PartyPopper } from 'lucide-react';
-import { getEventsForDate, getEventsForMonth, categoryColors } from '@/lib/eventsData';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { CalendarIcon, MapPin, ExternalLink, PartyPopper, CalendarDays, CalendarClock } from 'lucide-react';
+import { getEventsForDate, getEventsForMonth, getUpcomingEventsThisWeek, getEventsThisMonth, categoryColors } from '@/lib/eventsData';
 import { format } from 'date-fns';
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
@@ -41,6 +42,8 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
 
   const eventsForSelectedDate = selectedDate ? getEventsForDate(selectedDate) : [];
   const eventsForCurrentMonth = getEventsForMonth(currentMonth.getFullYear(), currentMonth.getMonth());
+  const upcomingEventsThisWeek = getUpcomingEventsThisWeek();
+  const eventsThisMonth = getEventsThisMonth();
 
   const eventDates = eventsForCurrentMonth.map(event => {
     const dates: Date[] = [];
@@ -192,63 +195,138 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
           </div>
 
           <div className="mt-8">
-            <h2 className="text-2xl font-bold mb-4 text-foreground" data-testid="month-title">
-              {currentMonth.toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}
-            </h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {eventsForCurrentMonth.length === 0 ? (
-                <p className="text-sm text-muted-foreground col-span-full text-center py-8">{t.events.noEvents}</p>
-              ) : (
-                eventsForCurrentMonth.map((event) => (
-                  <Card key={event.id} className="hover-elevate" data-testid={`card-event-${event.id}`}>
-                    <CardHeader>
-                      <CardTitle className="text-lg">
-                        {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
-                      </CardTitle>
-                      <CardDescription className="flex flex-wrap gap-2">
-                        <Badge variant="outline" className={categoryColors[event.category]}>
-                          {t.events.categoryLabels[event.category]}
-                        </Badge>
-                        <Badge variant="outline">
-                          {event.free ? t.events.free : t.events.paid}
-                        </Badge>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                        <CalendarIcon className="h-4 w-4" />
-                        <span>
-                          {event.endDate
-                            ? `${format(event.startDate, 'MMM d', { locale })} - ${format(event.endDate, 'MMM d, yyyy', { locale })}`
-                            : format(event.startDate, 'MMMM d, yyyy', { locale })}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        <span>{event.location}</span>
-                      </div>
-                      {event.website && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-3 w-full"
-                          asChild
-                          data-testid={`button-website-month-${event.id}`}
-                        >
-                          <a href={event.website} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4 mr-2" />
-                            {t.events.viewWebsite}
-                          </a>
-                        </Button>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))
-              )}
-            </div>
+            <Tabs defaultValue="week" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+                <TabsTrigger value="week" className="flex items-center gap-2" data-testid="tab-week">
+                  <CalendarClock className="h-4 w-4" />
+                  {t.events.thisWeek}
+                </TabsTrigger>
+                <TabsTrigger value="month" className="flex items-center gap-2" data-testid="tab-month">
+                  <CalendarDays className="h-4 w-4" />
+                  {t.events.thisMonth}
+                </TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="week" className="mt-6">
+                <h2 className="text-2xl font-bold mb-4 text-foreground" data-testid="week-title">
+                  {t.events.thisWeek}
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {upcomingEventsThisWeek.length === 0 ? (
+                    <p className="text-sm text-muted-foreground col-span-full text-center py-8">{t.events.noEvents}</p>
+                  ) : (
+                    upcomingEventsThisWeek.map((event) => (
+                      <Card key={event.id} className="hover-elevate" data-testid={`card-event-week-${event.id}`}>
+                        <CardHeader>
+                          <CardTitle className="text-lg">
+                            {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
+                          </CardTitle>
+                          <CardDescription className="flex flex-wrap gap-2">
+                            <Badge variant="outline" className={categoryColors[event.category]}>
+                              {t.events.categoryLabels[event.category]}
+                            </Badge>
+                            <Badge variant="outline">
+                              {event.free ? t.events.free : t.events.paid}
+                            </Badge>
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
+                          </p>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                            <CalendarIcon className="h-4 w-4" />
+                            <span>
+                              {event.endDate
+                                ? `${format(event.startDate, 'MMM d', { locale })} - ${format(event.endDate, 'MMM d, yyyy', { locale })}`
+                                : format(event.startDate, 'MMMM d, yyyy', { locale })}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4" />
+                            <span>{event.location}</span>
+                          </div>
+                          {event.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="mt-3 w-full"
+                              asChild
+                              data-testid={`button-website-week-${event.id}`}
+                            >
+                              <a href={event.website} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                {t.events.viewWebsite}
+                              </a>
+                            </Button>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="month" className="mt-6">
+                <h2 className="text-2xl font-bold mb-4 text-foreground" data-testid="month-title">
+                  {new Date().toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {eventsThisMonth.length === 0 ? (
+                    <p className="text-sm text-muted-foreground col-span-full text-center py-8">{t.events.noEvents}</p>
+                  ) : (
+                    eventsThisMonth.map((event) => (
+                      <Card key={event.id} className="hover-elevate" data-testid={`card-event-month-${event.id}`}>
+                        <CardHeader>
+                          <CardTitle className="text-lg">
+                            {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
+                          </CardTitle>
+                          <CardDescription className="flex flex-wrap gap-2">
+                            <Badge variant="outline" className={categoryColors[event.category]}>
+                              {t.events.categoryLabels[event.category]}
+                            </Badge>
+                            <Badge variant="outline">
+                              {event.free ? t.events.free : t.events.paid}
+                            </Badge>
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
+                          </p>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                            <CalendarIcon className="h-4 w-4" />
+                            <span>
+                              {event.endDate
+                                ? `${format(event.startDate, 'MMM d', { locale })} - ${format(event.endDate, 'MMM d, yyyy', { locale })}`
+                                : format(event.startDate, 'MMMM d, yyyy', { locale })}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <MapPin className="h-4 w-4" />
+                            <span>{event.location}</span>
+                          </div>
+                          {event.website && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="mt-3 w-full"
+                              asChild
+                              data-testid={`button-website-month-${event.id}`}
+                            >
+                              <a href={event.website} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink className="h-4 w-4 mr-2" />
+                                {t.events.viewWebsite}
+                              </a>
+                            </Button>
+                          )}
+                        </CardContent>
+                      </Card>
+                    ))
+                  )}
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
 
           <div className="mt-12 mb-8">

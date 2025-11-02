@@ -410,6 +410,8 @@ export const translations = {
       paid: 'De pago',
       eventCount: 'evento',
       eventsCount: 'eventos',
+      thisWeek: 'Esta semana',
+      thisMonth: 'Este mes',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religioso',
@@ -904,6 +906,8 @@ export const translations = {
       paid: 'Paid',
       eventCount: 'event',
       eventsCount: 'events',
+      thisWeek: 'This week',
+      thisMonth: 'This month',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religious',
@@ -1398,6 +1402,8 @@ export const translations = {
       paid: 'Payant',
       eventCount: 'événement',
       eventsCount: 'événements',
+      thisWeek: 'Cette semaine',
+      thisMonth: 'Ce mois',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religieux',
@@ -1892,6 +1898,8 @@ export const translations = {
       paid: 'Kostenpflichtig',
       eventCount: 'Veranstaltung',
       eventsCount: 'Veranstaltungen',
+      thisWeek: 'Diese Woche',
+      thisMonth: 'Diesen Monat',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religiös',
@@ -2386,6 +2394,8 @@ export const translations = {
       paid: 'A pagamento',
       eventCount: 'evento',
       eventsCount: 'eventi',
+      thisWeek: 'Questa settimana',
+      thisMonth: 'Questo mese',
       categoryLabels: {
         festival: 'Festival',
         religious: 'Religioso',
@@ -2880,6 +2890,8 @@ export const translations = {
       paid: '付费',
       eventCount: '个活动',
       eventsCount: '个活动',
+      thisWeek: '本周',
+      thisMonth: '本月',
       categoryLabels: {
         festival: '节日',
         religious: '宗教',
