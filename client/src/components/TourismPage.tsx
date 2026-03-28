@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PageHeader from './PageHeader';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -181,6 +181,98 @@ const getPriceIndicator = (priceLevel?: 'low' | 'medium' | 'high') => {
   }
 };
 
+interface RestaurantCardProps {
+  restaurant: any;
+  index: number;
+  category: string;
+  t: any;
+}
+
+function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps) {
+  const imageUrl = getImage(restaurant.photo);
+  const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+
+  return (
+    <Card data-testid={`card-restaurant-${category}-${index}`} className="overflow-hidden">
+      <div className="flex flex-col sm:flex-row">
+        {imageUrl && (
+          <div className="w-full h-40 sm:w-32 sm:h-auto flex-shrink-0">
+            <img
+              src={imageUrl}
+              alt={restaurant.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        <div className="flex-1 p-4 space-y-3">
+          <div className="flex items-start justify-between gap-2">
+            <h4 className="font-semibold text-base text-foreground leading-tight">{restaurant.name}</h4>
+            <div className="flex flex-col gap-1 items-end flex-shrink-0">
+              <Badge variant="secondary">
+                <Star className="w-3 h-3 mr-1 fill-current" />
+                {restaurant.rating}
+              </Badge>
+              {restaurant.priceLevel && (
+                <span className="text-sm font-semibold text-emerald-700" data-testid={`price-${category}-${index}`}>
+                  {getPriceIndicator(restaurant.priceLevel)}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <p className="text-sm text-muted-foreground">{restaurant.description}</p>
+
+          {dishes && (
+            <p className="text-sm text-emerald-700 font-medium">
+              ✨ {dishes}
+            </p>
+          )}
+
+          <div className="space-y-2 pt-1 border-t border-border">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground pt-2">
+              <Navigation className="w-4 h-4 flex-shrink-0" />
+              <span>{restaurant.distance} {t.tourism.distance}</span>
+            </div>
+            <div className="flex gap-2 flex-wrap">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                data-testid={`button-map-${category}-${index}`}
+              >
+                <MapPin className="w-4 h-4 mr-2" />
+                {t.tourism.viewMap}
+              </Button>
+              {restaurant.website && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open(restaurant.website, '_blank')}
+                  data-testid={`button-website-${category}-${index}`}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Web
+                </Button>
+              )}
+              {restaurant.phone && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                  data-testid={`button-phone-${category}-${index}`}
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  {restaurant.phone}
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+}
+
 interface TourismPageProps {
   onBack: () => void;
   onHome: () => void;
@@ -324,89 +416,9 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => {
-                    const imageUrl = getImage(restaurant.photo);
-                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
-                    
-                    return (
-                    <Card key={`breakfast-${index}`} data-testid={`card-restaurant-breakfast-${index}`} className="flex flex-row overflow-hidden">
-                      {imageUrl && (
-                        <div className="w-32 h-32 flex-shrink-0">
-                          <img 
-                            src={imageUrl} 
-                            alt={restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <CardHeader className="flex-1">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                            <CardDescription className="mt-1">
-                              {restaurant.description}
-                            </CardDescription>
-                            {dishes && (
-                              <p className="mt-2 text-sm text-emerald-700 font-medium">
-                                ✨ {dishes}
-                              </p>
-                            )}
-                          </div>
-                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
-                            <Badge variant="secondary">
-                              <Star className="w-3 h-3 mr-1 fill-current" />
-                              {restaurant.rating}
-                            </Badge>
-                            {restaurant.priceLevel && (
-                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-breakfast-${index}`}>
-                                {getPriceIndicator(restaurant.priceLevel)}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Navigation className="w-4 h-4" />
-                          <span>{restaurant.distance} {t.tourism.distance}</span>
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                            data-testid={`button-map-breakfast-${index}`}
-                          >
-                            <MapPin className="w-4 h-4 mr-2" />
-                            {t.tourism.viewMap}
-                          </Button>
-                          {restaurant.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(restaurant.website, '_blank')}
-                              data-testid={`button-website-breakfast-${index}`}
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Web
-                            </Button>
-                          )}
-                          {restaurant.phone && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
-                              data-testid={`button-phone-breakfast-${index}`}
-                            >
-                              <Phone className="w-4 h-4 mr-2" />
-                              {restaurant.phone}
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                    );
-                  })}
+                  {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
+                    <RestaurantCard key={`breakfast-${index}`} restaurant={restaurant} index={index} category="breakfast" t={t} />
+                  ))}
                 </AccordionContent>
               </AccordionItem>
 
@@ -420,89 +432,9 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => {
-                    const imageUrl = getImage(restaurant.photo);
-                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
-                    
-                    return (
-                    <Card key={`lunch-${index}`} data-testid={`card-restaurant-lunch-${index}`} className="flex flex-row overflow-hidden">
-                      {imageUrl && (
-                        <div className="w-32 h-32 flex-shrink-0">
-                          <img 
-                            src={imageUrl} 
-                            alt={restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <CardHeader className="flex-1">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                            <CardDescription className="mt-1">
-                              {restaurant.description}
-                            </CardDescription>
-                            {dishes && (
-                              <p className="mt-2 text-sm text-emerald-700 font-medium">
-                                ✨ {dishes}
-                              </p>
-                            )}
-                          </div>
-                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
-                            <Badge variant="secondary">
-                              <Star className="w-3 h-3 mr-1 fill-current" />
-                              {restaurant.rating}
-                            </Badge>
-                            {restaurant.priceLevel && (
-                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-lunch-${index}`}>
-                                {getPriceIndicator(restaurant.priceLevel)}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Navigation className="w-4 h-4" />
-                          <span>{restaurant.distance} {t.tourism.distance}</span>
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                            data-testid={`button-map-lunch-${index}`}
-                          >
-                            <MapPin className="w-4 h-4 mr-2" />
-                            {t.tourism.viewMap}
-                          </Button>
-                          {restaurant.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(restaurant.website, '_blank')}
-                              data-testid={`button-website-lunch-${index}`}
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Web
-                            </Button>
-                          )}
-                          {restaurant.phone && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
-                              data-testid={`button-phone-lunch-${index}`}
-                            >
-                              <Phone className="w-4 h-4 mr-2" />
-                              {restaurant.phone}
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                    );
-                  })}
+                  {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
+                    <RestaurantCard key={`lunch-${index}`} restaurant={restaurant} index={index} category="lunch" t={t} />
+                  ))}
                 </AccordionContent>
               </AccordionItem>
 
@@ -516,89 +448,9 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'cafeterias').map((restaurant, index) => {
-                    const imageUrl = getImage(restaurant.photo);
-                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
-                    
-                    return (
-                    <Card key={`cafes-${index}`} data-testid={`card-restaurant-cafes-${index}`} className="flex flex-row overflow-hidden">
-                      {imageUrl && (
-                        <div className="w-32 h-32 flex-shrink-0">
-                          <img 
-                            src={imageUrl} 
-                            alt={restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <CardHeader className="flex-1">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                            <CardDescription className="mt-1">
-                              {restaurant.description}
-                            </CardDescription>
-                            {dishes && (
-                              <p className="mt-2 text-sm text-emerald-700 font-medium">
-                                ✨ {dishes}
-                              </p>
-                            )}
-                          </div>
-                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
-                            <Badge variant="secondary">
-                              <Star className="w-3 h-3 mr-1 fill-current" />
-                              {restaurant.rating}
-                            </Badge>
-                            {restaurant.priceLevel && (
-                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-cafes-${index}`}>
-                                {getPriceIndicator(restaurant.priceLevel)}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Navigation className="w-4 h-4" />
-                          <span>{restaurant.distance} {t.tourism.distance}</span>
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                            data-testid={`button-map-cafes-${index}`}
-                          >
-                            <MapPin className="w-4 h-4 mr-2" />
-                            {t.tourism.viewMap}
-                          </Button>
-                          {restaurant.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(restaurant.website, '_blank')}
-                              data-testid={`button-website-cafes-${index}`}
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Web
-                            </Button>
-                          )}
-                          {restaurant.phone && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
-                              data-testid={`button-phone-cafes-${index}`}
-                            >
-                              <Phone className="w-4 h-4 mr-2" />
-                              {restaurant.phone}
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                    );
-                  })}
+                  {restaurants.filter(r => r.category === 'cafeterias').map((restaurant, index) => (
+                    <RestaurantCard key={`cafes-${index}`} restaurant={restaurant} index={index} category="cafes" t={t} />
+                  ))}
                 </AccordionContent>
               </AccordionItem>
 
@@ -612,89 +464,9 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
-                  {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => {
-                    const imageUrl = getImage(restaurant.photo);
-                    const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
-                    
-                    return (
-                    <Card key={`dinner-${index}`} data-testid={`card-restaurant-dinner-${index}`} className="flex flex-row overflow-hidden">
-                      {imageUrl && (
-                        <div className="w-32 h-32 flex-shrink-0">
-                          <img 
-                            src={imageUrl} 
-                            alt={restaurant.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <CardHeader className="flex-1">
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex-1">
-                            <CardTitle className="text-lg">{restaurant.name}</CardTitle>
-                            <CardDescription className="mt-1">
-                              {restaurant.description}
-                            </CardDescription>
-                            {dishes && (
-                              <p className="mt-2 text-sm text-emerald-700 font-medium">
-                                ✨ {dishes}
-                              </p>
-                            )}
-                          </div>
-                          <div className="flex flex-col gap-2 items-end flex-shrink-0">
-                            <Badge variant="secondary">
-                              <Star className="w-3 h-3 mr-1 fill-current" />
-                              {restaurant.rating}
-                            </Badge>
-                            {restaurant.priceLevel && (
-                              <span className="text-sm font-semibold text-emerald-700" data-testid={`price-dinner-${index}`}>
-                                {getPriceIndicator(restaurant.priceLevel)}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent className="space-y-3">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Navigation className="w-4 h-4" />
-                          <span>{restaurant.distance} {t.tourism.distance}</span>
-                        </div>
-                        <div className="flex gap-2 flex-wrap">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => window.open(restaurant.mapsUrl, '_blank')}
-                            data-testid={`button-map-dinner-${index}`}
-                          >
-                            <MapPin className="w-4 h-4 mr-2" />
-                            {t.tourism.viewMap}
-                          </Button>
-                          {restaurant.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(restaurant.website, '_blank')}
-                              data-testid={`button-website-dinner-${index}`}
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              Web
-                            </Button>
-                          )}
-                          {restaurant.phone && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
-                              data-testid={`button-phone-dinner-${index}`}
-                            >
-                              <Phone className="w-4 h-4 mr-2" />
-                              {restaurant.phone}
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                    );
-                  })}
+                  {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
+                    <RestaurantCard key={`dinner-${index}`} restaurant={restaurant} index={index} category="dinner" t={t} />
+                  ))}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
