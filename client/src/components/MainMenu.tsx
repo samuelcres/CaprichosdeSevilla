@@ -5,16 +5,15 @@ import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen } from 
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import transportBg from '@assets/stock_images/seville_transportati_6cb94a1d.jpg';
-import checkinBg from '@assets/stock_images/hotel_apartment_key__f8c5ac84.jpg';
-import wifiBg from '@assets/stock_images/wifi_internet_connec_dc76a8b4.jpg';
-import tourismBg from '@assets/stock_images/seville_cathedral_al_69643ac9.jpg';
-import contactBg from '@assets/stock_images/customer_service_con_5e1eb47a.jpg';
+import transportBg from '@assets/menu_transport_1774783796390.png';
+import checkinBg from '@assets/menu_checkin_1774783796390.png';
+import wifiBg from '@assets/menu_wifi_1774783796390.png';
+import tourismBg from '@assets/menu_tourism_1774783796390.png';
+import eventsBg from '@assets/menu_events_1774783796390.png';
+import contactBg from '@assets/menu_contact_1774783796390.png';
 import { languages, Language, Apartment } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import quevedoCheckinBg from '@assets/Captura de pantalla 2025-10-10 a las 12.57.25_1760093862113.png';
-import ibarraCheckinBg from '@assets/Captura de pantalla 2025-10-10 a las 12.56.38_1760094231886.png';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -51,19 +50,12 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
 
   const getBackgroundImage = (optionId: string) => {
-    // Apartment-specific check-in images with fallback to generic
-    const checkinImages: Partial<Record<Apartment, string>> & { default: string } = {
-      'ibarra': ibarraCheckinBg,
-      'quevedo': quevedoCheckinBg,
-      'default': checkinBg,
-    };
-    
     const backgrounds: Record<string, string> = {
       'transport': transportBg,
-      'checkin': checkinImages[apartment] ?? checkinImages.default,
+      'checkin': checkinBg,
       'wifi': wifiBg,
       'tourism': tourismBg,
-      'events': apartmentBgUrl,
+      'events': eventsBg,
       'contact': contactBg,
     };
     return backgrounds[optionId] || apartmentBgUrl;
