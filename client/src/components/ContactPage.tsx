@@ -17,7 +17,7 @@ interface ContactPageProps {
 
 export default function ContactPage({ apartment, onBack, onHome, t, currentLanguage, onLanguageChange }: ContactPageProps) {
   const openWhatsApp = () => {
-    window.open('https://wa.me/34661610794', '_blank');
+    window.open('https://wa.me/34664602010', '_blank');
   };
 
   const openEmail = () => {
@@ -84,7 +84,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                 data-testid="button-whatsapp"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
-                +34 661 610 794
+                +34 664 602 010
               </Button>
             </CardContent>
           </Card>

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Home } from 'lucide-react';
-import logoUrl from '@assets/logoCS_1759701422984.png';
+import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';

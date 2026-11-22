@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
-import logoUrl from '@assets/logoCS_1759701422984.png';
+import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
 import wifiBg from '@assets/menu_wifi_1774783796390.webp';
@@ -42,7 +42,7 @@ interface MainMenuProps {
 }
 
 export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t, showBackButton = true }: MainMenuProps) {
-  const whatsappNumber = '+34661610794';
+  const whatsappNumber = '+34664602010';
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
   const [guideOpen, setGuideOpen] = useState(false);
 

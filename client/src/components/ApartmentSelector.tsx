@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { BookOpen } from 'lucide-react';
 import GuideDialog from '@/components/GuideDialog';
-import logoUrl from '@assets/logoCS_1759701422984.png';
+import logoUrl from '@assets/logo-caprichos-2026.webp';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import sevilleBgUrl from '@assets/plaza-espana-bg.webp';
@@ -100,7 +100,7 @@ export default function ApartmentSelector({
             <img
               src={logoUrl}
               alt="Caprichos de Sevilla"
-              className="h-20 md:h-24 mx-auto object-contain rounded-lg"
+              className="h-36 md:h-44 mx-auto object-contain rounded-lg"
             />
             <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               {title}
