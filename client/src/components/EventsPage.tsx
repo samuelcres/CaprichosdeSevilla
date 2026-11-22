@@ -74,10 +74,10 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
   return (
     <div className="min-h-screen bg-background relative">
       <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] pointer-events-none"
         style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+      <div className="hidden sm:flex fixed inset-0 items-center justify-center pointer-events-none opacity-5">
         <p className="text-9xl font-bold text-foreground transform -rotate-45">
           {apartmentName}
         </p>

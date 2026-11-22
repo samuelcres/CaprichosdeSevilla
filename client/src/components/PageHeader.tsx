@@ -4,7 +4,7 @@ import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';
-import { Badge } from '@/components/ui/badge';
+import BottomNav from '@/components/BottomNav';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,50 +26,26 @@ interface PageHeaderProps {
 export default function PageHeader({ onBack, onHome, title, currentLanguage, onLanguageChange, changeLanguageLabel, apartment, apartmentLabel }: PageHeaderProps) {
   const currentLang = languages.find(l => l.code === currentLanguage);
 
+  const apartmentImg = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
+
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-border p-4">
-      <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
+    <>
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border shadow-sm px-2 py-2 sm:px-4 sm:py-3">
+      <div className="max-w-4xl mx-auto flex items-center justify-between gap-1 sm:gap-2">
         <Button
           variant="ghost"
           size="icon"
           onClick={onBack}
+          className="h-11 w-11 shrink-0 rounded-full bg-muted/70"
+          aria-label="Volver"
           data-testid="button-back"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-6 h-6" />
         </Button>
 
-        <div className="flex flex-col items-center flex-1 mx-4 min-w-0">
-          {apartment && apartmentLabel && onHome && (
-            <Button 
-              variant="outline" 
-              onClick={onHome}
-              className="mb-1 text-xs flex items-center gap-1.5 px-2 py-1 h-auto hover-elevate"
-              data-testid="button-apartment-home"
-            >
-              <img 
-                src={apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl}
-                alt={apartmentLabel}
-                className="w-5 h-5 rounded-full object-cover"
-              />
-              <span>{apartmentLabel}</span>
-            </Button>
-          )}
-          {apartment && apartmentLabel && !onHome && (
-            <Badge 
-              variant="outline" 
-              className="mb-1 text-xs flex items-center gap-1.5 px-2 py-1"
-              data-testid="badge-apartment"
-            >
-              <img 
-                src={apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl}
-                alt={apartmentLabel}
-                className="w-5 h-5 rounded-full object-cover"
-              />
-              <span>{apartmentLabel}</span>
-            </Badge>
-          )}
+        <div className="flex flex-col items-center flex-1 mx-1 sm:mx-4 min-w-0">
           {title ? (
-            <h1 className="text-lg font-semibold text-foreground truncate w-full text-center">
+            <h1 className="text-base sm:text-xl font-bold text-foreground leading-tight text-center line-clamp-2 break-words">
               {title}
             </h1>
           ) : (
@@ -79,20 +55,41 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
               className="h-10 object-contain"
             />
           )}
+          {apartment && apartmentLabel && (
+            onHome ? (
+              <button
+                type="button"
+                onClick={onHome}
+                className="mt-0.5 flex items-center gap-1 text-[11px] sm:text-xs text-muted-foreground hover:text-primary"
+                data-testid="button-apartment-home"
+              >
+                <img src={apartmentImg} alt="" className="w-4 h-4 rounded-full object-cover" />
+                <span className="truncate">{apartmentLabel}</span>
+              </button>
+            ) : (
+              <span
+                className="mt-0.5 flex items-center gap-1 text-[11px] sm:text-xs text-muted-foreground"
+                data-testid="badge-apartment"
+              >
+                <img src={apartmentImg} alt="" className="w-4 h-4 rounded-full object-cover" />
+                <span className="truncate">{apartmentLabel}</span>
+              </span>
+            )
+          )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button 
                 variant="outline" 
                 size="default"
-                className="gap-1.5 px-2.5 sm:px-4"
+                className="gap-1 h-10 px-2 sm:px-4"
                 data-testid="button-language-selector"
                 aria-label={changeLanguageLabel}
                 title={changeLanguageLabel}
               >
-                <span className="text-xl">{currentLang?.flag}</span>
+                <span className="text-lg">{currentLang?.flag}</span>
                 <span className="sm:hidden text-xs font-semibold uppercase">{currentLang?.code}</span>
                 <span className="hidden sm:inline">{currentLang?.name}</span>
               </Button>
@@ -118,9 +115,11 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
               variant="ghost"
               size="icon"
               onClick={onHome}
+              className="h-11 w-11 rounded-full bg-primary/10 text-primary hover:bg-primary/20"
+              aria-label="Menú"
               data-testid="button-home"
             >
-              <Home className="w-5 h-5" />
+              <Home className="w-6 h-6" />
             </Button>
           ) : (
             <div className="w-10" />
@@ -128,5 +127,7 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
         </div>
       </div>
     </header>
+    <BottomNav />
+    </>
   );
 }

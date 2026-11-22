@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
@@ -295,10 +295,10 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
   return (
     <div className="min-h-screen bg-background relative">
       <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] pointer-events-none"
         style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+      <div className="hidden sm:flex fixed inset-0 items-center justify-center pointer-events-none opacity-5">
         <p className="text-9xl font-bold text-foreground transform -rotate-45">
           {apartmentName}
         </p>
@@ -315,37 +315,41 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
       />
 
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
-        <div className="flex flex-col sm:flex-row gap-2 p-1 bg-muted rounded-md">
+        <div className="grid grid-cols-2 sm:flex gap-1.5 sm:gap-2 p-1.5 bg-white/90 border border-border shadow-sm rounded-xl">
           <Button
             variant={activeTab === 'restaurants' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
+            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('restaurants')}
             data-testid="tab-restaurants"
           >
+            <UtensilsCrossed className="w-5 h-5 sm:w-4 sm:h-4" />
             {t.tourism.restaurants}
           </Button>
           <Button
             variant={activeTab === 'visits' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
+            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('visits')}
             data-testid="tab-visits"
           >
+            <Landmark className="w-5 h-5 sm:w-4 sm:h-4" />
             {t.tourism.visits}
           </Button>
           <Button
             variant={activeTab === 'map' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
+            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('map')}
             data-testid="tab-map"
           >
+            <MapIcon className="w-5 h-5 sm:w-4 sm:h-4" />
             {t.tourism.map}
           </Button>
           <Button
             variant={activeTab === 'activities' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
+            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('activities')}
             data-testid="tab-activities"
           >
+            <Ticket className="w-5 h-5 sm:w-4 sm:h-4" />
             {t.tourism.activities}
           </Button>
         </div>
@@ -409,7 +413,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
 
             <Accordion type="multiple" className="space-y-4">
               {/* Desayunos */}
-              <AccordionItem value="breakfast" className="border rounded-lg px-6">
+              <AccordionItem value="breakfast" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-breakfast">
                   <div className="flex items-center gap-2">
                     <Coffee className="w-5 h-5 text-primary" />
@@ -425,7 +429,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               </AccordionItem>
 
               {/* Almuerzos / Comidas */}
-              <AccordionItem value="lunch" className="border rounded-lg px-6">
+              <AccordionItem value="lunch" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-lunch">
                   <div className="flex items-center gap-2">
                     <UtensilsCrossed className="w-5 h-5 text-primary" />
@@ -441,7 +445,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               </AccordionItem>
 
               {/* Cafeterías */}
-              <AccordionItem value="cafeterias" className="border rounded-lg px-6">
+              <AccordionItem value="cafeterias" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-cafeterias">
                   <div className="flex items-center gap-2">
                     <CupSoda className="w-5 h-5 text-primary" />
@@ -457,7 +461,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
               </AccordionItem>
 
               {/* Cenas */}
-              <AccordionItem value="dinner" className="border rounded-lg px-6">
+              <AccordionItem value="dinner" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-dinner">
                   <div className="flex items-center gap-2">
                     <Moon className="w-5 h-5 text-primary" />
@@ -480,7 +484,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 const visitsInCategory = visitDetails.filter(v => v.category === categoryId);
                 
                 return (
-                  <AccordionItem key={categoryId} value={categoryId} className="border rounded-lg px-6">
+                  <AccordionItem key={categoryId} value={categoryId} className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                     <AccordionTrigger className="hover:no-underline" data-testid={`accordion-visit-${categoryId}`}>
                       <div className="flex items-center gap-2">
                         <h3 className="text-lg font-semibold text-foreground">

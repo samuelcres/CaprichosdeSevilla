@@ -32,10 +32,10 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
   return (
     <div className="min-h-screen bg-background relative">
       <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] pointer-events-none"
         style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-5">
+      <div className="hidden sm:flex fixed inset-0 items-center justify-center pointer-events-none opacity-5">
         <p className="text-9xl font-bold text-foreground transform -rotate-45">
           {apartmentName}
         </p>
@@ -52,32 +52,32 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
       />
 
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
-        <div className="flex flex-col md:flex-row gap-2 md:gap-3">
+        <div className="grid grid-cols-3 gap-2 md:flex md:gap-3">
           <Button
             variant={activeTab === 'arrival' ? 'default' : 'outline'}
-            className="flex-1 justify-start md:justify-center"
+            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
             onClick={() => setActiveTab('arrival')}
             data-testid="tab-arrival"
           >
-            <Plane className="w-4 h-4 mr-2" />
+            <Plane className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
             {t.transport.arrival}
           </Button>
           <Button
             variant={activeTab === 'departure' ? 'default' : 'outline'}
-            className="flex-1 justify-start md:justify-center"
+            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
             onClick={() => setActiveTab('departure')}
             data-testid="tab-departure"
           >
-            <Plane className="w-4 h-4 mr-2" />
+            <Plane className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
             {t.transport.departure}
           </Button>
           <Button
             variant={activeTab === 'movearound' ? 'default' : 'outline'}
-            className="flex-1 justify-start md:justify-center"
+            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
             onClick={() => setActiveTab('movearound')}
             data-testid="tab-movearound"
           >
-            <Navigation className="w-4 h-4 mr-2" />
+            <Navigation className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
             {t.transport.moveAround}
           </Button>
         </div>
@@ -93,11 +93,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
 
           <TabsContent value="arrival" className="mt-6">
             <Accordion type="multiple" className="space-y-4">
-              <AccordionItem value="airport" className="border rounded-lg px-6">
+              <AccordionItem value="airport" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-arrival">
-                  <div className="flex items-center gap-3">
-                    <Plane className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Plane className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.fromAirport}
                     </h2>
                   </div>
@@ -242,11 +242,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="trainstation" className="border rounded-lg px-6">
+              <AccordionItem value="trainstation" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-arrival">
-                  <div className="flex items-center gap-3">
-                    <Train className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Train className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.trainStation.fromStation}
                     </h2>
                   </div>
@@ -308,11 +308,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="car" className="border rounded-lg px-6">
+              <AccordionItem value="car" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-arrival">
-                  <div className="flex items-center gap-3">
-                    <Car className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Car className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.byCar.title}
                     </h2>
                   </div>
@@ -504,11 +504,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
 
           <TabsContent value="departure" className="mt-6">
             <Accordion type="multiple" className="space-y-4">
-              <AccordionItem value="airport" className="border rounded-lg px-6">
+              <AccordionItem value="airport" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-departure">
-                  <div className="flex items-center gap-3">
-                    <Plane className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Plane className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.toAirport}
                     </h2>
                   </div>
@@ -623,11 +623,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="trainstation" className="border rounded-lg px-6">
+              <AccordionItem value="trainstation" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-departure">
-                  <div className="flex items-center gap-3">
-                    <Train className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Train className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.trainStation.toStation}
                     </h2>
                   </div>
@@ -689,11 +689,11 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="car" className="border rounded-lg px-6">
+              <AccordionItem value="car" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
                 <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-departure">
-                  <div className="flex items-center gap-3">
-                    <Car className="w-6 h-6 text-foreground" />
-                    <h2 className="text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3 text-left">
+                    <Car className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
+                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
                       {t.transport.byCar.title}
                     </h2>
                   </div>

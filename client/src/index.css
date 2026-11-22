@@ -359,3 +359,9 @@
     inset: -1px;
   }
 }
+/* Hueco para la barra inferior de secciones (solo móvil) */
+@media (max-width: 639px) {
+  body.has-bottom-nav {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+  }
+}

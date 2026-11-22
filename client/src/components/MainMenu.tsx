@@ -182,7 +182,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
                     style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
                   >
                     {/* Icono pequeño sobre la imagen (solo móvil) */}
-                    <div className="sm:hidden absolute top-1.5 left-1.5 w-8 h-8 rounded-xl bg-white/90 shadow-md flex items-center justify-center text-primary [&_svg]:w-5 [&_svg]:h-5">
+                    <div className="sm:hidden absolute top-2 left-2 w-12 h-12 rounded-2xl bg-primary text-primary-foreground ring-2 ring-white shadow-lg flex items-center justify-center [&_svg]:w-7 [&_svg]:h-7 [&_svg]:stroke-[2.25]">
                       {option.icon}
                     </div>
                   </div>
