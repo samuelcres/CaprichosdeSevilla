@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CalendarIcon, MapPin, ExternalLink, PartyPopper } from 'lucide-react';
 import LiveEventCard, { LiveEvent, TEXTS } from './LiveEventCard';
+import EventLinks from './EventLinks';
 import { getEventsForDate, getEventsForMonth, categoryColors } from '@/lib/eventsData';
 import { format, addDays, startOfDay, isSameDay, isToday } from 'date-fns';
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
@@ -270,46 +271,8 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
         </div>
 
         <div className="container mx-auto px-4 max-w-3xl">
-          <div className="mt-8 mb-8">
-            <h2 className="text-2xl font-bold mb-6 text-foreground text-center" data-testid="title-more-events">
-              {t.events.moreEventsTitle}
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-              <Button
-                variant="default"
-                size="lg"
-                className="flex-1"
-                asChild
-                data-testid="button-onsevilla"
-              >
-                <a
-                  href="https://onsevilla.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
-                >
-                  <ExternalLink className="h-5 w-5" />
-                  {t.events.onSevillaButton}
-                </a>
-              </Button>
-              <Button
-                variant="default"
-                size="lg"
-                className="flex-1"
-                asChild
-                data-testid="button-visitasevilla"
-              >
-                <a
-                  href="https://visitasevilla.es/ahora-en-sevilla/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
-                >
-                  <ExternalLink className="h-5 w-5" />
-                  {t.events.visitSevillaButton}
-                </a>
-              </Button>
-            </div>
+          <div className="mt-6 mb-8">
+            <EventLinks lang={currentLanguage} date={selectedDate || new Date()} />
           </div>
         </div>
       </div>

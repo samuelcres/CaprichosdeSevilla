@@ -28,7 +28,7 @@ type Texts = {
 export const TEXTS: Record<Language, Texts> = {
   es: {
     today: 'Hoy', otherDate: 'Otra fecha', byTime: 'Por hora', closest: 'Más cerca',
-    tryOther: 'Prueba otro día o consulta las webs de abajo.',
+    tryOther: 'Prueba otro día o mira los planes de abajo.',
     tickets: 'Entradas', directions: 'Cómo llegar', from: 'Desde', priceOnline: 'Precio en la web', free: 'Gratis',
     walk: 'a pie', taxi: 'en taxi', more: 'Ver más', less: 'Ver menos',
     disclaimer: 'Eventos de Ticketmaster. Tiempos de trayecto aproximados desde el apartamento.',
