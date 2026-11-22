@@ -1,17 +1,17 @@
-import { MapPin, Phone, Globe, BookOpen, Navigation, Footprints, Bike, Beef, Pizza, Sandwich, Flame } from 'lucide-react';
+import { MapPin, Phone, Globe, BookOpen, Navigation, Footprints, Bike, Beef, Pizza, Sandwich, Flame, ShoppingBag, MessageCircle, Soup } from 'lucide-react';
 import { Language } from '@/lib/i18n';
 import { FastFoodPlace, FastFoodKind } from '@/lib/fastFoodData';
 
-const LABELS: Record<Language, { walk: string; call: string; web: string; menu: string; route: string; delivery: string; order: string; intro: string; prices: string; kinds: Record<FastFoodKind, string> }> = {
-  es: { walk: 'min a pie', call: 'Llamar', web: 'Web', menu: 'Carta', route: 'Cómo llegar', delivery: 'A domicilio', order: 'Qué pedir', intro: 'Para comer algo rápido sin alejarse del apartamento.', prices: 'Precios orientativos; pueden cambiar.', kinds: { burger: 'Hamburguesas', pizza: 'Pizza', montaditos: 'Montaditos', grill: 'Hamburguesas y brasa' } },
-  en: { walk: 'min walk', call: 'Call', web: 'Website', menu: 'Menu', route: 'Directions', delivery: 'Delivery', order: 'What to order', intro: 'For a quick bite without straying far from the apartment.', prices: 'Prices are approximate and may change.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini sandwiches', grill: 'Burgers & grill' } },
-  fr: { walk: 'min à pied', call: 'Appeler', web: 'Site', menu: 'Carte', route: 'Itinéraire', delivery: 'Livraison', order: 'À commander', intro: 'Pour manger rapidement sans s’éloigner de l’appartement.', prices: 'Prix indicatifs, susceptibles de changer.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini-sandwichs', grill: 'Burgers et grill' } },
-  de: { walk: 'Min. zu Fuß', call: 'Anrufen', web: 'Website', menu: 'Speisekarte', route: 'Route', delivery: 'Lieferung', order: 'Empfehlung', intro: 'Für den schnellen Hunger ganz in der Nähe der Wohnung.', prices: 'Richtpreise, Änderungen möglich.', kinds: { burger: 'Burger', pizza: 'Pizza', montaditos: 'Mini-Sandwiches', grill: 'Burger & Grill' } },
-  it: { walk: 'min a piedi', call: 'Chiama', web: 'Sito', menu: 'Menù', route: 'Indicazioni', delivery: 'A domicilio', order: 'Cosa ordinare', intro: 'Per mangiare qualcosa al volo senza allontanarsi dall’appartamento.', prices: 'Prezzi indicativi, possono variare.', kinds: { burger: 'Hamburger', pizza: 'Pizza', montaditos: 'Mini panini', grill: 'Hamburger e griglia' } },
-  zh: { walk: '分钟步行', call: '致电', web: '网站', menu: '菜单', route: '路线', delivery: '外卖', order: '推荐', intro: '在公寓附近快速吃点东西。', prices: '价格仅供参考，可能变动。', kinds: { burger: '汉堡', pizza: '披萨', montaditos: '迷你三明治', grill: '汉堡和烧烤' } },
+const LABELS: Record<Language, { order2: string; takeaway: string; walk: string; call: string; web: string; menu: string; route: string; delivery: string; order: string; intro: string; prices: string; kinds: Record<FastFoodKind, string> }> = {
+  es: { order2: 'Pedir online', takeaway: 'Para llevar', walk: 'min a pie', call: 'Llamar', web: 'Web', menu: 'Carta', route: 'Cómo llegar', delivery: 'A domicilio', order: 'Qué pedir', intro: 'Para comer algo rápido sin alejarse del apartamento.', prices: 'Precios orientativos; pueden cambiar.', kinds: { burger: 'Hamburguesas', pizza: 'Pizza', montaditos: 'Montaditos', grill: 'Hamburguesas y brasa', mexican: 'Mexicana' } },
+  en: { order2: 'Order online', takeaway: 'Takeaway', walk: 'min walk', call: 'Call', web: 'Website', menu: 'Menu', route: 'Directions', delivery: 'Delivery', order: 'What to order', intro: 'For a quick bite without straying far from the apartment.', prices: 'Prices are approximate and may change.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini sandwiches', grill: 'Burgers & grill', mexican: 'Mexican' } },
+  fr: { order2: 'Commander', takeaway: 'À emporter', walk: 'min à pied', call: 'Appeler', web: 'Site', menu: 'Carte', route: 'Itinéraire', delivery: 'Livraison', order: 'À commander', intro: 'Pour manger rapidement sans s’éloigner de l’appartement.', prices: 'Prix indicatifs, susceptibles de changer.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini-sandwichs', grill: 'Burgers et grill', mexican: 'Mexicain' } },
+  de: { order2: 'Online bestellen', takeaway: 'Zum Mitnehmen', walk: 'Min. zu Fuß', call: 'Anrufen', web: 'Website', menu: 'Speisekarte', route: 'Route', delivery: 'Lieferung', order: 'Empfehlung', intro: 'Für den schnellen Hunger ganz in der Nähe der Wohnung.', prices: 'Richtpreise, Änderungen möglich.', kinds: { burger: 'Burger', pizza: 'Pizza', montaditos: 'Mini-Sandwiches', grill: 'Burger & Grill', mexican: 'Mexikanisch' } },
+  it: { order2: 'Ordina online', takeaway: 'Da asporto', walk: 'min a piedi', call: 'Chiama', web: 'Sito', menu: 'Menù', route: 'Indicazioni', delivery: 'A domicilio', order: 'Cosa ordinare', intro: 'Per mangiare qualcosa al volo senza allontanarsi dall’appartamento.', prices: 'Prezzi indicativi, possono variare.', kinds: { burger: 'Hamburger', pizza: 'Pizza', montaditos: 'Mini panini', grill: 'Hamburger e griglia', mexican: 'Messicano' } },
+  zh: { order2: '在线点餐', takeaway: '外带', walk: '分钟步行', call: '致电', web: '网站', menu: '菜单', route: '路线', delivery: '外卖', order: '推荐', intro: '在公寓附近快速吃点东西。', prices: '价格仅供参考，可能变动。', kinds: { burger: '汉堡', pizza: '披萨', montaditos: '迷你三明治', grill: '汉堡和烧烤', mexican: '墨西哥菜' } },
 };
 
-const KIND_ICON: Record<FastFoodKind, typeof Beef> = { burger: Beef, pizza: Pizza, montaditos: Sandwich, grill: Flame };
+const KIND_ICON: Record<FastFoodKind, typeof Beef> = { burger: Beef, pizza: Pizza, montaditos: Sandwich, grill: Flame, mexican: Soup };
 
 export function fastFoodLabels(lang: Language) {
   return LABELS[lang] || LABELS.en;
@@ -40,6 +40,11 @@ export default function FastFoodCard({ place, lang, origin }: { place: FastFoodP
             {place.delivery && (
               <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5">
                 <Bike className="h-3 w-3" />{L.delivery}
+              </span>
+            )}
+            {place.takeaway && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-sky-50 text-sky-800 border border-sky-200 px-2 py-0.5">
+                <ShoppingBag className="h-3 w-3" />{L.takeaway}
               </span>
             )}
           </div>
@@ -73,6 +78,16 @@ export default function FastFoodCard({ place, lang, origin }: { place: FastFoodP
             <Phone className="h-4 w-4" />{L.call}
           </a>
         )}
+        {place.whatsapp && (
+          <a href={`https://wa.me/${place.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-green-600 text-white text-sm font-semibold py-2.5 px-2">
+            <MessageCircle className="h-4 w-4" />WhatsApp
+          </a>
+        )}
+        {place.orderUrl && (
+          <a href={place.orderUrl} target="_blank" rel="noopener noreferrer" className={place.phone ? btn : 'inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold py-2.5 px-2'}>
+            <ShoppingBag className={`h-4 w-4 ${place.phone ? 'text-primary' : ''}`} />{L.order2}
+          </a>
+        )}
         <a href={route} target="_blank" rel="noopener noreferrer" className={btn}>
           <Navigation className="h-4 w-4 text-primary" />{L.route}
         </a>
@@ -81,7 +96,7 @@ export default function FastFoodCard({ place, lang, origin }: { place: FastFoodP
             <BookOpen className="h-4 w-4 text-primary" />{L.menu}
           </a>
         )}
-        {place.website && place.website !== place.menuUrl && (
+        {place.website && place.website !== place.menuUrl && place.website !== place.orderUrl && (
           <a href={place.website} target="_blank" rel="noopener noreferrer" className={btn}>
             <Globe className="h-4 w-4 text-primary" />{L.web}
           </a>

@@ -409,10 +409,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             </Card>
           </TabsContent>
 
-          <TabsContent value="restaurants" className="mt-6 space-y-6">
-            <p className="text-muted-foreground text-center mb-6">
-              {t.tourism.restaurantsIntro}
-            </p>
+          <TabsContent value="restaurants" className="mt-4 space-y-4">
 
             <Accordion type="multiple" className="space-y-4">
               {/* Desayunos */}
