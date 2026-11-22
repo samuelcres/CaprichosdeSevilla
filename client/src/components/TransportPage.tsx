@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import PageHeader from './PageHeader';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Bus, Car, Plane, ParkingCircle, ExternalLink, Bike, Navigation, Train } from 'lucide-react';
+import {
+  Bus, Car, Plane, ParkingCircle, Bike, Navigation, Train, Home, ArrowDown, Phone, Copy, Check, X,
+  Clock, Euro, MapPin, Footprints, ExternalLink, Zap, Maximize2,
+} from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -18,32 +18,307 @@ interface TransportPageProps {
   onLanguageChange: (lang: Language) => void;
 }
 
+type Direction = 'arrival' | 'departure';
+type Place = 'airport' | 'station' | 'car';
+
+// Textos nuevos de esta pantalla (el resto sale de i18n)
+const UIX: Record<Language, { apartment: string; airport: string; station: string; car: string; route: string; showDriver: string; driverHint: string; copy: string; copied: string; call: string; recommended: string; close: string; walkRoute: string }> = {
+  es: { apartment: 'Apartamento', airport: 'Aeropuerto', station: 'Estación Santa Justa', car: 'En coche', route: 'Ver ruta en Google Maps', showDriver: 'Mostrar al conductor', driverHint: 'Enseñe esta pantalla al taxista', copy: 'Copiar dirección', copied: 'Copiado', call: 'Llamar', recommended: 'Lo más cómodo', close: 'Cerrar', walkRoute: 'Ruta a pie' },
+  en: { apartment: 'Apartment', airport: 'Airport', station: 'Santa Justa Station', car: 'By car', route: 'See route on Google Maps', showDriver: 'Show to the driver', driverHint: 'Show this screen to the taxi driver', copy: 'Copy address', copied: 'Copied', call: 'Call', recommended: 'Most convenient', close: 'Close', walkRoute: 'Walking route' },
+  fr: { apartment: 'Appartement', airport: 'Aéroport', station: 'Gare Santa Justa', car: 'En voiture', route: 'Voir l’itinéraire sur Google Maps', showDriver: 'Montrer au chauffeur', driverHint: 'Montrez cet écran au chauffeur de taxi', copy: 'Copier l’adresse', copied: 'Copié', call: 'Appeler', recommended: 'Le plus pratique', close: 'Fermer', walkRoute: 'Itinéraire à pied' },
+  de: { apartment: 'Wohnung', airport: 'Flughafen', station: 'Bahnhof Santa Justa', car: 'Mit dem Auto', route: 'Route in Google Maps', showDriver: 'Dem Fahrer zeigen', driverHint: 'Zeigen Sie diesen Bildschirm dem Taxifahrer', copy: 'Adresse kopieren', copied: 'Kopiert', call: 'Anrufen', recommended: 'Am bequemsten', close: 'Schließen', walkRoute: 'Fußweg' },
+  it: { apartment: 'Appartamento', airport: 'Aeroporto', station: 'Stazione Santa Justa', car: 'In auto', route: 'Vedi percorso su Google Maps', showDriver: 'Mostra all’autista', driverHint: 'Mostra questa schermata al tassista', copy: 'Copia indirizzo', copied: 'Copiato', call: 'Chiama', recommended: 'Il più comodo', close: 'Chiudi', walkRoute: 'Percorso a piedi' },
+  zh: { apartment: '公寓', airport: '机场', station: '圣胡斯塔火车站', car: '自驾', route: '在 Google 地图中查看路线', showDriver: '给司机看', driverHint: '请把此屏幕给出租车司机看', copy: '复制地址', copied: '已复制', call: '致电', recommended: '最方便', close: '关闭', walkRoute: '步行路线' },
+};
+
+const ADDRESS: Record<Apartment, string> = {
+  ibarra: 'Calle Conde de Ibarra, 11-13, 41004 Sevilla',
+  quevedo: 'Calle Quevedo, 11, 41003 Sevilla',
+};
+const COORDS: Record<Apartment, string> = { ibarra: '37.3889,-5.9885', quevedo: '37.3954,-5.9930' };
+const PLACE_QUERY: Record<'airport' | 'station', string> = {
+  airport: 'Aeropuerto de Sevilla (SVQ)',
+  station: 'Estación de Sevilla-Santa Justa',
+};
+
+const stripLabel = (s?: string) => (s || '').replace(/^[^:]{1,20}:\s*/, '');
+
+function Chip({ icon: Icon, children, tone = 'muted' }: { icon: typeof Clock; children: React.ReactNode; tone?: 'muted' | 'green' | 'amber' | 'blue' }) {
+  const tones = {
+    muted: 'bg-muted text-foreground',
+    green: 'bg-emerald-50 text-emerald-800 border border-emerald-200',
+    amber: 'bg-amber-50 text-amber-800 border border-amber-200',
+    blue: 'bg-sky-50 text-sky-800 border border-sky-200',
+  };
+  return (
+    <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium ${tones[tone]}`}>
+      <Icon className="w-3.5 h-3.5 shrink-0" />
+      {children}
+    </span>
+  );
+}
+
+function OptionCard({ icon: Icon, color, title, badge, children, actions }: {
+  icon: typeof Bus; color: string; title: string; badge?: string; children?: React.ReactNode; actions?: React.ReactNode;
+}) {
+  return (
+    <article className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3">
+      <div className="flex items-center gap-3">
+        <span className={`shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${color}`}>
+          <Icon className="w-6 h-6" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-bold text-base leading-tight">{title}</h3>
+          {badge && <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wide text-primary">★ {badge}</span>}
+        </div>
+      </div>
+      {children}
+      {actions && <div className="grid grid-cols-2 gap-2 [&>*:last-child:nth-child(odd)]:col-span-2">{actions}</div>}
+    </article>
+  );
+}
+
+const btnPrimary = 'inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold py-2.5 px-2';
+const btnOutline = 'inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-white text-sm font-semibold py-2.5 px-2';
+
 export default function TransportPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: TransportPageProps) {
-  const [activeTab, setActiveTab] = useState('arrival');
+  const [activeTab, setActiveTab] = useState<'arrival' | 'departure' | 'movearound'>('arrival');
+  const [place, setPlace] = useState<Place>('airport');
+  const [driverText, setDriverText] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const U = UIX[currentLanguage] || UIX.en;
+  const T = t.transport;
 
-  const busStop = apartment === 'ibarra' ? t.transport.bus.stopIbarra : t.transport.bus.stopQuevedo;
-  const address = apartment === 'ibarra'
-    ? t.transport.taxi.addressIbarra
-    : t.transport.taxi.addressQuevedo;
-
+  const address = ADDRESS[apartment];
+  const busStop = apartment === 'ibarra' ? T.bus.stopIbarra : T.bus.stopQuevedo;
+  const parkings = apartment === 'ibarra' ? T.byCar.ibarra : T.byCar.quevedo;
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
   const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
 
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(driverText || address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch { /* sin portapapeles */ }
+  };
+
+  const routeUrl = (p: 'airport' | 'station', dir: Direction, mode: 'transit' | 'driving' | 'walking' = 'transit') => {
+    const a = encodeURIComponent(PLACE_QUERY[p]);
+    const b = encodeURIComponent(address);
+    const [origin, dest] = dir === 'arrival' ? [a, b] : [b, a];
+    return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}&travelmode=${mode}`;
+  };
+
+  // Franja visual de la ruta: origen → destino
+  const RouteStrip = ({ p, dir }: { p: 'airport' | 'station'; dir: Direction }) => {
+    const PIcon = p === 'airport' ? Plane : Train;
+    const pLabel = p === 'airport' ? U.airport : U.station;
+    const a = { icon: PIcon, label: pLabel };
+    const b = { icon: Home, label: apartmentName };
+    const [from, to] = dir === 'arrival' ? [a, b] : [b, a];
+    return (
+      <div className="rounded-2xl bg-gradient-to-br from-primary to-[#E8743B] text-white p-4 shadow-md">
+        <div className="flex items-center gap-3">
+          <div className="flex flex-col items-center gap-1 w-24 text-center">
+            <span className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center"><from.icon className="w-6 h-6" /></span>
+            <span className="text-[11px] leading-tight font-medium">{from.label}</span>
+          </div>
+          <div className="flex-1 flex items-center">
+            <span className="flex-1 border-t-2 border-dashed border-white/70" />
+            <ArrowDown className="w-5 h-5 -rotate-90 shrink-0" />
+          </div>
+          <div className="flex flex-col items-center gap-1 w-24 text-center">
+            <span className="w-11 h-11 rounded-full bg-white flex items-center justify-center text-primary"><to.icon className="w-6 h-6" /></span>
+            <span className="text-[11px] leading-tight font-medium">{to.label}</span>
+          </div>
+        </div>
+        <a
+          href={routeUrl(p, dir)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-sm font-semibold py-2"
+          data-testid={`route-${p}-${dir}`}
+        >
+          <Navigation className="w-4 h-4" /> {U.route}
+        </a>
+      </div>
+    );
+  };
+
+  const TaxiCard = ({ price, duration, dest }: { price: string; duration?: string; dest: string }) => (
+    <OptionCard icon={Car} color="bg-amber-100 text-amber-700" title={T.taxi.title} badge={U.recommended}>
+      <div className="flex flex-wrap gap-1.5">
+        <Chip icon={Euro} tone="amber">{stripLabel(price)}</Chip>
+        {duration && <Chip icon={Clock}>{duration}</Chip>}
+      </div>
+      <button
+        type="button"
+        onClick={() => setDriverText(dest)}
+        className="w-full text-left rounded-xl bg-muted/60 p-3 flex items-center gap-3"
+        data-testid="button-show-driver"
+      >
+        <MapPin className="w-5 h-5 text-primary shrink-0" />
+        <span className="flex-1 min-w-0">
+          <span className="block text-sm font-semibold">{dest}</span>
+          <span className="block text-xs text-primary font-semibold mt-0.5">{U.showDriver}</span>
+        </span>
+        <Maximize2 className="w-4 h-4 text-muted-foreground shrink-0" />
+      </button>
+    </OptionCard>
+  );
+
+  const AirportOptions = ({ dir }: { dir: Direction }) => (
+    <div className="space-y-3">
+      <RouteStrip p="airport" dir={dir} />
+      <TaxiCard price={T.taxi.price} dest={dir === 'arrival' ? address : PLACE_QUERY.airport} />
+      <OptionCard
+        icon={Bus}
+        color="bg-sky-100 text-sky-700"
+        title={T.bus.title}
+        actions={
+          <a href="https://www.tussam.es" target="_blank" rel="noopener noreferrer" className={btnOutline} data-testid="button-tussam">
+            <ExternalLink className="w-4 h-4 text-primary" /> TUSSAM
+          </a>
+        }
+      >
+        <div className="flex flex-wrap gap-1.5">
+          <Chip icon={Euro} tone="blue">{stripLabel(T.bus.price)}</Chip>
+          <Chip icon={Clock}>{T.bus.schedule}</Chip>
+        </div>
+        <p className="text-sm text-muted-foreground flex gap-1.5"><Footprints className="w-4 h-4 mt-0.5 shrink-0 text-primary" />{busStop}</p>
+      </OptionCard>
+      <OptionCard
+        icon={Zap}
+        color="bg-zinc-100 text-zinc-800"
+        title={T.vtc.title}
+        actions={
+          <>
+            <a href="https://m.uber.com/" target="_blank" rel="noopener noreferrer" className={btnOutline} data-testid="button-uber">Uber</a>
+            <a href="https://cabify.com/" target="_blank" rel="noopener noreferrer" className={btnOutline} data-testid="button-cabify">Cabify</a>
+          </>
+        }
+      >
+        <p className="text-sm text-muted-foreground">{T.vtc.description}</p>
+      </OptionCard>
+      <OptionCard
+        icon={Plane}
+        color="bg-violet-100 text-violet-700"
+        title={T.transfer.title}
+        actions={
+          <a href="https://www.book-online-transfers.com/es/baintex-airport-taxi" target="_blank" rel="noopener noreferrer" className={btnPrimary} data-testid="button-transfer">
+            {T.transfer.button}
+          </a>
+        }
+      >
+        <p className="text-sm text-muted-foreground">{T.transfer.description}</p>
+      </OptionCard>
+    </div>
+  );
+
+  const StationOptions = ({ dir }: { dir: Direction }) => (
+    <div className="space-y-3">
+      <RouteStrip p="station" dir={dir} />
+      <TaxiCard price={T.trainStation.taxiPrice} duration={T.trainStation.taxiDuration} dest={dir === 'arrival' ? address : PLACE_QUERY.station} />
+      <OptionCard
+        icon={Bus}
+        color="bg-sky-100 text-sky-700"
+        title={`${T.trainStation.busTitle} · ${T.trainStation.busLine}`}
+        actions={
+          <a href="https://www.tussam.es" target="_blank" rel="noopener noreferrer" className={btnOutline}>
+            <ExternalLink className="w-4 h-4 text-primary" /> TUSSAM
+          </a>
+        }
+      >
+        <div className="flex flex-wrap gap-1.5">
+          <Chip icon={Euro} tone="blue">{stripLabel(T.trainStation.busPrice)}</Chip>
+          <Chip icon={Clock}>{T.trainStation.busSchedule}</Chip>
+        </div>
+        <p className="text-sm text-muted-foreground flex gap-1.5">
+          <Footprints className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
+          {apartment === 'ibarra' ? T.trainStation.busStopIbarra : T.trainStation.busStopQuevedo}
+        </p>
+      </OptionCard>
+      <OptionCard
+        icon={Footprints}
+        color="bg-emerald-100 text-emerald-700"
+        title={stripLabel(apartment === 'ibarra' ? T.trainStation.walkingIbarra : T.trainStation.walkingQuevedo)}
+        actions={
+          <a href={routeUrl('station', dir, 'walking')} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+            <Navigation className="w-4 h-4 text-primary" /> {U.walkRoute}
+          </a>
+        }
+      />
+    </div>
+  );
+
+  const CarOptions = () => (
+    <div className="space-y-3">
+      <p className="text-sm text-muted-foreground px-1">{T.byCar.subtitle}</p>
+      {[parkings.parking1, parkings.parking2].map((pk: any, i: number) => (
+        <OptionCard
+          key={i}
+          icon={ParkingCircle}
+          color="bg-blue-100 text-blue-700"
+          title={pk.name}
+          actions={
+            <>
+              <a href={`tel:${pk.phone.replace(/\s/g, '')}`} className={btnPrimary}><Phone className="w-4 h-4" /> {U.call}</a>
+              <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(pk.address)}&travelmode=driving`} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+                <Car className="w-4 h-4 text-primary" /> {T.byCar.openMap}
+              </a>
+              <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(pk.address)}&destination=${encodeURIComponent(address)}&travelmode=walking`} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+                <Footprints className="w-4 h-4 text-primary" /> {T.byCar.walkingRoute}
+              </a>
+            </>
+          }
+        >
+          <div className="flex flex-wrap gap-1.5">
+            <Chip icon={Euro} tone="blue">{pk.price}</Chip>
+            <Chip icon={Footprints} tone="green">{pk.distance}</Chip>
+          </div>
+          <p className="text-sm text-muted-foreground flex gap-1.5"><MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary" />{pk.address}</p>
+        </OptionCard>
+      ))}
+      <OptionCard
+        icon={ParkingCircle}
+        color="bg-blue-100 text-blue-700"
+        title={T.parking.title}
+        actions={
+          <a href="https://parclick.es/?affiliate=670e528a" target="_blank" rel="noopener noreferrer" className={btnPrimary} data-testid="button-parking">
+            {T.parking.button}
+          </a>
+        }
+      >
+        <p className="text-sm text-muted-foreground">{T.parking.description}</p>
+      </OptionCard>
+    </div>
+  );
+
+  const places: { id: Place; icon: typeof Plane; label: string }[] = [
+    { id: 'airport', icon: Plane, label: U.airport },
+    { id: 'station', icon: Train, label: U.station },
+    { id: 'car', icon: Car, label: U.car },
+  ];
+
+  const tabs = [
+    { id: 'arrival' as const, icon: Plane, label: T.arrival, rotate: 'rotate-45' },
+    { id: 'departure' as const, icon: Plane, label: T.departure, rotate: '-rotate-45' },
+    { id: 'movearound' as const, icon: Navigation, label: T.moveAround, rotate: '' },
+  ];
+
+  const nearbyUrl = (q: string) => `https://www.google.com/maps/search/${q}/@${COORDS[apartment]},16z`;
+
   return (
     <div className="min-h-screen bg-background relative">
-      <div 
+      <div
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-[0.12] pointer-events-none"
         style={{ backgroundImage: `url(${apartmentBgUrl})` }}
       />
-      <div className="hidden sm:flex fixed inset-0 items-center justify-center pointer-events-none opacity-5">
-        <p className="text-9xl font-bold text-foreground transform -rotate-45">
-          {apartmentName}
-        </p>
-      </div>
-      <PageHeader 
-        onBack={onBack} 
-        onHome={onHome} 
-        title={t.transport.title}
+      <PageHeader
+        onBack={onBack}
+        onHome={onHome}
+        title={T.title}
         currentLanguage={currentLanguage}
         onLanguageChange={onLanguageChange}
         changeLanguageLabel={t.common.changeLanguage}
@@ -51,963 +326,115 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
         apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
-        <div className="grid grid-cols-3 gap-2 md:flex md:gap-3">
-          <Button
-            variant={activeTab === 'arrival' ? 'default' : 'outline'}
-            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
-            onClick={() => setActiveTab('arrival')}
-            data-testid="tab-arrival"
-          >
-            <Plane className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
-            {t.transport.arrival}
-          </Button>
-          <Button
-            variant={activeTab === 'departure' ? 'default' : 'outline'}
-            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
-            onClick={() => setActiveTab('departure')}
-            data-testid="tab-departure"
-          >
-            <Plane className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
-            {t.transport.departure}
-          </Button>
-          <Button
-            variant={activeTab === 'movearound' ? 'default' : 'outline'}
-            className="flex-1 h-auto min-h-14 flex-col md:flex-row gap-1 md:gap-0 py-2 px-1 md:px-4 text-xs md:text-sm whitespace-normal leading-tight text-center justify-center shadow-sm"
-            onClick={() => setActiveTab('movearound')}
-            data-testid="tab-movearound"
-          >
-            <Navigation className="w-5 h-5 md:w-4 md:h-4 md:mr-2" />
-            {t.transport.moveAround}
-          </Button>
+      <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-4">
+        {/* Llegada / Salida / Moverse */}
+        <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-white/90 border border-border shadow-sm rounded-xl">
+          {tabs.map(({ id, icon: Icon, label, rotate }) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setActiveTab(id)}
+              className={`flex flex-col items-center justify-center gap-1 rounded-lg py-2 px-1 text-xs leading-tight text-center min-h-14 ${
+                activeTab === id ? 'bg-primary text-primary-foreground shadow-sm font-semibold' : 'text-foreground hover:bg-muted'
+              }`}
+              data-testid={`tab-${id}`}
+            >
+              <Icon className={`w-5 h-5 ${rotate}`} />
+              {label}
+            </button>
+          ))}
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-6">
-          <div className="hidden">
-            <TabsList>
-              <TabsTrigger value="arrival">{t.transport.arrival}</TabsTrigger>
-              <TabsTrigger value="departure">{t.transport.departure}</TabsTrigger>
-              <TabsTrigger value="movearound">{t.transport.moveAround}</TabsTrigger>
-            </TabsList>
+        {activeTab !== 'movearound' && (
+          <>
+            {/* ¿Desde/hacia dónde? */}
+            <div className="grid grid-cols-3 gap-2" data-testid="place-picker">
+              {places.map(({ id, icon: Icon, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setPlace(id)}
+                  className={`rounded-2xl border-2 p-3 flex flex-col items-center gap-1.5 text-center transition-colors ${
+                    place === id ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-white text-foreground'
+                  }`}
+                  data-testid={`place-${id}`}
+                >
+                  <Icon className="w-7 h-7" />
+                  <span className="text-xs font-semibold leading-tight">{label}</span>
+                </button>
+              ))}
+            </div>
+
+            {place === 'airport' && <AirportOptions dir={activeTab} />}
+            {place === 'station' && <StationOptions dir={activeTab} />}
+            {place === 'car' && <CarOptions />}
+          </>
+        )}
+
+        {activeTab === 'movearound' && (
+          <div className="space-y-3">
+            <div className="rounded-2xl bg-white border border-border shadow-sm p-4 flex gap-3">
+              <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <div>
+                <h2 className="font-bold text-base">{T.localTransport.title}</h2>
+                <p className="text-sm text-muted-foreground leading-snug mt-1">
+                  {apartment === 'ibarra' ? T.localTransport.ibarraInfo : T.localTransport.quevedoInfo}
+                </p>
+              </div>
+            </div>
+            {[
+              { icon: Bus, color: 'bg-sky-100 text-sky-700', title: T.localTransport.busStops, map: nearbyUrl('parada+autobus'), web: { url: 'https://www.tussam.es', label: 'TUSSAM' } },
+              { icon: Bike, color: 'bg-red-100 text-red-700', title: T.localTransport.bikeStations, map: nearbyUrl('sevici'), web: { url: T.localTransport.seviciUrl, label: 'Sevici' } },
+              { icon: Zap, color: 'bg-teal-100 text-teal-700', title: T.localTransport.scooters, map: nearbyUrl('electric+scooter'), web: { url: T.localTransport.scooterUrl, label: 'VOI' } },
+            ].map((o) => (
+              <OptionCard
+                key={o.title}
+                icon={o.icon}
+                color={o.color}
+                title={o.title}
+                actions={
+                  <>
+                    <a href={o.map} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+                      <MapPin className="w-4 h-4 text-primary" /> {T.localTransport.viewOnMap}
+                    </a>
+                    <a href={o.web.url} target="_blank" rel="noopener noreferrer" className={btnOutline}>
+                      <ExternalLink className="w-4 h-4 text-primary" /> {o.web.label}
+                    </a>
+                  </>
+                }
+              >
+                <p className="text-sm text-muted-foreground">{T.localTransport.description}</p>
+              </OptionCard>
+            ))}
           </div>
-
-          <TabsContent value="arrival" className="mt-6">
-            <Accordion type="multiple" className="space-y-4">
-              <AccordionItem value="airport" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-arrival">
-                  <div className="flex items-center gap-3 text-left">
-                    <Plane className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.fromAirport}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.bus.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.bus.price} • {t.transport.bus.schedule}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-foreground">{busStop}</p>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.tussam.es', '_blank')}
-                  data-testid="button-tussam"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.bus.link}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.taxi.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.taxi.price}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-foreground">{address}</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.vtc.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.vtc.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.uber.com', '_blank')}
-                  data-testid="button-uber"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.vtc.uber}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.cabify.com', '_blank')}
-                  data-testid="button-cabify"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.vtc.cabify}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Plane className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.transfer.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.transfer.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  variant="default"
-                  className="w-full"
-                  onClick={() => window.open('https://www.book-online-transfers.com/es/baintex-airport-taxi', '_blank')}
-                  data-testid="button-transfer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.transfer.button}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <ParkingCircle className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.parking.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.parking.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  variant="default"
-                  className="w-full"
-                  onClick={() => window.open('https://parclick.es/?affiliate=670e528a', '_blank')}
-                  data-testid="button-parking"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.parking.button}
-                </Button>
-              </CardContent>
-            </Card>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="trainstation" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-arrival">
-                  <div className="flex items-center gap-3 text-left">
-                    <Train className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.trainStation.fromStation}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.busTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.busLine}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">{t.transport.trainStation.busPrice} • {t.transport.trainStation.busSchedule}</p>
-                <p className="text-sm text-foreground">
-                  {apartment === 'ibarra' ? t.transport.trainStation.busStopIbarra : t.transport.trainStation.busStopQuevedo}
-                </p>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.tussam.es', '_blank')}
-                  data-testid="button-train-bus"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.bus.link}
-                </Button>
-              </CardContent>
-            </Card>
-
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.taxiTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.taxiPrice}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-foreground">{t.transport.trainStation.taxiDuration}</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {apartment === 'ibarra' ? t.transport.trainStation.walkingIbarra : t.transport.trainStation.walkingQuevedo}
-                </p>
-              </CardContent>
-            </Card>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="car" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-arrival">
-                  <div className="flex items-center gap-3 text-left">
-                    <Car className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.byCar.title}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <p className="text-sm text-muted-foreground mb-4">{t.transport.byCar.subtitle}</p>
-                  
-                  {apartment === 'ibarra' ? (
-                    <>
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking1.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking1.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking1.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
-                              data-testid="button-parking1-map"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking1-route"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking2.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking2.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking2.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
-                              data-testid="button-parking2-map"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}&destination=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking2-route"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </>
-                  ) : (
-                    <>
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking1.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.quevedo.parking1.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking1.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
-                              data-testid="button-parking1-map"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking1-route"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking2.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.quevedo.parking2.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking2.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
-                              data-testid="button-parking2-map"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking2-route"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </>
-                  )}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </TabsContent>
-
-          <TabsContent value="departure" className="mt-6">
-            <Accordion type="multiple" className="space-y-4">
-              <AccordionItem value="airport" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-airport-departure">
-                  <div className="flex items-center gap-3 text-left">
-                    <Plane className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.toAirport}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.bus.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.bus.price} • {t.transport.bus.schedule}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-foreground">{busStop}</p>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.tussam.es', '_blank')}
-                  data-testid="button-tussam-departure"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.bus.link}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.taxi.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.taxi.price}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.vtc.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.vtc.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.uber.com', '_blank')}
-                  data-testid="button-uber-departure"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.vtc.uber}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.cabify.com', '_blank')}
-                  data-testid="button-cabify-departure"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.vtc.cabify}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Plane className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.transfer.title}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.transfer.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  variant="default"
-                  className="w-full"
-                  onClick={() => window.open('https://www.book-online-transfers.com/es/baintex-airport-taxi', '_blank')}
-                  data-testid="button-transfer-departure"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.transfer.button}
-                </Button>
-              </CardContent>
-            </Card>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="trainstation" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-train-departure">
-                  <div className="flex items-center gap-3 text-left">
-                    <Train className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.trainStation.toStation}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.busTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.busLine}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">{t.transport.trainStation.busPrice} • {t.transport.trainStation.busSchedule}</p>
-                <p className="text-sm text-foreground">
-                  {apartment === 'ibarra' ? t.transport.trainStation.busStopIbarra : t.transport.trainStation.busStopQuevedo}
-                </p>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open('https://www.tussam.es', '_blank')}
-                  data-testid="button-train-bus-departure"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.bus.link}
-                </Button>
-              </CardContent>
-            </Card>
-
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Car className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.taxiTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.taxiPrice}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-foreground">{t.transport.trainStation.taxiDuration}</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {apartment === 'ibarra' ? t.transport.trainStation.walkingIbarra : t.transport.trainStation.walkingQuevedo}
-                </p>
-              </CardContent>
-            </Card>
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="car" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
-                <AccordionTrigger className="hover:no-underline" data-testid="accordion-car-departure">
-                  <div className="flex items-center gap-3 text-left">
-                    <Car className="w-9 h-9 p-2 rounded-xl bg-primary/10 text-primary shrink-0" />
-                    <h2 className="text-base sm:text-xl font-semibold text-foreground text-left leading-snug">
-                      {t.transport.byCar.title}
-                    </h2>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="space-y-4 pt-4">
-                  <p className="text-sm text-muted-foreground mb-4">{t.transport.byCar.subtitle}</p>
-                  
-                  {apartment === 'ibarra' ? (
-                    <>
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking1.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking1.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking1.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking1.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking1.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}`, '_blank')}
-                              data-testid="button-parking1-map-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking1.address)}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking1-route-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.ibarra.parking2.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.ibarra.parking2.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.ibarra.parking2.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.ibarra.parking2.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.ibarra.parking2.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}`, '_blank')}
-                              data-testid="button-parking2-map-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Conde de Ibarra, 11-13, 41004 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.ibarra.parking2.address)}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking2-route-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </>
-                  ) : (
-                    <>
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking1.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.quevedo.parking1.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking1.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking1.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking1.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}`, '_blank')}
-                              data-testid="button-parking1-map-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking1-route-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-
-                      <Card>
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                              <ParkingCircle className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-lg">{t.transport.byCar.quevedo.parking2.name}</CardTitle>
-                              <CardDescription className="mt-1">
-                                {t.transport.byCar.quevedo.parking2.distance}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="space-y-2 text-sm">
-                            <p><strong>{t.transport.byCar.address}:</strong> {t.transport.byCar.quevedo.parking2.address}</p>
-                            <p><strong>{t.transport.byCar.phone}:</strong> {t.transport.byCar.quevedo.parking2.phone}</p>
-                            <p><strong>{t.transport.byCar.price}:</strong> {t.transport.byCar.quevedo.parking2.price}</p>
-                          </div>
-                          <div className="space-y-2">
-                            <Button
-                              variant="outline"
-                              className="w-full"
-                              onClick={() => window.open(`https://maps.google.com/?q=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}`, '_blank')}
-                              data-testid="button-parking2-map-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.openMap}
-                            </Button>
-                            <Button
-                              variant="default"
-                              className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&travelmode=walking`, '_blank')}
-                              data-testid="button-parking2-route-departure"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {t.transport.byCar.walkingRoute}
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </>
-                  )}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </TabsContent>
-
-          <TabsContent value="movearound" className="space-y-4 mt-6">
-            <h2 className="text-xl font-semibold text-foreground mb-4">
-              {t.transport.localTransport.title}
-            </h2>
-            
-            <p className="text-muted-foreground mb-6">
-              {apartment === 'ibarra' ? t.transport.localTransport.ibarraInfo : t.transport.localTransport.quevedoInfo}
-            </p>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bus className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.localTransport.busStops}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.localTransport.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => {
-                    const coords = apartment === 'ibarra' 
-                      ? '37.3889,-5.9885' 
-                      : '37.3954,-5.9930';
-                    window.open(`https://www.google.com/maps/search/bus+stop/@${coords},16z`, '_blank');
-                  }}
-                  data-testid="button-bus-stops-map"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.localTransport.viewOnMap}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Bike className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.localTransport.bikeStations}</CardTitle>
-                    <CardDescription className="mt-1">
-                      Sevici - {t.transport.localTransport.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => {
-                    const coords = apartment === 'ibarra' 
-                      ? '37.3889,-5.9885' 
-                      : '37.3954,-5.9930';
-                    window.open(`https://www.google.com/maps/search/sevici+bike+station/@${coords},16z`, '_blank');
-                  }}
-                  data-testid="button-bike-stations-map"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.localTransport.viewOnMap}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open(t.transport.localTransport.seviciUrl, '_blank')}
-                  data-testid="button-sevici-web"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.localTransport.seviciWebButton}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Navigation className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.localTransport.scooters}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.localTransport.description}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => {
-                    const coords = apartment === 'ibarra' 
-                      ? '37.3889,-5.9885' 
-                      : '37.3954,-5.9930';
-                    window.open(`https://www.google.com/maps/search/electric+scooter/@${coords},16z`, '_blank');
-                  }}
-                  data-testid="button-scooters-map"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.localTransport.viewOnMap}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => window.open(t.transport.localTransport.scooterUrl, '_blank')}
-                  data-testid="button-scooter-web"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t.transport.localTransport.scooterWebButton}
-                </Button>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        )}
       </div>
+
+      {/* Dirección a pantalla completa para enseñar al taxista */}
+      {driverText && createPortal(
+        <div className="fixed inset-0 z-[100] bg-white flex flex-col" role="dialog" aria-modal="true" data-testid="driver-screen">
+          <div className="flex justify-end p-4">
+            <button type="button" onClick={() => setDriverText(null)} className="w-11 h-11 rounded-full bg-muted flex items-center justify-center" aria-label={U.close}>
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center px-6 text-center gap-6">
+            <p className="text-sm text-muted-foreground">{U.driverHint}</p>
+            <Car className="w-14 h-14 text-primary" />
+            <p className="text-4xl font-extrabold leading-tight text-foreground">{driverText.replace(/, (\d{5})/, '\n$1').split('\n').map((l, i) => <span key={i} className="block">{l}</span>)}</p>
+            {driverText === address && <p className="text-xl font-semibold text-primary">{apartmentName}</p>}
+          </div>
+          <div className="p-4 grid grid-cols-2 gap-2">
+            <button type="button" onClick={copyAddress} className={btnOutline}>
+              {copied ? <Check className="w-4 h-4 text-green-600" /> : <Copy className="w-4 h-4 text-primary" />} {copied ? U.copied : U.copy}
+            </button>
+            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(driverText)}`} target="_blank" rel="noopener noreferrer" className={btnPrimary}>
+              <MapPin className="w-4 h-4" /> Maps
+            </a>
+          </div>
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }
