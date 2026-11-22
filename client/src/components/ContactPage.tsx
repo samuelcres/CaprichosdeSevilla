@@ -1,5 +1,6 @@
 import PageHeader from './PageHeader';
 import { HealthSection } from './Extras';
+import { hostWhatsAppLink } from '@/lib/whatsapp';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone, AlertCircle, Shield } from 'lucide-react';
@@ -18,7 +19,7 @@ interface ContactPageProps {
 
 export default function ContactPage({ apartment, onBack, onHome, t, currentLanguage, onLanguageChange }: ContactPageProps) {
   const openWhatsApp = () => {
-    window.open('https://wa.me/34664602010', '_blank');
+    window.open(hostWhatsAppLink(apartment, currentLanguage), '_blank');
   };
 
   const openEmail = () => {

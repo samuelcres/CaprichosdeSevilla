@@ -5,6 +5,7 @@ import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen, Utensi
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import { WeatherChip } from '@/components/Extras';
+import { hostWhatsAppLink } from '@/lib/whatsapp';
 import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
@@ -43,8 +44,7 @@ interface MainMenuProps {
 }
 
 export default function MainMenu({ options, onSelect, onBack, apartment, apartmentName, currentLanguage, onLanguageChange, t, showBackButton = true }: MainMenuProps) {
-  const whatsappNumber = '+34664602010';
-  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
+  const whatsappLink = hostWhatsAppLink(apartment, currentLanguage);
   const [guideOpen, setGuideOpen] = useState(false);
 
   const currentLang = languages.find(l => l.code === currentLanguage);
