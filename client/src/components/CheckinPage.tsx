@@ -3,7 +3,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Clock, Luggage, ExternalLink } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, LogIn, Clock, Luggage, ExternalLink, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -35,14 +37,25 @@ interface CheckinPageProps {
 
 export default function CheckinPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: CheckinPageProps) {
   const steps = apartment === 'ibarra' ? t.checkin.ibarra : t.checkin.quevedo;
+  const [zoom, setZoom] = useState<number | null>(null);
+
+  // Cerrar la foto ampliada con Escape y bloquear el scroll de fondo
+  useEffect(() => {
+    if (zoom === null) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setZoom(null); };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = prev; window.removeEventListener('keydown', onKey); };
+  }, [zoom]);
 
   const stepIcons = [
-    <MapPin className="w-5 h-5" />,
-    <Mail className="w-5 h-5" />,
-    <DoorOpen className="w-5 h-5" />,
-    <Building2 className="w-5 h-5" />,
-    <DoorOpen className="w-5 h-5" />,
-    <LogOut className="w-5 h-5" />,
+    <MapPin className="w-3.5 h-3.5" />,
+    <Mail className="w-3.5 h-3.5" />,
+    <DoorOpen className="w-3.5 h-3.5" />,
+    <Building2 className="w-3.5 h-3.5" />,
+    <DoorOpen className="w-3.5 h-3.5" />,
+    <LogOut className="w-3.5 h-3.5" />,
   ];
 
   const apartmentAddress = apartment === 'ibarra' 
@@ -109,10 +122,125 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
         apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+      <div className="relative z-10 max-w-3xl mx-auto p-4 md:p-6 space-y-4">
+        <div className="flex gap-2" data-testid="checkin-times">
+          <div className="flex-1 rounded-2xl bg-white border border-border shadow-sm px-3 py-2.5 flex items-center gap-2">
+            <span className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center"><LogIn className="w-5 h-5" /></span>
+            <div className="leading-tight"><p className="text-[11px] text-muted-foreground">Check-in</p><p className="font-bold">15:00 h</p></div>
+          </div>
+          <div className="flex-1 rounded-2xl bg-white border border-border shadow-sm px-3 py-2.5 flex items-center gap-2">
+            <span className="w-9 h-9 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center"><LogOut className="w-5 h-5" /></span>
+            <div className="leading-tight"><p className="text-[11px] text-muted-foreground">Check-out</p><p className="font-bold">11:00 h</p></div>
+          </div>
+        </div>
+
+        {/* Pasos: foto a la izquierda y texto a la derecha, con línea de progreso */}
+        <ol className="relative space-y-3" data-testid="checkin-steps">
+          {allSteps.map((step, index) => (
+            <li key={index} className="relative" data-testid={`card-step-${index + 1}`}>
+              {index < allSteps.length - 1 && (
+                <span className="absolute left-[1.15rem] top-10 -bottom-3 w-0.5 bg-primary/20 sm:hidden" aria-hidden />
+              )}
+              <div className="flex gap-3">
+                <div className="relative z-10 shrink-0 w-9 h-9 rounded-full bg-primary text-primary-foreground font-bold flex items-center justify-center shadow ring-4 ring-background">
+                  {index + 1}
+                </div>
+                <div className="flex-1 min-w-0 rounded-2xl bg-white border border-border shadow-sm overflow-hidden">
+                  <div className="flex gap-3 p-3">
+                    {stepImages[index] && (
+                      <button
+                        type="button"
+                        onClick={() => setZoom(index)}
+                        className="relative shrink-0 w-28 sm:w-40 aspect-[3/4] rounded-xl overflow-hidden bg-muted group"
+                        aria-label={`${t.checkin.step} ${index + 1}`}
+                        data-testid={`img-step-${index + 1}`}
+                      >
+                        <img
+                          src={stepImages[index]}
+                          alt={`${t.checkin.step} ${index + 1}`}
+                          className="w-full h-full object-cover"
+                          loading={index > 1 ? 'lazy' : undefined}
+                        />
+                        <span className="absolute bottom-1 right-1 w-7 h-7 rounded-full bg-black/55 text-white flex items-center justify-center">
+                          <Maximize2 className="w-3.5 h-3.5" />
+                        </span>
+                      </button>
+                    )}
+                    <div className="flex-1 min-w-0 space-y-1.5">
+                      <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-primary">
+                        {stepIcons[index]}
+                        {t.checkin.step} {index + 1}
+                      </p>
+                      <h3 className="font-bold text-[15px] leading-snug text-foreground">{step.title}</h3>
+                      <p className="text-[13px] text-muted-foreground leading-snug">{step.description}</p>
+                      {index === 0 && (
+                        <a
+                          href={googleMapsUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 mt-1 rounded-full bg-primary/10 text-primary text-xs font-semibold px-3 py-1.5"
+                          data-testid="button-view-location"
+                        >
+                          <MapPin className="w-3.5 h-3.5" />
+                          {t.checkin.viewLocation}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        {/* Foto ampliada */}
+        {zoom !== null && stepImages[zoom] && createPortal(
+          <div
+            className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center p-4"
+            onClick={() => setZoom(null)}
+            role="dialog"
+            aria-modal="true"
+            data-testid="step-zoom"
+          >
+            <button
+              type="button"
+              className="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/15 text-white flex items-center justify-center"
+              aria-label="Cerrar"
+              onClick={() => setZoom(null)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img src={stepImages[zoom]} alt="" className="max-w-full max-h-[78vh] object-contain rounded-lg" />
+            <p className="mt-4 text-white text-center text-sm max-w-md">
+              <span className="font-bold">{t.checkin.step} {zoom + 1}:</span> {allSteps[zoom].title}
+            </p>
+            <div className="mt-3 flex gap-3" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                disabled={zoom === 0}
+                onClick={() => setZoom(zoom - 1)}
+                className="w-11 h-11 rounded-full bg-white/15 text-white flex items-center justify-center disabled:opacity-30"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                type="button"
+                disabled={zoom === allSteps.length - 1}
+                onClick={() => setZoom(zoom + 1)}
+                className="w-11 h-11 rounded-full bg-white/15 text-white flex items-center justify-center disabled:opacity-30"
+                aria-label="Siguiente"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
+
         <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="luggage" className="border rounded-lg bg-card">
-            <AccordionTrigger className="px-6 py-4 hover:no-underline" data-testid="accordion-luggage">
+          <AccordionItem value="luggage" className="border rounded-2xl bg-white shadow-sm">
+            <AccordionTrigger className="px-4 py-3 hover:no-underline" data-testid="accordion-luggage">
               <div className="flex items-center gap-3 text-left">
                 <Luggage className="w-5 h-5 text-primary flex-shrink-0" />
                 <div>
@@ -121,7 +249,7 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
                 </div>
               </div>
             </AccordionTrigger>
-            <AccordionContent className="px-6 pb-6">
+            <AccordionContent className="px-4 pb-4">
               <div className="space-y-3 pt-2">
                 {steps.luggage?.map((locker: any, index: number) => (
                   <Card key={index} className="overflow-visible" data-testid={`card-locker-${index}`}>
@@ -203,66 +331,8 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
           </AccordionItem>
         </Accordion>
 
-        <div className="space-y-4">
-          {allSteps.map((step, index) => (
-            <Card key={index} data-testid={`card-step-${index + 1}`}>
-              <CardContent className="p-6">
-                <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex gap-4 flex-1">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-semibold">
-                        {index + 1}
-                      </div>
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className="text-primary">{stepIcons[index]}</div>
-                        <h3 className="font-semibold text-foreground">
-                          {t.checkin.step} {index + 1}: {step.title}
-                        </h3>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {step.description}
-                      </p>
-                      {index === 0 && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-3"
-                          asChild
-                          data-testid="button-view-location"
-                        >
-                          <a 
-                            href={googleMapsUrl} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
-                            <MapPin className="w-4 h-4" />
-                            {t.checkin.viewLocation}
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                  {stepImages[index] && (
-                    <div className="flex-shrink-0 w-full md:w-64">
-                      <img
-                        src={stepImages[index]}
-                        alt={`${t.checkin.step} ${index + 1}`}
-                        className="w-full h-auto rounded-lg object-contain max-h-80 md:max-h-64"
-                        data-testid={`img-step-${index + 1}`}
-                      />
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <Card className="border-amber-500/50 bg-amber-50 dark:bg-amber-950/20">
-          <CardContent className="p-6">
+        <Card className="!rounded-2xl border-amber-500/50 bg-amber-50 dark:bg-amber-950/20">
+          <CardContent className="p-4">
             <div className="flex gap-3">
               <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-500 flex-shrink-0 mt-0.5" />
               <div className="space-y-2">
@@ -278,8 +348,8 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
         </Card>
 
         {t.checkin.schedule && (
-          <Card className="border-blue-500/50 bg-blue-50 dark:bg-blue-950/20" data-testid="card-schedule-info">
-            <CardContent className="p-6">
+          <Card className="!rounded-2xl border-blue-500/50 bg-blue-50 dark:bg-blue-950/20" data-testid="card-schedule-info">
+            <CardContent className="p-4">
               <div className="flex gap-3">
                 <Clock className="w-5 h-5 text-blue-600 dark:text-blue-500 flex-shrink-0 mt-0.5" />
                 <div className="space-y-2">
@@ -295,21 +365,6 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
           </Card>
         )}
 
-        <Card className="border-green-500/50 bg-green-50 dark:bg-green-950/20">
-          <CardContent className="p-6">
-            <div className="flex gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-500 flex-shrink-0 mt-0.5" />
-              <div className="space-y-2">
-                <h3 className="font-semibold text-green-900 dark:text-green-300">
-                  Check-in: 15:00h
-                </h3>
-                <p className="text-sm text-green-800 dark:text-green-400">
-                  Check-out: 11:00h
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
