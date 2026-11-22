@@ -1,0 +1,93 @@
+import { MapPin, Phone, Globe, BookOpen, Navigation, Footprints, Bike, Beef, Pizza, Sandwich, Flame } from 'lucide-react';
+import { Language } from '@/lib/i18n';
+import { FastFoodPlace, FastFoodKind } from '@/lib/fastFoodData';
+
+const LABELS: Record<Language, { walk: string; call: string; web: string; menu: string; route: string; delivery: string; order: string; intro: string; prices: string; kinds: Record<FastFoodKind, string> }> = {
+  es: { walk: 'min a pie', call: 'Llamar', web: 'Web', menu: 'Carta', route: 'Cómo llegar', delivery: 'A domicilio', order: 'Qué pedir', intro: 'Para comer algo rápido sin alejarse del apartamento.', prices: 'Precios orientativos; pueden cambiar.', kinds: { burger: 'Hamburguesas', pizza: 'Pizza', montaditos: 'Montaditos', grill: 'Hamburguesas y brasa' } },
+  en: { walk: 'min walk', call: 'Call', web: 'Website', menu: 'Menu', route: 'Directions', delivery: 'Delivery', order: 'What to order', intro: 'For a quick bite without straying far from the apartment.', prices: 'Prices are approximate and may change.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini sandwiches', grill: 'Burgers & grill' } },
+  fr: { walk: 'min à pied', call: 'Appeler', web: 'Site', menu: 'Carte', route: 'Itinéraire', delivery: 'Livraison', order: 'À commander', intro: 'Pour manger rapidement sans s’éloigner de l’appartement.', prices: 'Prix indicatifs, susceptibles de changer.', kinds: { burger: 'Burgers', pizza: 'Pizza', montaditos: 'Mini-sandwichs', grill: 'Burgers et grill' } },
+  de: { walk: 'Min. zu Fuß', call: 'Anrufen', web: 'Website', menu: 'Speisekarte', route: 'Route', delivery: 'Lieferung', order: 'Empfehlung', intro: 'Für den schnellen Hunger ganz in der Nähe der Wohnung.', prices: 'Richtpreise, Änderungen möglich.', kinds: { burger: 'Burger', pizza: 'Pizza', montaditos: 'Mini-Sandwiches', grill: 'Burger & Grill' } },
+  it: { walk: 'min a piedi', call: 'Chiama', web: 'Sito', menu: 'Menù', route: 'Indicazioni', delivery: 'A domicilio', order: 'Cosa ordinare', intro: 'Per mangiare qualcosa al volo senza allontanarsi dall’appartamento.', prices: 'Prezzi indicativi, possono variare.', kinds: { burger: 'Hamburger', pizza: 'Pizza', montaditos: 'Mini panini', grill: 'Hamburger e griglia' } },
+  zh: { walk: '分钟步行', call: '致电', web: '网站', menu: '菜单', route: '路线', delivery: '外卖', order: '推荐', intro: '在公寓附近快速吃点东西。', prices: '价格仅供参考，可能变动。', kinds: { burger: '汉堡', pizza: '披萨', montaditos: '迷你三明治', grill: '汉堡和烧烤' } },
+};
+
+const KIND_ICON: Record<FastFoodKind, typeof Beef> = { burger: Beef, pizza: Pizza, montaditos: Sandwich, grill: Flame };
+
+export function fastFoodLabels(lang: Language) {
+  return LABELS[lang] || LABELS.en;
+}
+
+export default function FastFoodCard({ place, lang, origin }: { place: FastFoodPlace; lang: Language; origin: string }) {
+  const L = fastFoodLabels(lang);
+  const Icon = KIND_ICON[place.kind];
+  const desc = (place.description as Record<string, string | undefined>)[lang] || place.description.en;
+  const route = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${encodeURIComponent(`${place.name}, ${place.address}`)}&travelmode=walking`;
+  const btn = 'inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-white text-sm font-semibold py-2.5 px-2';
+
+  return (
+    <article className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3" data-testid={`fastfood-${place.id}`}>
+      <div className="flex items-start gap-3">
+        <span className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <Icon className="h-6 w-6" />
+        </span>
+        <div className="min-w-0 flex-1">
+          <h4 className="font-bold text-base leading-tight">{place.name}</h4>
+          <div className="flex flex-wrap items-center gap-1.5 mt-1 text-[11px]">
+            <span className="rounded-full bg-muted px-2 py-0.5 font-medium">{L.kinds[place.kind]}</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5">
+              <Footprints className="h-3 w-3" />≈ {place.walkMinutes} {L.walk}
+            </span>
+            {place.delivery && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5">
+                <Bike className="h-3 w-3" />{L.delivery}
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <p className="text-sm text-muted-foreground">{desc}</p>
+
+      <p className="flex items-start gap-1.5 text-sm">
+        <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+        <span>{place.address}</span>
+      </p>
+
+      {place.menu.length > 0 && (
+        <div className="rounded-xl bg-muted/50 p-3">
+          <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground mb-1.5">{L.order}</p>
+          <ul className="space-y-1">
+            {place.menu.map((m) => (
+              <li key={m.name} className="flex items-baseline justify-between gap-3 text-sm">
+                <span>{m.name}</span>
+                {m.price && <span className="font-semibold whitespace-nowrap">{m.price}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div className="grid grid-cols-2 gap-2 [&>*:last-child:nth-child(odd)]:col-span-2">
+        {place.phone && (
+          <a href={`tel:${place.phone.replace(/\s/g, '')}`} className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground text-sm font-semibold py-2.5 px-2">
+            <Phone className="h-4 w-4" />{L.call}
+          </a>
+        )}
+        <a href={route} target="_blank" rel="noopener noreferrer" className={btn}>
+          <Navigation className="h-4 w-4 text-primary" />{L.route}
+        </a>
+        {place.menuUrl && (
+          <a href={place.menuUrl} target="_blank" rel="noopener noreferrer" className={btn}>
+            <BookOpen className="h-4 w-4 text-primary" />{L.menu}
+          </a>
+        )}
+        {place.website && place.website !== place.menuUrl && (
+          <a href={place.website} target="_blank" rel="noopener noreferrer" className={btn}>
+            <Globe className="h-4 w-4 text-primary" />{L.web}
+          </a>
+        )}
+      </div>
+      {place.phone && <p className="text-xs text-muted-foreground text-center -mt-1">{place.phone}</p>}
+    </article>
+  );
+}

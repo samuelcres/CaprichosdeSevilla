@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { Bus, Key, Wifi, MapPin, PartyPopper, Phone } from 'lucide-react';
+import { Bus, Key, Wifi, UtensilsCrossed, PartyPopper, Phone } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import { useTranslation } from '@/lib/i18n';
 
@@ -20,7 +20,7 @@ export default function BottomNav() {
     { id: 'transport', icon: Bus, label: t.menu.transport },
     { id: 'checkin', icon: Key, label: t.menu.checkin },
     { id: 'wifi', icon: Wifi, label: t.menu.wifi },
-    { id: 'tourism', icon: MapPin, label: t.menu.tourism },
+    { id: 'tourism', icon: UtensilsCrossed, label: t.menu.tourism },
     { id: 'events', icon: PartyPopper, label: t.menu.events },
     { id: 'contact', icon: Phone, label: t.menu.contact },
   ];
@@ -49,7 +49,7 @@ export default function BottomNav() {
                 <span className={`flex items-center justify-center w-11 h-7 rounded-full transition-colors ${active ? 'bg-primary/15' : ''}`}>
                   <Icon className="w-5 h-5" strokeWidth={active ? 2.5 : 2} />
                 </span>
-                <span className={`text-[10px] leading-tight max-w-full px-0.5 truncate ${active ? 'font-bold' : 'font-medium'}`}>
+                <span className={`text-[10px] leading-tight max-w-full px-0.5 text-center line-clamp-2 break-words ${active ? 'font-bold' : 'font-medium'}`}>
                   {label}
                 </span>
               </button>

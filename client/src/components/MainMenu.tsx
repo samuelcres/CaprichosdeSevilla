@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen } from 'lucide-react';
+import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen, UtensilsCrossed } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
@@ -222,7 +222,7 @@ export function getMenuIcons() {
     transport: <Bus className="w-12 h-12" />,
     checkin: <Key className="w-12 h-12" />,
     wifi: <Wifi className="w-12 h-12" />,
-    tourism: <MapPin className="w-12 h-12" />,
+    tourism: <UtensilsCrossed className="w-12 h-12" />,
     events: <PartyPopper className="w-12 h-12" />,
     contact: <Phone className="w-12 h-12" />,
   };

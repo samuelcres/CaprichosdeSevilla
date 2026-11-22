@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
+import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
+import FastFoodCard, { fastFoodLabels } from './FastFoodCard';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -286,6 +288,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
   const [activeTab, setActiveTab] = useState('restaurants');
 
   const restaurants = apartment === 'ibarra' ? ibarraRestaurants : quevedoRestaurants;
+  const fastFood = apartment === 'ibarra' ? ibarraFastFood : quevedoFastFood;
   const apartmentCoords = apartment === 'ibarra'
     ? '37.3889,-5.9885'
     : '37.3954,-5.9930';
@@ -473,6 +476,24 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                   {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
                     <RestaurantCard key={`dinner-${index}`} restaurant={restaurant} index={index} category="dinner" t={t} />
                   ))}
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Comida rápida cerca del apartamento */}
+              <AccordionItem value="fastfood" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-fastfood">
+                  <div className="flex items-center gap-2">
+                    <Sandwich className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.fastFood}</h3>
+                    <Badge variant="secondary">{fastFood.length}</Badge>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="space-y-4 pt-4">
+                  <p className="text-sm text-muted-foreground">{fastFoodLabels(currentLanguage).intro}</p>
+                  {fastFood.map((place) => (
+                    <FastFoodCard key={place.id} place={place} lang={currentLanguage} origin={apartmentCoords} />
+                  ))}
+                  <p className="text-[11px] text-muted-foreground text-center">{fastFoodLabels(currentLanguage).prices}</p>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
