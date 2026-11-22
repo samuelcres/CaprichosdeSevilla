@@ -62,7 +62,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col relative">
+    <div className="h-[100dvh] overflow-hidden sm:h-auto sm:min-h-screen sm:overflow-visible bg-background flex flex-col relative">
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat opacity-30 pointer-events-none"
         style={{ backgroundImage: `url(${apartmentBgUrl})` }}
@@ -73,7 +73,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </p>
       </div>
 
-      <header className="relative z-10 p-4 border-b border-border flex items-center justify-between gap-2 bg-white">
+      <header className="relative z-10 shrink-0 px-2 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white">
         {showBackButton ? (
           <Button
             variant="ghost"
@@ -92,14 +92,14 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         <img
           src={logoUrl}
           alt="Caprichos de Sevilla"
-          className="h-14 md:h-16 object-contain"
+          className="h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain"
         />
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <Button
             variant="outline"
             size="default"
-            className="gap-2"
+            className="gap-2 px-2.5 sm:px-4"
             onClick={() => setGuideOpen(true)}
             data-testid="button-guide"
             aria-label={t.common.guide}
@@ -114,7 +114,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
               <Button 
                 variant="outline" 
                 size="default"
-                className="gap-2"
+                className="gap-1 sm:gap-2 px-2.5 sm:px-4"
                 data-testid="button-language-selector"
                 aria-label={t.common.changeLanguage}
                 title={t.common.changeLanguage}
@@ -159,39 +159,44 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </div>
       </header>
 
-      <div className="relative z-10 flex-1 p-4 md:p-6">
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+      <div className="relative z-10 flex-1 min-h-0 flex flex-col p-3 sm:p-4 md:p-6">
+        <div className="max-w-4xl w-full mx-auto flex-1 min-h-0 flex flex-col gap-3 sm:block sm:space-y-6">
+          <div className="text-center sm:space-y-2 shrink-0">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground leading-tight">
               {apartmentName}
             </h1>
-            <p className="text-muted-foreground">{t.menu.subtitle}</p>
+            <p className="text-sm sm:text-base text-muted-foreground">{t.menu.subtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 grid-rows-3 flex-1 min-h-0 gap-3 sm:grid-rows-none lg:grid-cols-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto w-full">
             {options.map((option) => (
               <Card
                 key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative h-48"
+                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative min-h-0 sm:h-48"
                 onClick={() => onSelect(option.id)}
                 data-testid={`card-menu-${option.id}`}
               >
-                <div className="flex h-full">
+                <div className="flex flex-col sm:flex-row h-full">
                   <div 
-                    className="w-1/2 bg-cover bg-center"
+                    className="relative flex-1 min-h-0 sm:flex-none sm:w-1/2 bg-cover bg-center"
                     style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                  />
-                  <div className="w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center p-6 space-y-3">
-                    <div className="relative">
+                  >
+                    {/* Icono pequeño sobre la imagen (solo móvil) */}
+                    <div className="sm:hidden absolute top-1.5 left-1.5 w-8 h-8 rounded-xl bg-white/90 shadow-md flex items-center justify-center text-primary [&_svg]:w-5 [&_svg]:h-5">
+                      {option.icon}
+                    </div>
+                  </div>
+                  <div className="shrink-0 sm:w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center px-2 py-1.5 sm:p-6 sm:space-y-3">
+                    <div className="relative hidden sm:block">
                       <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
                         <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
                       </div>
                       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <div className="text-center space-y-1">
-                      <CardTitle className="text-lg font-bold text-foreground">{option.title}</CardTitle>
+                    <div className="text-center space-y-1 w-full min-w-0">
+                      <CardTitle className="text-[15px] sm:text-lg font-bold text-foreground leading-tight break-words hyphens-auto">{option.title}</CardTitle>
                       {option.description && (
-                        <p className="text-xs text-muted-foreground">{option.description}</p>
+                        <p className="hidden sm:block text-xs text-muted-foreground">{option.description}</p>
                       )}
                     </div>
                   </div>
