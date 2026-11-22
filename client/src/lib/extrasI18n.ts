@@ -4,13 +4,13 @@ import { Apartment, Language } from '@/lib/i18n';
 type L6<T> = Record<Language, T>;
 
 /* ---------- Barrio: servicios cercanos y costumbres ---------- */
-export type ServiceId = 'supermarket' | 'pharmacy' | 'atm' | 'laundry' | 'tobacco' | 'bakery';
+export type ServiceId = 'supermarket' | 'pharmacy' | 'atm' | 'laundry' | 'bazaar' | 'bakery';
 export const SERVICE_QUERY: Record<ServiceId, string> = {
   supermarket: 'supermercado',
   pharmacy: 'farmacia',
   atm: 'cajero automático',
   laundry: 'lavandería autoservicio',
-  tobacco: 'estanco',
+  bazaar: 'bazar',
   bakery: 'panadería',
 };
 
@@ -21,8 +21,8 @@ export const BARRIO: L6<{
   es: {
     tab: 'Barrio',
     servicesTitle: 'Servicios cerca del apartamento',
-    servicesHint: 'Toca para ver los más cercanos en el mapa, con horario y cómo llegar.',
-    services: { supermarket: 'Supermercado', pharmacy: 'Farmacia', atm: 'Cajero', laundry: 'Lavandería', tobacco: 'Estanco', bakery: 'Panadería' },
+    servicesHint: 'Toca una categoría para ver los más cercanos, ordenados por distancia.',
+    services: { supermarket: 'Supermercado', pharmacy: 'Farmacia', atm: 'Cajero', laundry: 'Lavandería', bazaar: 'Bazar', bakery: 'Panadería' },
     customsTitle: 'Horarios y costumbres en Sevilla',
     customs: [
       { icon: '🍽️', title: 'Almuerzo de 14:00 a 16:00', text: 'Es la comida principal. Muchas cocinas cierran entre las 16:00 y las 20:00.' },
@@ -35,8 +35,8 @@ export const BARRIO: L6<{
   en: {
     tab: 'Neighbourhood',
     servicesTitle: 'Services near the apartment',
-    servicesHint: 'Tap to see the nearest ones on the map, with opening hours and directions.',
-    services: { supermarket: 'Supermarket', pharmacy: 'Pharmacy', atm: 'ATM', laundry: 'Laundry', tobacco: 'Tobacconist', bakery: 'Bakery' },
+    servicesHint: 'Tap a category to see the nearest places, sorted by distance.',
+    services: { supermarket: 'Supermarket', pharmacy: 'Pharmacy', atm: 'ATM', laundry: 'Laundry', bazaar: 'Bazaar', bakery: 'Bakery' },
     customsTitle: 'Opening hours and customs in Seville',
     customs: [
       { icon: '🍽️', title: 'Lunch 2:00–4:00 pm', text: 'It is the main meal. Many kitchens close between 4 and 8 pm.' },
@@ -49,8 +49,8 @@ export const BARRIO: L6<{
   fr: {
     tab: 'Quartier',
     servicesTitle: 'Services près de l’appartement',
-    servicesHint: 'Touchez pour voir les plus proches sur la carte, avec horaires et itinéraire.',
-    services: { supermarket: 'Supermarché', pharmacy: 'Pharmacie', atm: 'Distributeur', laundry: 'Laverie', tobacco: 'Bureau de tabac', bakery: 'Boulangerie' },
+    servicesHint: 'Touchez une catégorie pour voir les plus proches, par distance.',
+    services: { supermarket: 'Supermarché', pharmacy: 'Pharmacie', atm: 'Distributeur', laundry: 'Laverie', bazaar: 'Bazar', bakery: 'Boulangerie' },
     customsTitle: 'Horaires et coutumes à Séville',
     customs: [
       { icon: '🍽️', title: 'Déjeuner de 14 h à 16 h', text: 'C’est le repas principal. Beaucoup de cuisines ferment entre 16 h et 20 h.' },
@@ -63,8 +63,8 @@ export const BARRIO: L6<{
   de: {
     tab: 'Viertel',
     servicesTitle: 'Geschäfte in der Nähe',
-    servicesHint: 'Antippen, um die nächsten auf der Karte zu sehen – mit Öffnungszeiten und Route.',
-    services: { supermarket: 'Supermarkt', pharmacy: 'Apotheke', atm: 'Geldautomat', laundry: 'Waschsalon', tobacco: 'Tabakladen', bakery: 'Bäckerei' },
+    servicesHint: 'Kategorie antippen: die nächsten Orte, nach Entfernung sortiert.',
+    services: { supermarket: 'Supermarkt', pharmacy: 'Apotheke', atm: 'Geldautomat', laundry: 'Waschsalon', bazaar: 'Bazar', bakery: 'Bäckerei' },
     customsTitle: 'Uhrzeiten und Gewohnheiten in Sevilla',
     customs: [
       { icon: '🍽️', title: 'Mittagessen 14–16 Uhr', text: 'Die Hauptmahlzeit. Viele Küchen schließen zwischen 16 und 20 Uhr.' },
@@ -77,8 +77,8 @@ export const BARRIO: L6<{
   it: {
     tab: 'Quartiere',
     servicesTitle: 'Servizi vicino all’appartamento',
-    servicesHint: 'Tocca per vedere i più vicini sulla mappa, con orari e percorso.',
-    services: { supermarket: 'Supermercato', pharmacy: 'Farmacia', atm: 'Bancomat', laundry: 'Lavanderia', tobacco: 'Tabaccheria', bakery: 'Panetteria' },
+    servicesHint: 'Tocca una categoria per vedere i più vicini, in ordine di distanza.',
+    services: { supermarket: 'Supermercato', pharmacy: 'Farmacia', atm: 'Bancomat', laundry: 'Lavanderia', bazaar: 'Bazar', bakery: 'Panetteria' },
     customsTitle: 'Orari e abitudini a Siviglia',
     customs: [
       { icon: '🍽️', title: 'Pranzo dalle 14 alle 16', text: 'È il pasto principale. Molte cucine chiudono tra le 16 e le 20.' },
@@ -91,8 +91,8 @@ export const BARRIO: L6<{
   zh: {
     tab: '周边',
     servicesTitle: '公寓附近的服务',
-    servicesHint: '点击在地图上查看最近的地点、营业时间和路线。',
-    services: { supermarket: '超市', pharmacy: '药店', atm: '取款机', laundry: '自助洗衣', tobacco: '烟草店', bakery: '面包店' },
+    servicesHint: '点击类别，按距离查看最近的地点。',
+    services: { supermarket: '超市', pharmacy: '药店', atm: '取款机', laundry: '自助洗衣', bazaar: '杂货店', bakery: '面包店' },
     customsTitle: '塞维利亚的作息与习惯',
     customs: [
       { icon: '🍽️', title: '午餐 14:00–16:00', text: '午餐是正餐。很多餐厅厨房 16:00–20:00 休息。' },
@@ -196,3 +196,12 @@ export const REVIEW_LINKS = [
   { name: 'Booking.com', url: 'https://secure.booking.com/mytrips.html' },
   { name: 'Airbnb', url: 'https://www.airbnb.com/trips' },
 ];
+
+export const PLACES_UI: L6<{ walk: string; call: string; maps: string; open: string; closed: string; empty: string; error: string; reviews: string; sourceGoogle: string; sourceOsm: string }> = {
+  es: { walk: 'min a pie', call: 'Llamar', maps: 'Google Maps', open: 'Abierto', closed: 'Cerrado', empty: 'No hay resultados cerca. Prueba en Google Maps.', error: 'No se pudo cargar la lista.', reviews: 'reseñas', sourceGoogle: 'Datos y fotos: Google', sourceOsm: 'Datos: © OpenStreetMap' },
+  en: { walk: 'min walk', call: 'Call', maps: 'Google Maps', open: 'Open', closed: 'Closed', empty: 'Nothing found nearby. Try Google Maps.', error: 'The list could not be loaded.', reviews: 'reviews', sourceGoogle: 'Data and photos: Google', sourceOsm: 'Data: © OpenStreetMap' },
+  fr: { walk: 'min à pied', call: 'Appeler', maps: 'Google Maps', open: 'Ouvert', closed: 'Fermé', empty: 'Aucun résultat à proximité. Essayez Google Maps.', error: 'Impossible de charger la liste.', reviews: 'avis', sourceGoogle: 'Données et photos : Google', sourceOsm: 'Données : © OpenStreetMap' },
+  de: { walk: 'Min. zu Fuß', call: 'Anrufen', maps: 'Google Maps', open: 'Geöffnet', closed: 'Geschlossen', empty: 'Nichts in der Nähe gefunden. Google Maps probieren.', error: 'Liste konnte nicht geladen werden.', reviews: 'Bewertungen', sourceGoogle: 'Daten und Fotos: Google', sourceOsm: 'Daten: © OpenStreetMap' },
+  it: { walk: 'min a piedi', call: 'Chiama', maps: 'Google Maps', open: 'Aperto', closed: 'Chiuso', empty: 'Nessun risultato vicino. Prova Google Maps.', error: 'Impossibile caricare l’elenco.', reviews: 'recensioni', sourceGoogle: 'Dati e foto: Google', sourceOsm: 'Dati: © OpenStreetMap' },
+  zh: { walk: '分钟步行', call: '致电', maps: 'Google 地图', open: '营业中', closed: '已关门', empty: '附近未找到结果，请在 Google 地图中查看。', error: '无法加载列表。', reviews: '条评价', sourceGoogle: '数据与照片：Google', sourceOsm: '数据：© OpenStreetMap' },
+};

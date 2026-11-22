@@ -259,3 +259,19 @@ calcula la distancia a pie y en taxi desde el apartamento y guarda el resultado 
 4. Vuelve a desplegar (Deployments → Retry deployment) para que coja la configuración.
 
 Sin la clave, la pantalla sigue funcionando y muestra solo las grandes citas de la ciudad.
+
+---
+
+## 🏪 Servicios cercanos (pestaña «Barrio»)
+
+`functions/api/places.ts` y `functions/api/place-photo.ts` listan supermercados, farmacias,
+cajeros, lavanderías, bazares y panaderías cercanos, ordenados por distancia a pie.
+
+- **Sin configurar nada** usan OpenStreetMap: nombre, dirección y teléfono cuando existe (sin fotos ni valoraciones).
+- **Con Google** (fotos, valoración, teléfono, abierto/cerrado):
+  1. En https://console.cloud.google.com crea un proyecto, activa **Places API (New)** y crea una clave de API.
+     Restríngela a «Places API (New)».
+  2. En Cloudflare → *caprichosdesevilla* → Settings → Variables and Secrets añade
+     `GOOGLE_PLACES_API_KEY` (Secret) en Production y Preview, y vuelve a desplegar.
+  3. Los resultados se guardan 7 días y las fotos 30 días, así que el uso queda muy por debajo
+     del tramo gratuito mensual de Google.

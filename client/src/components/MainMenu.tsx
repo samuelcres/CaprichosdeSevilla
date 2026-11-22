@@ -6,6 +6,12 @@ import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import { WeatherChip } from '@/components/Extras';
 import { hostWhatsAppLink } from '@/lib/whatsapp';
+
+const APARTMENT_ADDRESS: Record<Apartment, string> = {
+  ibarra: 'Calle Conde de Ibarra, 11-13, 41004 Sevilla',
+  quevedo: 'Calle Quevedo, 11, 41003 Sevilla',
+};
+const MAP_LABEL: Record<Language, string> = { es: 'Mapa', en: 'Map', fr: 'Carte', de: 'Karte', it: 'Mappa', zh: '地图' };
 import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
@@ -166,7 +172,19 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground leading-tight">
               {apartmentName}
             </h1>
-            <div className="pt-1"><WeatherChip apartment={apartment} lang={currentLanguage} /></div>
+            <div className="pt-1 flex flex-wrap items-center justify-center gap-1.5">
+              <WeatherChip apartment={apartment} lang={currentLanguage} />
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(APARTMENT_ADDRESS[apartment])}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full bg-white/90 border border-border shadow-sm px-3 py-1 text-xs sm:text-sm font-semibold text-primary"
+                data-testid="button-apartment-map"
+              >
+                <MapPin className="w-3.5 h-3.5" />
+                {MAP_LABEL[currentLanguage] || MAP_LABEL.en}
+              </a>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 grid-rows-3 flex-1 min-h-0 gap-3 sm:grid-rows-none lg:grid-cols-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto w-full">

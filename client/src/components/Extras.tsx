@@ -3,13 +3,13 @@ import { createPortal } from 'react-dom';
 import { format, addDays, parseISO, isValid, differenceInCalendarDays } from 'date-fns';
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
 import {
-  ShoppingCart, Pill, Landmark, Shirt, Cigarette, Croissant, Hospital, Phone, Navigation, ExternalLink,
+  ShoppingCart, Pill, Landmark, Shirt, Store, Croissant, MapPin, Hospital, Phone, Navigation, ExternalLink,
   Stethoscope, Ticket, Footprints, Clock, X, Star, HeartPulse,
 } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import {
   BARRIO, SERVICE_QUERY, ServiceId, HEALTH, HOSPITAL, PHARMACY_24H, PHARMACY_GUARD_URL,
-  TICKETS, TICKET_URLS, ROUTES, ROUTES_UI, WEATHER, REVIEW, REVIEW_LINKS,
+  TICKETS, TICKET_URLS, ROUTES, ROUTES_UI, WEATHER, REVIEW, REVIEW_LINKS, PLACES_UI,
 } from '@/lib/extrasI18n';
 
 const COORDS: Record<Apartment, { lat: number; lng: number }> = {
@@ -29,13 +29,81 @@ const mapsRoute = (apt: Apartment, dest: string, mode = 'walking') =>
 
 /* ============ Barrio (pestaña en Wi-Fi y Apartamento) ============ */
 const SERVICE_ICON: Record<ServiceId, typeof Pill> = {
-  supermarket: ShoppingCart, pharmacy: Pill, atm: Landmark, laundry: Shirt, tobacco: Cigarette, bakery: Croissant,
+  supermarket: ShoppingCart, pharmacy: Pill, atm: Landmark, laundry: Shirt, bazaar: Store, bakery: Croissant,
 };
+
+interface NearbyPlace {
+  id: string; name: string; address?: string; phone?: string; rating?: number; ratingCount?: number;
+  openNow?: boolean; photo?: string; mapsUrl: string; meters: number; walkMinutes: number;
+}
+
+function PlaceRow({ p, icon: Icon, P }: { p: NearbyPlace; icon: typeof Pill; P: (typeof PLACES_UI)['es'] }) {
+  const [imgOk, setImgOk] = useState(true);
+  return (
+    <li className="rounded-2xl bg-white border border-border shadow-sm p-3 flex gap-3" data-testid={`place-${p.id}`}>
+      <div className="shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-muted flex items-center justify-center text-primary">
+        {p.photo && imgOk
+          ? <img src={p.photo} alt="" loading="lazy" className="w-full h-full object-cover" onError={() => setImgOk(false)} />
+          : <Icon className="w-7 h-7" />}
+      </div>
+      <div className="min-w-0 flex-1 space-y-1">
+        <div className="flex items-start justify-between gap-2">
+          <p className="font-semibold text-sm leading-tight">{p.name}</p>
+          <span className="shrink-0 inline-flex items-center gap-0.5 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-1.5 py-0.5">
+            <Footprints className="w-3 h-3" />{p.walkMinutes} {P.walk}
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground">
+          {p.rating !== undefined && (
+            <span className="inline-flex items-center gap-0.5 text-foreground">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span className="font-semibold">{p.rating.toFixed(1)}</span>
+              {p.ratingCount !== undefined && <span className="text-muted-foreground">({p.ratingCount} {P.reviews})</span>}
+            </span>
+          )}
+          <span>{p.meters} m</span>
+          {p.openNow !== undefined && (
+            <span className={p.openNow ? 'text-emerald-700 font-medium' : 'text-red-600 font-medium'}>{p.openNow ? P.open : P.closed}</span>
+          )}
+        </div>
+        {p.address && <p className="text-xs text-muted-foreground leading-snug flex gap-1"><MapPin className="w-3.5 h-3.5 shrink-0 mt-px text-primary" />{p.address}</p>}
+        <div className="flex gap-1.5 pt-1">
+          {p.phone && (
+            <a href={tel(p.phone)} className="inline-flex items-center gap-1 rounded-lg bg-primary text-primary-foreground text-xs font-semibold px-2.5 py-1.5">
+              <Phone className="w-3.5 h-3.5" />{P.call}
+            </a>
+          )}
+          <a href={p.mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-border bg-white text-xs font-semibold px-2.5 py-1.5">
+            <Navigation className="w-3.5 h-3.5 text-primary" />{P.maps}
+          </a>
+        </div>
+      </div>
+    </li>
+  );
+}
 
 export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: Language }) {
   const B = BARRIO[lang] || BARRIO.en;
+  const P = PLACES_UI[lang] || PLACES_UI.en;
   const { lat, lng } = COORDS[apartment];
   const ids = Object.keys(SERVICE_QUERY) as ServiceId[];
+  const [selected, setSelected] = useState<ServiceId | null>(null);
+  const [state, setState] = useState<{ loading: boolean; error?: boolean; source?: string; places: NearbyPlace[] }>({ loading: false, places: [] });
+
+  useEffect(() => {
+    if (!selected) return;
+    const ctrl = new AbortController();
+    setState({ loading: true, places: [] });
+    fetch(`/api/places?type=${selected}&apartment=${apartment}`, { signal: ctrl.signal })
+      .then((r) => (r.ok && (r.headers.get('content-type') || '').includes('json') ? r.json() : Promise.reject(new Error('bad'))))
+      .then((d) => setState({ loading: false, source: d.source, places: Array.isArray(d.places) ? d.places : [] }))
+      .catch((e) => { if (e?.name !== 'AbortError') setState({ loading: false, error: true, places: [] }); });
+    return () => ctrl.abort();
+  }, [selected, apartment]);
+
+  const mapsSearch = selected ? `https://www.google.com/maps/search/${encodeURIComponent(SERVICE_QUERY[selected])}/@${lat},${lng},17z` : '';
+  const Icon = selected ? SERVICE_ICON[selected] : Store;
+
   return (
     <div className="space-y-3" data-testid="panel-barrio">
       <section className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3">
@@ -45,23 +113,56 @@ export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: L
         </div>
         <div className="grid grid-cols-3 gap-2">
           {ids.map((id) => {
-            const Icon = SERVICE_ICON[id];
+            const TileIcon = SERVICE_ICON[id];
+            const active = selected === id;
             return (
-              <a
+              <button
                 key={id}
-                href={`https://www.google.com/maps/search/${encodeURIComponent(SERVICE_QUERY[id])}/@${lat},${lng},17z`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-xl bg-muted/60 hover:bg-primary/10 p-3 flex flex-col items-center gap-1.5 text-center"
+                type="button"
+                onClick={() => setSelected(active ? null : id)}
+                className={`rounded-xl p-3 flex flex-col items-center gap-1.5 text-center border-2 transition-colors ${active ? 'border-primary bg-primary/10' : 'border-transparent bg-muted/60 hover:bg-primary/10'}`}
+                aria-pressed={active}
                 data-testid={`service-${id}`}
               >
-                <span className="w-10 h-10 rounded-full bg-white text-primary flex items-center justify-center shadow-sm"><Icon className="w-5 h-5" /></span>
+                <span className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm ${active ? 'bg-primary text-primary-foreground' : 'bg-white text-primary'}`}><TileIcon className="w-5 h-5" /></span>
                 <span className="text-xs font-semibold leading-tight">{B.services[id]}</span>
-              </a>
+              </button>
             );
           })}
         </div>
       </section>
+
+      {selected && (
+        <section className="space-y-2" data-testid="places-list">
+          <h3 className="font-bold text-[15px] px-1 flex items-center gap-2"><Icon className="w-4 h-4 text-primary" />{B.services[selected]}</h3>
+          {state.loading && (
+            <ul className="space-y-2">
+              {[0, 1, 2].map((i) => (
+                <li key={i} className="rounded-2xl bg-white border border-border p-3 flex gap-3 animate-pulse">
+                  <div className="w-16 h-16 rounded-xl bg-muted" />
+                  <div className="flex-1 space-y-2 py-1"><div className="h-3 w-2/3 bg-muted rounded" /><div className="h-3 w-1/2 bg-muted rounded" /><div className="h-3 w-1/3 bg-muted rounded" /></div>
+                </li>
+              ))}
+            </ul>
+          )}
+          {!state.loading && state.places.length > 0 && (
+            <ul className="space-y-2">
+              {state.places.map((p) => <PlaceRow key={p.id} p={p} icon={Icon} P={P} />)}
+            </ul>
+          )}
+          {!state.loading && state.places.length === 0 && (
+            <p className="rounded-2xl bg-white border border-border p-4 text-sm text-muted-foreground text-center">{state.error ? P.error : P.empty}</p>
+          )}
+          {!state.loading && (
+            <div className="flex items-center justify-between gap-2 px-1">
+              <span className="text-[10px] text-muted-foreground">{state.source === 'google' ? P.sourceGoogle : state.source === 'osm' ? P.sourceOsm : ''}</span>
+              <a href={mapsSearch} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary inline-flex items-center gap-1">
+                <ExternalLink className="w-3.5 h-3.5" />{P.maps}
+              </a>
+            </div>
+          )}
+        </section>
+      )}
 
       <section className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-2.5">
         <h3 className="font-bold text-[15px] flex items-center gap-2"><Clock className="w-4 h-4 text-primary" />{B.customsTitle}</h3>
