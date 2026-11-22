@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PageHeader from './PageHeader';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, Wifi, AirVent, WashingMachine, QrCode } from 'lucide-react';
+import { AC, WASHER, UI, APARTMENT_APPLIANCES } from '@/lib/applianceGuides';
+import { AcPanel, WasherPanel } from './ApplianceGuides';
 import { Apartment, Language } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
@@ -20,21 +20,27 @@ interface WifiPageProps {
 }
 
 export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: WifiPageProps) {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<'ssid' | 'password' | null>(null);
+  const [showQr, setShowQr] = useState(false);
+  const [tab, setTab] = useState<'wifi' | 'ac' | 'washer'>('wifi');
   const { toast } = useToast();
+  const U = UI[currentLanguage] || UI.en;
+  const has = APARTMENT_APPLIANCES[apartment];
+  const tabs = [
+    { id: 'wifi' as const, label: U.wifiTab, icon: Wifi },
+    ...(has.ac ? [{ id: 'ac' as const, label: (AC[currentLanguage] || AC.en).tab, icon: AirVent }] : []),
+    ...(has.washer ? [{ id: 'washer' as const, label: (WASHER[currentLanguage] || WASHER.en).tab, icon: WashingMachine }] : []),
+  ];
 
   const wifiData = apartment === 'ibarra' ? t.wifi.ibarra : t.wifi.quevedo;
   const qrCode = apartment === 'ibarra' ? qrIbarraUrl : qrQuevedoUrl;
 
-  const copyPassword = async () => {
+  const copyValue = async (value: string, key: 'ssid' | 'password') => {
     try {
-      await navigator.clipboard.writeText(wifiData.password);
-      setCopied(true);
-      toast({
-        description: t.wifi.copied,
-        duration: 2000,
-      });
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(value);
+      setCopied(key);
+      toast({ description: t.wifi.copied, duration: 2000 });
+      setTimeout(() => setCopied(null), 2000);
     } catch (err) {
       console.error('Failed to copy:', err);
     }
@@ -65,70 +71,71 @@ export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage
         apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
       />
 
-      <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t.wifi.title}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">
-                  {t.wifi.network}
-                </label>
-                <div className="p-4 bg-muted/50 rounded-lg border border-border">
-                  <p className="font-mono text-lg font-semibold text-foreground">
-                    {wifiData.ssid}
-                  </p>
-                </div>
-              </div>
+      <div className="relative z-10 max-w-2xl mx-auto p-4 md:p-6 space-y-4">
+        {tabs.length > 1 && (
+          <div className="grid gap-1.5 p-1.5 bg-white/90 border border-border shadow-sm rounded-xl" style={{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))` }} data-testid="apartment-tabs">
+            {tabs.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setTab(id)}
+                className={`flex flex-col items-center justify-center gap-1 rounded-lg py-2 px-1 text-xs leading-tight text-center min-h-14 transition-colors ${
+                  tab === id ? 'bg-primary text-primary-foreground shadow-sm font-semibold' : 'text-foreground hover:bg-muted'
+                }`}
+                data-testid={`tab-${id}`}
+              >
+                <Icon className="w-5 h-5" />
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-muted-foreground">
-                  {t.wifi.password}
-                </label>
+        {tab === 'wifi' && (
+          <section className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3" data-testid="panel-wifi">
+            {[
+              { label: t.wifi.network, value: wifiData.ssid, key: 'ssid' as const },
+              { label: t.wifi.password, value: wifiData.password, key: 'password' as const },
+            ].map((row) => (
+              <div key={row.key}>
+                <p className="text-xs font-medium text-muted-foreground mb-1">{row.label}</p>
                 <div className="flex gap-2">
-                  <div className="flex-1 p-4 bg-muted/50 rounded-lg border border-border">
-                    <p className="font-mono text-lg font-semibold text-foreground break-all">
-                      {wifiData.password}
-                    </p>
+                  <div className="flex-1 min-w-0 px-3 py-2.5 bg-muted/50 rounded-xl border border-border">
+                    <p className="font-mono text-lg font-semibold text-foreground break-all">{row.value}</p>
                   </div>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="h-14 w-14 flex-shrink-0"
-                    onClick={copyPassword}
-                    data-testid="button-copy-password"
+                  <button
+                    type="button"
+                    onClick={() => copyValue(row.value, row.key)}
+                    className="shrink-0 w-12 rounded-xl border border-border bg-white flex items-center justify-center"
+                    aria-label={t.wifi.copy}
+                    data-testid={row.key === 'password' ? 'button-copy-password' : 'button-copy-ssid'}
                   >
-                    {copied ? (
-                      <Check className="w-5 h-5 text-green-600" />
-                    ) : (
-                      <Copy className="w-5 h-5" />
-                    )}
-                  </Button>
+                    {copied === row.key ? <Check className="w-5 h-5 text-green-600" /> : <Copy className="w-5 h-5" />}
+                  </button>
                 </div>
               </div>
-            </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => setShowQr((v) => !v)}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary/10 text-primary font-semibold text-sm py-2.5"
+              data-testid="button-toggle-qr"
+            >
+              <QrCode className="w-4 h-4" />
+              {showQr ? U.hideQr : U.showQr}
+            </button>
+            {showQr && (
+              <div className="flex justify-center">
+                <div className="p-3 bg-white rounded-xl border-2 border-border">
+                  <img src={qrCode} alt="WiFi QR Code" className="w-44 h-auto object-contain max-h-80" data-testid="img-qr-code" />
+                </div>
+              </div>
+            )}
+          </section>
+        )}
 
-            <div className="pt-6 border-t border-border">
-              <div className="text-center space-y-4">
-                <p className="text-sm font-medium text-muted-foreground">
-                  {t.wifi.scanQR}
-                </p>
-                <div className="flex justify-center">
-                  <div className="p-4 bg-white rounded-lg border-2 border-border inline-block">
-                    <img
-                      src={qrCode}
-                      alt="WiFi QR Code"
-                      className="w-48 h-auto md:w-56 object-contain max-h-96"
-                      data-testid="img-qr-code"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        {tab === 'ac' && <AcPanel g={AC[currentLanguage] || AC.en} />}
+        {tab === 'washer' && <WasherPanel g={WASHER[currentLanguage] || WASHER.en} />}
       </div>
     </div>
   );
