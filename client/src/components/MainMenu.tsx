@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen, UtensilsCrossed } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
+import { WeatherChip } from '@/components/Extras';
 import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
 import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
@@ -165,7 +166,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground leading-tight">
               {apartmentName}
             </h1>
-            <p className="text-sm sm:text-base text-muted-foreground">{t.menu.subtitle}</p>
+            <div className="pt-1"><WeatherChip apartment={apartment} lang={currentLanguage} /></div>
           </div>
 
           <div className="grid grid-cols-2 grid-rows-3 flex-1 min-h-0 gap-3 sm:grid-rows-none lg:grid-cols-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto w-full">

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PageHeader from './PageHeader';
-import { Copy, Check, Wifi, AirVent, WashingMachine, QrCode } from 'lucide-react';
+import { Copy, Check, Wifi, AirVent, WashingMachine, QrCode, Store } from 'lucide-react';
+import { BARRIO } from '@/lib/extrasI18n';
+import { BarrioPanel } from './Extras';
 import { AC, WASHER, UI, APARTMENT_APPLIANCES } from '@/lib/applianceGuides';
 import { AcPanel, WasherPanel } from './ApplianceGuides';
 import { Apartment, Language } from '@/lib/i18n';
@@ -22,7 +24,7 @@ interface WifiPageProps {
 export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: WifiPageProps) {
   const [copied, setCopied] = useState<'ssid' | 'password' | null>(null);
   const [showQr, setShowQr] = useState(false);
-  const [tab, setTab] = useState<'wifi' | 'ac' | 'washer'>('wifi');
+  const [tab, setTab] = useState<'wifi' | 'ac' | 'washer' | 'barrio'>('wifi');
   const { toast } = useToast();
   const U = UI[currentLanguage] || UI.en;
   const has = APARTMENT_APPLIANCES[apartment];
@@ -30,6 +32,7 @@ export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage
     { id: 'wifi' as const, label: U.wifiTab, icon: Wifi },
     ...(has.ac ? [{ id: 'ac' as const, label: (AC[currentLanguage] || AC.en).tab, icon: AirVent }] : []),
     ...(has.washer ? [{ id: 'washer' as const, label: (WASHER[currentLanguage] || WASHER.en).tab, icon: WashingMachine }] : []),
+    { id: 'barrio' as const, label: (BARRIO[currentLanguage] || BARRIO.en).tab, icon: Store },
   ];
 
   const wifiData = apartment === 'ibarra' ? t.wifi.ibarra : t.wifi.quevedo;
@@ -136,6 +139,7 @@ export default function WifiPage({ onBack, onHome, apartment, t, currentLanguage
 
         {tab === 'ac' && <AcPanel g={AC[currentLanguage] || AC.en} />}
         {tab === 'washer' && <WasherPanel g={WASHER[currentLanguage] || WASHER.en} />}
+        {tab === 'barrio' && <BarrioPanel apartment={apartment} lang={currentLanguage} />}
       </div>
     </div>
   );

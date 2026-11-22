@@ -1,4 +1,5 @@
 import PageHeader from './PageHeader';
+import { HealthSection } from './Extras';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Mail, Phone, AlertCircle, Shield } from 'lucide-react';
@@ -206,6 +207,8 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
             </CardContent>
           </Card>
         </div>
+
+        <HealthSection apartment={apartment} lang={currentLanguage} />
 
         <Card className="bg-muted/50">
           <CardContent className="p-6 text-center">

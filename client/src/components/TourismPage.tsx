@@ -10,6 +10,7 @@ import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
 import FastFoodCard, { fastFoodLabels } from './FastFoodCard';
+import { TicketsAndWalks } from './Extras';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -496,7 +497,8 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             </Accordion>
           </TabsContent>
 
-          <TabsContent value="visits" className="mt-6">
+          <TabsContent value="visits" className="mt-4 space-y-4">
+            <TicketsAndWalks apartment={apartment} lang={currentLanguage} />
             <Accordion type="multiple" className="space-y-4">
               {visitCategoryIds.map((categoryId) => {
                 const visitsInCategory = visitDetails.filter(v => v.category === categoryId);

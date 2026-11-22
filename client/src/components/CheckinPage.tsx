@@ -1,4 +1,5 @@
 import PageHeader from './PageHeader';
+import { ReviewCard } from './Extras';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -365,6 +366,7 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
           </Card>
         )}
 
+        <ReviewCard lang={currentLanguage} />
       </div>
     </div>
   );
