@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Apartment, Language } from '@/lib/i18n';
 import PageHeader from './PageHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar } from '@/components/ui/calendar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { CalendarIcon, MapPin, ExternalLink, PartyPopper, CalendarDays, CalendarClock } from 'lucide-react';
-import { getEventsForDate, getEventsForMonth, getUpcomingEventsThisWeek, getEventsThisMonth, categoryColors } from '@/lib/eventsData';
-import { format } from 'date-fns';
+import { CalendarIcon, MapPin, ExternalLink, PartyPopper } from 'lucide-react';
+import LiveEventCard, { LiveEvent, TEXTS } from './LiveEventCard';
+import { getEventsForDate, getEventsForMonth, categoryColors } from '@/lib/eventsData';
+import { format, addDays, startOfDay, isSameDay, isToday } from 'date-fns';
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -38,12 +38,46 @@ interface EventsPageProps {
 export default function EventsPage({ apartment, onBack, onHome, t, currentLanguage, onLanguageChange }: EventsPageProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [sortBy, setSortBy] = useState<'time' | 'distance'>('time');
+  const [liveEvents, setLiveEvents] = useState<LiveEvent[]>([]);
+  const [loading, setLoading] = useState(false);
   const locale = getLocale(currentLanguage);
+  const L = TEXTS[currentLanguage] || TEXTS.en;
+  const origin = apartment === 'ibarra' ? '37.3889,-5.9885' : '37.3954,-5.9930';
+
+  const stripDays = useMemo(() => {
+    const today = startOfDay(new Date());
+    return Array.from({ length: 14 }, (_, i) => addDays(today, i));
+  }, []);
 
   const eventsForSelectedDate = selectedDate ? getEventsForDate(selectedDate) : [];
   const eventsForCurrentMonth = getEventsForMonth(currentMonth.getFullYear(), currentMonth.getMonth());
-  const upcomingEventsThisWeek = getUpcomingEventsThisWeek();
-  const eventsThisMonth = getEventsThisMonth();
+
+  const dateKey = selectedDate ? format(selectedDate, 'yyyy-MM-dd') : '';
+  useEffect(() => {
+    if (!dateKey) return;
+    const ctrl = new AbortController();
+    setLoading(true);
+    fetch(`/api/events?date=${dateKey}&lang=${currentLanguage}&apartment=${apartment}`, { signal: ctrl.signal })
+      .then((r) => (r.ok && (r.headers.get('content-type') || '').includes('json') ? r.json() : { events: [] }))
+      .then((d) => setLiveEvents(Array.isArray(d?.events) ? d.events : []))
+      .catch((err) => { if (err?.name !== 'AbortError') setLiveEvents([]); })
+      .finally(() => { if (!ctrl.signal.aborted) setLoading(false); });
+    return () => ctrl.abort();
+  }, [dateKey, currentLanguage, apartment]);
+
+  const sortedLive = useMemo(() => {
+    const list = [...liveEvents];
+    if (sortBy === 'distance') {
+      list.sort((a, b) => (a.distance?.km ?? 999) - (b.distance?.km ?? 999));
+    } else {
+      list.sort((a, b) => (a.time || '99').localeCompare(b.time || '99'));
+    }
+    return list;
+  }, [liveEvents, sortBy]);
+
+  const totalCount = liveEvents.length + eventsForSelectedDate.length;
 
   const eventDates = eventsForCurrentMonth.map(event => {
     const dates: Date[] = [];
@@ -93,28 +127,48 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
           apartment={apartment}
           apartmentLabel={apartment === 'ibarra' ? t.apartment.ibarra : t.apartment.quevedo}
         />
-        <div className="container mx-auto px-4 py-8 max-w-7xl">
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <PartyPopper className="h-8 w-8 text-primary" data-testid="icon-events" />
-              <h1 className="text-3xl font-bold text-foreground" data-testid="title-events">{t.events.title}</h1>
+        <div className="container mx-auto px-4 py-4 sm:py-8 max-w-3xl space-y-4">
+          {/* Selector de día: tira deslizable con los próximos 14 días */}
+          <div className="bg-white/95 rounded-2xl border border-border shadow-sm p-2">
+            <div className="flex gap-1.5 overflow-x-auto no-scrollbar snap-x" data-testid="date-strip">
+              {stripDays.map((d) => {
+                const active = selectedDate && isSameDay(d, selectedDate);
+                return (
+                  <button
+                    key={d.toISOString()}
+                    type="button"
+                    onClick={() => { setSelectedDate(d); setShowCalendar(false); }}
+                    className={`snap-start shrink-0 w-14 rounded-xl py-1.5 flex flex-col items-center transition-colors ${
+                      active ? 'bg-primary text-primary-foreground shadow' : 'hover:bg-muted text-foreground'
+                    }`}
+                    data-testid={`day-${format(d, 'yyyy-MM-dd')}`}
+                  >
+                    <span className={`text-[10px] uppercase font-semibold ${active ? '' : 'text-muted-foreground'}`}>
+                      {isToday(d) ? L.today : format(d, 'EEE', { locale })}
+                    </span>
+                    <span className="text-lg font-bold leading-tight">{format(d, 'd')}</span>
+                    <span className={`text-[10px] ${active ? '' : 'text-muted-foreground'}`}>{format(d, 'MMM', { locale })}</span>
+                  </button>
+                );
+              })}
+              <button
+                type="button"
+                onClick={() => setShowCalendar((v) => !v)}
+                className={`shrink-0 w-14 rounded-xl py-1.5 flex flex-col items-center justify-center gap-0.5 border border-dashed ${showCalendar ? 'border-primary text-primary' : 'border-border text-muted-foreground'}`}
+                aria-label={t.events.selectDate}
+                data-testid="button-open-calendar"
+              >
+                <CalendarIcon className="h-5 w-5" />
+                <span className="text-[10px] leading-tight text-center">{L.otherDate}</span>
+              </button>
             </div>
-            <p className="text-muted-foreground">{t.events.subtitle}</p>
-          </div>
-
-          <div className="grid gap-6 lg:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CalendarIcon className="h-5 w-5" />
-                  {t.events.selectDate}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex justify-center">
+            {showCalendar && (
+              <div className="flex justify-center pt-2 border-t mt-2">
                 <Calendar
                   mode="single"
+                  locale={locale}
                   selected={selectedDate}
-                  onSelect={setSelectedDate}
+                  onSelect={(d) => { if (d) { setSelectedDate(d); setShowCalendar(false); } }}
                   month={currentMonth}
                   onMonthChange={setCurrentMonth}
                   modifiers={modifiers}
@@ -122,214 +176,101 @@ export default function EventsPage({ apartment, onBack, onHome, t, currentLangua
                   className="rounded-md"
                   data-testid="calendar-events"
                 />
+              </div>
+            )}
+          </div>
+
+          {/* Cabecera del día + orden */}
+          <div className="flex items-end justify-between gap-2 px-1">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl font-bold text-foreground first-letter:uppercase" data-testid="selected-date">
+                {selectedDate ? format(selectedDate, 'EEEE, d MMMM', { locale }) : t.events.selectDate}
+              </h2>
+              {!loading && (
+                <p className="text-xs text-muted-foreground">
+                  {totalCount === 0 ? t.events.noEvents : `${totalCount} ${totalCount === 1 ? t.events.eventCount : t.events.eventsCount}`}
+                </p>
+              )}
+            </div>
+            {liveEvents.length > 1 && (
+              <div className="flex shrink-0 rounded-full bg-muted p-0.5 text-xs">
+                {(['time', 'distance'] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    onClick={() => setSortBy(k)}
+                    className={`px-3 py-1 rounded-full ${sortBy === k ? 'bg-white shadow font-semibold text-foreground' : 'text-muted-foreground'}`}
+                    data-testid={`sort-${k}`}
+                  >
+                    {k === 'time' ? L.byTime : L.closest}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Grandes citas de la ciudad (fiestas, Semana Santa, Feria...) */}
+          {eventsForSelectedDate.map((event) => (
+            <Card key={event.id} className="!rounded-2xl border-primary/30 bg-primary/5" data-testid={`card-event-detail-${event.id}`}>
+              <CardContent className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <PartyPopper className="h-5 w-5 text-primary shrink-0" />
+                  <h3 className="font-bold text-base leading-snug" data-testid={`event-name-${event.id}`}>
+                    {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
+                  </h3>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
+                </p>
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <Badge variant="outline" className={categoryColors[event.category]}>{t.events.categoryLabels[event.category]}</Badge>
+                  <Badge variant="outline">{event.free ? t.events.free : t.events.paid}</Badge>
+                  <span className="flex items-center gap-1 text-muted-foreground"><MapPin className="h-3.5 w-3.5" />{event.location}</span>
+                </div>
+                {event.website && (
+                  <a href={event.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm text-primary font-medium">
+                    <ExternalLink className="h-4 w-4" />{t.events.viewWebsite}
+                  </a>
+                )}
               </CardContent>
             </Card>
+          ))}
 
-            <div className="space-y-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle data-testid="selected-date">
-                    {selectedDate ? format(selectedDate, 'MMMM d, yyyy', { locale }) : t.events.selectDate}
-                  </CardTitle>
-                  <CardDescription>
-                    {eventsForSelectedDate.length > 0
-                      ? `${eventsForSelectedDate.length} ${eventsForSelectedDate.length === 1 ? t.events.eventCount : t.events.eventsCount}`
-                      : t.events.noEvents}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {eventsForSelectedDate.length === 0 ? (
-                    <p className="text-sm text-muted-foreground text-center py-8" data-testid="no-events-message">{t.events.noEvents}</p>
-                  ) : (
-                    eventsForSelectedDate.map((event) => (
-                      <Card key={event.id} className="hover-elevate" data-testid={`card-event-detail-${event.id}`}>
-                        <CardContent className="p-4">
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1">
-                              <h3 className="font-semibold text-lg mb-2" data-testid={`event-name-${event.id}`}>
-                                {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
-                              </h3>
-                              <p className="text-sm text-muted-foreground mb-3">
-                                {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
-                              </p>
-                              <div className="flex flex-wrap items-center gap-2 mb-3">
-                                <Badge variant="outline" className={categoryColors[event.category]}>
-                                  {t.events.categoryLabels[event.category]}
-                                </Badge>
-                                <Badge variant="outline">
-                                  {event.free ? t.events.free : t.events.paid}
-                                </Badge>
-                                {event.endDate && (
-                                  <Badge variant="outline">
-                                    {format(event.startDate, 'MMM d', { locale })} - {format(event.endDate, 'MMM d', { locale })}
-                                  </Badge>
-                                )}
-                              </div>
-                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                                <MapPin className="h-4 w-4" />
-                                <span>{event.location}</span>
-                              </div>
-                            </div>
-                          </div>
-                          {event.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="mt-3 w-full"
-                              asChild
-                              data-testid={`button-website-${event.id}`}
-                            >
-                              <a href={event.website} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="h-4 w-4 mr-2" />
-                                {t.events.viewWebsite}
-                              </a>
-                            </Button>
-                          )}
-                        </CardContent>
-                      </Card>
-                    ))
-                  )}
-                </CardContent>
-              </Card>
+          {/* Eventos en directo de la fuente externa */}
+          {loading && (
+            <div className="space-y-4" data-testid="events-loading">
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="rounded-2xl bg-white/90 border overflow-hidden animate-pulse">
+                  <div className="h-36 bg-muted" />
+                  <div className="p-4 space-y-2">
+                    <div className="h-4 w-2/3 bg-muted rounded" />
+                    <div className="h-3 w-1/2 bg-muted rounded" />
+                    <div className="h-3 w-1/3 bg-muted rounded" />
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
 
-          <div className="mt-8">
-            <Tabs defaultValue="week" className="w-full">
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-                <TabsTrigger value="week" className="flex items-center gap-2" data-testid="tab-week">
-                  <CalendarClock className="h-4 w-4" />
-                  {t.events.thisWeek}
-                </TabsTrigger>
-                <TabsTrigger value="month" className="flex items-center gap-2" data-testid="tab-month">
-                  <CalendarDays className="h-4 w-4" />
-                  {t.events.thisMonth}
-                </TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="week" className="mt-6">
-                <h2 className="text-2xl font-bold mb-4 text-foreground" data-testid="week-title">
-                  {t.events.thisWeek}
-                </h2>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {upcomingEventsThisWeek.length === 0 ? (
-                    <p className="text-sm text-muted-foreground col-span-full text-center py-8">{t.events.noEvents}</p>
-                  ) : (
-                    upcomingEventsThisWeek.map((event) => (
-                      <Card key={event.id} className="hover-elevate" data-testid={`card-event-week-${event.id}`}>
-                        <CardHeader>
-                          <CardTitle className="text-lg">
-                            {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
-                          </CardTitle>
-                          <CardDescription className="flex flex-wrap gap-2">
-                            <Badge variant="outline" className={categoryColors[event.category]}>
-                              {t.events.categoryLabels[event.category]}
-                            </Badge>
-                            <Badge variant="outline">
-                              {event.free ? t.events.free : t.events.paid}
-                            </Badge>
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3">
-                            {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
-                          </p>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                            <CalendarIcon className="h-4 w-4" />
-                            <span>
-                              {event.endDate
-                                ? `${format(event.startDate, 'MMM d', { locale })} - ${format(event.endDate, 'MMM d, yyyy', { locale })}`
-                                : format(event.startDate, 'MMMM d, yyyy', { locale })}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin className="h-4 w-4" />
-                            <span>{event.location}</span>
-                          </div>
-                          {event.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="mt-3 w-full"
-                              asChild
-                              data-testid={`button-website-week-${event.id}`}
-                            >
-                              <a href={event.website} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="h-4 w-4 mr-2" />
-                                {t.events.viewWebsite}
-                              </a>
-                            </Button>
-                          )}
-                        </CardContent>
-                      </Card>
-                    ))
-                  )}
-                </div>
-              </TabsContent>
+          {!loading && sortedLive.map((ev) => (
+            <LiveEventCard key={ev.id} ev={ev} L={L} lang={currentLanguage} origin={origin} />
+          ))}
 
-              <TabsContent value="month" className="mt-6">
-                <h2 className="text-2xl font-bold mb-4 text-foreground" data-testid="month-title">
-                  {new Date().toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}
-                </h2>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {eventsThisMonth.length === 0 ? (
-                    <p className="text-sm text-muted-foreground col-span-full text-center py-8">{t.events.noEvents}</p>
-                  ) : (
-                    eventsThisMonth.map((event) => (
-                      <Card key={event.id} className="hover-elevate" data-testid={`card-event-month-${event.id}`}>
-                        <CardHeader>
-                          <CardTitle className="text-lg">
-                            {t.events.eventNames[event.nameKey as keyof typeof t.events.eventNames]}
-                          </CardTitle>
-                          <CardDescription className="flex flex-wrap gap-2">
-                            <Badge variant="outline" className={categoryColors[event.category]}>
-                              {t.events.categoryLabels[event.category]}
-                            </Badge>
-                            <Badge variant="outline">
-                              {event.free ? t.events.free : t.events.paid}
-                            </Badge>
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground mb-3">
-                            {t.events.eventDescriptions[event.descriptionKey as keyof typeof t.events.eventDescriptions]}
-                          </p>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                            <CalendarIcon className="h-4 w-4" />
-                            <span>
-                              {event.endDate
-                                ? `${format(event.startDate, 'MMM d', { locale })} - ${format(event.endDate, 'MMM d, yyyy', { locale })}`
-                                : format(event.startDate, 'MMMM d, yyyy', { locale })}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin className="h-4 w-4" />
-                            <span>{event.location}</span>
-                          </div>
-                          {event.website && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="mt-3 w-full"
-                              asChild
-                              data-testid={`button-website-month-${event.id}`}
-                            >
-                              <a href={event.website} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink className="h-4 w-4 mr-2" />
-                                {t.events.viewWebsite}
-                              </a>
-                            </Button>
-                          )}
-                        </CardContent>
-                      </Card>
-                    ))
-                  )}
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
+          {!loading && totalCount === 0 && (
+            <div className="rounded-2xl bg-white/90 border p-6 text-center space-y-1" data-testid="no-events-message">
+              <CalendarIcon className="h-8 w-8 mx-auto text-muted-foreground" />
+              <p className="font-medium">{t.events.noEvents}</p>
+              <p className="text-sm text-muted-foreground">{L.tryOther}</p>
+            </div>
+          )}
 
-          <div className="mt-12 mb-8">
+          {!loading && liveEvents.length > 0 && (
+            <p className="text-[11px] text-muted-foreground text-center px-4">{L.disclaimer}</p>
+          )}
+        </div>
+
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="mt-8 mb-8">
             <h2 className="text-2xl font-bold mb-6 text-foreground text-center" data-testid="title-more-events">
               {t.events.moreEventsTitle}
             </h2>

@@ -243,3 +243,19 @@ Si tienes problemas:
 - Revisa los logs de build en Cloudflare Dashboard
 - Consulta la [documentación de Cloudflare Pages](https://developers.cloudflare.com/pages/)
 - Verifica que tu repositorio de GitHub esté actualizado
+
+---
+
+## 🎭 Eventos en directo (pantalla «Eventos»)
+
+La pantalla de Eventos consulta `/api/events` (archivo `functions/api/events.ts`), que Cloudflare Pages
+despliega automáticamente como función. Obtiene los eventos de Sevilla de la **API Discovery de Ticketmaster**,
+calcula la distancia a pie y en taxi desde el apartamento y guarda el resultado en caché 3 horas.
+
+1. Crea una clave gratuita en https://developer.ticketmaster.com (My Apps → «Consumer Key»).
+2. En Cloudflare → Workers & Pages → *caprichosdesevilla* → Settings → Variables and Secrets:
+   añade `TICKETMASTER_API_KEY` (tipo *Secret*) en **Production** y **Preview**.
+3. (Opcional, traducción de descripciones) Settings → Bindings → Add → **Workers AI**, nombre `AI`.
+4. Vuelve a desplegar (Deployments → Retry deployment) para que coja la configuración.
+
+Sin la clave, la pantalla sigue funcionando y muestra solo las grandes citas de la ciudad.
