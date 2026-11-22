@@ -7,22 +7,22 @@ import { AlertCircle, MapPin, Mail, DoorOpen, Building2, LogOut, CheckCircle, Cl
 import { Apartment, Language } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import ibarraStep1 from '@assets/1puerta_1760088503543.jpeg';
-import ibarraStep2 from '@assets/2enlace_1760088503553.png';
+import ibarraStep1 from '@assets/1puerta_1760088503543.webp';
+import ibarraStep2 from '@assets/2enlace_1760088503553.webp';
 import ibarraStep3 from '@assets/3puerta_1760088503553.png';
-import ibarraStep4 from '@assets/4apartamento_1760088503552.png';
+import ibarraStep4 from '@assets/4apartamento_1760088503552.webp';
 import ibarraStep5 from '@assets/6apertura_1760088503551.png';
-import ibarraStep6 from '@assets/7aperturainterior_1760088503550.png';
-import quevedoStep1 from '@assets/1puerta_1760093251206.png';
-import quevedoStep2 from '@assets/3enlace_1760093251206.png';
+import ibarraStep6 from '@assets/7aperturainterior_1760088503550.webp';
+import quevedoStep1 from '@assets/1puerta_1760093251206.webp';
+import quevedoStep2 from '@assets/3enlace_1760093251206.webp';
 import quevedoStep3 from '@assets/4botonportal_1760093251206.png';
-import quevedoStep4 from '@assets/6puertabajo_1760093251205.png';
+import quevedoStep4 from '@assets/6puertabajo_1760093251205.webp';
 import quevedoStep5 from '@assets/7enlaceapartamento_1760093251205.png';
-import quevedoStep6 from '@assets/8salida_1760093251204.png';
-import ibarraLocker1 from '@assets/1-Pincklocker_1760271769125.png';
-import ibarraLocker2 from '@assets/2-Lockandenjoy_1760271589870.png';
-import quevedoLocker1 from '@assets/Captura de pantalla 2025-10-12 a las 14.00.58_1760270467274.png';
-import quevedoLocker2 from '@assets/lockandenjoy_1760271398228.png';
+import quevedoStep6 from '@assets/8salida_1760093251204.webp';
+import ibarraLocker1 from '@assets/1-Pincklocker_1760271769125.webp';
+import ibarraLocker2 from '@assets/2-Lockandenjoy_1760271589870.webp';
+import quevedoLocker1 from '@assets/Captura de pantalla 2025-10-12 a las 14.00.58_1760270467274.webp';
+import quevedoLocker2 from '@assets/lockandenjoy_1760271398228.webp';
 
 interface CheckinPageProps {
   onBack: () => void;
@@ -47,7 +47,7 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
 
   const apartmentAddress = apartment === 'ibarra' 
     ? 'Calle Conde de Ibarra, 11-13, 41004 Sevilla' 
-    : 'Calle Quevedo, 11, 41001 Sevilla';
+    : 'Calle Quevedo, 11, 41003 Sevilla';
   
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(apartmentAddress)}`;
 

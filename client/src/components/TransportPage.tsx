@@ -283,27 +283,6 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Train className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.tramTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.tramLine}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">{t.transport.trainStation.tramPrice} • {t.transport.trainStation.tramSchedule}</p>
-                <p className="text-sm text-foreground">
-                  {apartment === 'ibarra' ? t.transport.trainStation.tramStopIbarra : t.transport.trainStation.tramStopQuevedo}
-                </p>
-              </CardContent>
-            </Card>
 
             <Card>
               <CardHeader>
@@ -464,7 +443,7 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <Button
                               variant="default"
                               className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&travelmode=walking`, '_blank')}
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&travelmode=walking`, '_blank')}
                               data-testid="button-parking1-route"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
@@ -507,7 +486,7 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <Button
                               variant="default"
                               className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&travelmode=walking`, '_blank')}
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&destination=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&travelmode=walking`, '_blank')}
                               data-testid="button-parking2-route"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
@@ -685,27 +664,6 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Train className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{t.transport.trainStation.tramTitle}</CardTitle>
-                    <CardDescription className="mt-1">
-                      {t.transport.trainStation.tramLine}
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">{t.transport.trainStation.tramPrice} • {t.transport.trainStation.tramSchedule}</p>
-                <p className="text-sm text-foreground">
-                  {apartment === 'ibarra' ? t.transport.trainStation.tramStopIbarra : t.transport.trainStation.tramStopQuevedo}
-                </p>
-              </CardContent>
-            </Card>
 
             <Card>
               <CardHeader>
@@ -866,7 +824,7 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <Button
                               variant="default"
                               className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&travelmode=walking`, '_blank')}
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking1.address)}&travelmode=walking`, '_blank')}
                               data-testid="button-parking1-route-departure"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
@@ -909,7 +867,7 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                             <Button
                               variant="default"
                               className="w-full"
-                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41001 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&travelmode=walking`, '_blank')}
+                              onClick={() => window.open(`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent('Calle Quevedo, 11, 41003 Sevilla')}&destination=${encodeURIComponent(t.transport.byCar.quevedo.parking2.address)}&travelmode=walking`, '_blank')}
                               data-testid="button-parking2-route-departure"
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
@@ -954,8 +912,8 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                   className="w-full"
                   onClick={() => {
                     const coords = apartment === 'ibarra' 
-                      ? '37.3878,-5.9932' 
-                      : '37.3897,-5.9942';
+                      ? '37.3889,-5.9885' 
+                      : '37.3954,-5.9930';
                     window.open(`https://www.google.com/maps/search/bus+stop/@${coords},16z`, '_blank');
                   }}
                   data-testid="button-bus-stops-map"
@@ -986,8 +944,8 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                   className="w-full"
                   onClick={() => {
                     const coords = apartment === 'ibarra' 
-                      ? '37.3878,-5.9932' 
-                      : '37.3897,-5.9942';
+                      ? '37.3889,-5.9885' 
+                      : '37.3954,-5.9930';
                     window.open(`https://www.google.com/maps/search/sevici+bike+station/@${coords},16z`, '_blank');
                   }}
                   data-testid="button-bike-stations-map"
@@ -1027,8 +985,8 @@ export default function TransportPage({ onBack, onHome, apartment, t, currentLan
                   className="w-full"
                   onClick={() => {
                     const coords = apartment === 'ibarra' 
-                      ? '37.3878,-5.9932' 
-                      : '37.3897,-5.9942';
+                      ? '37.3889,-5.9885' 
+                      : '37.3954,-5.9930';
                     window.open(`https://www.google.com/maps/search/electric+scooter/@${coords},16z`, '_blank');
                   }}
                   data-testid="button-scooters-map"

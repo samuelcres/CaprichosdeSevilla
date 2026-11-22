@@ -138,7 +138,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground">{t.contact.emergency}</h3>
-                    <p className="text-2xl font-bold text-red-600 mt-1">{t.contact.emergencyNumber}</p>
+                    <a href={`tel:${t.contact.emergencyNumber.replace(/\s/g, '')}`} className="block text-2xl font-bold text-red-600 mt-1 underline-offset-4 hover:underline" data-testid="link-call-emergencyNumber">{t.contact.emergencyNumber}</a>
                     <p className="text-sm text-muted-foreground mt-1">{t.contact.emergencyDesc}</p>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground">{t.contact.nationalPolice}</h3>
-                    <p className="text-2xl font-bold text-blue-600 mt-1">{t.contact.nationalPoliceNumber}</p>
+                    <a href={`tel:${t.contact.nationalPoliceNumber.replace(/\s/g, '')}`} className="block text-2xl font-bold text-blue-600 mt-1 underline-offset-4 hover:underline" data-testid="link-call-nationalPoliceNumber">{t.contact.nationalPoliceNumber}</a>
                     <p className="text-sm text-muted-foreground mt-1">{t.contact.nationalPoliceDesc}</p>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground">{t.contact.localPolice}</h3>
-                    <p className="text-2xl font-bold text-blue-600 mt-1">{t.contact.localPoliceNumber}</p>
+                    <a href={`tel:${t.contact.localPoliceNumber.replace(/\s/g, '')}`} className="block text-2xl font-bold text-blue-600 mt-1 underline-offset-4 hover:underline" data-testid="link-call-localPoliceNumber">{t.contact.localPoliceNumber}</a>
                     <p className="text-sm text-muted-foreground mt-1">{t.contact.localPoliceDesc}</p>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-foreground">{t.contact.civilGuard}</h3>
-                    <p className="text-2xl font-bold text-green-600 mt-1">{t.contact.civilGuardNumber}</p>
+                    <a href={`tel:${t.contact.civilGuardNumber.replace(/\s/g, '')}`} className="block text-2xl font-bold text-green-600 mt-1 underline-offset-4 hover:underline" data-testid="link-call-civilGuardNumber">{t.contact.civilGuardNumber}</a>
                     <p className="text-sm text-muted-foreground mt-1">{t.contact.civilGuardDesc}</p>
                   </div>
                 </div>
@@ -199,7 +199,7 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-foreground">{t.contact.touristPolice}</h3>
-                  <p className="text-2xl font-bold text-amber-600 mt-1">{t.contact.touristPoliceNumber}</p>
+                  <a href={`tel:${t.contact.touristPoliceNumber.replace(/\s/g, '')}`} className="block text-2xl font-bold text-amber-600 mt-1 underline-offset-4 hover:underline" data-testid="link-call-touristPoliceNumber">{t.contact.touristPoliceNumber}</a>
                   <p className="text-sm text-muted-foreground mt-1">{t.contact.touristPoliceDesc}</p>
                 </div>
               </div>
@@ -210,10 +210,10 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
         <Card className="bg-muted/50">
           <CardContent className="p-6 text-center">
             <p className="text-sm text-muted-foreground">
-              Horario de atención: 9:00 - 21:00h
+              {t.common.contactHours}
             </p>
             <p className="text-xs text-muted-foreground mt-2">
-              Responderemos a tu consulta lo antes posible
+              {t.common.contactReply}
             </p>
           </CardContent>
         </Card>

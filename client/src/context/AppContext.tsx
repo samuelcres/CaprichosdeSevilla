@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { Language, Apartment } from '@/lib/i18n';
 
 interface AppContextType {
@@ -11,57 +11,105 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// Check if apartment is pre-configured via URL parameter or environment variable
+const VALID_LANGUAGES: Language[] = ['es', 'en', 'fr', 'de', 'it', 'zh'];
+const STORAGE_APARTMENT = 'cs.apartment';
+const STORAGE_LANGUAGE = 'cs.language';
+
+function isApartment(value: unknown): value is Apartment {
+  return value === 'ibarra' || value === 'quevedo';
+}
+
+function isLanguage(value: unknown): value is Language {
+  return typeof value === 'string' && VALID_LANGUAGES.includes(value as Language);
+}
+
+// localStorage can be unavailable (private mode, blocked storage): never let it break the app
+function readStored(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeStored(key: string, value: string | null) {
+  try {
+    if (value === null) window.localStorage.removeItem(key);
+    else window.localStorage.setItem(key, value);
+  } catch {
+    // ignore
+  }
+}
+
+// Apartment fixed by the link (?apartment=) or by the build (VITE_APARTMENT)
 function getConfiguredApartment(): Apartment | null {
-  // Priority 1: Check URL parameter (?apartment=ibarra or ?apartment=quevedo)
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlApartment = urlParams.get('apartment');
-  if (urlApartment === 'ibarra' || urlApartment === 'quevedo') {
-    return urlApartment as Apartment;
-  }
-  
-  // Priority 2: Check environment variable
+  const urlApartment = new URLSearchParams(window.location.search).get('apartment');
+  if (isApartment(urlApartment)) return urlApartment;
+
   const configuredApt = import.meta.env.VITE_APARTMENT;
-  if (configuredApt === 'ibarra' || configuredApt === 'quevedo') {
-    return configuredApt as Apartment;
-  }
-  
-  // Priority 3: No configuration, show apartment selector
+  if (isApartment(configuredApt)) return configuredApt;
+
   return null;
 }
 
-// Check if language is pre-configured via URL parameter or environment variable
-function getConfiguredLanguage(): Language {
-  const validLanguages: Language[] = ['es', 'en', 'fr', 'de', 'it', 'zh'];
-  
-  // Priority 1: Check URL parameter (?language=es, ?language=en, etc.)
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlLanguage = urlParams.get('language');
-  if (urlLanguage && validLanguages.includes(urlLanguage as Language)) {
-    return urlLanguage as Language;
-  }
-  
-  // Priority 2: Check environment variable
+// Apartment the guest chose earlier on this phone
+function getStoredApartment(): Apartment | null {
+  const stored = readStored(STORAGE_APARTMENT);
+  return isApartment(stored) ? stored : null;
+}
+
+// Priority: link (?language=) > build (VITE_LANGUAGE) > guest's earlier choice > phone language > Spanish
+function getInitialLanguage(): Language {
+  const urlLanguage = new URLSearchParams(window.location.search).get('language');
+  if (isLanguage(urlLanguage)) return urlLanguage;
+
   const configuredLang = import.meta.env.VITE_LANGUAGE;
-  if (configuredLang && validLanguages.includes(configuredLang as Language)) {
-    return configuredLang as Language;
+  if (isLanguage(configuredLang)) return configuredLang;
+
+  const stored = readStored(STORAGE_LANGUAGE);
+  if (isLanguage(stored)) return stored;
+
+  const phoneLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
+  for (const tag of phoneLanguages) {
+    const code = tag?.slice(0, 2).toLowerCase();
+    if (isLanguage(code)) return code;
   }
-  
-  // Priority 3: Default to Spanish (es) since the app is for Seville apartments
+
   return 'es';
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const configuredApartment = getConfiguredApartment();
-  const configuredLanguage = getConfiguredLanguage();
-  const [language, setLanguage] = useState<Language>(configuredLanguage);
-  const [apartment, setApartment] = useState<Apartment | null>(configuredApartment);
+  const [configuredApartment] = useState<Apartment | null>(getConfiguredApartment);
+  const [language, setLanguageState] = useState<Language>(() => {
+    const initial = getInitialLanguage();
+    writeStored(STORAGE_LANGUAGE, initial);
+    return initial;
+  });
+  const [apartment, setApartmentState] = useState<Apartment | null>(() => {
+    const initial = configuredApartment ?? getStoredApartment();
+    if (initial) writeStored(STORAGE_APARTMENT, initial);
+    return initial;
+  });
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const setLanguage = (lang: Language) => {
+    writeStored(STORAGE_LANGUAGE, lang);
+    setLanguageState(lang);
+  };
+
+  const setApartment = (apt: Apartment | null) => {
+    writeStored(STORAGE_APARTMENT, apt);
+    setApartmentState(apt);
+  };
 
   return (
-    <AppContext.Provider value={{ 
-      language, 
-      setLanguage, 
-      apartment, 
+    <AppContext.Provider value={{
+      language,
+      setLanguage,
+      apartment,
       setApartment,
       isConfiguredApartment: configuredApartment !== null
     }}>

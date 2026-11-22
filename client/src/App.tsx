@@ -15,12 +15,12 @@ import ContactPageWrapper from "@/pages/ContactPageWrapper";
 import NotFound from "@/pages/not-found";
 
 function AppRoutes() {
-  const { isConfiguredApartment } = useApp();
+  const { apartment } = useApp();
 
   return (
     <Switch>
       <Route path="/">
-        {isConfiguredApartment ? <Redirect to="/menu" /> : <ApartmentPage />}
+        {apartment ? <Redirect to="/menu" /> : <ApartmentPage />}
       </Route>
       <Route path="/menu" component={MenuPage} />
       <Route path="/transport" component={TransportPageWrapper} />

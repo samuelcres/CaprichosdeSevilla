@@ -5,12 +5,12 @@ import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen } from 
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logoCS_1759701422984.png';
-import transportBg from '@assets/menu_transport_1774783796390.png';
+import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
-import wifiBg from '@assets/menu_wifi_1774783796390.png';
-import tourismBg from '@assets/menu_tourism_1774783796390.png';
-import eventsBg from '@assets/menu_events_1774783796390.png';
-import contactBg from '@assets/menu_contact_1774783796390.png';
+import wifiBg from '@assets/menu_wifi_1774783796390.webp';
+import tourismBg from '@assets/menu_tourism_1774783796390.webp';
+import eventsBg from '@assets/menu_events_1774783796390.webp';
+import contactBg from '@assets/menu_contact_1774783796390.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -120,6 +120,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
                 title={t.common.changeLanguage}
               >
                 <span className="text-xl">{currentLang?.flag}</span>
+                <span className="sm:hidden text-xs font-semibold uppercase">{currentLang?.code}</span>
                 <span className="hidden sm:inline">{currentLang?.name}</span>
               </Button>
             </DropdownMenuTrigger>

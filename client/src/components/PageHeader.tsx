@@ -87,12 +87,13 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
               <Button 
                 variant="outline" 
                 size="default"
-                className="gap-2"
+                className="gap-1.5 px-2.5 sm:px-4"
                 data-testid="button-language-selector"
                 aria-label={changeLanguageLabel}
                 title={changeLanguageLabel}
               >
                 <span className="text-xl">{currentLang?.flag}</span>
+                <span className="sm:hidden text-xs font-semibold uppercase">{currentLang?.code}</span>
                 <span className="hidden sm:inline">{currentLang?.name}</span>
               </Button>
             </DropdownMenuTrigger>

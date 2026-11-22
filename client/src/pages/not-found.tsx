@@ -1,19 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Compass } from "lucide-react";
+import { useLocation } from "wouter";
+import { useApp } from "@/context/AppContext";
+import { useTranslation } from "@/lib/i18n";
+import logoUrl from "@assets/logoCS_1759701422984.png";
 
 export default function NotFound() {
-  return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">404 Page Not Found</h1>
-          </div>
+  const { language } = useApp();
+  const t = useTranslation(language);
+  const [, setLocation] = useLocation();
 
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
-          </p>
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md">
+        <CardContent className="pt-6 space-y-4 text-center">
+          <img src={logoUrl} alt="Caprichos de Sevilla" className="h-14 mx-auto object-contain" />
+          <div className="flex items-center justify-center gap-2">
+            <Compass className="h-6 w-6 text-primary" />
+            <h1 className="text-xl font-bold text-foreground">{t.common.notFoundTitle}</h1>
+          </div>
+          <p className="text-sm text-muted-foreground">{t.common.notFoundText}</p>
+          <Button className="w-full" onClick={() => setLocation("/")} data-testid="button-not-found-home">
+            {t.common.backHome}
+          </Button>
         </CardContent>
       </Card>
     </div>

@@ -7,7 +7,7 @@ import GuideDialog from '@/components/GuideDialog';
 import logoUrl from '@assets/logoCS_1759701422984.png';
 import ibarraPhotoUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoPhotoUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import sevilleBgUrl from '@assets/plaza-espana-bg.png';
+import sevilleBgUrl from '@assets/plaza-espana-bg.webp';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -73,7 +73,8 @@ export default function ApartmentSelector({
               title={t.common.changeLanguage}
             >
               <span className="text-xl">{currentLang?.flag}</span>
-              <span className="hidden sm:inline">{currentLang?.name}</span>
+              <span className="sm:hidden text-xs font-semibold uppercase">{currentLang?.code}</span>
+                <span className="hidden sm:inline">{currentLang?.name}</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

@@ -11,31 +11,31 @@ import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
-import mapsRecommendationsImage from '@assets/Captura de pantalla 2025-10-12 a las 14.42.30_1760272979443.png';
+import mapsRecommendationsImage from '@assets/Captura de pantalla 2025-10-12 a las 14.42.30_1760272979443.webp';
 
 // Import stock images for restaurants
-import img1 from '@assets/stock_images/traditional_spanish__a8531ed5.jpg';
+import img1 from '@assets/stock_images/traditional_spanish__a8531ed5.webp';
 import img2 from '@assets/stock_images/traditional_spanish__70149acc.jpg';
-import img3 from '@assets/stock_images/traditional_spanish__f9018bb3.jpg';
+import img3 from '@assets/stock_images/traditional_spanish__f9018bb3.webp';
 import img4 from '@assets/stock_images/modern_brunch_cafe_a_e64d5442.jpg';
-import img5 from '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.jpg';
+import img5 from '@assets/stock_images/modern_brunch_cafe_a_2fe8dd51.webp';
 import img6 from '@assets/stock_images/modern_brunch_cafe_a_e727f275.jpg';
 import img7 from '@assets/stock_images/spanish_tapas_modern_a2f41932.jpg';
 import img8 from '@assets/stock_images/spanish_tapas_modern_346e78d7.jpg';
 import img9 from '@assets/stock_images/spanish_tapas_modern_fa802452.jpg';
-import img10 from '@assets/stock_images/spanish_paella_seafo_53beca91.jpg';
-import img11 from '@assets/stock_images/spanish_paella_seafo_e3d9edb9.jpg';
-import img12 from '@assets/stock_images/spanish_paella_seafo_2e59c319.jpg';
-import img13 from '@assets/stock_images/spanish_traditional__0221f1ec.jpg';
+import img10 from '@assets/stock_images/spanish_paella_seafo_53beca91.webp';
+import img11 from '@assets/stock_images/spanish_paella_seafo_e3d9edb9.webp';
+import img12 from '@assets/stock_images/spanish_paella_seafo_2e59c319.webp';
+import img13 from '@assets/stock_images/spanish_traditional__0221f1ec.webp';
 import img14 from '@assets/stock_images/spanish_traditional__b4291a21.jpg';
 import img15 from '@assets/stock_images/spanish_traditional__5f2425d0.jpg';
 import img16 from '@assets/stock_images/elegant_restaurant_f_f15dec49.jpg';
 import img17 from '@assets/stock_images/elegant_restaurant_f_5086cc55.jpg';
-import img18 from '@assets/stock_images/elegant_restaurant_f_95b165b2.jpg';
+import img18 from '@assets/stock_images/elegant_restaurant_f_95b165b2.webp';
 import img19 from '@assets/stock_images/spanish_traditional__310230e0.jpg';
-import img20 from '@assets/stock_images/spanish_traditional__60fd4f05.jpg';
-import img21 from '@assets/stock_images/seville_spain_touris_9ba3bc69.jpg';
-import img22 from '@assets/stock_images/seville_spain_citysc_d2607192.jpg';
+import img20 from '@assets/stock_images/spanish_traditional__60fd4f05.webp';
+import img21 from '@assets/stock_images/seville_spain_touris_9ba3bc69.webp';
+import img22 from '@assets/stock_images/seville_spain_citysc_d2607192.webp';
 import img23 from '@assets/stock_images/airport_bus_public_t_f8c6b930.jpg';
 import img24 from '@assets/stock_images/customer_service_sup_53d26c13.jpg';
 import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
@@ -43,48 +43,48 @@ import img25 from '@assets/stock_images/hotel_check-in_door__08a6987e.jpg';
 // Import visit images
 import imgCatedral from '@assets/Catedral de Sevilla y Giralda _1760287285953.jpeg';
 import imgAlcazar from '@assets/real_alcazar_sevilla_1760287300284.jpeg';
-import imgArchivo from '@assets/archivo_indias_1760287312876.jpg';
+import imgArchivo from '@assets/archivo_indias_1760287312876.webp';
 import imgTorre from '@assets/torre_oro_1760287326895.webp';
-import imgMurallas from '@assets/stock_images/murallas_macarena_wa_31870249.jpg';
-import imgBellasArtes from '@assets/museo_bellas_artes_1760287361564.jpg';
-import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.jpg';
-import imgArqueologico from '@assets/stock_images/museo_arqueologico_s_ca9dc2cb.jpg';
-import imgCostumbres from '@assets/stock_images/museo_artes_costumbr_024a987c.jpg';
-import imgFlamencoMuseo from '@assets/museo_baile_flamenco_1760288572604.jpg';
+import imgMurallas from '@assets/stock_images/murallas_macarena_wa_31870249.webp';
+import imgBellasArtes from '@assets/museo_bellas_artes_1760287361564.webp';
+import imgCAAC from '@assets/stock_images/caac_monasterio_cart_7595e310.webp';
+import imgArqueologico from '@assets/stock_images/museo_arqueologico_s_ca9dc2cb.webp';
+import imgCostumbres from '@assets/stock_images/museo_artes_costumbr_024a987c.webp';
+import imgFlamencoMuseo from '@assets/museo_baile_flamenco_1760288572604.webp';
 import imgNaval from '@assets/stock_images/naval_museum_torre_d_0a944c8c.jpg';
-import imgSanJorge from '@assets/stock_images/castillo_san_jorge_s_f02850a8.jpg';
+import imgSanJorge from '@assets/stock_images/castillo_san_jorge_s_f02850a8.webp';
 import imgMariaLuisa from '@assets/parque_maria_luisa_1760288454408.jpg';
-import imgJardinesMurillo from '@assets/stock_images/jardines_murillo_sev_33432d8d.jpg';
-import imgGuadalquivir from '@assets/stock_images/rio_guadalquivir_sev_f9795354.jpg';
-import imgCartuja from '@assets/stock_images/isla_cartuja_seville_0755dac0.jpg';
-import imgSantaCruz from '@assets/stock_images/santa_cruz_neighborh_fd07e9ae.jpg';
-import imgTriana from '@assets/stock_images/barrio_triana_sevill_22bf8537.jpg';
-import imgMacarenaBarrio from '@assets/stock_images/barrio_macarena_sevi_9174b44a.jpg';
-import imgArenal from '@assets/stock_images/barrio_arenal_sevill_430ab21c.jpg';
-import imgPatios from '@assets/stock_images/seville_traditional__6594b4ce.jpg';
+import imgJardinesMurillo from '@assets/stock_images/jardines_murillo_sev_33432d8d.webp';
+import imgGuadalquivir from '@assets/stock_images/rio_guadalquivir_sev_f9795354.webp';
+import imgCartuja from '@assets/stock_images/isla_cartuja_seville_0755dac0.webp';
+import imgSantaCruz from '@assets/stock_images/santa_cruz_neighborh_fd07e9ae.webp';
+import imgTriana from '@assets/stock_images/barrio_triana_sevill_22bf8537.webp';
+import imgMacarenaBarrio from '@assets/stock_images/barrio_macarena_sevi_9174b44a.webp';
+import imgArenal from '@assets/stock_images/barrio_arenal_sevill_430ab21c.webp';
+import imgPatios from '@assets/stock_images/seville_traditional__6594b4ce.webp';
 import imgRutaFlamenco from '@assets/stock_images/flamenco_performance_cfe2193e.jpg';
-import imgRutaRomana from '@assets/stock_images/roman_ruins_ancient__bb6583ed.jpg';
+import imgRutaRomana from '@assets/stock_images/roman_ruins_ancient__bb6583ed.webp';
 import imgRutaArtistas from '@assets/stock_images/seville_artists_cerv_ac44d679.jpg';
 import imgTablaos from '@assets/flamenco_tablao_1760287488007.jpg';
-import imgTeatros from '@assets/stock_images/teatro_maestranza_se_45f14437.jpg';
+import imgTeatros from '@assets/stock_images/teatro_maestranza_se_45f14437.webp';
 import imgFestivales from '@assets/stock_images/seville_festivals_fe_023c1b1d.jpg';
 import imgExperiencias from '@assets/stock_images/cultural_experiences_24121b88.jpg';
-import imgBasilicaMacarena from '@assets/basilica_macarena_1760287523847.jpg';
-import imgSalvador from '@assets/stock_images/iglesia_salvador_sev_e5e736c6.jpg';
-import imgSantaPaula from '@assets/stock_images/convento_santa_paula_37a86f4a.jpg';
-import imgSanLuis from '@assets/stock_images/san_luis_franceses_c_88cd7e2f.jpg';
-import imgToursPie from '@assets/stock_images/walking_tour_guide_s_95b1b7ca.jpg';
+import imgBasilicaMacarena from '@assets/basilica_macarena_1760287523847.webp';
+import imgSalvador from '@assets/stock_images/iglesia_salvador_sev_e5e736c6.webp';
+import imgSantaPaula from '@assets/stock_images/convento_santa_paula_37a86f4a.webp';
+import imgSanLuis from '@assets/stock_images/san_luis_franceses_c_88cd7e2f.webp';
+import imgToursPie from '@assets/stock_images/walking_tour_guide_s_95b1b7ca.webp';
 import imgToursBici from '@assets/stock_images/bicycle_tour_bike_se_04fd5384.jpg';
-import imgCruceros from '@assets/stock_images/guadalquivir_river_c_7fa9aeba.jpg';
+import imgCruceros from '@assets/stock_images/guadalquivir_river_c_7fa9aeba.webp';
 import imgToursTapas from '@assets/stock_images/tapas_tour_tasting_s_8201f2db.jpg';
-import imgToursEspeciales from '@assets/stock_images/special_themed_tours_b434fc10.jpg';
-import imgSetas from '@assets/stock_images/metropol_parasol_set_8cd25218.jpg';
-import imgPlazaEspana from '@assets/stock_images/plaza_españa_seville_991d599b.jpg';
+import imgToursEspeciales from '@assets/stock_images/special_themed_tours_b434fc10.webp';
+import imgSetas from '@assets/stock_images/metropol_parasol_set_8cd25218.webp';
+import imgPlazaEspana from '@assets/stock_images/plaza_españa_seville_991d599b.webp';
 import imgAlamillo from '@assets/stock_images/puente_alamillo_brid_e7b05fc3.jpg';
-import imgEstadios from '@assets/stock_images/ramon_sanchez_pizjua_4adb6587.jpg';
-import imgMercados from '@assets/stock_images/traditional_spanish__d3ec19eb.jpg';
-import imgTalleres from '@assets/stock_images/cooking_class_worksh_7e4edbf3.jpg';
-import imgBodegas from '@assets/stock_images/jerez_wine_cellar_bo_2687fb83.jpg';
+import imgEstadios from '@assets/stock_images/ramon_sanchez_pizjua_4adb6587.webp';
+import imgMercados from '@assets/stock_images/traditional_spanish__d3ec19eb.webp';
+import imgTalleres from '@assets/stock_images/cooking_class_worksh_7e4edbf3.webp';
+import imgBodegas from '@assets/stock_images/jerez_wine_cellar_bo_2687fb83.webp';
 
 // Map image filenames to imported images
 const imageMap: Record<string, string> = {
@@ -283,12 +283,12 @@ interface TourismPageProps {
 }
 
 export default function TourismPage({ onBack, onHome, apartment, t, currentLanguage, onLanguageChange }: TourismPageProps) {
-  const [activeTab, setActiveTab] = useState('activities');
+  const [activeTab, setActiveTab] = useState('restaurants');
 
   const restaurants = apartment === 'ibarra' ? ibarraRestaurants : quevedoRestaurants;
   const apartmentCoords = apartment === 'ibarra'
-    ? '37.3878,-5.9932'
-    : '37.3897,-5.9942';
+    ? '37.3889,-5.9885'
+    : '37.3954,-5.9930';
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
   const apartmentName = apartment === 'ibarra' ? 'Capricho de Ibarra' : 'Capricho de Quevedo';
 
@@ -317,22 +317,6 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
       <div className="relative z-10 max-w-4xl mx-auto p-4 md:p-6 space-y-6">
         <div className="flex flex-col sm:flex-row gap-2 p-1 bg-muted rounded-md">
           <Button
-            variant={activeTab === 'activities' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
-            onClick={() => setActiveTab('activities')}
-            data-testid="tab-activities"
-          >
-            {t.tourism.activities}
-          </Button>
-          <Button
-            variant={activeTab === 'map' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 justify-center"
-            onClick={() => setActiveTab('map')}
-            data-testid="tab-map"
-          >
-            {t.tourism.map}
-          </Button>
-          <Button
             variant={activeTab === 'restaurants' ? 'default' : 'ghost'}
             className="w-full sm:flex-1 justify-center"
             onClick={() => setActiveTab('restaurants')}
@@ -347,6 +331,22 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             data-testid="tab-visits"
           >
             {t.tourism.visits}
+          </Button>
+          <Button
+            variant={activeTab === 'map' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('map')}
+            data-testid="tab-map"
+          >
+            {t.tourism.map}
+          </Button>
+          <Button
+            variant={activeTab === 'activities' ? 'default' : 'ghost'}
+            className="w-full sm:flex-1 justify-center"
+            onClick={() => setActiveTab('activities')}
+            data-testid="tab-activities"
+          >
+            {t.tourism.activities}
           </Button>
         </div>
 
@@ -368,7 +368,9 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                     className="w-full rounded-lg"
                     frameBorder="0"
                     scrolling="yes"
-                    src="https://www.civitatis.com/widget-activities/?agencyId=40972&agencyUserId=44118&display=cosy&cant=6&lang=es&currency=EUR&destination=57&transfer=0&cmp=Widget_Sevilla_ES&width=100%&height=700px&hideButton=0&centerContent=1&typeSelection=all&color=325bdf&typography=Montserrat&removeBackground=1&showShadow=1&roundedButtons=1"
+                    src={`https://www.civitatis.com/widget-activities/?agencyId=40972&agencyUserId=44118&display=cosy&cant=6&lang=${currentLanguage === 'zh' ? 'en' : currentLanguage}&currency=EUR&destination=57&transfer=0&cmp=Widget_Sevilla_ES&width=100%&height=700px&hideButton=0&centerContent=1&typeSelection=all&color=325bdf&typography=Montserrat&removeBackground=1&showShadow=1&roundedButtons=1`}
+                    loading="lazy"
+                    title="Civitatis"
                     style={{ minHeight: '700px', maxWidth: '100%', height: '700px' }}
                     data-testid="iframe-civitatis"
                   />
