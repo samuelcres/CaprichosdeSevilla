@@ -46,7 +46,7 @@ function getMenuPhoto(id: string, apartment: Apartment): string | undefined {
   };
   return photos[id];
 }
-const MENU_PHOTO_POSITION: Record<string, string> = { transport: '55% center', checkin: 'center 35%', events: 'center 25%' };
+const MENU_PHOTO_POSITION: Record<string, string> = { transport: '55% center', checkin: 'center 35%', events: 'center 40%' };
 
 interface MenuOption {
   id: string;
