@@ -52,7 +52,7 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
             <img
               src={logoUrl}
               alt="Caprichos de Sevilla"
-              className="app-logo h-10 object-contain"
+              className="h-10 object-contain"
             />
           )}
           {apartment && apartmentLabel && (

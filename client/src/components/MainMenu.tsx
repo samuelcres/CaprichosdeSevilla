@@ -100,7 +100,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         <img
           src={logoUrl}
           alt="Caprichos de Sevilla"
-          className="app-logo h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain"
+          className="h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain"
         />
         
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
