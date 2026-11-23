@@ -226,11 +226,13 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </div>
       </div>
 
-      <GuideDialog 
-        open={guideOpen} 
-        onOpenChange={setGuideOpen} 
-        t={t} 
+      <GuideDialog
+        open={guideOpen}
+        onOpenChange={setGuideOpen}
+        t={t}
         currentLanguage={currentLanguage}
+        apartment={apartment}
+        onNavigate={(id) => onSelect(id)}
       />
     </div>
   );
