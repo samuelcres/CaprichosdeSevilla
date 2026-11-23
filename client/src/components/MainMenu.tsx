@@ -82,7 +82,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </p>
       </div>
 
-      <header className="relative z-10 shrink-0 px-2 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white dark:bg-card">
+      <header className="relative z-10 shrink-0 px-1.5 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white dark:bg-card">
         {showBackButton ? (
           <Button
             variant="ghost"
@@ -98,13 +98,13 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
           <div className="w-10" />
         )}
         
-        <BrandLogo variant="horizontal" className="h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain" />
+        <BrandLogo variant="horizontal" className="h-12 sm:h-16 md:h-24 lg:h-28 w-auto min-w-0 shrink object-contain" />
         
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <Button
             variant="outline"
             size="default"
-            className="gap-2 px-2.5 sm:px-4"
+            className="gap-2 px-2 sm:px-4"
             onClick={() => setGuideOpen(true)}
             data-testid="button-guide"
             aria-label={t.common.guide}
@@ -121,7 +121,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
               <Button 
                 variant="outline" 
                 size="default"
-                className="gap-1 sm:gap-2 px-2.5 sm:px-4"
+                className="gap-1 sm:gap-2 px-2 sm:px-4"
                 data-testid="button-language-selector"
                 aria-label={t.common.changeLanguage}
                 title={t.common.changeLanguage}

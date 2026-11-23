@@ -49,7 +49,7 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
               {title}
             </h1>
           ) : (
-            <BrandLogo variant="horizontal" className="h-10 object-contain" />
+            <BrandLogo variant="horizontal" className="h-12 md:h-20 lg:h-24 w-auto object-contain" />
           )}
           {apartment && apartmentLabel && (
             onHome ? (
