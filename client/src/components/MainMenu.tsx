@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen, UtensilsCrossed } from 'lucide-react';
+import { Bus, Key, Wifi, MapPin, Phone, ArrowLeft, PartyPopper, BookOpen, UtensilsCrossed, Moon, Sun } from 'lucide-react';
+import { useNightMode, NIGHT_LABEL } from '@/lib/theme';
 import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import { WeatherChip } from '@/components/Extras';
@@ -80,7 +81,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </p>
       </div>
 
-      <header className="relative z-10 shrink-0 px-2 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white">
+      <header className="relative z-10 shrink-0 px-2 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white dark:bg-card">
         {showBackButton ? (
           <Button
             variant="ghost"
@@ -115,6 +116,8 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
             <BookOpen className="h-5 w-5" />
             <span className="hidden sm:inline">{t.common.guide}</span>
           </Button>
+
+          <NightToggle lang={currentLanguage} />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -247,4 +250,25 @@ export function getMenuIcons() {
     events: <PartyPopper className="w-12 h-12" />,
     contact: <Phone className="w-12 h-12" />,
   };
+}
+
+
+function NightToggle({ lang }: { lang: string }) {
+  const { night, toggle } = useNightMode();
+  const L = NIGHT_LABEL[lang] || NIGHT_LABEL.en;
+  const label = night ? L.day : L.night;
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      className="h-9 w-9 shrink-0"
+      onClick={toggle}
+      aria-label={label}
+      title={label}
+      aria-pressed={night}
+      data-testid="button-night-mode"
+    >
+      {night ? <Sun className="h-[18px] w-[18px] text-amber-400" /> : <Moon className="h-[18px] w-[18px]" />}
+    </Button>
+  );
 }

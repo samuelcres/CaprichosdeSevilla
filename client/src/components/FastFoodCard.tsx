@@ -1,6 +1,8 @@
 import { MapPin, Phone, Globe, BookOpen, Navigation, Footprints, Bike, Beef, Pizza, Sandwich, Flame, ShoppingBag, MessageCircle, Soup } from 'lucide-react';
 import { Language } from '@/lib/i18n';
 import { FastFoodPlace, FastFoodKind } from '@/lib/fastFoodData';
+import { usePlaceInfo, placeQuery } from '@/lib/usePlaceInfo';
+import { LiveBadges } from './PlaceLive';
 
 const LABELS: Record<Language, { order2: string; takeaway: string; walk: string; call: string; web: string; menu: string; route: string; delivery: string; order: string; intro: string; prices: string; kinds: Record<FastFoodKind, string> }> = {
   es: { order2: 'Pedir online', takeaway: 'Para llevar', walk: 'min a pie', call: 'Llamar', web: 'Web', menu: 'Carta', route: 'Cómo llegar', delivery: 'A domicilio', order: 'Qué pedir', intro: 'Para comer algo rápido sin alejarse del apartamento.', prices: 'Precios orientativos; pueden cambiar.', kinds: { burger: 'Hamburguesas', pizza: 'Pizza', montaditos: 'Montaditos', grill: 'Hamburguesas y brasa', mexican: 'Mexicana' } },
@@ -17,7 +19,9 @@ export function fastFoodLabels(lang: Language) {
   return LABELS[lang] || LABELS.en;
 }
 
-export default function FastFoodCard({ place, lang, origin }: { place: FastFoodPlace; lang: Language; origin: string }) {
+export default function FastFoodCard({ place: base, lang, origin, apartment = 'ibarra' }: { place: FastFoodPlace; lang: Language; origin: string; apartment?: string }) {
+  const live = usePlaceInfo(placeQuery(base.name, undefined, base.address), apartment);
+  const place = { ...base, phone: base.phone || live?.phone, walkMinutes: live?.walkMinutes ?? base.walkMinutes };
   const L = fastFoodLabels(lang);
   const Icon = KIND_ICON[place.kind];
   const desc = (place.description as Record<string, string | undefined>)[lang] || place.description.en;
@@ -27,11 +31,16 @@ export default function FastFoodCard({ place, lang, origin }: { place: FastFoodP
   return (
     <article className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3" data-testid={`fastfood-${place.id}`}>
       <div className="flex items-start gap-3">
-        <span className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-          <Icon className="h-6 w-6" />
-        </span>
+        {live?.photo ? (
+          <img src={live.photo} alt={place.name} loading="lazy" className="shrink-0 w-16 h-16 rounded-xl object-cover bg-muted" />
+        ) : (
+          <span className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+            <Icon className="h-6 w-6" />
+          </span>
+        )}
         <div className="min-w-0 flex-1">
           <h4 className="font-bold text-base leading-tight">{place.name}</h4>
+          {live && <div className="mt-1"><LiveBadges info={live} lang={lang} /></div>}
           <div className="flex flex-wrap items-center gap-1.5 mt-1 text-[11px]">
             <span className="rounded-full bg-muted px-2 py-0.5 font-medium">{L.kinds[place.kind]}</span>
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5">

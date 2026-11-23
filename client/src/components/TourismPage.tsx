@@ -11,6 +11,8 @@ import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
 import FastFoodCard, { fastFoodLabels } from './FastFoodCard';
 import { TicketsAndWalks } from './Extras';
+import { usePlaceInfo, placeQuery } from '@/lib/usePlaceInfo';
+import { LiveBadges, GoogleCredit } from './PlaceLive';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -184,19 +186,130 @@ const getPriceIndicator = (priceLevel?: 'low' | 'medium' | 'high') => {
   }
 };
 
+function VisitCard({ visitData, visitInfo, index, categoryId, apartment, lang, t }: { visitData: Visit; visitInfo: any; index: number; categoryId: string; apartment: string; lang: string; t: any }) {
+  // Solo lugares concretos (con enlace a Maps); las categorías genéricas no se consultan
+  const live = usePlaceInfo(visitData.mapsUrl ? placeQuery(visitInfo.name, visitData.mapsUrl) : undefined, apartment);
+  const distance = live?.walkMinutes ?? (apartment === 'ibarra' ? visitData.distanceIbarra : visitData.distanceQuevedo);
+  const image = getImage(visitData.photo) || live?.photo;
+  const phone = visitData.phone || live?.phone;
+  const mapsUrl = live?.mapsUrl || visitData.mapsUrl;
+  const website = visitData.website || live?.website;
+  return (
+    <Card 
+        className={`overflow-hidden ${live?.status === 'CLOSED_PERMANENTLY' ? 'opacity-60' : ''}`}
+      data-testid={`visit-item-${categoryId}-${index}`}
+    >
+      <CardContent className="p-0">
+        <div className="flex flex-col md:flex-row gap-4 p-4">
+          {image && (
+            <div className="flex-shrink-0 w-full md:w-48">
+              <img 
+                src={image} 
+                alt={visitInfo.name}
+                className="w-full h-48 md:h-full object-cover rounded-md"
+                data-testid={`img-visit-${categoryId}-${index}`}
+              />
+            </div>
+          )}
+          <div className="flex-1 min-w-0 space-y-3">
+            <div>
+              <h4 className="font-semibold text-lg text-foreground mb-1" data-testid={`text-visit-name-${categoryId}-${index}`}>
+                {visitInfo.name}
+              </h4>
+              {live && <div className="mb-1.5"><LiveBadges info={live} lang={lang} /></div>}
+      <p className="text-sm text-muted-foreground">{visitInfo.description}</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+              {visitData.schedule && (
+                <div className="flex items-start gap-2">
+                  <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="font-medium">{t.tourism.schedule}:</span>
+                    <span className="ml-1">{visitData.schedule}</span>
+                  </div>
+                </div>
+              )}
+              {visitData.price && (
+                <div className="flex items-start gap-2">
+                  <Euro className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="font-medium">{t.tourism.price}:</span>
+                    <span className="ml-1 text-emerald-700 font-semibold">{visitData.price}</span>
+                  </div>
+                </div>
+              )}
+              {distance && distance > 0 && (
+                <div className="flex items-start gap-2">
+                  <Navigation className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="font-medium">{t.tourism.distance}:</span>
+                    <span className="ml-1">{distance} min</span>
+                  </div>
+                </div>
+              )}
+              {phone && (
+                <div className="flex items-start gap-2">
+                  <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <span className="font-medium">{t.tourism.phone}:</span>
+                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="ml-1 hover:underline">{phone}</a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="flex gap-2 flex-wrap pt-2">
+              {mapsUrl && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open(mapsUrl, '_blank', 'noopener,noreferrer')}
+                  data-testid={`button-map-visit-${categoryId}-${index}`}
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  {t.tourism.location}
+                </Button>
+              )}
+              {website && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open(website, '_blank', 'noopener,noreferrer')}
+                  data-testid={`button-website-visit-${categoryId}-${index}`}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Web
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 interface RestaurantCardProps {
   restaurant: any;
   index: number;
   category: string;
   t: any;
+  apartment: string;
+  lang: string;
 }
 
-function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps) {
-  const imageUrl = getImage(restaurant.photo);
+function RestaurantCard({ restaurant, index, category, t, apartment, lang }: RestaurantCardProps) {
+  const live = usePlaceInfo(placeQuery(restaurant.name, restaurant.mapsUrl), apartment);
+  const imageUrl = live?.photo || getImage(restaurant.photo);
+  const phone = live?.phone || restaurant.phone;
+  const mapsUrl = live?.mapsUrl || restaurant.mapsUrl;
+  const minutes = live?.walkMinutes ?? restaurant.distance;
+  const closedForever = live?.status === 'CLOSED_PERMANENTLY';
   const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
 
   return (
-    <Card data-testid={`card-restaurant-${category}-${index}`} className="overflow-hidden">
+    <Card data-testid={`card-restaurant-${category}-${index}`} className={`overflow-hidden ${closedForever ? 'opacity-60' : ''}`}>
       <div className="flex flex-col sm:flex-row">
         {imageUrl && (
           <div className="w-full h-40 sm:w-32 sm:h-auto flex-shrink-0">
@@ -204,6 +317,8 @@ function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps)
               src={imageUrl}
               alt={restaurant.name}
               className="w-full h-full object-cover"
+              loading="lazy"
+              onError={(e) => { const fb = getImage(restaurant.photo); if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb; }}
             />
           </div>
         )}
@@ -211,10 +326,6 @@ function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps)
           <div className="flex items-start justify-between gap-2">
             <h4 className="font-semibold text-base text-foreground leading-tight">{restaurant.name}</h4>
             <div className="flex flex-col gap-1 items-end flex-shrink-0">
-              <Badge variant="secondary">
-                <Star className="w-3 h-3 mr-1 fill-current" />
-                {restaurant.rating}
-              </Badge>
               {restaurant.priceLevel && (
                 <span className="text-sm font-semibold text-emerald-700" data-testid={`price-${category}-${index}`}>
                   {getPriceIndicator(restaurant.priceLevel)}
@@ -222,6 +333,8 @@ function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps)
               )}
             </div>
           </div>
+
+          <LiveBadges info={live} fallbackRating={restaurant.rating} lang={lang} />
 
           <p className="text-sm text-muted-foreground">{restaurant.description}</p>
 
@@ -234,13 +347,15 @@ function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps)
           <div className="space-y-2 pt-1 border-t border-border">
             <div className="flex items-center gap-2 text-sm text-muted-foreground pt-2">
               <Navigation className="w-4 h-4 flex-shrink-0" />
-              <span>{restaurant.distance} {t.tourism.distance}</span>
+              <span>{minutes} {t.tourism.distance}</span>
+              {live?.address && <span className="truncate">· {live.address}</span>}
+              <span className="ml-auto"><GoogleCredit info={live} /></span>
             </div>
             <div className="flex gap-2 flex-wrap">
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open(restaurant.mapsUrl, '_blank')}
+                onClick={() => window.open(mapsUrl, '_blank')}
                 data-testid={`button-map-${category}-${index}`}
               >
                 <MapPin className="w-4 h-4 mr-2" />
@@ -257,15 +372,15 @@ function RestaurantCard({ restaurant, index, category, t }: RestaurantCardProps)
                   Web
                 </Button>
               )}
-              {restaurant.phone && (
+              {phone && (
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => window.open(`tel:${restaurant.phone}`, '_self')}
+                  onClick={() => window.open(`tel:${phone.replace(/\s/g, '')}`, '_self')}
                   data-testid={`button-phone-${category}-${index}`}
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  {restaurant.phone}
+                  {phone}
                 </Button>
               )}
             </div>
@@ -424,7 +539,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
                   {restaurants.filter(r => r.category === 'breakfast').map((restaurant, index) => (
-                    <RestaurantCard key={`breakfast-${index}`} restaurant={restaurant} index={index} category="breakfast" t={t} />
+                    <RestaurantCard key={`breakfast-${index}`} restaurant={restaurant} index={index} category="breakfast" t={t} apartment={apartment} lang={currentLanguage} />
                   ))}
                 </AccordionContent>
               </AccordionItem>
@@ -440,7 +555,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
                   {restaurants.filter(r => r.category === 'lunch').map((restaurant, index) => (
-                    <RestaurantCard key={`lunch-${index}`} restaurant={restaurant} index={index} category="lunch" t={t} />
+                    <RestaurantCard key={`lunch-${index}`} restaurant={restaurant} index={index} category="lunch" t={t} apartment={apartment} lang={currentLanguage} />
                   ))}
                 </AccordionContent>
               </AccordionItem>
@@ -456,7 +571,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
                   {restaurants.filter(r => r.category === 'cafeterias').map((restaurant, index) => (
-                    <RestaurantCard key={`cafes-${index}`} restaurant={restaurant} index={index} category="cafes" t={t} />
+                    <RestaurantCard key={`cafes-${index}`} restaurant={restaurant} index={index} category="cafes" t={t} apartment={apartment} lang={currentLanguage} />
                   ))}
                 </AccordionContent>
               </AccordionItem>
@@ -472,7 +587,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </AccordionTrigger>
                 <AccordionContent className="space-y-4 pt-4">
                   {restaurants.filter(r => r.category === 'dinner').map((restaurant, index) => (
-                    <RestaurantCard key={`dinner-${index}`} restaurant={restaurant} index={index} category="dinner" t={t} />
+                    <RestaurantCard key={`dinner-${index}`} restaurant={restaurant} index={index} category="dinner" t={t} apartment={apartment} lang={currentLanguage} />
                   ))}
                 </AccordionContent>
               </AccordionItem>
@@ -489,7 +604,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 <AccordionContent className="space-y-4 pt-4">
                   <p className="text-sm text-muted-foreground">{fastFoodLabels(currentLanguage).intro}</p>
                   {fastFood.map((place) => (
-                    <FastFoodCard key={place.id} place={place} lang={currentLanguage} origin={apartmentCoords} />
+                    <FastFoodCard key={place.id} place={place} lang={currentLanguage} origin={apartmentCoords} apartment={apartment} />
                   ))}
                   <p className="text-[11px] text-muted-foreground text-center">{fastFoodLabels(currentLanguage).prices}</p>
                 </AccordionContent>
@@ -517,103 +632,8 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                       {visitsInCategory.map((visitData, index) => {
                         const visitInfo = t.tourism.visitItems[visitData.id];
                         if (!visitInfo) return null;
-                        
-                        const distance = apartment === 'ibarra' ? visitData.distanceIbarra : visitData.distanceQuevedo;
-                        const image = getImage(visitData.photo);
-                        
                         return (
-                          <Card 
-                            key={visitData.id}
-                            className="overflow-hidden"
-                            data-testid={`visit-item-${categoryId}-${index}`}
-                          >
-                            <CardContent className="p-0">
-                              <div className="flex flex-col md:flex-row gap-4 p-4">
-                                {image && (
-                                  <div className="flex-shrink-0 w-full md:w-48">
-                                    <img 
-                                      src={image} 
-                                      alt={visitInfo.name}
-                                      className="w-full h-48 md:h-full object-cover rounded-md"
-                                      data-testid={`img-visit-${categoryId}-${index}`}
-                                    />
-                                  </div>
-                                )}
-                                <div className="flex-1 min-w-0 space-y-3">
-                                  <div>
-                                    <h4 className="font-semibold text-lg text-foreground mb-1" data-testid={`text-visit-name-${categoryId}-${index}`}>
-                                      {visitInfo.name}
-                                    </h4>
-                                    <p className="text-sm text-muted-foreground">{visitInfo.description}</p>
-                                  </div>
-                                  
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                                    {visitData.schedule && (
-                                      <div className="flex items-start gap-2">
-                                        <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                        <div>
-                                          <span className="font-medium">{t.tourism.schedule}:</span>
-                                          <span className="ml-1">{visitData.schedule}</span>
-                                        </div>
-                                      </div>
-                                    )}
-                                    {visitData.price && (
-                                      <div className="flex items-start gap-2">
-                                        <Euro className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
-                                        <div>
-                                          <span className="font-medium">{t.tourism.price}:</span>
-                                          <span className="ml-1 text-emerald-700 font-semibold">{visitData.price}</span>
-                                        </div>
-                                      </div>
-                                    )}
-                                    {distance && distance > 0 && (
-                                      <div className="flex items-start gap-2">
-                                        <Navigation className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                        <div>
-                                          <span className="font-medium">{t.tourism.distance}:</span>
-                                          <span className="ml-1">{distance} min</span>
-                                        </div>
-                                      </div>
-                                    )}
-                                    {visitData.phone && (
-                                      <div className="flex items-start gap-2">
-                                        <Phone className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                        <div>
-                                          <span className="font-medium">{t.tourism.phone}:</span>
-                                          <a href={`tel:${visitData.phone}`} className="ml-1 hover:underline">{visitData.phone}</a>
-                                        </div>
-                                      </div>
-                                    )}
-                                  </div>
-                                  
-                                  <div className="flex gap-2 flex-wrap pt-2">
-                                    {visitData.mapsUrl && (
-                                      <Button
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => window.open(visitData.mapsUrl, '_blank', 'noopener,noreferrer')}
-                                        data-testid={`button-map-visit-${categoryId}-${index}`}
-                                      >
-                                        <MapPin className="w-4 h-4 mr-2" />
-                                        {t.tourism.location}
-                                      </Button>
-                                    )}
-                                    {visitData.website && (
-                                      <Button
-                                        variant="outline"
-                                        size="sm"
-                                        onClick={() => window.open(visitData.website, '_blank', 'noopener,noreferrer')}
-                                        data-testid={`button-website-visit-${categoryId}-${index}`}
-                                      >
-                                        <ExternalLink className="w-4 h-4 mr-2" />
-                                        Web
-                                      </Button>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
+                          <VisitCard key={visitData.id} visitData={visitData} visitInfo={visitInfo} index={index} categoryId={categoryId} apartment={apartment} lang={currentLanguage} t={t} />
                         );
                       })}
                     </AccordionContent>
