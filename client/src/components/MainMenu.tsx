@@ -7,13 +7,14 @@ import { SiWhatsapp } from 'react-icons/si';
 import GuideDialog from '@/components/GuideDialog';
 import { WeatherChip } from '@/components/Extras';
 import { hostWhatsAppLink } from '@/lib/whatsapp';
+import SearchBox from '@/components/SearchBox';
 
 const APARTMENT_ADDRESS: Record<Apartment, string> = {
   ibarra: 'Calle Conde de Ibarra, 11-13, 41004 Sevilla',
   quevedo: 'Calle Quevedo, 11, 41003 Sevilla',
 };
 const MAP_LABEL: Record<Language, string> = { es: 'Mapa', en: 'Map', fr: 'Carte', de: 'Karte', it: 'Mappa', zh: '地图' };
-import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
+import BrandLogo from '@/components/BrandLogo';
 import transportBg from '@assets/menu_transport_1774783796390.webp';
 import checkinBg from '@assets/menu_checkin_1774783796390.png';
 import wifiBg from '@assets/menu_wifi_1774783796390.webp';
@@ -97,11 +98,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
           <div className="w-10" />
         )}
         
-        <img
-          src={logoUrl}
-          alt="Caprichos de Sevilla"
-          className="h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain"
-        />
+        <BrandLogo variant="horizontal" className="h-10 sm:h-14 md:h-16 min-w-0 shrink object-contain" />
         
         <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           <Button
@@ -187,6 +184,9 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
                 <MapPin className="w-3.5 h-3.5" />
                 {MAP_LABEL[currentLanguage] || MAP_LABEL.en}
               </a>
+            </div>
+            <div className="pt-2 px-1">
+              <SearchBox apartment={apartment} lang={currentLanguage} />
             </div>
           </div>
 

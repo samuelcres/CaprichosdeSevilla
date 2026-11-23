@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Home } from 'lucide-react';
-import logoUrl from '@assets/logo-caprichos-2026-horizontal.webp';
+import BrandLogo from '@/components/BrandLogo';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';
@@ -49,11 +49,7 @@ export default function PageHeader({ onBack, onHome, title, currentLanguage, onL
               {title}
             </h1>
           ) : (
-            <img
-              src={logoUrl}
-              alt="Caprichos de Sevilla"
-              className="h-10 object-contain"
-            />
+            <BrandLogo variant="horizontal" className="h-10 object-contain" />
           )}
           {apartment && apartmentLabel && (
             onHome ? (

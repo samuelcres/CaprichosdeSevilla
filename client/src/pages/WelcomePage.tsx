@@ -2,7 +2,7 @@ import { useApp } from '@/context/AppContext';
 import { useLocation } from 'wouter';
 import LanguageSelector from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n';
-import logoUrl from '@assets/logo-caprichos-2026.webp';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function WelcomePage() {
   const { language, setLanguage } = useApp();
@@ -18,12 +18,7 @@ export default function WelcomePage() {
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-2xl space-y-8">
         <div className="text-center space-y-4">
-          <img
-            src={logoUrl}
-            alt="Caprichos de Sevilla"
-            className="h-20 md:h-24 mx-auto object-contain mb-6"
-            data-testid="img-logo"
-          />
+          <BrandLogo variant="full" className="h-20 md:h-24 mx-auto object-contain mb-6" />
         </div>
         <LanguageSelector
           title={t.welcome.title}
