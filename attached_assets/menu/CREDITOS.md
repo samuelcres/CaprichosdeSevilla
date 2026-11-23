@@ -1,0 +1,6 @@
+# Fotos del menú
+
+- transporte.webp — Unsplash (licencia Unsplash, uso comercial permitido): https://images.unsplash.com/photo-1715439246927-1309beb3b3f2
+- comer.webp — Unsplash (licencia Unsplash, uso comercial permitido): https://images.unsplash.com/photo-1656423521731-9665583f100c
+- checkin-*.webp, wifi-*.webp — fotos propias de los apartamentos
+- eventos.webp, contacto.webp — fotos que ya tenía la app
