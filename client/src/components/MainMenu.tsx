@@ -208,7 +208,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
                   src={getMenuPhoto(option.id, apartment) || apartmentBgUrl}
                   alt=""
                   className="absolute inset-0 w-full h-full object-cover brightness-[1.12] saturate-[1.05] transition-transform duration-500 group-hover:scale-105"
-                  style={{ objectPosition: MENU_PHOTO_POSITION[option.id] || 'center' }}
+                  style={{ objectPosition: (option.id === 'checkin' && apartment === 'quevedo') ? '30% center' : (MENU_PHOTO_POSITION[option.id] || 'center') }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/70" />
                 <span className="absolute top-2.5 left-2.5 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/95 text-primary shadow-md flex items-center justify-center [&_svg]:w-5 [&_svg]:h-5 sm:[&_svg]:w-6 sm:[&_svg]:h-6 [&_svg]:stroke-[2.25]">
