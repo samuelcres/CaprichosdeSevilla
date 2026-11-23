@@ -207,17 +207,17 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
                 <img
                   src={getMenuPhoto(option.id, apartment) || apartmentBgUrl}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover brightness-[1.12] saturate-[1.05] transition-transform duration-500 group-hover:scale-105"
                   style={{ objectPosition: MENU_PHOTO_POSITION[option.id] || 'center' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-black/70" />
                 <span className="absolute top-2.5 left-2.5 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/95 text-primary shadow-md flex items-center justify-center [&_svg]:w-5 [&_svg]:h-5 sm:[&_svg]:w-6 sm:[&_svg]:h-6 [&_svg]:stroke-[2.25]">
                   {option.icon}
                 </span>
                 <span className="absolute left-3 right-3 bottom-2.5 sm:left-4 sm:bottom-4 text-white">
-                  <span className="block font-bold text-[15px] sm:text-xl leading-tight drop-shadow break-words hyphens-auto">{option.title}</span>
+                  <span className="block font-bold text-[15px] sm:text-xl leading-tight [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] break-words hyphens-auto">{option.title}</span>
                   {option.description && (
-                    <span className="block text-[11px] sm:text-sm leading-snug opacity-90 mt-0.5 line-clamp-1 sm:line-clamp-2">{option.description}</span>
+                    <span className="block text-[11px] sm:text-sm leading-snug opacity-95 mt-0.5 line-clamp-1 sm:line-clamp-2 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">{option.description}</span>
                   )}
                 </span>
               </button>
