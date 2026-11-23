@@ -15,12 +15,14 @@ const APARTMENT_ADDRESS: Record<Apartment, string> = {
 };
 const MAP_LABEL: Record<Language, string> = { es: 'Mapa', en: 'Map', fr: 'Carte', de: 'Karte', it: 'Mappa', zh: '地图' };
 import BrandLogo from '@/components/BrandLogo';
-import transportBg from '@assets/menu_transport_1774783796390.webp';
-import checkinBg from '@assets/menu_checkin_1774783796390.png';
-import wifiBg from '@assets/menu_wifi_1774783796390.webp';
-import tourismBg from '@assets/menu_tourism_1774783796390.webp';
-import eventsBg from '@assets/menu_events_1774783796390.webp';
-import contactBg from '@assets/menu_contact_1774783796390.webp';
+import transportPhoto from '@assets/menu/transporte.webp';
+import checkinIbarraPhoto from '@assets/menu/checkin-ibarra.webp';
+import checkinQuevedoPhoto from '@assets/menu/checkin-quevedo.webp';
+import wifiIbarraPhoto from '@assets/menu/wifi-ibarra.webp';
+import wifiQuevedoPhoto from '@assets/menu/wifi-quevedo.webp';
+import foodPhoto from '@assets/menu/comer.webp';
+import eventsPhoto from '@assets/menu/eventos.webp';
+import contactPhoto from '@assets/menu/contacto.webp';
 import { languages, Language, Apartment } from '@/lib/i18n';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
@@ -31,6 +33,20 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Globe } from 'lucide-react';
+
+// Fotos del menú (estilo «Editorial»): a sangre, con el título encima.
+function getMenuPhoto(id: string, apartment: Apartment): string | undefined {
+  const photos: Record<string, string> = {
+    transport: transportPhoto,
+    checkin: apartment === 'ibarra' ? checkinIbarraPhoto : checkinQuevedoPhoto,
+    wifi: apartment === 'ibarra' ? wifiIbarraPhoto : wifiQuevedoPhoto,
+    tourism: foodPhoto,
+    events: eventsPhoto,
+    contact: contactPhoto,
+  };
+  return photos[id];
+}
+const MENU_PHOTO_POSITION: Record<string, string> = { checkin: 'center 35%', events: 'center 30%' };
 
 interface MenuOption {
   id: string;
@@ -58,17 +74,6 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
   const currentLang = languages.find(l => l.code === currentLanguage);
   const apartmentBgUrl = apartment === 'ibarra' ? ibarraImageUrl : quevedoImageUrl;
 
-  const getBackgroundImage = (optionId: string) => {
-    const backgrounds: Record<string, string> = {
-      'transport': transportBg,
-      'checkin': checkinBg,
-      'wifi': wifiBg,
-      'tourism': tourismBg,
-      'events': eventsBg,
-      'contact': contactBg,
-    };
-    return backgrounds[optionId] || apartmentBgUrl;
-  };
 
   return (
     <div className="h-[100dvh] overflow-hidden sm:h-auto sm:min-h-screen sm:overflow-visible bg-background flex flex-col relative">
@@ -192,38 +197,30 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
 
           <div className="grid grid-cols-2 grid-rows-3 flex-1 min-h-0 gap-3 sm:grid-rows-none lg:grid-cols-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto w-full">
             {options.map((option) => (
-              <Card
+              <button
                 key={option.id}
-                className="hover-elevate active-elevate-2 cursor-pointer overflow-hidden group !rounded-2xl !border-2 !shadow-xl hover:!shadow-2xl transition-all duration-300 relative min-h-0 sm:h-48"
+                type="button"
+                className="group relative min-h-0 sm:h-56 overflow-hidden rounded-2xl text-left shadow-lg hover:shadow-2xl transition-shadow duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/50 bg-muted"
                 onClick={() => onSelect(option.id)}
                 data-testid={`card-menu-${option.id}`}
               >
-                <div className="flex flex-col sm:flex-row h-full">
-                  <div 
-                    className="relative flex-1 min-h-0 sm:flex-none sm:w-1/2 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${getBackgroundImage(option.id)})` }}
-                  >
-                    {/* Icono pequeño sobre la imagen (solo móvil) */}
-                    <div className="sm:hidden absolute top-2 left-2 w-12 h-12 rounded-2xl bg-primary text-primary-foreground ring-2 ring-white shadow-lg flex items-center justify-center [&_svg]:w-7 [&_svg]:h-7 [&_svg]:stroke-[2.25]">
-                      {option.icon}
-                    </div>
-                  </div>
-                  <div className="shrink-0 sm:w-1/2 bg-white dark:bg-card flex flex-col items-center justify-center px-2 py-1.5 sm:p-6 sm:space-y-3">
-                    <div className="relative hidden sm:block">
-                      <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-primary/40 via-primary/30 to-primary/20 flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:from-primary/60 group-hover:via-primary/50 group-hover:to-primary/40">
-                        <div className="text-primary transition-all duration-300 group-hover:scale-110 drop-shadow-lg">{option.icon}</div>
-                      </div>
-                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-transparent blur-xl opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div className="text-center space-y-1 w-full min-w-0">
-                      <CardTitle className="text-[15px] sm:text-lg font-bold text-foreground leading-tight break-words hyphens-auto">{option.title}</CardTitle>
-                      {option.description && (
-                        <p className="hidden sm:block text-xs text-muted-foreground">{option.description}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                <img
+                  src={getMenuPhoto(option.id, apartment) || apartmentBgUrl}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: MENU_PHOTO_POSITION[option.id] || 'center' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/10 to-black/80" />
+                <span className="absolute top-2.5 left-2.5 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white/95 text-primary shadow-md flex items-center justify-center [&_svg]:w-5 [&_svg]:h-5 sm:[&_svg]:w-6 sm:[&_svg]:h-6 [&_svg]:stroke-[2.25]">
+                  {option.icon}
+                </span>
+                <span className="absolute left-3 right-3 bottom-2.5 sm:left-4 sm:bottom-4 text-white">
+                  <span className="block font-bold text-[15px] sm:text-xl leading-tight drop-shadow break-words hyphens-auto">{option.title}</span>
+                  {option.description && (
+                    <span className="block text-[11px] sm:text-sm leading-snug opacity-90 mt-0.5 line-clamp-1 sm:line-clamp-2">{option.description}</span>
+                  )}
+                </span>
+              </button>
             ))}
           </div>
         </div>
