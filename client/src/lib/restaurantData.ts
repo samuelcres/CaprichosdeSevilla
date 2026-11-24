@@ -517,6 +517,7 @@ const P: Record<string, Place> = {
 // Fotos reales de algunos locales, con licencia libre (Wikimedia Commons).
 // Para el resto, la foto del local la pone Google en vivo cuando está la clave.
 const LOCAL_PHOTOS: Record<string, string> = {
+  cacharreria: '', // foto aportada por Samuel
   columnas: 'Foto: CarlosVdeHabsburgo · CC BY-SA 4.0',
   rinconcillo: 'Foto: Stefano Vigorelli · CC0',
   romero: 'Foto: Rubén Vique · CC BY 2.0',
@@ -560,7 +561,7 @@ function build(apt: 'ibarra' | 'quevedo'): Restaurant[] {
         distance: walkMinutes(alat, alng, p.lat, p.lng),
         mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', Sevilla')}&query_place_id=${p.placeId}`,
         photo: photo(id),
-        localPhoto: LOCAL_PHOTOS[id] ? { src: photo(`${id}-local`), credit: LOCAL_PHOTOS[id] } : undefined,
+        localPhoto: id in LOCAL_PHOTOS ? { src: photo(`${id}-local`), credit: LOCAL_PHOTOS[id] } : undefined,
         description: p.desc.es,
       });
     }

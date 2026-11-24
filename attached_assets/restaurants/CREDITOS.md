@@ -54,3 +54,4 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - columnas-local.webp — «Bar Las Columnas 01.jpg», CarlosVdeHabsburgo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bar_Las_Columnas_01.jpg
 - rinconcillo-local.webp — «Restaurante El Rinconcillo, Sevilla SP.jpg», Stefano Vigorelli, CC0 — https://commons.wikimedia.org/wiki/File:Restaurante_El_Rinconcillo,_Sevilla_SP.jpg
 - romero-local.webp — «Bodeguita Romero (7850724508).jpg», Rubén Vique, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Bodeguita_Romero_(7850724508).jpg
+- cacharreria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
