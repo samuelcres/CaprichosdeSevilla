@@ -29,6 +29,8 @@ interface Place {
 }
 
 export interface Restaurant extends Place {
+  /** Foto del local (Wikimedia Commons) cuando no hay foto de Google. */
+  localPhoto?: { src: string; credit: string };
   category: Category;
   /** Minutos a pie desde el apartamento (estimados con las coordenadas). */
   distance: number;
@@ -512,6 +514,14 @@ const P: Record<string, Place> = {
   },
 };
 
+// Fotos reales de algunos locales, con licencia libre (Wikimedia Commons).
+// Para el resto, la foto del local la pone Google en vivo cuando está la clave.
+const LOCAL_PHOTOS: Record<string, string> = {
+  columnas: 'Foto: CarlosVdeHabsburgo · CC BY-SA 4.0',
+  rinconcillo: 'Foto: Stefano Vigorelli · CC0',
+  romero: 'Foto: Rubén Vique · CC BY 2.0',
+};
+
 // Listas por apartamento (orden = orden en la app)
 const LISTS: Record<'ibarra' | 'quevedo', Record<Category, string[]>> = {
   ibarra: {
@@ -550,6 +560,7 @@ function build(apt: 'ibarra' | 'quevedo'): Restaurant[] {
         distance: walkMinutes(alat, alng, p.lat, p.lng),
         mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', Sevilla')}&query_place_id=${p.placeId}`,
         photo: photo(id),
+        localPhoto: LOCAL_PHOTOS[id] ? { src: photo(`${id}-local`), credit: LOCAL_PHOTOS[id] } : undefined,
         description: p.desc.es,
       });
     }

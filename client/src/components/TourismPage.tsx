@@ -301,7 +301,9 @@ interface RestaurantCardProps {
 
 function RestaurantCard({ restaurant, index, category, t, apartment, lang }: RestaurantCardProps) {
   const live = usePlaceInfo(placeQuery(restaurant.name, restaurant.mapsUrl), apartment);
-  const imageUrl = live?.photo || restaurant.photo;
+  // Dos fotos: el local (Google en vivo o Wikimedia) y su plato típico.
+  const local = live?.photo ? { src: live.photo, credit: '' } : restaurant.localPhoto;
+  const dishPhoto: string | undefined = restaurant.photo;
   const phone = live?.phone || restaurant.phone;
   const mapsUrl = live?.mapsUrl || restaurant.mapsUrl;
   const minutes = live?.walkMinutes ?? restaurant.distance;
@@ -311,15 +313,27 @@ function RestaurantCard({ restaurant, index, category, t, apartment, lang }: Res
   return (
     <Card data-testid={`card-restaurant-${category}-${index}`} className={`overflow-hidden ${closedForever ? 'opacity-60' : ''}`}>
       <div className="flex flex-col sm:flex-row">
-        {imageUrl && (
-          <div className="w-full h-40 sm:w-32 sm:h-auto flex-shrink-0">
-            <img
-              src={imageUrl}
-              alt={restaurant.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => { const fb = restaurant.photo; if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb; }}
-            />
+        {(local || dishPhoto) && (
+          <div className={`w-full h-44 sm:w-40 sm:h-auto flex-shrink-0 grid gap-0.5 ${local && dishPhoto ? 'grid-cols-2 sm:grid-cols-1 sm:grid-rows-2' : ''}`}>
+            {local && (
+              <div className="relative min-h-0 overflow-hidden">
+                <img
+                  src={local.src}
+                  alt={restaurant.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+                />
+                {local.credit && (
+                  <span className="absolute bottom-0 left-0 right-0 bg-black/45 text-white text-[9px] leading-tight px-1 py-0.5 truncate">{local.credit}</span>
+                )}
+              </div>
+            )}
+            {dishPhoto && (
+              <div className="min-h-0 overflow-hidden">
+                <img src={dishPhoto} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            )}
           </div>
         )}
         <div className="flex-1 p-4 space-y-3">

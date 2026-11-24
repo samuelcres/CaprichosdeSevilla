@@ -12,7 +12,7 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - elpasaje.webp — https://unsplash.com/photos/photo-1445979323117-80453f573b71 (images.unsplash.com/photo-1445979323117-80453f573b71)
 - casamikva.webp — https://unsplash.com/photos/photo-1757972367524-5272633a75df (images.unsplash.com/photo-1757972367524-5272633a75df)
 - pesciolino.webp — https://unsplash.com/photos/photo-1715249792962-5359b4b17f21 (images.unsplash.com/photo-1715249792962-5359b4b17f21)
-- columnas.webp — https://unsplash.com/photos/photo-1780639026821-f680fae0d99d (images.unsplash.com/photo-1780639026821-f680fae0d99d)
+- columnas.webp — https://unsplash.com/photos/photo-1786918467164-ab98dce2293c
 - ovejas.webp — https://unsplash.com/photos/photo-1565599837634-134bc3aadce8 (images.unsplash.com/photo-1565599837634-134bc3aadce8)
 - romero.webp — https://unsplash.com/photos/photo-1608500219063-e5164085cd6f (images.unsplash.com/photo-1608500219063-e5164085cd6f)
 - syra.webp — https://unsplash.com/photos/photo-1595485225178-457ee5893fa3 (images.unsplash.com/photo-1595485225178-457ee5893fa3)
@@ -49,3 +49,8 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - anarubia.webp — https://unsplash.com/photos/photo-1689239719024-8f0866438b46 (images.unsplash.com/photo-1689239719024-8f0866438b46)
 - catalina.webp — https://unsplash.com/photos/photo-1674480367370-4e4bd64eb3c5 (images.unsplash.com/photo-1674480367370-4e4bd64eb3c5)
 - duo.webp — https://unsplash.com/photos/photo-1669216284093-a975043a4645 (images.unsplash.com/photo-1669216284093-a975043a4645)
+
+## Fotos de los locales (Wikimedia Commons)
+- columnas-local.webp — «Bar Las Columnas 01.jpg», CarlosVdeHabsburgo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bar_Las_Columnas_01.jpg
+- rinconcillo-local.webp — «Restaurante El Rinconcillo, Sevilla SP.jpg», Stefano Vigorelli, CC0 — https://commons.wikimedia.org/wiki/File:Restaurante_El_Rinconcillo,_Sevilla_SP.jpg
+- romero-local.webp — «Bodeguita Romero (7850724508).jpg», Rubén Vique, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Bodeguita_Romero_(7850724508).jpg
