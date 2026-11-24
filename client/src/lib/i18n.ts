@@ -271,8 +271,8 @@ export const translations = {
       copied: 'Copiado',
       scanQR: 'O escanea el código QR',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
@@ -726,8 +726,8 @@ export const translations = {
       copied: 'Copied',
       scanQR: 'Or scan QR code',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
@@ -1181,8 +1181,8 @@ export const translations = {
       copied: 'Copié',
       scanQR: 'Ou scanner le code QR',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
@@ -1636,8 +1636,8 @@ export const translations = {
       copied: 'Kopiert',
       scanQR: 'Oder QR-Code scannen',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
@@ -2091,8 +2091,8 @@ export const translations = {
       copied: 'Copiato',
       scanQR: 'O scansiona il codice QR',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
@@ -2546,8 +2546,8 @@ export const translations = {
       copied: '已复制',
       scanQR: '或扫描二维码',
       ibarra: {
-        ssid: 'CaprichoIbarra',
-        password: '1113Ibarra1113',
+        ssid: 'REDWIFI_DCCZ',
+        password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
         ssid: 'vodafoneBA3017',
