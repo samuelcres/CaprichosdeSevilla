@@ -275,8 +275,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {
@@ -730,8 +730,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {
@@ -1185,8 +1185,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {
@@ -1640,8 +1640,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {
@@ -2095,8 +2095,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {
@@ -2550,8 +2550,8 @@ export const translations = {
         password: 'SCAZ94sb7xQNNGPd',
       },
       quevedo: {
-        ssid: 'vodafoneBA3017',
-        password: 'KRNPAX7FXAXS55A5',
+        ssid: 'REDWIFI_uSGd',
+        password: 'TtdzDQ9DR4DcRkES',
       },
     },
     tourism: {

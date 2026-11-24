@@ -8,7 +8,7 @@ import { AcPanel, WasherPanel } from './ApplianceGuides';
 import { Apartment, Language } from '@/lib/i18n';
 import { useToast } from '@/hooks/use-toast';
 import qrIbarraUrl from '@assets/QR Ibarra_1759701422984.png';
-import qrQuevedoUrl from '@assets/Captura de pantalla 2025-10-09 a las 10.26.39_1759998407884.png';
+import qrQuevedoUrl from '@assets/QR Quevedo.png';
 import ibarraImageUrl from '@assets/FotoIbarra_1759702831594.webp';
 import quevedoImageUrl from '@assets/FotoQuevedo_1759702831586.webp';
 
