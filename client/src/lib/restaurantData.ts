@@ -114,7 +114,7 @@ const P: Record<string, Place> = {
     dishes: T('Pulpo a la brasa, carrillada, ternera retinta, salmorejo', 'Grilled octopus, pork cheek, retinta beef, salmorejo', 'Poulpe grillé, joue de porc, bœuf retinta, salmorejo', 'Gegrillter Oktopus, Schweinebäckchen, Retinta-Rind, Salmorejo', 'Polpo alla brace, guancia, manzo retinto, salmorejo', '炭烤章鱼、猪脸肉、雷蒂恩塔牛肉、萨尔莫雷霍冷汤'),
   },
   elpasaje: {
-    id: 'elpasaje', name: 'El Pasaje Santa María la Blanca', lat: 37.3865882, lng: -5.9882948, placeId: 'ChIJKfF9BhxsEg0RTaW7tjtX_34', priceLevel: 'medium', phone: '+34 954 21 77 78',
+    id: 'elpasaje', name: 'El Pasaje Santa María la Blanca', lat: 37.3865882, lng: -5.9882948, placeId: 'ChIJKfF9BhxsEg0RTaW7tjtX_34', website: 'https://elpasajesevilla.com/', priceLevel: 'medium', phone: '+34 954 21 77 78',
     desc: T('Cocina andaluza actualizada en un local más grande de lo que parece. Todos los días desde las 13:00.',
       'Updated Andalusian cooking in a room bigger than it looks. Daily from 13:00.',
       'Cuisine andalouse revisitée, dans une salle plus grande qu’il n’y paraît. Tous les jours dès 13h.',
@@ -174,7 +174,7 @@ const P: Record<string, Place> = {
     dishes: T('Pringá, papas aliñás, rabo de toro', 'Pringá, dressed potatoes (papas aliñás), oxtail', 'Pringá, pommes de terre assaisonnées, queue de taureau', 'Pringá, Kartoffelsalat „papas aliñás“, Ochsenschwanz', 'Pringá, patate condite, coda di toro', '炖肉夹饼、凉拌土豆、炖牛尾'),
   },
   syra: {
-    id: 'syra', name: 'Syra Coffee', lat: 37.3889412, lng: -5.9933136, placeId: 'ChIJEWLhqdttEg0RpLD4sByPpg8', priceLevel: 'low',
+    id: 'syra', name: 'Syra Coffee', lat: 37.3889412, lng: -5.9933136, placeId: 'ChIJEWLhqdttEg0RpLD4sByPpg8', website: 'https://syra.coffee/pages/location', priceLevel: 'low',
     desc: T('Café de especialidad en la calle Álvarez Quintero, sobre todo para llevar (apenas hay asientos). También venden café en grano.',
       'Specialty coffee on Calle Álvarez Quintero, mostly takeaway (very little seating). They also sell beans.',
       'Café de spécialité rue Álvarez Quintero, surtout à emporter (peu de places). Vente de café en grains.',
@@ -234,7 +234,7 @@ const P: Record<string, Place> = {
     dishes: T('Tapas andaluzas de temporada, pescado del día, vino naranja', 'Seasonal Andalusian tapas, catch of the day, orange wine', 'Tapas andalouses de saison, poisson du jour, vin orange', 'Saisonale andalusische Tapas, Fisch des Tages, Orange Wine', 'Tapas andaluse di stagione, pesce del giorno, vino orange', '应季安达卢西亚 tapas、当日鲜鱼、橙酒'),
   },
   bendala: {
-    id: 'bendala', name: 'Bendala Brasería', lat: 37.3854589, lng: -5.9866627, placeId: 'ChIJOdSOkt1tEg0Rs-QkQzsKKCk', priceLevel: 'medium', phone: '+34 955 22 30 01',
+    id: 'bendala', name: 'Bendala Brasería', lat: 37.3854589, lng: -5.9866627, placeId: 'ChIJOdSOkt1tEg0Rs-QkQzsKKCk', website: 'https://www.bendalarestaurantes.com/', priceLevel: 'medium', phone: '+34 955 22 30 01',
     desc: T('Brasería junto a los Jardines de Murillo, con terraza y opciones vegetarianas. Abre todos los días desde las 13:00; suele haber cola sin reserva.',
       'Grill house by the Murillo Gardens, with a terrace and vegetarian options. Daily from 13:00; expect a queue without a booking.',
       'Rôtisserie près des jardins de Murillo, avec terrasse et options végétariennes. Tous les jours dès 13h ; file d’attente sans réservation.',
@@ -548,6 +548,25 @@ const LOCAL_PHOTOS: Record<string, string> = {
   recoveco: '', // foto aportada por Samuel
   templo: '', // foto aportada por Samuel
   virgen: '', // foto aportada por Samuel
+  bocafloja: '', // foto aportada por Samuel (Ibarra)
+  labartola: '', // foto aportada por Samuel (Ibarra)
+  donaire: '', // foto aportada por Samuel (Ibarra)
+  becerrita: '', // foto aportada por Samuel (Ibarra)
+  bendala: '', // foto aportada por Samuel (Ibarra)
+  malquerer: '', // foto aportada por Samuel (Ibarra)
+  santelmo: '', // foto aportada por Samuel (Ibarra)
+  mamarracha: '', // foto aportada por Samuel (Ibarra)
+  abantal: '', // foto aportada por Samuel (Ibarra)
+  syra: '', // foto aportada por Samuel (Ibarra)
+  ovejas: '', // foto aportada por Samuel (Ibarra)
+  pesciolino: '', // foto aportada por Samuel (Ibarra)
+  casamikva: '', // foto aportada por Samuel (Ibarra)
+  elpasaje: '', // foto aportada por Samuel (Ibarra)
+  casamoreno: '', // foto aportada por Samuel (Ibarra)
+  mokambo: '', // foto aportada por Samuel (Ibarra)
+  lamala: '', // foto aportada por Samuel (Ibarra)
+  moya: '', // foto aportada por Samuel (Ibarra)
+  nini: '', // foto aportada por Samuel (Ibarra)
   columnas: 'Foto: CarlosVdeHabsburgo · CC BY-SA 4.0',
   rinconcillo: 'Foto: Stefano Vigorelli · CC0',
   romero: 'Foto: Rubén Vique · CC BY 2.0',
