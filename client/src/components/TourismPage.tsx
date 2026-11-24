@@ -437,38 +437,38 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
         <div className="grid grid-cols-2 sm:flex gap-1.5 sm:gap-2 p-1.5 bg-white/90 border border-border shadow-sm rounded-xl">
           <Button
             variant={activeTab === 'restaurants' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
+            className="w-full sm:flex-1 h-auto min-h-[4.5rem] sm:min-h-12 flex-col sm:flex-row gap-1.5 sm:gap-2 py-2.5 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('restaurants')}
             data-testid="tab-restaurants"
           >
-            <UtensilsCrossed className="w-5 h-5 sm:w-4 sm:h-4" />
+            <UtensilsCrossed className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
             {t.tourism.restaurants}
           </Button>
           <Button
             variant={activeTab === 'visits' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
+            className="w-full sm:flex-1 h-auto min-h-[4.5rem] sm:min-h-12 flex-col sm:flex-row gap-1.5 sm:gap-2 py-2.5 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('visits')}
             data-testid="tab-visits"
           >
-            <Landmark className="w-5 h-5 sm:w-4 sm:h-4" />
+            <Landmark className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
             {t.tourism.visits}
           </Button>
           <Button
             variant={activeTab === 'map' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
+            className="w-full sm:flex-1 h-auto min-h-[4.5rem] sm:min-h-12 flex-col sm:flex-row gap-1.5 sm:gap-2 py-2.5 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('map')}
             data-testid="tab-map"
           >
-            <MapIcon className="w-5 h-5 sm:w-4 sm:h-4" />
+            <MapIcon className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
             {t.tourism.map}
           </Button>
           <Button
             variant={activeTab === 'activities' ? 'default' : 'ghost'}
-            className="w-full sm:flex-1 h-auto min-h-14 sm:min-h-10 flex-col sm:flex-row gap-1 sm:gap-2 py-2 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
+            className="w-full sm:flex-1 h-auto min-h-[4.5rem] sm:min-h-12 flex-col sm:flex-row gap-1.5 sm:gap-2 py-2.5 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
             onClick={() => setActiveTab('activities')}
             data-testid="tab-activities"
           >
-            <Ticket className="w-5 h-5 sm:w-4 sm:h-4" />
+            <Ticket className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
             {t.tourism.activities}
           </Button>
         </div>
