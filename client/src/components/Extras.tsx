@@ -4,8 +4,10 @@ import { format, addDays, parseISO, isValid, differenceInCalendarDays } from 'da
 import { es, enUS, fr, de, it, zhCN } from 'date-fns/locale';
 import {
   ShoppingCart, Pill, Landmark, Shirt, Store, Croissant, MapPin, Hospital, Phone, Navigation, ExternalLink,
-  Stethoscope, Ticket, Footprints, Clock, X, Star, HeartPulse,
+  Stethoscope, Ticket, Footprints, Clock, X, Star, HeartPulse, Eye, Map as MapIcon, Lightbulb,
 } from 'lucide-react';
+import { BAZAARS, BAZAAR_UI, Bazaar, bazaarHours } from '@/lib/bazaarData';
+import { usePlaceInfo } from '@/lib/usePlaceInfo';
 import { Apartment, Language } from '@/lib/i18n';
 import {
   BARRIO, SERVICE_QUERY, ServiceId, HEALTH, HOSPITAL, PHARMACY_24H, PHARMACY_GUARD_URL,
@@ -82,6 +84,94 @@ function PlaceRow({ p, icon: Icon, P }: { p: NearbyPlace; icon: typeof Pill; P: 
   );
 }
 
+/* ---- Bazares: lista propia con foto, horario e itinerario a pie ---- */
+const BZ_PHOTOS = import.meta.glob('../../../attached_assets/bazaars/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
+
+function BazaarCard({ b, apartment, lang, index }: { b: Bazaar; apartment: Apartment; lang: Language; index: number }) {
+  const U = BAZAAR_UI[lang] || BAZAAR_UI.en;
+  const live = usePlaceInfo(`${b.name}, ${b.address}`, apartment);
+  const [showMap, setShowMap] = useState(index === 0);
+  const [imgOk, setImgOk] = useState(true);
+  const own = BZ_PHOTOS[`../../../attached_assets/bazaars/${b.id}.webp`];
+  const photo = own || (live?.photo && imgOk ? live.photo : undefined);
+  const { lat: oLat, lng: oLng } = COORDS[apartment];
+  const route = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(ADDRESS[apartment])}&destination=${encodeURIComponent(b.name)}&destination_place_id=${b.placeId}&travelmode=walking`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.name)}&query_place_id=${b.placeId}`;
+  const facade = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${b.lat},${b.lng}`;
+  const embed = `https://maps.google.com/maps?saddr=${oLat},${oLng}&daddr=${b.lat},${b.lng}&dirflg=w&hl=${lang === 'zh' ? 'zh-CN' : lang}&output=embed`;
+  const rating = live?.rating ?? b.rating;
+  const ratingCount = live?.ratingCount ?? b.ratingCount;
+  return (
+    <article className="rounded-2xl bg-white border border-border shadow-sm overflow-hidden" data-testid={`bazaar-${b.id}`}>
+      {photo && <img src={photo} alt={b.name} loading="lazy" className="w-full h-40 object-cover bg-muted" onError={() => setImgOk(false)} />}
+      <div className="p-4 space-y-2.5">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-start gap-2 min-w-0">
+            <span className="shrink-0 w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-bold flex items-center justify-center">{index + 1}</span>
+            <h4 className="font-bold text-[15px] leading-tight pt-0.5">{b.name}</h4>
+          </div>
+          <span className="shrink-0 inline-flex items-center gap-0.5 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-0.5">
+            <Footprints className="w-3 h-3" />{b.walkMinutes} {U.walk} · {b.meters} m
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 text-xs">
+          {rating !== undefined && (
+            <span className="inline-flex items-center gap-0.5">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" /><span className="font-semibold">{rating.toFixed(1)}</span>
+              {ratingCount !== undefined && <span className="text-muted-foreground">({ratingCount} {U.reviews})</span>}
+            </span>
+          )}
+          {live?.openNow !== undefined && (
+            <span className={live.openNow ? 'text-emerald-700 font-medium' : 'text-red-600 font-medium'}>{live.openNow ? (PLACES_UI[lang] || PLACES_UI.en).open : (PLACES_UI[lang] || PLACES_UI.en).closed}</span>
+          )}
+        </div>
+        <p className="text-sm text-muted-foreground leading-snug">{b.desc[lang] || b.desc.en}</p>
+        <p className="text-sm flex gap-1.5"><MapPin className="w-4 h-4 shrink-0 mt-0.5 text-primary" />{b.address}</p>
+        <div className="text-[13px] flex gap-1.5">
+          <Clock className="w-4 h-4 shrink-0 mt-0.5 text-primary" />
+          <div>{bazaarHours(b.hours, lang).map((l) => <p key={l}>{l}</p>)}</div>
+        </div>
+        {b.tip && <p className="text-xs rounded-xl bg-amber-50 text-amber-900 border border-amber-200 px-3 py-2 flex gap-1.5"><Lightbulb className="w-3.5 h-3.5 shrink-0 mt-px" />{b.tip[lang] || b.tip.en}</p>}
+
+        <button type="button" onClick={() => setShowMap((v) => !v)} className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl bg-muted/70 text-sm font-semibold py-2" data-testid={`bazaar-map-toggle-${b.id}`}>
+          <MapIcon className="w-4 h-4 text-primary" />{showMap ? U.hideMap : U.showMap}
+        </button>
+        {showMap && (
+          <iframe
+            title={`${U.route}: ${b.name}`}
+            src={embed}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-56 rounded-xl border border-border"
+          />
+        )}
+
+        <div className="grid grid-cols-2 gap-2">
+          <a href={route} target="_blank" rel="noopener noreferrer" className={`${btnPrimary} col-span-2`}><Navigation className="w-4 h-4" />{U.route}</a>
+          <a href={facade} target="_blank" rel="noopener noreferrer" className={btnOutline}><Eye className="w-4 h-4 text-primary" />{U.facade}</a>
+          {b.phone
+            ? <a href={tel(b.phone)} className={btnOutline}><Phone className="w-4 h-4 text-primary" />{U.call}</a>
+            : <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className={btnOutline}><ExternalLink className="w-4 h-4 text-primary" />{U.maps}</a>}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function BazaarList({ apartment, lang }: { apartment: Apartment; lang: Language }) {
+  const U = BAZAAR_UI[lang] || BAZAAR_UI.en;
+  return (
+    <section className="space-y-2.5" data-testid="bazaar-list">
+      <div className="px-1">
+        <h3 className="font-bold text-[15px] flex items-center gap-2"><Store className="w-4 h-4 text-primary" />{U.title}</h3>
+        <p className="text-xs text-muted-foreground mt-0.5">{U.intro}</p>
+      </div>
+      {BAZAARS[apartment].map((b, i) => <BazaarCard key={b.id} b={b} apartment={apartment} lang={lang} index={i} />)}
+      <p className="text-[10px] text-muted-foreground px-1">{U.note}</p>
+    </section>
+  );
+}
+
 export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: Language }) {
   const B = BARRIO[lang] || BARRIO.en;
   const P = PLACES_UI[lang] || PLACES_UI.en;
@@ -91,7 +181,7 @@ export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: L
   const [state, setState] = useState<{ loading: boolean; error?: boolean; source?: string; places: NearbyPlace[] }>({ loading: false, places: [] });
 
   useEffect(() => {
-    if (!selected) return;
+    if (!selected || selected === 'bazaar') return;
     const ctrl = new AbortController();
     setState({ loading: true, places: [] });
     fetch(`/api/places?type=${selected}&apartment=${apartment}`, { signal: ctrl.signal })
@@ -132,7 +222,9 @@ export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: L
         </div>
       </section>
 
-      {selected && (
+      {selected === 'bazaar' && <BazaarList apartment={apartment} lang={lang} />}
+
+      {selected && selected !== 'bazaar' && (
         <section className="space-y-2" data-testid="places-list">
           <h3 className="font-bold text-[15px] px-1 flex items-center gap-2"><Icon className="w-4 h-4 text-primary" />{B.services[selected]}</h3>
           {state.loading && (
