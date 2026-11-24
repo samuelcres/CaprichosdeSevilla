@@ -52,7 +52,7 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 
 ## Fotos de los locales (Wikimedia Commons)
 - columnas-local.webp — «Bar Las Columnas 01.jpg», CarlosVdeHabsburgo, CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Bar_Las_Columnas_01.jpg
-- rinconcillo-local.webp — «Restaurante El Rinconcillo, Sevilla SP.jpg», Stefano Vigorelli, CC0 — https://commons.wikimedia.org/wiki/File:Restaurante_El_Rinconcillo,_Sevilla_SP.jpg
+- rinconcillo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - romero-local.webp — «Bodeguita Romero (7850724508).jpg», Rubén Vique, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Bodeguita_Romero_(7850724508).jpg
 - cacharreria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - anarubia-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
@@ -67,3 +67,13 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - recoveco-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - templo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - virgen-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- abaceria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- alameda-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- andalusi-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- brunchit-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- creme-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- mamaines-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- muy-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- otto-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- parceria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- sanlorenzo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
