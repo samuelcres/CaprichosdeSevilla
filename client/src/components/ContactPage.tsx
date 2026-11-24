@@ -1,5 +1,5 @@
 import PageHeader from './PageHeader';
-import { HealthSection } from './Extras';
+import { HealthSection, ReviewCard } from './Extras';
 import { hostWhatsAppLink } from '@/lib/whatsapp';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -208,6 +208,8 @@ export default function ContactPage({ apartment, onBack, onHome, t, currentLangu
             </CardContent>
           </Card>
         </div>
+
+        <ReviewCard lang={currentLanguage} apartment={apartment} />
 
         <HealthSection apartment={apartment} lang={currentLanguage} />
 

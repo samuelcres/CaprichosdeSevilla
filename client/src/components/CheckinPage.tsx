@@ -366,7 +366,7 @@ export default function CheckinPage({ onBack, onHome, apartment, t, currentLangu
           </Card>
         )}
 
-        <ReviewCard lang={currentLanguage} />
+        <ReviewCard lang={currentLanguage} apartment={apartment} />
       </div>
     </div>
   );
