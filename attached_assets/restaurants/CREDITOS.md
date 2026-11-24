@@ -39,7 +39,7 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - abaceria.webp — https://unsplash.com/photos/photo-1656423521731-9665583f100c (images.unsplash.com/photo-1656423521731-9665583f100c)
 - rinconcillo.webp — https://unsplash.com/photos/photo-1608232385022-8ba61bec6c59 (images.unsplash.com/photo-1608232385022-8ba61bec6c59)
 - contenedor.webp — https://unsplash.com/photos/photo-1652690772837-4f270f7f87a2 (images.unsplash.com/photo-1652690772837-4f270f7f87a2)
-- caotica.webp — https://unsplash.com/photos/photo-1758610605872-3195caed0bdd (images.unsplash.com/photo-1758610605872-3195caed0bdd)
+- viajero.webp (antes caotica.webp) — https://unsplash.com/photos/photo-1758610605872-3195caed0bdd (images.unsplash.com/photo-1758610605872-3195caed0bdd)
 - recoveco.webp — https://unsplash.com/photos/photo-1621275471769-e6aa344546d5 (images.unsplash.com/photo-1621275471769-e6aa344546d5)
 - chia.webp — https://unsplash.com/photos/photo-1464306208223-e0b4495a5553 (images.unsplash.com/photo-1464306208223-e0b4495a5553)
 - comissura.webp — https://unsplash.com/photos/photo-1613769049987-b31b641f25b1 (images.unsplash.com/photo-1613769049987-b31b641f25b1)
@@ -96,3 +96,4 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - otto-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - parceria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - sanlorenzo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- baralfalfa-local.webp — foto aportada por Samuel (Caprichos de Sevilla)

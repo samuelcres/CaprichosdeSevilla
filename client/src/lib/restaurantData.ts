@@ -344,15 +344,15 @@ const P: Record<string, Place> = {
       '都市阳伞下的法式甜品和早午餐店。每天 8:30–21:00。'),
     dishes: T('Crepes, cruasanes, pasteles franceses', 'Crêpes, croissants, French pastries', 'Crêpes, croissants, pâtisseries françaises', 'Crêpes, Croissants, französisches Gebäck', 'Crêpe, croissant, pasticceria francese', '可丽饼、牛角包、法式甜点'),
   },
-  caotica: {
-    id: 'caotica', name: 'Caótica', lat: 37.3937415, lng: -5.9929754, placeId: 'ChIJ8Zl0dwVsEg0RlQQfC70zvWU', priceLevel: 'low', phone: '+34 955 54 19 66',
-    desc: T('Librería-café de cuatro plantas junto a las Setas, ideal para un café tranquilo entre libros.',
-      'Four-storey bookshop café by Las Setas, perfect for a quiet coffee among books.',
-      'Librairie-café sur quatre étages près des Setas, idéale pour un café au calme entre les livres.',
-      'Buchhandlung mit Café auf vier Etagen bei den Setas, ideal für einen ruhigen Kaffee zwischen Büchern.',
-      'Libreria-caffè su quattro piani accanto alle Setas, ideale per un caffè tranquillo tra i libri.',
-      '都市阳伞旁的四层书店咖啡馆，适合在书香中安静喝杯咖啡。'),
-    dishes: T('Tartas caseras, desayunos, café', 'Home-made cakes, breakfasts, coffee', 'Gâteaux maison, petits-déjeuners, café', 'Hausgemachte Kuchen, Frühstück, Kaffee', 'Torte fatte in casa, colazioni, caffè', '自制蛋糕、早餐、咖啡'),
+  viajero: {
+    id: 'viajero', name: 'El Viajero Sedentario', lat: 37.40005, lng: -5.99275, placeId: '', priceLevel: 'low', phone: '+34 677 53 55 12',
+    desc: T('Café-librería en la Alameda de Hércules: puedes leer, comprar o prestar libros, con patio tranquilo y terraza. Abre todos los días desde las 9:30 (domingos 10:00).',
+      'Bookshop café on the Alameda de Hércules: read, buy or borrow books, with a quiet patio and terrace. Open daily from 9:30 (Sundays 10:00).',
+      'Café-librairie sur l’Alameda de Hércules : on peut lire, acheter ou emprunter des livres, avec patio calme et terrasse. Ouvert tous les jours dès 9h30 (dimanche 10h).',
+      'Buchcafé an der Alameda de Hércules: Bücher lesen, kaufen oder ausleihen, mit ruhigem Innenhof und Terrasse. Täglich ab 9:30 geöffnet (sonntags 10:00).',
+      'Caffè-libreria sull’Alameda de Hércules: si possono leggere, comprare o prendere in prestito libri, con patio tranquillo e terrazza. Aperto tutti i giorni dalle 9:30 (domenica 10:00).',
+      '位于赫拉克勒斯林荫大道的书店咖啡馆：可看书、买书或借书，有安静的庭院和露台。每天9:30开门（周日10:00）。'),
+    dishes: T('Tartas caseras, café italiano y su carta de tés', 'Home-made cakes, Italian coffee and its tea list', 'Gâteaux maison, café italien et sa carte de thés', 'Hausgemachte Kuchen, italienischer Kaffee und die Teekarte', 'Torte fatte in casa, caffè italiano e la carta dei tè', '自制蛋糕、意式咖啡和茶单'),
   },
   recoveco: {
     id: 'recoveco', name: 'Recoveco', lat: 37.3914499, lng: -5.9906545, placeId: 'ChIJ6d3vXj1tEg0R2VLGoGTxDpU', priceLevel: 'high', phone: '+34 673 30 08 18',
@@ -535,6 +535,7 @@ const MENU_URLS: Record<string, string> = {
 const ONLY_LOCAL = new Set(['cacharreria']);
 
 const LOCAL_PHOTOS: Record<string, string> = {
+  baralfalfa: '', // foto aportada por Samuel
   abaceria: '', // foto aportada por Samuel
   alameda: '', // foto aportada por Samuel
   andalusi: '', // foto aportada por Samuel
@@ -593,7 +594,7 @@ const LISTS: Record<'ibarra' | 'quevedo', Record<Category, string[]>> = {
   quevedo: {
     breakfast: ['cacharreria', 'creme', 'mamaines', 'brunchit', 'muy', 'otto', 'parceria'],
     lunch: ['alameda', 'sanlorenzo', 'andalusi', 'abaceria', 'rinconcillo', 'contenedor'],
-    cafeterias: ['virgen', 'caotica', 'recoveco', 'comissura', 'chia'],
+    cafeterias: ['virgen', 'viajero', 'recoveco', 'comissura', 'chia'],
     dinner: ['canabota', 'azzait', 'eslava', 'anarubia', 'templo', 'catalina', 'duo'],
   },
 };
@@ -618,7 +619,7 @@ function build(apt: 'ibarra' | 'quevedo'): Restaurant[] {
         ...p,
         category,
         distance: walkMinutes(alat, alng, p.lat, p.lng),
-        mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', Sevilla')}&query_place_id=${p.placeId}`,
+        mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', Sevilla')}${p.placeId ? `&query_place_id=${p.placeId}` : ''}`,
         photo: ONLY_LOCAL.has(id) ? undefined : photo(id),
         menuUrl: MENU_URLS[id] ?? p.menuUrl,
         localPhoto: id in LOCAL_PHOTOS ? { src: photo(`${id}-local`), credit: LOCAL_PHOTOS[id] } : undefined,
