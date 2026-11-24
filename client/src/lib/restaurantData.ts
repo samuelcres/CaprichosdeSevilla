@@ -518,6 +518,18 @@ const P: Record<string, Place> = {
 // Para el resto, la foto del local la pone Google en vivo cuando está la clave.
 const LOCAL_PHOTOS: Record<string, string> = {
   cacharreria: '', // foto aportada por Samuel
+  anarubia: '', // foto aportada por Samuel
+  azzait: '', // foto aportada por Samuel
+  canabota: '', // foto aportada por Samuel
+  catalina: '', // foto aportada por Samuel
+  chia: '', // foto aportada por Samuel
+  comissura: '', // foto aportada por Samuel
+  contenedor: '', // foto aportada por Samuel
+  duo: '', // foto aportada por Samuel
+  eslava: '', // foto aportada por Samuel
+  recoveco: '', // foto aportada por Samuel
+  templo: '', // foto aportada por Samuel
+  virgen: '', // foto aportada por Samuel
   columnas: 'Foto: CarlosVdeHabsburgo · CC BY-SA 4.0',
   rinconcillo: 'Foto: Stefano Vigorelli · CC0',
   romero: 'Foto: Rubén Vique · CC BY 2.0',

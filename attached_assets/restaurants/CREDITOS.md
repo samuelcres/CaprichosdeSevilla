@@ -55,3 +55,15 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - rinconcillo-local.webp — «Restaurante El Rinconcillo, Sevilla SP.jpg», Stefano Vigorelli, CC0 — https://commons.wikimedia.org/wiki/File:Restaurante_El_Rinconcillo,_Sevilla_SP.jpg
 - romero-local.webp — «Bodeguita Romero (7850724508).jpg», Rubén Vique, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Bodeguita_Romero_(7850724508).jpg
 - cacharreria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- anarubia-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- azzait-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- canabota-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- catalina-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- chia-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- comissura-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- contenedor-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- duo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- eslava-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- recoveco-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- templo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- virgen-local.webp — foto aportada por Samuel (Caprichos de Sevilla)

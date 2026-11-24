@@ -301,8 +301,8 @@ interface RestaurantCardProps {
 
 function RestaurantCard({ restaurant, index, category, t, apartment, lang }: RestaurantCardProps) {
   const live = usePlaceInfo(placeQuery(restaurant.name, restaurant.mapsUrl), apartment);
-  // Dos fotos: el local (Google en vivo o Wikimedia) y su plato típico.
-  const local = live?.photo ? { src: live.photo, credit: '' } : restaurant.localPhoto;
+  // Dos fotos: el local y su plato típico. La foto propia (aportada o de Wikimedia) manda; si no hay, la de Google en vivo.
+  const local = restaurant.localPhoto ?? (live?.photo ? { src: live.photo, credit: '' } : undefined);
   const dishPhoto: string | undefined = restaurant.photo;
   const phone = live?.phone || restaurant.phone;
   const mapsUrl = live?.mapsUrl || restaurant.mapsUrl;

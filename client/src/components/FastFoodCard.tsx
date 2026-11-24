@@ -19,9 +19,14 @@ export function fastFoodLabels(lang: Language) {
   return LABELS[lang] || LABELS.en;
 }
 
+// Fotos reales de los locales aportadas por Samuel (attached_assets/fastfood/<id>.webp)
+const FF_PHOTOS = import.meta.glob('../../../attached_assets/fastfood/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
+const ffPhoto = (id: string) => FF_PHOTOS[`../../../attached_assets/fastfood/${id}.webp`];
+
 export default function FastFoodCard({ place: base, lang, origin, apartment = 'ibarra' }: { place: FastFoodPlace; lang: Language; origin: string; apartment?: string }) {
   const live = usePlaceInfo(placeQuery(base.name, undefined, base.address), apartment);
   const place = { ...base, phone: base.phone || live?.phone, walkMinutes: live?.walkMinutes ?? base.walkMinutes };
+  const ownPhoto = ffPhoto(base.id);
   const L = fastFoodLabels(lang);
   const Icon = KIND_ICON[place.kind];
   const desc = (place.description as Record<string, string | undefined>)[lang] || place.description.en;
@@ -29,9 +34,13 @@ export default function FastFoodCard({ place: base, lang, origin, apartment = 'i
   const btn = 'inline-flex items-center justify-center gap-1.5 rounded-xl border border-border bg-white text-sm font-semibold py-2.5 px-2';
 
   return (
-    <article className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-3" data-testid={`fastfood-${place.id}`}>
+    <article className="rounded-2xl bg-white border border-border shadow-sm overflow-hidden" data-testid={`fastfood-${place.id}`}>
+      {ownPhoto && (
+        <img src={ownPhoto} alt={place.name} loading="lazy" className="w-full h-44 object-cover bg-muted" data-testid={`fastfood-photo-${place.id}`} />
+      )}
+      <div className="p-4 space-y-3">
       <div className="flex items-start gap-3">
-        {live?.photo ? (
+        {ownPhoto ? null : live?.photo ? (
           <img src={live.photo} alt={place.name} loading="lazy" className="shrink-0 w-16 h-16 rounded-xl object-cover bg-muted" />
         ) : (
           <span className="shrink-0 w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
@@ -112,6 +121,7 @@ export default function FastFoodCard({ place: base, lang, origin, apartment = 'i
         )}
       </div>
       {place.phone && <p className="text-xs text-muted-foreground text-center -mt-1">{place.phone}</p>}
+      </div>
     </article>
   );
 }
