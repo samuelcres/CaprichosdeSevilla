@@ -24,6 +24,8 @@ interface Place {
   priceLevel: 'low' | 'medium' | 'high';
   phone?: string;
   website?: string;
+  /** Enlace a la carta oficial del local (web propia o PDF). */
+  menuUrl?: string;
   desc: L;
   dishes?: L;
 }
@@ -516,6 +518,19 @@ const P: Record<string, Place> = {
 
 // Fotos reales de algunos locales, con licencia libre (Wikimedia Commons).
 // Para el resto, la foto del local la pone Google en vivo cuando está la clave.
+// Cartas oficiales encontradas en la web de cada local (revisadas en noviembre de 2026).
+const MENU_URLS: Record<string, string> = {
+  moya: 'https://mybakarta.com/MOYA-brunch/QHQRn5EW2nPH2EVhK8Kj',
+  lamala: 'https://lamalabrunch.com/menu/',
+  casamikva: 'https://www.casamikva.com/_files/ugd/cce310_e39eced58b9d4375892b8f94262c6160.pdf',
+  abantal: 'https://abantalrestaurante.es/cartas/',
+  santelmo: 'https://restaurante.covermanager.com/wp-content/uploads/2025/08/2.pdf',
+  becerrita: 'https://www.becerrita.com/carta/',
+  donaire: 'https://donaireazabache.com/carta/',
+  rinconcillo: 'https://www.elrinconcillo.es/carta/',
+  eslava: 'https://espacioeslava.com/?page_id=1015',
+};
+
 // Sitios donde solo se muestra la foto del local, sin la del plato.
 const ONLY_LOCAL = new Set(['cacharreria']);
 
@@ -576,6 +591,7 @@ function build(apt: 'ibarra' | 'quevedo'): Restaurant[] {
         distance: walkMinutes(alat, alng, p.lat, p.lng),
         mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name + ', Sevilla')}&query_place_id=${p.placeId}`,
         photo: ONLY_LOCAL.has(id) ? undefined : photo(id),
+        menuUrl: MENU_URLS[id] ?? p.menuUrl,
         localPhoto: id in LOCAL_PHOTOS ? { src: photo(`${id}-local`), credit: LOCAL_PHOTOS[id] } : undefined,
         description: p.desc.es,
       });

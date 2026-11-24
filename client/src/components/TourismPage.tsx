@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich, BookOpen } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants, restaurantText } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
@@ -299,6 +299,10 @@ interface RestaurantCardProps {
   lang: string;
 }
 
+const MENU_LABEL: Record<string, string> = {
+  es: 'Ver carta', en: 'See menu', fr: 'Voir la carte', de: 'Speisekarte', it: 'Vedi menù', zh: '查看菜单',
+};
+
 const RECOMMEND_LABEL: Record<string, string> = {
   es: 'Te recomendamos:',
   en: 'We recommend:',
@@ -384,6 +388,17 @@ function RestaurantCard({ restaurant, index, category, t, apartment, lang }: Res
                 <MapPin className="w-4 h-4 mr-2" />
                 {t.tourism.viewMap}
               </Button>
+              {restaurant.menuUrl && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open(restaurant.menuUrl, '_blank', 'noopener,noreferrer')}
+                  data-testid={`button-menu-${category}-${index}`}
+                >
+                  <BookOpen className="w-4 h-4 mr-2" />
+                  {MENU_LABEL[lang] ?? MENU_LABEL.en}
+                </Button>
+              )}
               {restaurant.website && (
                 <Button
                   variant="outline"
