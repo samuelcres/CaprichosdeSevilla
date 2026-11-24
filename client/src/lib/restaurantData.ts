@@ -535,6 +535,7 @@ const MENU_URLS: Record<string, string> = {
 const ONLY_LOCAL = new Set(['cacharreria']);
 
 const LOCAL_PHOTOS: Record<string, string> = {
+  viajero: '', // foto aportada por Samuel
   baralfalfa: '', // foto aportada por Samuel
   abaceria: '', // foto aportada por Samuel
   alameda: '', // foto aportada por Samuel

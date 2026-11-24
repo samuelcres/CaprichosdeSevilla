@@ -97,3 +97,4 @@ Fotos representativas (tipo de sitio o plato), de Unsplash con licencia libre (u
 - parceria-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - sanlorenzo-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
 - baralfalfa-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
+- viajero-local.webp — foto aportada por Samuel (Caprichos de Sevilla)
