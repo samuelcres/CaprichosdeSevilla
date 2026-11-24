@@ -299,6 +299,15 @@ interface RestaurantCardProps {
   lang: string;
 }
 
+const RECOMMEND_LABEL: Record<string, string> = {
+  es: 'Te recomendamos:',
+  en: 'We recommend:',
+  fr: 'Nous vous recommandons :',
+  de: 'Unsere Empfehlung:',
+  it: 'Ti consigliamo:',
+  zh: '推荐：',
+};
+
 function RestaurantCard({ restaurant, index, category, t, apartment, lang }: RestaurantCardProps) {
   const live = usePlaceInfo(placeQuery(restaurant.name, restaurant.mapsUrl), apartment);
   // Dos fotos: el local y su plato típico. La foto propia (aportada o de Wikimedia) manda; si no hay, la de Google en vivo.
@@ -354,7 +363,7 @@ function RestaurantCard({ restaurant, index, category, t, apartment, lang }: Res
 
           {dishes && (
             <p className="text-sm text-emerald-700 font-medium">
-              ✨ {dishes}
+              ✨ <span className="font-semibold">{RECOMMEND_LABEL[lang] ?? RECOMMEND_LABEL.en}</span> {dishes}
             </p>
           )}
 
