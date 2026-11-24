@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Badge } from '@/components/ui/badge';
 import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
-import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
+import { ibarraRestaurants, quevedoRestaurants, restaurantText } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
 import FastFoodCard, { fastFoodLabels } from './FastFoodCard';
 import { TicketsAndWalks } from './Extras';
@@ -301,12 +301,12 @@ interface RestaurantCardProps {
 
 function RestaurantCard({ restaurant, index, category, t, apartment, lang }: RestaurantCardProps) {
   const live = usePlaceInfo(placeQuery(restaurant.name, restaurant.mapsUrl), apartment);
-  const imageUrl = live?.photo || getImage(restaurant.photo);
+  const imageUrl = live?.photo || restaurant.photo;
   const phone = live?.phone || restaurant.phone;
   const mapsUrl = live?.mapsUrl || restaurant.mapsUrl;
   const minutes = live?.walkMinutes ?? restaurant.distance;
   const closedForever = live?.status === 'CLOSED_PERMANENTLY';
-  const dishes = restaurant.dishesKey ? t.tourism.recommendedDishes[restaurant.dishesKey] : undefined;
+  const { description, dishes } = restaurantText(restaurant, lang);
 
   return (
     <Card data-testid={`card-restaurant-${category}-${index}`} className={`overflow-hidden ${closedForever ? 'opacity-60' : ''}`}>
@@ -318,7 +318,7 @@ function RestaurantCard({ restaurant, index, category, t, apartment, lang }: Res
               alt={restaurant.name}
               className="w-full h-full object-cover"
               loading="lazy"
-              onError={(e) => { const fb = getImage(restaurant.photo); if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb; }}
+              onError={(e) => { const fb = restaurant.photo; if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb; }}
             />
           </div>
         )}
@@ -334,9 +334,9 @@ function RestaurantCard({ restaurant, index, category, t, apartment, lang }: Res
             </div>
           </div>
 
-          <LiveBadges info={live} fallbackRating={restaurant.rating} lang={lang} />
+          <LiveBadges info={live} lang={lang} />
 
-          <p className="text-sm text-muted-foreground">{restaurant.description}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
 
           {dishes && (
             <p className="text-sm text-emerald-700 font-medium">

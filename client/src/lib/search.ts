@@ -2,7 +2,7 @@
 // huésped y solo de su apartamento) y búsqueda tolerante a acentos y sinónimos.
 // Funciona sin conexión; la respuesta redactada la añade /api/ask si está disponible.
 import { translations, Language, Apartment } from '@/lib/i18n';
-import { ibarraRestaurants, quevedoRestaurants } from '@/lib/restaurantData';
+import { ibarraRestaurants, quevedoRestaurants, restaurantText } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
 import { visitDetails } from '@/lib/visitData';
 import { GUIDE } from '@/lib/guideContent';
@@ -204,12 +204,12 @@ export function buildIndex(lang: Language, apartment: Apartment): SearchDoc[] {
   const restaurants = apartment === 'ibarra' ? ibarraRestaurants : quevedoRestaurants;
   const tr: any = (translations as any)[lang]?.tourism ?? {};
   for (const r of restaurants) {
-    const dishes = r.dishesKey ? tr.recommendedDishes?.[r.dishesKey] : undefined;
+    const { description, dishes } = restaurantText(r, lang);
     docs.push({
       id: `rest:${r.name}`,
       section: 'tourism',
       title: r.name,
-      text: `${tr[r.category] ?? r.category}. ${r.description} ${dishes ? `${dishes}.` : ''} ${r.distance} min.${r.phone ? ` ${r.phone}.` : ''}`,
+      text: `${tr[r.category] ?? r.category}. ${description} ${dishes ? `${dishes}.` : ''} ${r.distance} min.${r.phone ? ` ${r.phone}.` : ''}`,
     });
   }
   const fast = apartment === 'ibarra' ? ibarraFastFood : quevedoFastFood;
