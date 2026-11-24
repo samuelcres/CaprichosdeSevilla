@@ -282,7 +282,7 @@ export const translations = {
     tourism: {
       title: 'Comer y Visitar',
       activities: 'Actividades',
-      map: 'Mapa con Recomendaciones',
+      map: 'Más recomendaciones',
       restaurants: 'Recomendaciones Gastronómicas',
       visits: 'Visitas Recomendadas',
       restaurantsIntro: 'A continuación les presentamos las mejores recomendaciones gastronómicas con salida desde el propio apartamento',
@@ -737,7 +737,7 @@ export const translations = {
     tourism: {
       title: 'Eat & Visit',
       activities: 'Activities',
-      map: 'Map with Recommendations',
+      map: 'More recommendations',
       restaurants: 'Restaurant Recommendations',
       visits: 'Recommended Visits',
       restaurantsIntro: 'Below we present the best gastronomic recommendations within walking distance from the apartment',
@@ -1192,7 +1192,7 @@ export const translations = {
     tourism: {
       title: 'Manger et Visiter',
       activities: 'Activités',
-      map: 'Carte avec Recommandations',
+      map: 'Plus de recommandations',
       restaurants: 'Recommandations Gastronomiques',
       visits: 'Visites Recommandées',
       restaurantsIntro: 'Vous trouverez ci-dessous les meilleures recommandations gastronomiques à distance de marche de l\'appartement',
@@ -1647,7 +1647,7 @@ export const translations = {
     tourism: {
       title: 'Essen & Entdecken',
       activities: 'Aktivitäten',
-      map: 'Karte mit Empfehlungen',
+      map: 'Weitere Empfehlungen',
       restaurants: 'Gastronomie-Empfehlungen',
       visits: 'Empfohlene Besuche',
       restaurantsIntro: 'Nachfolgend präsentieren wir Ihnen die besten gastronomischen Empfehlungen in Gehweite der Wohnung',
@@ -2102,7 +2102,7 @@ export const translations = {
     tourism: {
       title: 'Mangiare e Visitare',
       activities: 'Attività',
-      map: 'Mappa con Raccomandazioni',
+      map: 'Altri consigli',
       restaurants: 'Raccomandazioni Gastronomiche',
       visits: 'Visite Raccomandate',
       restaurantsIntro: 'Di seguito presentiamo le migliori raccomandazioni gastronomiche raggiungibili a piedi dall\'appartamento',
@@ -2557,7 +2557,7 @@ export const translations = {
     tourism: {
       title: '美食与游览',
       activities: '活动',
-      map: '推荐地图',
+      map: '更多推荐',
       restaurants: '美食推荐',
       visits: '推荐景点',
       restaurantsIntro: '以下为您推荐从公寓步行可达的最佳美食选择',
