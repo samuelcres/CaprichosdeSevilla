@@ -185,12 +185,12 @@ export const WEATHER: L6<{ chip: string; title: string; arrival: string; departu
 
 /* ---------- Reseña ---------- */
 export const REVIEW: L6<{ title: string; text: string; google: string; googleHint: string; other: string }> = {
-  es: { title: '¿Qué tal tu estancia?', text: 'Si has disfrutado, nos ayuda muchísimo tu opinión. ¡Solo te lleva un minuto, gracias!', google: 'Valorar en Google', googleHint: 'Se abre Google con las estrellas listas para puntuar.', other: 'O en la plataforma donde reservaste:' },
-  en: { title: 'How was your stay?', text: 'If you enjoyed it, your review helps us a lot. It only takes a minute, thank you!', google: 'Review us on Google', googleHint: 'Google opens with the stars ready to rate.', other: 'Or on the platform where you booked:' },
-  fr: { title: 'Comment s’est passé votre séjour ?', text: 'Si vous l’avez apprécié, votre avis nous aide beaucoup. Cela ne prend qu’une minute, merci !', google: 'Laisser un avis sur Google', googleHint: 'Google s’ouvre avec les étoiles prêtes à noter.', other: 'Ou sur la plateforme de réservation :' },
-  de: { title: 'Wie war Ihr Aufenthalt?', text: 'Wenn es Ihnen gefallen hat, hilft uns Ihre Bewertung sehr. Es dauert nur eine Minute, danke!', google: 'Auf Google bewerten', googleHint: 'Google öffnet sich direkt mit den Sternen zum Bewerten.', other: 'Oder auf der Buchungsplattform:' },
-  it: { title: 'Com’è andato il soggiorno?', text: 'Se ti è piaciuto, la tua recensione ci aiuta tantissimo. Ci vuole solo un minuto, grazie!', google: 'Recensisci su Google', googleHint: 'Si apre Google con le stelle pronte per votare.', other: 'Oppure sulla piattaforma dove hai prenotato:' },
-  zh: { title: '住得怎么样？', text: '如果您满意，您的评价对我们帮助很大，只需一分钟，谢谢！', google: '在 Google 上评价', googleHint: '将打开 Google 评分页面，直接点星即可。', other: '或在您预订的平台上评价：' },
+  es: { title: '¿Qué tal tu estancia?', text: '¿Te ha gustado? Cuéntalo en Google, nos ayuda muchísimo ⭐ ¡Solo te lleva un minuto, gracias!', google: 'Contarlo en Google', googleHint: 'Se abre Google con las estrellas listas para puntuar.', other: 'O en la plataforma donde reservaste:' },
+  en: { title: 'How was your stay?', text: 'Did you like it? Tell others on Google, it helps us so much ⭐ It only takes a minute, thank you!', google: 'Share it on Google', googleHint: 'Google opens with the stars ready to rate.', other: 'Or on the platform where you booked:' },
+  fr: { title: 'Comment s’est passé votre séjour ?', text: 'Vous avez aimé ? Racontez-le sur Google, cela nous aide énormément ⭐ Une minute suffit, merci !', google: 'Le raconter sur Google', googleHint: 'Google s’ouvre avec les étoiles prêtes à noter.', other: 'Ou sur la plateforme de réservation :' },
+  de: { title: 'Wie war Ihr Aufenthalt?', text: 'Hat es Ihnen gefallen? Erzählen Sie es auf Google, das hilft uns sehr ⭐ Es dauert nur eine Minute, danke!', google: 'Auf Google erzählen', googleHint: 'Google öffnet sich direkt mit den Sternen zum Bewerten.', other: 'Oder auf der Buchungsplattform:' },
+  it: { title: 'Com’è andato il soggiorno?', text: 'Ti è piaciuto? Raccontalo su Google, ci aiuta tantissimo ⭐ Ci vuole solo un minuto, grazie!', google: 'Raccontalo su Google', googleHint: 'Si apre Google con le stelle pronte per votare.', other: 'Oppure sulla piattaforma dove hai prenotato:' },
+  zh: { title: '住得怎么样？', text: '喜欢这里吗？在 Google 上分享一下吧，对我们帮助很大 ⭐ 只需一分钟，谢谢！', google: '在 Google 上分享', googleHint: '将打开 Google 评分页面，直接点星即可。', other: '或在您预订的平台上评价：' },
 };
 
 // Ficha de Google de cada apartamento → enlace directo a «Escribir una reseña»
