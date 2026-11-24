@@ -535,6 +535,16 @@ const MENU_URLS: Record<string, string> = {
 const ONLY_LOCAL = new Set(['cacharreria']);
 
 const LOCAL_PHOTOS: Record<string, string> = {
+  abaceria: '', // foto aportada por Samuel
+  alameda: '', // foto aportada por Samuel
+  andalusi: '', // foto aportada por Samuel
+  brunchit: '', // foto aportada por Samuel
+  creme: '', // foto aportada por Samuel
+  mamaines: '', // foto aportada por Samuel
+  muy: '', // foto aportada por Samuel
+  otto: '', // foto aportada por Samuel
+  parceria: '', // foto aportada por Samuel
+  sanlorenzo: '', // foto aportada por Samuel
   cacharreria: '', // foto aportada por Samuel
   anarubia: '', // foto aportada por Samuel
   azzait: '', // foto aportada por Samuel
@@ -568,7 +578,7 @@ const LOCAL_PHOTOS: Record<string, string> = {
   moya: '', // foto aportada por Samuel (Ibarra)
   nini: '', // foto aportada por Samuel (Ibarra)
   columnas: 'Foto: CarlosVdeHabsburgo · CC BY-SA 4.0',
-  rinconcillo: 'Foto: Stefano Vigorelli · CC0',
+  rinconcillo: '', // foto aportada por Samuel
   romero: 'Foto: Rubén Vique · CC BY 2.0',
 };
 
