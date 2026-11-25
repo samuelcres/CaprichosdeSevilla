@@ -21,8 +21,8 @@ export const BARRIO: L6<{
   es: {
     tab: 'Barrio',
     servicesTitle: 'Servicios cerca del apartamento',
-    servicesHint: 'Toca una categoría para ver los más cercanos, ordenados por distancia.',
-    services: { supermarket: 'Supermercado', pharmacy: 'Farmacia', atm: 'Cajero', laundry: 'Lavandería', bazaar: 'Bazar', bakery: 'Panadería' },
+    servicesHint: 'Toca una categoría para ver los sitios más cercanos, con horario e itinerario a pie.',
+    services: { supermarket: 'Supermercados', pharmacy: 'Farmacias', atm: 'Cajeros', laundry: 'Lavanderías', bazaar: 'Bazares', bakery: 'Panaderías' },
     customsTitle: 'Horarios y costumbres en Sevilla',
     customs: [
       { icon: '🍽️', title: 'Almuerzo de 14:00 a 16:00', text: 'Es la comida principal. Muchas cocinas cierran entre las 16:00 y las 20:00.' },
@@ -36,7 +36,7 @@ export const BARRIO: L6<{
     tab: 'Neighbourhood',
     servicesTitle: 'Services near the apartment',
     servicesHint: 'Tap a category to see the nearest places, sorted by distance.',
-    services: { supermarket: 'Supermarket', pharmacy: 'Pharmacy', atm: 'ATM', laundry: 'Laundry', bazaar: 'Bazaar', bakery: 'Bakery' },
+    services: { supermarket: 'Supermarkets', pharmacy: 'Pharmacies', atm: 'ATMs', laundry: 'Laundries', bazaar: 'Bazaars', bakery: 'Bakeries' },
     customsTitle: 'Opening hours and customs in Seville',
     customs: [
       { icon: '🍽️', title: 'Lunch 2:00–4:00 pm', text: 'It is the main meal. Many kitchens close between 4 and 8 pm.' },
@@ -50,7 +50,7 @@ export const BARRIO: L6<{
     tab: 'Quartier',
     servicesTitle: 'Services près de l’appartement',
     servicesHint: 'Touchez une catégorie pour voir les plus proches, par distance.',
-    services: { supermarket: 'Supermarché', pharmacy: 'Pharmacie', atm: 'Distributeur', laundry: 'Laverie', bazaar: 'Bazar', bakery: 'Boulangerie' },
+    services: { supermarket: 'Supermarchés', pharmacy: 'Pharmacies', atm: 'Distributeurs', laundry: 'Laveries', bazaar: 'Bazars', bakery: 'Boulangeries' },
     customsTitle: 'Horaires et coutumes à Séville',
     customs: [
       { icon: '🍽️', title: 'Déjeuner de 14 h à 16 h', text: 'C’est le repas principal. Beaucoup de cuisines ferment entre 16 h et 20 h.' },
@@ -64,7 +64,7 @@ export const BARRIO: L6<{
     tab: 'Viertel',
     servicesTitle: 'Geschäfte in der Nähe',
     servicesHint: 'Kategorie antippen: die nächsten Orte, nach Entfernung sortiert.',
-    services: { supermarket: 'Supermarkt', pharmacy: 'Apotheke', atm: 'Geldautomat', laundry: 'Waschsalon', bazaar: 'Bazar', bakery: 'Bäckerei' },
+    services: { supermarket: 'Supermärkte', pharmacy: 'Apotheken', atm: 'Geldautomaten', laundry: 'Waschsalons', bazaar: 'Basare', bakery: 'Bäckereien' },
     customsTitle: 'Uhrzeiten und Gewohnheiten in Sevilla',
     customs: [
       { icon: '🍽️', title: 'Mittagessen 14–16 Uhr', text: 'Die Hauptmahlzeit. Viele Küchen schließen zwischen 16 und 20 Uhr.' },
@@ -78,7 +78,7 @@ export const BARRIO: L6<{
     tab: 'Quartiere',
     servicesTitle: 'Servizi vicino all’appartamento',
     servicesHint: 'Tocca una categoria per vedere i più vicini, in ordine di distanza.',
-    services: { supermarket: 'Supermercato', pharmacy: 'Farmacia', atm: 'Bancomat', laundry: 'Lavanderia', bazaar: 'Bazar', bakery: 'Panetteria' },
+    services: { supermarket: 'Supermercati', pharmacy: 'Farmacie', atm: 'Bancomat', laundry: 'Lavanderie', bazaar: 'Bazar', bakery: 'Panetterie' },
     customsTitle: 'Orari e abitudini a Siviglia',
     customs: [
       { icon: '🍽️', title: 'Pranzo dalle 14 alle 16', text: 'È il pasto principale. Molte cucine chiudono tra le 16 e le 20.' },

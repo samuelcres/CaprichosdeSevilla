@@ -20,7 +20,7 @@ export interface Bazaar {
   meters: number;
   walkMinutes: number;
   /** Horario: lunes-viernes, sábado, domingo (null = cerrado). Lunes distinto si se indica. */
-  hours: { wk: string; sat: string; sun: string | null; monClosed?: boolean };
+  hours: { wk: string; sat: string | null; sun: string | null; monClosed?: boolean };
   desc: L6;
   tip?: L6;
 }
@@ -143,13 +143,13 @@ export const BAZAARS: Record<Apartment, Bazaar[]> = {
   ],
 };
 
-const DAY: Record<Language, { wk: string; tf: string; sat: string; sun: string; mon: string; closed: string }> = {
-  es: { wk: 'Lun–vie', tf: 'Mar–vie', sat: 'Sáb', sun: 'Dom', mon: 'Lun', closed: 'cerrado' },
-  en: { wk: 'Mon–Fri', tf: 'Tue–Fri', sat: 'Sat', sun: 'Sun', mon: 'Mon', closed: 'closed' },
-  fr: { wk: 'Lun–ven', tf: 'Mar–ven', sat: 'Sam', sun: 'Dim', mon: 'Lun', closed: 'fermé' },
-  de: { wk: 'Mo–Fr', tf: 'Di–Fr', sat: 'Sa', sun: 'So', mon: 'Mo', closed: 'geschlossen' },
-  it: { wk: 'Lun–ven', tf: 'Mar–ven', sat: 'Sab', sun: 'Dom', mon: 'Lun', closed: 'chiuso' },
-  zh: { wk: '周一至周五', tf: '周二至周五', sat: '周六', sun: '周日', mon: '周一', closed: '休息' },
+const DAY: Record<Language, { wk: string; tf: string; sat: string; sun: string; mon: string; closed: string; all: string }> = {
+  es: { wk: 'Lun–vie', tf: 'Mar–vie', sat: 'Sáb', sun: 'Dom', mon: 'Lun', closed: 'cerrado', all: 'Todos los días' },
+  en: { wk: 'Mon–Fri', tf: 'Tue–Fri', sat: 'Sat', sun: 'Sun', mon: 'Mon', closed: 'closed', all: 'Every day' },
+  fr: { wk: 'Lun–ven', tf: 'Mar–ven', sat: 'Sam', sun: 'Dim', mon: 'Lun', closed: 'fermé', all: 'Tous les jours' },
+  de: { wk: 'Mo–Fr', tf: 'Di–Fr', sat: 'Sa', sun: 'So', mon: 'Mo', closed: 'geschlossen', all: 'Täglich' },
+  it: { wk: 'Lun–ven', tf: 'Mar–ven', sat: 'Sab', sun: 'Dom', mon: 'Lun', closed: 'chiuso', all: 'Tutti i giorni' },
+  zh: { wk: '周一至周五', tf: '周二至周五', sat: '周六', sun: '周日', mon: '周一', closed: '休息', all: '每天' },
 };
 
 /** Líneas de horario legibles, agrupando días con el mismo horario. */
@@ -158,10 +158,10 @@ export function bazaarHours(h: Bazaar['hours'], lang: Language): string[] {
   const lines: string[] = [];
   if (h.monClosed) lines.push(`${D.mon}: ${D.closed}`);
   const wkLabel = h.monClosed ? D.tf : D.wk;
-  if (h.sat === h.wk && h.sun === h.wk) lines.push(`${wkLabel} · ${D.sat} · ${D.sun}: ${h.wk}`);
-  else if (h.sat === h.wk) lines.push(`${wkLabel} · ${D.sat}: ${h.wk}`);
-  else lines.push(`${wkLabel}: ${h.wk}`, `${D.sat}: ${h.sat}`);
-  if (h.sun !== h.wk || h.sat !== h.wk) lines.push(`${D.sun}: ${h.sun ?? D.closed}`);
+  if (!h.monClosed && h.sat === h.wk && h.sun === h.wk) return [`${D.all}: ${h.wk}`];
+  if (h.sat === h.wk) lines.push(`${wkLabel} · ${D.sat}: ${h.wk}`);
+  else lines.push(`${wkLabel}: ${h.wk}`, `${D.sat}: ${h.sat ?? D.closed}`);
+  lines.push(`${D.sun}: ${h.sun ?? D.closed}`);
   return lines;
 }
 

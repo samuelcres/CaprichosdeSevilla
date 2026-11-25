@@ -7,6 +7,7 @@ import {
   Stethoscope, Ticket, Footprints, Clock, X, Star, HeartPulse, Eye, Map as MapIcon, Lightbulb,
 } from 'lucide-react';
 import { BAZAARS, BAZAAR_UI, Bazaar, bazaarHours } from '@/lib/bazaarData';
+import { NEARBY, NEARBY_UI } from '@/lib/nearbyData';
 import { usePlaceInfo } from '@/lib/usePlaceInfo';
 import { Apartment, Language } from '@/lib/i18n';
 import {
@@ -34,65 +35,20 @@ const SERVICE_ICON: Record<ServiceId, typeof Pill> = {
   supermarket: ShoppingCart, pharmacy: Pill, atm: Landmark, laundry: Shirt, bazaar: Store, bakery: Croissant,
 };
 
-interface NearbyPlace {
-  id: string; name: string; address?: string; phone?: string; rating?: number; ratingCount?: number;
-  openNow?: boolean; photo?: string; mapsUrl: string; meters: number; walkMinutes: number;
-}
+/* ---- Sitios cercanos (bazares, supermercados, farmacias…): lista propia con foto, horario e itinerario a pie ---- */
+const OWN_PHOTOS = {
+  ...(import.meta.glob('../../../attached_assets/bazaars/*.webp', { eager: true, import: 'default' }) as Record<string, string>),
+  ...(import.meta.glob('../../../attached_assets/nearby/*.webp', { eager: true, import: 'default' }) as Record<string, string>),
+};
+const ownPhoto = (id: string) =>
+  OWN_PHOTOS[`../../../attached_assets/bazaars/${id}.webp`] || OWN_PHOTOS[`../../../attached_assets/nearby/${id}.webp`];
 
-function PlaceRow({ p, icon: Icon, P }: { p: NearbyPlace; icon: typeof Pill; P: (typeof PLACES_UI)['es'] }) {
-  const [imgOk, setImgOk] = useState(true);
-  return (
-    <li className="rounded-2xl bg-white border border-border shadow-sm p-3 flex gap-3" data-testid={`place-${p.id}`}>
-      <div className="shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-muted flex items-center justify-center text-primary">
-        {p.photo && imgOk
-          ? <img src={p.photo} alt="" loading="lazy" className="w-full h-full object-cover" onError={() => setImgOk(false)} />
-          : <Icon className="w-7 h-7" />}
-      </div>
-      <div className="min-w-0 flex-1 space-y-1">
-        <div className="flex items-start justify-between gap-2">
-          <p className="font-semibold text-sm leading-tight">{p.name}</p>
-          <span className="shrink-0 inline-flex items-center gap-0.5 text-[11px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-1.5 py-0.5">
-            <Footprints className="w-3 h-3" />{p.walkMinutes} {P.walk}
-          </span>
-        </div>
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-muted-foreground">
-          {p.rating !== undefined && (
-            <span className="inline-flex items-center gap-0.5 text-foreground">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="font-semibold">{p.rating.toFixed(1)}</span>
-              {p.ratingCount !== undefined && <span className="text-muted-foreground">({p.ratingCount} {P.reviews})</span>}
-            </span>
-          )}
-          <span>{p.meters} m</span>
-          {p.openNow !== undefined && (
-            <span className={p.openNow ? 'text-emerald-700 font-medium' : 'text-red-600 font-medium'}>{p.openNow ? P.open : P.closed}</span>
-          )}
-        </div>
-        {p.address && <p className="text-xs text-muted-foreground leading-snug flex gap-1"><MapPin className="w-3.5 h-3.5 shrink-0 mt-px text-primary" />{p.address}</p>}
-        <div className="flex gap-1.5 pt-1">
-          {p.phone && (
-            <a href={tel(p.phone)} className="inline-flex items-center gap-1 rounded-lg bg-primary text-primary-foreground text-xs font-semibold px-2.5 py-1.5">
-              <Phone className="w-3.5 h-3.5" />{P.call}
-            </a>
-          )}
-          <a href={p.mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-border bg-white text-xs font-semibold px-2.5 py-1.5">
-            <Navigation className="w-3.5 h-3.5 text-primary" />{P.maps}
-          </a>
-        </div>
-      </div>
-    </li>
-  );
-}
-
-/* ---- Bazares: lista propia con foto, horario e itinerario a pie ---- */
-const BZ_PHOTOS = import.meta.glob('../../../attached_assets/bazaars/*.webp', { eager: true, import: 'default' }) as Record<string, string>;
-
-function BazaarCard({ b, apartment, lang, index }: { b: Bazaar; apartment: Apartment; lang: Language; index: number }) {
+function PlaceCard({ b, apartment, lang, index, icon: CatIcon }: { b: Bazaar; apartment: Apartment; lang: Language; index: number; icon: typeof Pill }) {
   const U = BAZAAR_UI[lang] || BAZAAR_UI.en;
   const live = usePlaceInfo(`${b.name}, ${b.address}`, apartment);
   const [showMap, setShowMap] = useState(index === 0);
   const [imgOk, setImgOk] = useState(true);
-  const own = BZ_PHOTOS[`../../../attached_assets/bazaars/${b.id}.webp`];
+  const own = ownPhoto(b.id);
   const photo = own || (live?.photo && imgOk ? live.photo : undefined);
   const { lat: oLat, lng: oLng } = COORDS[apartment];
   const route = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(ADDRESS[apartment])}&destination=${encodeURIComponent(b.name)}&destination_place_id=${b.placeId}&travelmode=walking`;
@@ -103,7 +59,9 @@ function BazaarCard({ b, apartment, lang, index }: { b: Bazaar; apartment: Apart
   const ratingCount = live?.ratingCount ?? b.ratingCount;
   return (
     <article className="rounded-2xl bg-white border border-border shadow-sm overflow-hidden" data-testid={`bazaar-${b.id}`}>
-      {photo && <img src={photo} alt={b.name} loading="lazy" className="w-full h-40 object-cover bg-muted" onError={() => setImgOk(false)} />}
+      {photo
+        ? <img src={photo} alt={b.name} loading="lazy" className="w-full h-40 object-cover bg-muted" onError={() => setImgOk(false)} />
+        : <div className="w-full h-16 bg-gradient-to-r from-primary/15 via-primary/5 to-transparent flex items-center px-4"><CatIcon className="w-8 h-8 text-primary/70" /></div>}
       <div className="p-4 space-y-2.5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-start gap-2 min-w-0">
@@ -158,41 +116,34 @@ function BazaarCard({ b, apartment, lang, index }: { b: Bazaar; apartment: Apart
   );
 }
 
-function BazaarList({ apartment, lang }: { apartment: Apartment; lang: Language }) {
+function PlaceList({ category, apartment, lang }: { category: ServiceId; apartment: Apartment; lang: Language }) {
   const U = BAZAAR_UI[lang] || BAZAAR_UI.en;
+  const head = category === 'bazaar' ? U : (NEARBY_UI[lang] || NEARBY_UI.en)[category];
+  const items = category === 'bazaar' ? BAZAARS[apartment] : NEARBY[category][apartment];
+  const Icon = SERVICE_ICON[category];
+  const { lat, lng } = COORDS[apartment];
+  const more = `https://www.google.com/maps/search/${encodeURIComponent(SERVICE_QUERY[category])}/@${lat},${lng},17z`;
   return (
-    <section className="space-y-2.5" data-testid="bazaar-list">
+    <section className="space-y-2.5" data-testid={`place-list-${category}`}>
       <div className="px-1">
-        <h3 className="font-bold text-[15px] flex items-center gap-2"><Store className="w-4 h-4 text-primary" />{U.title}</h3>
-        <p className="text-xs text-muted-foreground mt-0.5">{U.intro}</p>
+        <h3 className="font-bold text-[15px] flex items-center gap-2"><Icon className="w-4 h-4 text-primary" />{head.title}</h3>
+        <p className="text-xs text-muted-foreground mt-0.5">{head.intro}</p>
       </div>
-      {BAZAARS[apartment].map((b, i) => <BazaarCard key={b.id} b={b} apartment={apartment} lang={lang} index={i} />)}
-      <p className="text-[10px] text-muted-foreground px-1">{U.note}</p>
+      {items.map((b, i) => <PlaceCard key={`${category}-${b.id}`} b={b} apartment={apartment} lang={lang} index={i} icon={Icon} />)}
+      <div className="flex items-center justify-between gap-2 px-1">
+        <p className="text-[10px] text-muted-foreground">{U.note}</p>
+        <a href={more} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs font-semibold text-primary inline-flex items-center gap-1">
+          <ExternalLink className="w-3.5 h-3.5" />{U.maps}
+        </a>
+      </div>
     </section>
   );
 }
 
 export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: Language }) {
   const B = BARRIO[lang] || BARRIO.en;
-  const P = PLACES_UI[lang] || PLACES_UI.en;
-  const { lat, lng } = COORDS[apartment];
   const ids = Object.keys(SERVICE_QUERY) as ServiceId[];
   const [selected, setSelected] = useState<ServiceId | null>(null);
-  const [state, setState] = useState<{ loading: boolean; error?: boolean; source?: string; places: NearbyPlace[] }>({ loading: false, places: [] });
-
-  useEffect(() => {
-    if (!selected || selected === 'bazaar') return;
-    const ctrl = new AbortController();
-    setState({ loading: true, places: [] });
-    fetch(`/api/places?type=${selected}&apartment=${apartment}`, { signal: ctrl.signal })
-      .then((r) => (r.ok && (r.headers.get('content-type') || '').includes('json') ? r.json() : Promise.reject(new Error('bad'))))
-      .then((d) => setState({ loading: false, source: d.source, places: Array.isArray(d.places) ? d.places : [] }))
-      .catch((e) => { if (e?.name !== 'AbortError') setState({ loading: false, error: true, places: [] }); });
-    return () => ctrl.abort();
-  }, [selected, apartment]);
-
-  const mapsSearch = selected ? `https://www.google.com/maps/search/${encodeURIComponent(SERVICE_QUERY[selected])}/@${lat},${lng},17z` : '';
-  const Icon = selected ? SERVICE_ICON[selected] : Store;
 
   return (
     <div className="space-y-3" data-testid="panel-barrio">
@@ -222,39 +173,7 @@ export function BarrioPanel({ apartment, lang }: { apartment: Apartment; lang: L
         </div>
       </section>
 
-      {selected === 'bazaar' && <BazaarList apartment={apartment} lang={lang} />}
-
-      {selected && selected !== 'bazaar' && (
-        <section className="space-y-2" data-testid="places-list">
-          <h3 className="font-bold text-[15px] px-1 flex items-center gap-2"><Icon className="w-4 h-4 text-primary" />{B.services[selected]}</h3>
-          {state.loading && (
-            <ul className="space-y-2">
-              {[0, 1, 2].map((i) => (
-                <li key={i} className="rounded-2xl bg-white border border-border p-3 flex gap-3 animate-pulse">
-                  <div className="w-16 h-16 rounded-xl bg-muted" />
-                  <div className="flex-1 space-y-2 py-1"><div className="h-3 w-2/3 bg-muted rounded" /><div className="h-3 w-1/2 bg-muted rounded" /><div className="h-3 w-1/3 bg-muted rounded" /></div>
-                </li>
-              ))}
-            </ul>
-          )}
-          {!state.loading && state.places.length > 0 && (
-            <ul className="space-y-2">
-              {state.places.map((p) => <PlaceRow key={p.id} p={p} icon={Icon} P={P} />)}
-            </ul>
-          )}
-          {!state.loading && state.places.length === 0 && (
-            <p className="rounded-2xl bg-white border border-border p-4 text-sm text-muted-foreground text-center">{state.error ? P.error : P.empty}</p>
-          )}
-          {!state.loading && (
-            <div className="flex items-center justify-between gap-2 px-1">
-              <span className="text-[10px] text-muted-foreground">{state.source === 'google' ? P.sourceGoogle : state.source === 'osm' ? P.sourceOsm : ''}</span>
-              <a href={mapsSearch} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary inline-flex items-center gap-1">
-                <ExternalLink className="w-3.5 h-3.5" />{P.maps}
-              </a>
-            </div>
-          )}
-        </section>
-      )}
+      {selected && <PlaceList key={selected} category={selected} apartment={apartment} lang={lang} />}
 
       <section className="rounded-2xl bg-white border border-border shadow-sm p-4 space-y-2.5">
         <h3 className="font-bold text-[15px] flex items-center gap-2"><Clock className="w-4 h-4 text-primary" />{B.customsTitle}</h3>
