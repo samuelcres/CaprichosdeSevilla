@@ -87,7 +87,7 @@ export default function MainMenu({ options, onSelect, onBack, apartment, apartme
         </p>
       </div>
 
-      <header className="relative z-10 shrink-0 px-1.5 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white dark:bg-card">
+      <header className="sticky top-0 z-40 shrink-0 px-1.5 py-2 sm:p-4 border-b border-border flex items-center justify-between gap-1 sm:gap-2 bg-white dark:bg-card">
         {showBackButton ? (
           <Button
             variant="ghost"
