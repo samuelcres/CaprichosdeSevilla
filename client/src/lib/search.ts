@@ -173,9 +173,9 @@ export function buildIndex(lang: Language, apartment: Apartment): SearchDoc[] {
 
   // Barrio y costumbres
   const b: any = BARRIO[lang] ?? BARRIO.es;
-  docs.push({ id: 'barrio:services', section: 'wifi', title: b.servicesTitle, text: `${b.servicesHint} ${Object.values(b.services).join(', ')}.` });
+  docs.push({ id: 'barrio:services', section: 'tourism', title: b.servicesTitle, text: `${b.servicesHint} ${Object.values(b.services).join(', ')}.` });
   (b.customs as { title: string; text: string }[]).forEach((c, i) =>
-    docs.push({ id: `barrio:custom:${i}`, section: 'wifi', title: c.title, text: c.text })
+    docs.push({ id: `barrio:custom:${i}`, section: 'tourism', title: c.title, text: c.text })
   );
 
   // Salud

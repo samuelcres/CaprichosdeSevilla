@@ -5,12 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
-import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich, BookOpen } from 'lucide-react';
+import { Star, MapPin, ExternalLink, Navigation, Phone, Coffee, UtensilsCrossed, CupSoda, Moon, Clock, Euro, Landmark, Map as MapIcon, Ticket, Sandwich, BookOpen, Store } from 'lucide-react';
 import { Apartment, Language } from '@/lib/i18n';
 import { ibarraRestaurants, quevedoRestaurants, restaurantText } from '@/lib/restaurantData';
 import { ibarraFastFood, quevedoFastFood } from '@/lib/fastFoodData';
 import FastFoodCard, { fastFoodLabels } from './FastFoodCard';
-import { TicketsAndWalks } from './Extras';
+import { TicketsAndWalks, BarrioPanel } from './Extras';
+import { BARRIO } from '@/lib/extrasI18n';
 import { usePlaceInfo, placeQuery } from '@/lib/usePlaceInfo';
 import { LiveBadges, GoogleCredit } from './PlaceLive';
 import { visitCategoryIds, visitDetails, Visit } from '@/lib/visitData';
@@ -492,13 +493,13 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             {t.tourism.visits}
           </Button>
           <Button
-            variant={activeTab === 'map' ? 'default' : 'ghost'}
+            variant={activeTab === 'barrio' ? 'default' : 'ghost'}
             className="w-full sm:flex-1 h-auto min-h-[4.5rem] sm:min-h-12 flex-col sm:flex-row gap-1.5 sm:gap-2 py-2.5 px-1 text-xs sm:text-sm whitespace-normal leading-tight text-center justify-center rounded-lg"
-            onClick={() => setActiveTab('map')}
-            data-testid="tab-map"
+            onClick={() => setActiveTab('barrio')}
+            data-testid="tab-barrio"
           >
-            <MapIcon className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
-            {t.tourism.map}
+            <Store className="!w-8 !h-8 sm:!w-6 sm:!h-6 shrink-0" />
+            {(BARRIO[currentLanguage] || BARRIO.en).tab}
           </Button>
           <Button
             variant={activeTab === 'activities' ? 'default' : 'ghost'}
@@ -515,7 +516,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
           <div className="hidden">
             <TabsList>
               <TabsTrigger value="activities">Activities</TabsTrigger>
-              <TabsTrigger value="map">Map</TabsTrigger>
+              <TabsTrigger value="barrio">Barrio</TabsTrigger>
               <TabsTrigger value="restaurants">Restaurants</TabsTrigger>
               <TabsTrigger value="visits">Visits</TabsTrigger>
             </TabsList>
@@ -540,27 +541,8 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
             </Card>
           </TabsContent>
 
-          <TabsContent value="map" className="mt-6">
-            <Card>
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  <img 
-                    src={mapsRecommendationsImage} 
-                    alt="Mapa de recomendaciones"
-                    className="w-full rounded-lg shadow-lg"
-                    data-testid="img-recommendations-map"
-                  />
-                  <Button
-                    className="w-full"
-                    onClick={() => window.open('https://maps.app.goo.gl/vLTVmja9G4RWvX1i8', '_blank', 'noopener,noreferrer')}
-                    data-testid="button-experience-recommendations"
-                  >
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {t.tourism.experienceRecommendations}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="barrio" className="mt-4">
+            <BarrioPanel apartment={apartment} lang={currentLanguage} />
           </TabsContent>
 
           <TabsContent value="restaurants" className="mt-4 space-y-4">
@@ -645,6 +627,34 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                     <FastFoodCard key={place.id} place={place} lang={currentLanguage} origin={apartmentCoords} apartment={apartment} />
                   ))}
                   <p className="text-[11px] text-muted-foreground text-center">{fastFoodLabels(currentLanguage).prices}</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              {/* Más recomendaciones (mapa de Google con nuestros favoritos) */}
+              <AccordionItem value="more" className="border rounded-xl px-4 sm:px-6 bg-card shadow-sm">
+                <AccordionTrigger className="hover:no-underline" data-testid="accordion-more">
+                  <div className="flex items-center gap-2">
+                    <MapIcon className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-semibold text-foreground">{t.tourism.map}</h3>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pt-4 pb-6">
+                  <div className="space-y-4">
+                  <img 
+                    src={mapsRecommendationsImage} 
+                    alt="Mapa de recomendaciones"
+                    className="w-full rounded-lg shadow-lg"
+                    data-testid="img-recommendations-map"
+                  />
+                  <Button
+                    className="w-full"
+                    onClick={() => window.open('https://maps.app.goo.gl/vLTVmja9G4RWvX1i8', '_blank', 'noopener,noreferrer')}
+                    data-testid="button-experience-recommendations"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    {t.tourism.experienceRecommendations}
+                  </Button>
+                </div>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

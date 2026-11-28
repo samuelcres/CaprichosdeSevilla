@@ -19,7 +19,7 @@ export const BARRIO: L6<{
   customsTitle: string; customs: { icon: string; title: string; text: string }[];
 }> = {
   es: {
-    tab: 'Barrio',
+    tab: 'Barrio y servicios',
     servicesTitle: 'Servicios cerca del apartamento',
     servicesHint: 'Toca una categoría para ver los sitios más cercanos, con horario e itinerario a pie.',
     services: { supermarket: 'Supermercados', pharmacy: 'Farmacias', atm: 'Cajeros', laundry: 'Lavanderías', bazaar: 'Bazares', bakery: 'Panaderías' },
@@ -33,7 +33,7 @@ export const BARRIO: L6<{
     ],
   },
   en: {
-    tab: 'Neighbourhood',
+    tab: 'Neighbourhood & services',
     servicesTitle: 'Services near the apartment',
     servicesHint: 'Tap a category to see the nearest places, sorted by distance.',
     services: { supermarket: 'Supermarkets', pharmacy: 'Pharmacies', atm: 'ATMs', laundry: 'Laundries', bazaar: 'Bazaars', bakery: 'Bakeries' },
@@ -47,7 +47,7 @@ export const BARRIO: L6<{
     ],
   },
   fr: {
-    tab: 'Quartier',
+    tab: 'Quartier et services',
     servicesTitle: 'Services près de l’appartement',
     servicesHint: 'Touchez une catégorie pour voir les plus proches, par distance.',
     services: { supermarket: 'Supermarchés', pharmacy: 'Pharmacies', atm: 'Distributeurs', laundry: 'Laveries', bazaar: 'Bazars', bakery: 'Boulangeries' },
@@ -61,7 +61,7 @@ export const BARRIO: L6<{
     ],
   },
   de: {
-    tab: 'Viertel',
+    tab: 'Viertel & Services',
     servicesTitle: 'Geschäfte in der Nähe',
     servicesHint: 'Kategorie antippen: die nächsten Orte, nach Entfernung sortiert.',
     services: { supermarket: 'Supermärkte', pharmacy: 'Apotheken', atm: 'Geldautomaten', laundry: 'Waschsalons', bazaar: 'Basare', bakery: 'Bäckereien' },
@@ -75,7 +75,7 @@ export const BARRIO: L6<{
     ],
   },
   it: {
-    tab: 'Quartiere',
+    tab: 'Quartiere e servizi',
     servicesTitle: 'Servizi vicino all’appartamento',
     servicesHint: 'Tocca una categoria per vedere i più vicini, in ordine di distanza.',
     services: { supermarket: 'Supermercati', pharmacy: 'Farmacie', atm: 'Bancomat', laundry: 'Lavanderie', bazaar: 'Bazar', bakery: 'Panetterie' },
@@ -89,7 +89,7 @@ export const BARRIO: L6<{
     ],
   },
   zh: {
-    tab: '周边',
+    tab: '周边与服务',
     servicesTitle: '公寓附近的服务',
     servicesHint: '点击类别，按距离查看最近的地点。',
     services: { supermarket: '超市', pharmacy: '药店', atm: '取款机', laundry: '自助洗衣', bazaar: '杂货店', bakery: '面包店' },
