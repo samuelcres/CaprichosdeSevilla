@@ -294,7 +294,8 @@ export const translations = {
       distance: 'min a pie',
       viewMap: 'Ver en mapa',
       viewOnGoogleMaps: 'Ver en Google Maps',
-      experienceRecommendations: 'Recomendaciones basadas en nuestra propia experiencia',
+      experienceRecommendations: 'Ver los sitios y qué pedir en cada uno',
+      mapIntro: 'En nuestro mapa de Google te sugerimos sitios que conocemos bien y, en cada uno, qué pedir: el plato o la tapa que no te puedes perder. Todo basado en nuestra propia experiencia.',
       visitCategories: {
         monuments: 'Monumentos históricos y patrimoniales',
         museums: 'Museos y centros de interpretación',
@@ -749,7 +750,8 @@ export const translations = {
       distance: 'min walk',
       viewMap: 'View on map',
       viewOnGoogleMaps: 'View on Google Maps',
-      experienceRecommendations: 'Recommendations based on our own experience',
+      experienceRecommendations: 'See the places and what to order at each',
+      mapIntro: 'On our Google map we suggest places we know well and, for each one, what to order: the dish or tapa you shouldn’t miss. All based on our own experience.',
       visitCategories: {
         monuments: 'Historical and heritage monuments',
         museums: 'Museums and interpretation centers',
@@ -1204,7 +1206,8 @@ export const translations = {
       distance: 'min à pied',
       viewMap: 'Voir sur la carte',
       viewOnGoogleMaps: 'Voir sur Google Maps',
-      experienceRecommendations: 'Recommandations basées sur notre propre expérience',
+      experienceRecommendations: 'Voir les adresses et quoi commander dans chacune',
+      mapIntro: 'Sur notre carte Google, nous vous suggérons des adresses que nous connaissons bien et, pour chacune, quoi commander : le plat ou la tapa à ne pas manquer. Le tout basé sur notre propre expérience.',
       visitCategories: {
         monuments: 'Monuments historiques et patrimoniaux',
         museums: 'Musées et centres d\'interprétation',
@@ -1659,7 +1662,8 @@ export const translations = {
       distance: 'Min zu Fuß',
       viewMap: 'Auf Karte ansehen',
       viewOnGoogleMaps: 'Auf Google Maps ansehen',
-      experienceRecommendations: 'Empfehlungen basierend auf unserer eigenen Erfahrung',
+      experienceRecommendations: 'Orte ansehen und was man dort bestellt',
+      mapIntro: 'Auf unserer Google-Karte empfehlen wir Orte, die wir gut kennen, und für jeden, was man bestellen sollte: das Gericht oder die Tapa, die Sie nicht verpassen dürfen. Alles aus eigener Erfahrung.',
       visitCategories: {
         monuments: 'Historische und patrimoniale Denkmäler',
         museums: 'Museen und Interpretationszentren',
@@ -2114,7 +2118,8 @@ export const translations = {
       distance: 'min a piedi',
       viewMap: 'Vedi sulla mappa',
       viewOnGoogleMaps: 'Vedi su Google Maps',
-      experienceRecommendations: 'Raccomandazioni basate sulla nostra esperienza',
+      experienceRecommendations: 'Vedi i locali e cosa ordinare in ognuno',
+      mapIntro: 'Sulla nostra mappa di Google ti suggeriamo locali che conosciamo bene e, per ognuno, cosa ordinare: il piatto o la tapa da non perdere. Tutto basato sulla nostra esperienza.',
       visitCategories: {
         monuments: 'Monumenti storici e patrimoniali',
         museums: 'Musei e centri di interpretazione',
@@ -2569,7 +2574,8 @@ export const translations = {
       distance: '分钟步行',
       viewMap: '在地图上查看',
       viewOnGoogleMaps: '在谷歌地图上查看',
-      experienceRecommendations: '基于我们自身经验的推荐',
+      experienceRecommendations: '查看推荐地点及每家必点',
+      mapIntro: '在我们的 Google 地图上，我们推荐了一些熟悉的好去处，并标注了每家该点什么：不可错过的菜品或小吃。全部来自我们的亲身体验。',
       visitCategories: {
         monuments: '历史和文化遗产纪念碑',
         museums: '博物馆和展览中心',

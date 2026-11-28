@@ -640,6 +640,7 @@ export default function TourismPage({ onBack, onHome, apartment, t, currentLangu
                 </AccordionTrigger>
                 <AccordionContent className="pt-4 pb-6">
                   <div className="space-y-4">
+                  <p className="text-muted-foreground" data-testid="text-map-intro">{t.tourism.mapIntro}</p>
                   <img 
                     src={mapsRecommendationsImage} 
                     alt="Mapa de recomendaciones"
